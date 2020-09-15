@@ -1,0 +1,88 @@
+[include]
+
+    # Local configuration for git credentials
+    path = ~/.config/git/credentials
+
+[apply]
+
+	# Detect and fix whitespace errors when applying a patch
+	whitespace = fix
+
+[branch]
+
+	# Sort branches by most recent change
+	sort = -committerdate
+
+[core]
+
+	# Use custom `.gitattributes` and `.gitignore` in $HOME
+	attributesFile = ~/.gitattributes
+	excludesFile = ~/.gitignore
+
+    # Revert unicode decomposition of filenames done by Mac OS
+    precomposeUnicode = true
+
+    # Do not quote and escape Unicode characters
+    quotePath = false
+
+    # Make `git rebase` safer on macOS
+    # Ref: http://www.git-tower.com/blog/make-git-rebase-safe-on-osx
+    trustctime = false
+
+    # Speed up commands involving untracked files such as `git status`
+    untrackedCache = true
+
+[color "branch"]
+
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+
+	frag = magenta bold # line info
+	meta = yellow bold
+	new = green # additions
+	old = red # deletions
+
+[color "status"]
+
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[commit]
+
+	# Sign commits with GPG (i.e. `Verified` commits on GitHub)
+	# Temporarily disabled due to issues with unsupported tools
+ 	# gpgSign = true
+
+[credential]
+
+    # Use macOS Keychain as default credential helper
+    # Disabled to keep compatibility with Linux
+  	# helper = osxkeychain
+
+[diff]
+
+	# Detect copies as well as renames
+	renames = copies
+
+[help]
+
+	# Automatically correct and execute mistyped commands
+	autocorrect = 1
+
+[init]
+
+	defaultBranch = main
+
+[pull]
+
+    # Default to use rebase for pull
+    rebase = true
+
+[push]
+
+	# Make `git push` also push relevant tags by default
+	followTags = true

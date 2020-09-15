@@ -1,0 +1,38 @@
+#!/usr/bin/env zsh
+
+() {
+  # Get the current execution context and move into it
+  SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
+  cd $SCRIPT_DIR || return
+
+  # Source commons (e.g. logging)
+  for libraryFile (_lib/*.zsh); do
+    source $libraryFile
+  done
+
+  ensure_env
+
+  # Pull in the latest dotfiles
+  logger "info" "Pulling latest files from remote ..."
+  if ! git pull origin main >/dev/null 2>&1; then
+    logger "error" "Failed to pull in latest files from source!"
+    exit 1
+  fi
+
+  logger "success" "Successfully pulled in latest files."
+
+  prompt "This may overwrite existing files in your home directory ..."
+  if [[ ! ( $REPLY =~ ^[Yy]$ ) ]]; then
+    return
+  fi
+
+  # Use GNU Stow to link up dotfiles
+  if ! stow -t $HOME stow git prefs zsh >/dev/null 2>&1; then
+    logger "error" "Failed to link dotfiles!"
+    exit 1
+  fi
+
+  logger "success" "Successfully linked dotfiles."
+
+  source ~/.zprofile
+}

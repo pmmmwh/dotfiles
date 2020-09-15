@@ -1,0 +1,22 @@
+# Folder view files
+.DS_Store
+.AppleDouble
+.LSOverride
+Desktop.ini
+
+# Git files
+.git
+.gitignore
+
+# IDE setting files
+.idea
+.vscode
+
+# Stow local files
+.stow-local-ignore
+
+# Environment-related packages (@-prefixed)
+^/@.*
+
+# Internal packages (_-prefixed)
+^/_.*

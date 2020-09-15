@@ -1,0 +1,189 @@
+# TAPS
+
+# The `brew bundle` command
+tap "homebrew/bundle"
+# Homebrew cask formulae for GUI apps and more
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-versions"
+# Formulae for MongoDB
+tap "mongodb/brew"
+# Formulae for webfont-related tools
+tap "bramstein/webfonttools"
+
+# BINARIES
+
+# GNU utilities, to replace default BSD ones
+brew "coreutils"
+brew "findutils"
+brew "grep"
+brew "make"
+brew "gnu-sed"
+
+# GNU Privacy Guard, to enable GPG-signing commits
+brew "gnupg"
+
+# Get latest version of the OpenSSH utilities
+brew "openssh"
+brew "ssh-copy-id"
+
+# The `wget` command
+brew "wget"
+
+# Other miscellaneous binaries
+brew "ack"
+brew "imagemagick"
+brew "jq"
+brew "mackup" # Python
+brew "mas" # Swift
+brew "mitmproxy" # Python
+brew "p7zip"
+brew "pigz"
+brew "pkg-config"
+brew "protobuf" # Python
+brew "readline"
+brew "sqlmap"
+brew "thefuck" # Python
+brew "tree"
+brew "xz"
+brew "zlib"
+brew "zopfli"
+
+# General development tools
+brew "awscli" # Python
+brew "aws-elasticbeanstalk" # Python
+brew "aws-iam-authenticator" # Golang
+brew "caddy" # Golang
+brew "circleci" # Golang
+brew "gh" # Golang
+brew "git"
+brew "git-lfs" # Golang, Ruby
+brew "hub" # Golang
+brew "nginx"
+brew "shellcheck"
+brew "watchman" # Python
+
+# Database related tools
+brew "mongodb-community"
+brew "mysql"
+brew "postgresql"
+brew "sqlite"
+
+# Docker related tools
+brew "hadolint" # Haskell
+brew "helm" # Golang
+brew "k9s" #Golang
+brew "kubernetes-cli" # Golang
+brew "kustomize" #Golang
+brew "minikube" # Golang
+
+# Node.js related tools
+brew "nvm"
+brew "yarn" # Node.js
+
+# Go related tools
+brew "goenv"
+
+# Python related tools
+brew "pipx" # Python
+brew "pyenv"
+
+# Rust related tools
+brew "rustup-init" # Rust
+
+# Swift related tools
+brew "carthage"
+brew "cocoapods"
+
+# Tools to optimise images
+brew "jpegoptim"
+brew "pngquant" # Rust
+brew "optipng"
+brew "svgo" # Node.js
+
+# Tools to generate webfonts
+brew "sfnt2woff"
+brew "sfnt2woff-zopfli"
+brew "woff2"
+
+# CASKS
+
+# Binaries and Drivers
+cask "adoptopenjdk"
+cask "apple-hewlett-packard-printer-drivers"
+cask "google-cloud-sdk"
+
+# Browsers
+cask "firefox"
+cask "google-chrome"
+cask "microsoft-edge"
+
+# Utilities
+cask "1password"
+cask "alfred"
+cask "bartender"
+cask "dropbox"
+cask "logitech-options"
+cask "microsoft-office"
+cask "mullvadvpn"
+cask "notion"
+cask "omnidisksweeper"
+cask "parallels"
+cask "setapp"
+cask "splashtop-business"
+cask "spotify"
+cask "superhuman"
+cask "the-unarchiver"
+cask "vlc"
+cask "xld"
+
+# IM
+cask "discord"
+cask "slack"
+cask "telegram-desktop"
+cask "whatsapp"
+cask "zoomus"
+
+# Creative and Design
+cask "adobe-creative-cloud"
+cask "figma"
+cask "framer-x"
+cask "sketch"
+cask "sketchpacks"
+
+# Development
+cask "docker"
+cask "gpg-suite"
+cask "imageoptim"
+cask "jetbrains-toolbox"
+cask "iterm2"
+cask "postman"
+cask "visual-studio-code"
+
+# Music
+cask "focusrite-control"
+cask "musescore"
+cask "reaper"
+
+# Mobile
+cask "android-platform-tools"
+cask "impactor"
+cask "vysor"
+
+# Gaming
+cask "parsec"
+cask "steam"
+
+# MAC APPSTORE APPS
+
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Magnet", id: 441258766
+mas "Speedtest by Ookla", id: 1153157709
+mas "WireGuard", id: 1451685025
+mas "Xcode", id: 497799835
+
+# OBSOLETE, Install From SetApp
+
+# cask "pixelsnap"
+# cask "sip"
+# mas "Lungo", id: 1263070803

@@ -1,0 +1,22 @@
+#!/usr/bin/env zsh
+
+() {
+  # Get the current execution context and move into it
+  SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
+  cd $SCRIPT_DIR || return
+
+  # Source commons (e.g. logging)
+  for libraryFile (_lib/*.zsh); do
+    source $libraryFile
+  done
+
+  ensure_env
+
+  # Use GNU Stow to link up dotfiles
+  if ! stow -D -t $HOME stow git prefs zsh >/dev/null 2>&1; then
+    logger "error" "Failed to unlink dotfiles!"
+    exit 1
+  fi
+
+  logger "success" "Successfully unlinked dotfiles."
+}

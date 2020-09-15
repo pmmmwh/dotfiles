@@ -1,0 +1,3 @@
+# Stow's built-in ignore list ignores `.gitignore`.
+# This empty local ignore list overrides that behaviour,
+# and thus ensures `.gitignore` will not be ignored.
