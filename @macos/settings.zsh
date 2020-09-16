@@ -653,6 +653,9 @@ EOD
   # Automatically check for iTerm updates
   defaults write -app "iTerm" SUEnableAutomaticChecks -bool true
 
+  # Disable tip of the day
+  defaults write -app "iTerm" NoSyncTipsDisabled -bool true
+
   # Install the Dracula colors for iTerm
   open "$SCRIPT_DIR/init/Dracula.itermcolors"
 
