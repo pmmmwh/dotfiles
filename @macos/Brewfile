@@ -152,6 +152,7 @@ cask "sketch"
 cask "sketchpacks"
 
 # Development
+cask "dash"
 cask "docker"
 cask "gpg-suite"
 cask "imageoptim"
