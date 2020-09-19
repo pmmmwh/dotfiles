@@ -91,12 +91,12 @@ Here's a list of all dependencies pulled in:
 ## Acknowledgements
 
 - [Github does dotfiles](https://dotfiles.github.io)
-- @mathiasbynens's [dotfiles repository](https://github.com/mathiasbynens/dotfiles),
+- [Dotfiles](https://github.com/mathiasbynens/dotfiles) by [@mathiasbynens](https://github.com/mathiasbynens),
   which is an amazing starting point for custom dotfiles
   (also contains the amazing `~/.macos` script!)
-- @Kraymer's [dotfiles repository](https://github.com/Kraymer/F-dotfiles),
+- [Dotfiles](https://github.com/Kraymer/F-dotfiles) by [@Kraymer](https://github.com/Kraymer),
   which inspired me to use GNU Stow for dotfiles management
-- @driesvints' [dotfiles repository](https://github.com/driesvints/dotfiles),
+- [Dotfiles](https://github.com/driesvints/dotfiles) by [@driesvints](https://github.com/driesvints),
   which introduced me to tools like `mackup` and `mas` to manage apps and preferences
-- @kamui545's [dock.sh](https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8),
-  which I used to programmatically setup the macOS Dock
+- [Dock.sh](https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8) by [@kamui545](https://github.com/kamui545),
+  which is used here to programmatically setup the macOS Dock
