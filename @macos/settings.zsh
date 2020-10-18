@@ -268,8 +268,14 @@
 
   # Set the timezone and sync automatically from network
   # See `sudo systemsetup -listtimezones` for other values
-  sudo systemsetup -settimezone "Asia/Hong_Kong" >/dev/null
-  sudo systemsetup -setnetworktimeserver "time.asia.apple.com"
+
+  # Settings for Hong Kong
+  # sudo systemsetup -settimezone "Asia/Hong_Kong" >/dev/null
+  # sudo systemsetup -setnetworktimeserver "time.asia.apple.com"
+
+  # Settings for Stockholm
+  sudo systemsetup -settimezone "Europe/Stockholm" >/dev/null
+  sudo systemsetup -setnetworktimeserver "time.euro.apple.com"
   sudo systemsetup -setusingnetworktime on
 
   ###############################################################################
