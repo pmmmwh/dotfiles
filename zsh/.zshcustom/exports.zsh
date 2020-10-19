@@ -2,6 +2,7 @@
 
 # Make VSCode the default editor for commands that support the $EDITOR variable
 export EDITOR=code
+export K9S_EDITOR=code
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history
