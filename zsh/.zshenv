@@ -3,17 +3,22 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Setup GNU utilities
 if (( ${+commands[brew]} )); then
-  for gnuPath ("${BREW_PREFIX:-$(brew --prefix)}"/opt/*/libexec/gnubin); do
-    export PATH="$gnuPath:$PATH"
-  done
+  if [[ -n "${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin(#qN)" ]]; then
+    for gnuPath ("${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin"); do
+      export PATH="$gnuPath:$PATH"
+    done
 
-  for gnuManPath ("${BREW_PREFIX:-$(brew --prefix)}"/opt/*/libexec/gnuman); do
-    export MANPATH="$gnuManPath:$MANPATH"
-  done
+    unset gnuPath
+  fi
 
-  unset gnuPath
-  unset gnuManPath
+  if [[ -n "${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman(#qN)" ]]; then
+    for gnuManPath ("${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman"); do
+      export MANPATH="$gnuManPath:$MANPATH"
+    done
+
+    unset gnuManPath
+  fi
 fi
 
 # Setup usage of VSCode from command line
-export PATH=/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
