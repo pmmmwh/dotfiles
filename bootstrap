@@ -27,12 +27,16 @@
   fi
 
   # Use GNU Stow to link up dotfiles
-  if ! stow -t $HOME stow git prefs zsh >/dev/null 2>&1; then
+  if ! stow -t $HOME stow git mackup prefs zsh >/dev/null 2>&1; then
     logger "error" "Failed to link dotfiles!"
     exit 1
   fi
 
+  # Fix any permission issues related to loading auto-completion
+  compaudit | xargs chmod g-w
+
   logger "success" "Successfully linked dotfiles."
 
-  source ~/.zprofile
+  # Replace the shell instance with a new one
+  exec zsh
 }
