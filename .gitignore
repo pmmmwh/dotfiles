@@ -36,5 +36,5 @@ Temporary Items
 .vscode
 
 # Local configuration files
-git/.config/git/credentials
+git/.gitcredentials
 zsh/.zshcustom/extras.zsh
