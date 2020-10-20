@@ -6,4 +6,3 @@ setopt nocaseglob
 
 # Enable extended globing for qualifiers
 setopt extendedglob
-
