@@ -10,6 +10,8 @@ tap "homebrew/cask-versions"
 tap "mongodb/brew"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
+# Formulae for version-specific AdoptOpenJDK
+tap "AdoptOpenJDK/openjdk"
 
 # BINARIES
 
@@ -109,7 +111,7 @@ brew "woff2"
 # CASKS
 
 # Binaries and Drivers
-cask "adoptopenjdk"
+cask "adoptopenjdk8"
 cask "apple-hewlett-packard-printer-drivers"
 cask "google-cloud-sdk"
 
