@@ -34,8 +34,8 @@ brew "wget"
 brew "ack"
 brew "imagemagick"
 brew "jq"
-brew "mackup" # Python
-brew "mas" # Swift
+brew "mackup"    # Python
+brew "mas"       # Swift
 brew "mitmproxy" # Python
 brew "p7zip"
 brew "pigz"
@@ -50,15 +50,15 @@ brew "zlib"
 brew "zopfli"
 
 # General development tools
-brew "awscli" # Python
-brew "aws-elasticbeanstalk" # Python
+brew "awscli"                # Python
+brew "aws-elasticbeanstalk"  # Python
 brew "aws-iam-authenticator" # Golang
-brew "caddy" # Golang
-brew "circleci" # Golang
-brew "gh" # Golang
+brew "caddy"                 # Golang
+brew "circleci"              # Golang
+brew "gh"                    # Golang
 brew "git"
 brew "git-lfs" # Golang, Ruby
-brew "hub" # Golang
+brew "hub"     # Golang
 brew "nginx"
 brew "shellcheck"
 brew "watchman" # Python
@@ -70,12 +70,12 @@ brew "postgresql"
 brew "sqlite"
 
 # Docker related tools
-brew "hadolint" # Haskell
-brew "helm" # Golang
-brew "k9s" #Golang
+brew "hadolint"       # Haskell
+brew "helm"           # Golang
+brew "k9s"            # Golang
 brew "kubernetes-cli" # Golang
-brew "kustomize" #Golang
-brew "minikube" # Golang
+brew "kustomize"      # Golang
+brew "minikube"       # Golang
 
 # Node.js related tools
 brew "nvm"

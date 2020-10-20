@@ -6,7 +6,7 @@ add_app_to_dock() {
 
   if open -Ra $app; then
     defaults write com.apple.dock persistent-apps -array-add \
-"<dict>
+      "<dict>
     <key>tile-data</key>
     <dict>
         <key>file-data</key>
@@ -19,7 +19,7 @@ add_app_to_dock() {
     </dict>
 </dict>"
 
-  logger "success" "$app has been added to the Dock."
+    logger "success" "$app has been added to the Dock."
   else
     logger "error" "Application $app not found!"
   fi
@@ -49,28 +49,28 @@ add_folder_to_dock() {
   local showAs="0"
   while [[ "$#" -gt 0 ]]; do
     case $1 in
-      -a|--arrangement)
-        if [[ $2 =~ ^[1-5]$ ]]; then
-            arrangement=$2
-        fi
-        ;;
-      -d|--displayAs)
-        if [[ $2 =~ ^[0-1]$ ]]; then
-            displayAs=$2
-        fi
-        ;;
-      -v|--showAs)
-        if [[ $2 =~ ^[0-3]$ ]]; then
-            showAs=$2
-        fi
-        ;;
+    -a | --arrangement)
+      if [[ $2 =~ ^[1-5]$ ]]; then
+        arrangement=$2
+      fi
+      ;;
+    -d | --displayAs)
+      if [[ $2 =~ ^[0-1]$ ]]; then
+        displayAs=$2
+      fi
+      ;;
+    -v | --showAs)
+      if [[ $2 =~ ^[0-3]$ ]]; then
+        showAs=$2
+      fi
+      ;;
     esac
     shift
   done
 
   if [ -d $folder ]; then
     defaults write com.apple.dock persistent-others -array-add \
-"<dict>
+      "<dict>
     <key>tile-data</key>
     <dict>
         <key>arrangement</key>
@@ -93,7 +93,7 @@ add_folder_to_dock() {
     <string>directory-tile</string>
 </dict>"
 
-  logger "success" "$folder has been added to the Dock."
+    logger "success" "$folder has been added to the Dock."
   else
     logger "error" "Folder $folder not found!"
   fi
