@@ -5,7 +5,6 @@ tap "homebrew/bundle"
 # Homebrew cask formulae for GUI apps and more
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
-tap "homebrew/cask-versions"
 # Formulae for MongoDB
 tap "mongodb/brew"
 # Formulae for webfont-related tools
