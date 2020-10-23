@@ -27,6 +27,9 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 # Show all IP addresses of local network interfaces
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
+# Show all ports that are currently listning by a process
+alias listeningports="sudo lsof -iTCP -sTCP:LISTEN -nP"
+
 # An intuitive map function
 # Usage (to list all directories that contain a certain file):
 # `find . -name .gitattributes | map dirname`
