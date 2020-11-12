@@ -4,9 +4,6 @@
 tap "homebrew/bundle"
 # Homebrew cask formulae for GUI apps and more
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
-# Formulae for MongoDB
-tap "mongodb/brew"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
 # Formulae for version-specific AdoptOpenJDK
@@ -44,19 +41,14 @@ brew "pkg-config"
 brew "protobuf" # Python
 brew "readline"
 brew "sqlmap"
-brew "thefuck" # Python
+# brew "thefuck" # Python
 brew "tree"
 brew "xz"
 brew "zlib"
 brew "zopfli"
 
 # General development tools
-brew "awscli"                # Python
-brew "aws-elasticbeanstalk"  # Python
-brew "aws-iam-authenticator" # Golang
-brew "caddy"                 # Golang
-brew "circleci"              # Golang
-brew "gh"                    # Golang
+brew "gh" # Golang
 brew "git"
 brew "git-lfs" # Golang, Ruby
 brew "hub"     # Golang
@@ -65,8 +57,6 @@ brew "shellcheck"
 brew "watchman" # Python
 
 # Database related tools
-brew "mongodb-community"
-brew "mysql"
 brew "postgresql"
 brew "sqlite"
 
@@ -89,9 +79,6 @@ brew "goenv"
 brew "pipx" # Python
 brew "pyenv"
 
-# Rust related tools
-brew "rustup-init" # Rust
-
 # Swift related tools
 brew "carthage"
 brew "cocoapods"
@@ -111,7 +98,6 @@ brew "woff2"
 
 # Binaries and Drivers
 cask "adoptopenjdk8"
-cask "apple-hewlett-packard-printer-drivers"
 cask "google-cloud-sdk"
 
 # Browsers
@@ -123,36 +109,20 @@ cask "microsoft-edge"
 cask "1password"
 cask "alfred"
 cask "bartender"
-cask "dropbox"
 cask "logitech-options"
-cask "microsoft-excel"
-cask "microsoft-powerpoint"
-cask "microsoft-word"
 cask "mullvadvpn"
 cask "notion"
-cask "omnidisksweeper"
-cask "parallels"
 cask "setapp"
 cask "splashtop-business"
-cask "spotify"
 cask "superhuman"
 cask "the-unarchiver"
-cask "vlc"
-cask "xld"
 
 # IM
-cask "discord"
 cask "slack"
 cask "telegram-desktop"
-cask "whatsapp"
-cask "zoomus"
 
 # Creative and Design
-cask "adobe-creative-cloud"
 cask "figma"
-cask "framer-x"
-cask "sketch"
-cask "sketchpacks"
 
 # Development
 cask "dash"
@@ -165,23 +135,11 @@ cask "ngrok"
 cask "postman"
 cask "visual-studio-code"
 
-# Music
-cask "focusrite-control"
-cask "musescore"
-cask "reaper"
-
 # Mobile
-cask "android-platform-tools"
-cask "impactor"
 cask "vysor"
-
-# Gaming
-cask "parsec"
-cask "steam"
 
 # MAC APPSTORE APPS
 
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Magnet", id: 441258766
 mas "Speedtest by Ookla", id: 1153157709
 mas "WireGuard", id: 1451685025

@@ -1,0 +1,63 @@
+# TAPS
+
+# The `brew bundle` command
+tap "homebrew/bundle"
+# Homebrew cask formulae for GUI apps and more
+tap "homebrew/cask"
+# Formulae for MongoDB
+tap "mongodb/brew"
+
+# General development tools
+brew "awscli"                # Python
+brew "aws-elasticbeanstalk"  # Python
+brew "aws-iam-authenticator" # Golang
+brew "caddy"                 # Golang
+brew "circleci"              # Golang
+
+# Database related tools
+brew "mongodb-community"
+brew "mysql"
+
+# Rust related tools
+brew "rustup-init" # Rust
+
+# CASKS
+
+# Utilities
+cask "dropbox"
+cask "microsoft-excel"
+cask "microsoft-powerpoint"
+cask "microsoft-word"
+cask "omnidisksweeper"
+cask "parallels"
+cask "spotify"
+cask "vlc"
+cask "xld"
+
+# IM
+cask "discord"
+cask "whatsapp"
+cask "zoomus"
+
+# Creative and Design
+cask "adobe-creative-cloud"
+cask "framer-x"
+cask "sketch"
+cask "sketchpacks"
+
+# Music
+cask "focusrite-control"
+cask "musescore"
+cask "reaper"
+
+# Mobile
+cask "android-platform-tools"
+cask "impactor"
+
+# Gaming
+cask "parsec"
+cask "steam"
+
+# MAC APPSTORE APPS
+
+mas "Microsoft Remote Desktop", id: 1295203466
