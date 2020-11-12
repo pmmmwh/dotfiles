@@ -39,11 +39,20 @@ elevate() {
 }
 
 prompt() {
+  unset PROMPT_PROCEED
+
   if [ -n "${1:-}" ]; then
     logger "info" "$1"
   fi
 
-  read -k 1 "?$(logger "warning" "Do you want to proceed? [y/N] ")"
+  local message
+  message=$(logger "warning" "Do you want to proceed? (Auto-continue in 10s) [y/N] ")
+  if ! read -k 1 -t 10 "?$message" || [[ $REPLY =~ ^[Yy]$ ]]; then
+    export PROMPT_PROCEED=0
+  else
+    export PROMPT_PROCEED=1
+  fi
+
   echo ""
 }
 

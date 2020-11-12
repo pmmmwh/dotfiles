@@ -22,7 +22,7 @@
   logger "success" "Successfully pulled in latest files."
 
   prompt "This may overwrite existing files in your home directory ..."
-  if [[ ! ( $REPLY =~ ^[Yy]$ ) ]]; then
+  if [[ ! $PROMPT_PROCEED ]]; then
     return
   fi
 
