@@ -55,7 +55,7 @@
   brew bundle --file=$SCRIPT_DIR/Brewfile --no-lock
 
   # Install all dependencies from `Brewfile.personal` if specified
-  if [[ $PROMPT_PROCEED ]]; then
+  if (( $PROMPT_PROCEED == 0 )); then
     brew bundle --file=$SCRIPT_DIR/Brewfile.personal --no-lock
   fi
 
