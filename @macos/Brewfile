@@ -4,6 +4,7 @@
 tap "homebrew/bundle"
 # Homebrew cask formulae for GUI apps and more
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
 # Formulae for version-specific AdoptOpenJDK
