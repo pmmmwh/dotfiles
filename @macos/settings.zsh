@@ -472,7 +472,7 @@
     '/System/Applications/Launchpad.app'
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
-    '/System/Applications/Calendar.app'
+    '/Applications/Fantastical.app'
     '/Applications/Slack.app'
     '/Applications/Notion.app'
     '/Applications/Superhuman.app'
