@@ -46,7 +46,7 @@ prompt() {
   fi
 
   local message
-  message=$(logger "warning" "Do you want to proceed? (Auto-continue in 10s) [y/N] ")
+  message=$(logger "warning" "Please enter your choice (Auto-continue with 'Y' in 10s) [y/N] ")
   if ! read -k 1 -t 10 "?$message" || [[ $REPLY =~ ^[Yy]$ ]]; then
     export PROMPT_PROCEED=0
   else
