@@ -79,6 +79,7 @@ plugins=(
   osx
   pipenv
   pyenv
+  rbenv
   # thefuck # disabled because it requires installation beforehand
   urltools
   yarn

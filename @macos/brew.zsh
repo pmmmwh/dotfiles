@@ -17,12 +17,12 @@
   logger "info" "Updating Homebrew and formulae ..."
   brew upgrade
 
-  # Preinstall version managers for Golang, Node.js and Python
+  # Preinstall version managers for Golang, Node.js, Python and Ruby
   # This have to be done because dependencies down the line in `Brewfile` might depend on them.
   # Since Homebrew's `ignore-dependencies` flag is not encouraged,
   # we will ensure the environment is properly setup before proceeding with `homebrew bundle`.
   logger "info" "Setting up the installation environment ..."
-  brew install goenv nvm pyenv
+  brew install goenv nvm pyenv rbenv
 
   # Setup Golang with the latest stable version (i.e. not beta/rc)
   GOLANG_VERSION=$(goenv install --list | sed "s/^  //" | grep "^\d" | grep -v "beta\|rc" | tail -1)
@@ -44,6 +44,13 @@
   unset PYTHON_VERSION
   logger "success" "Successfully setup Python."
 
+  # Setup Ruby with the latest stable version (i.e. not dev/preview/rc)
+  RUBY_VERSION=$(rbenv install --list-all | sed "s/^  //" | grep "^\d" | grep -v "dev\|p\|preview\|rc" | tail -1)
+  rbenv install $RUBY_VERSION
+  rbenv global $RUBY_VERSION
+  unset RUBY_VERSION
+  logger "success" "Successfully setup Ruby."
+
   logger "info" "Bundling dependencies with Homebrew ..."
   # Initialise the `brew bundle` command
   brew tap homebrew/bundle
@@ -62,6 +69,7 @@
   # Install global tools
   logger "info" "Installing global tools ..."
   pipx install pipenv
+  gem install bundler
   yarn global add serve
 
   logger "success" "Successfully setup Homebrew dependencies."

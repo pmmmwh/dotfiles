@@ -80,6 +80,9 @@ brew "goenv"
 brew "pipx" # Python
 brew "pyenv"
 
+# Ruby related tools
+brew "rbenv"
+
 # Swift related tools
 brew "carthage"
 brew "cocoapods"

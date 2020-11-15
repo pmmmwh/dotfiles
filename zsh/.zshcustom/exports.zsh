@@ -14,6 +14,9 @@ export NODE_REPL_MODE=sloppy
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
 
+# Make `rbenv` use upgraded OpenSSL 1.1 from Homebrew
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1"
+
 # Use US English and UTF-8 encoding by default
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
