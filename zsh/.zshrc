@@ -12,7 +12,8 @@ if type brew &>/dev/null ; then
   # Cache Homebrew's prefix for the session
   export BREW_PREFIX=$(brew --prefix)
 
-  FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
+  typeset -U FPATH fpath
+  fpath=($BREW_PREFIX/share/zsh/site-functions $fpath)
 fi
 
 # Use the text that has already been typed as the prefix for searching through commands

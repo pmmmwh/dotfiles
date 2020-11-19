@@ -1,5 +1,64 @@
 #!/usr/bin/env zsh
 
+# PATHS
+
+typeset -U PATH path
+typeset -U MANPATH manpath
+typeset -TU PKG_CONFIG_PATH pkg_config_path
+
+# Add `/usr/local/bin`, `~/bin` and `~/.local/bin` to $PATH
+path=(
+  $HOME/bin
+  $HOME/.local/bin
+  /usr/local/bin
+  $path
+)
+
+# Setup GNU utilities and OpenSSL
+if (( ${+commands[brew]} )); then
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin(#qN) ]]; then
+    path=(${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin $path)
+  fi
+
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman(#qN) ]]; then
+    manpath=(${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman $manpath)
+  fi
+
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1/bin(#qN) ]]; then
+    openSslPath=${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1
+
+    path=($openSslPath/bin $path)
+    pkg_config_path=($openSslPath/pkgconfig $pkg_config_path)
+
+    # Make compilers aware of upgraded OpenSSL 1.1
+    export CPPFLAGS=-I$openSslPath/include
+    export LDFLAGS=-L$openSslPath/lib
+
+    # Make `rbenv` use upgraded OpenSSL 1.1
+    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openSslPath"
+
+    unset openSslPath
+  fi
+fi
+
+# Setup usage of VSCode from command line
+path+="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Setup Android Studio development environment
+export ANDROID_HOME=$HOME/Library/Android/sdk
+path+=(
+  $ANDROID_HOME/emulator
+  $ANDROID_HOME/tools
+  $ANDROID_HOME/tools/bin
+  $ANDROID_HOME/platform-tools
+)
+
+# MISCELLANEOUS
+
+# Use US English and UTF-8 encoding by default
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 # Make VSCode the default editor for commands that support the $EDITOR variable
 export EDITOR=code
 export K9S_EDITOR=code
@@ -13,13 +72,6 @@ export NODE_REPL_MODE=sloppy
 
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
-
-# Make `rbenv` use upgraded OpenSSL 1.1 from Homebrew
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1"
-
-# Use US English and UTF-8 encoding by default
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
 
 # Avoid issues with `gpg` (installed via Homebrew)
 # Ref: https://stackoverflow.com/a/42265848/96656
