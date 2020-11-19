@@ -33,7 +33,9 @@
   fi
 
   # Fix any permission issues related to loading auto-completion
-  compaudit | xargs chmod g-w
+  for dir in $(compaudit 2>/dev/null); do
+    chmod g-w $dir
+  done
 
   logger "success" "Successfully linked dotfiles."
 
