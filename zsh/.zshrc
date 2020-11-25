@@ -7,12 +7,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Enable auto-completion for Homebrew
+# Setup Homebrew - if it is available
 if type brew &>/dev/null ; then
   # Cache Homebrew's prefix for the session
   export BREW_PREFIX=$(brew --prefix)
 
+  typeset -U PATH path
   typeset -U FPATH fpath
+
+  # Add Homebrew binaries to PATH
+  path=($BREW_PREFIX/bin $path)
+  # Enable auto-completion for Homebrew
   fpath=($BREW_PREFIX/share/zsh/site-functions $fpath)
 fi
 
