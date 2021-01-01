@@ -25,13 +25,13 @@
   # General UI/UX                                                               #
   ###############################################################################
 
-  # Set computer name (as done via System Preferences → Sharing)
-  COMPUTER_NAME="MM-MBP"
-  sudo scutil --set ComputerName $COMPUTER_NAME
-  sudo scutil --set HostName $COMPUTER_NAME
-  sudo scutil --set LocalHostName $COMPUTER_NAME
-  sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
-  unset COMPUTER_NAME
+  # Set computer name, if possible (as done via System Preferences -> Sharing)
+  if (( ${+COMPUTER_NAME} )); then
+    sudo scutil --set ComputerName $COMPUTER_NAME
+    sudo scutil --set HostName $COMPUTER_NAME
+    sudo scutil --set LocalHostName $COMPUTER_NAME
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
+  fi
 
   # Set sidebar icon size to medium
   defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 2
@@ -260,10 +260,11 @@
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool true
 
   # Set language and text formats
-  defaults write NSGlobalDomain AppleLanguages -array "en-GB" "zh-Hant-HK" "yue-Hant-HK" "zh-Hans-HK" "ja-HK"
-  defaults write NSGlobalDomain AppleLocale -string "en_HK"
+  defaults write NSGlobalDomain AppleLanguages -array "en-GB" "zh-Hant-HK" "sv-SE"
+  defaults write NSGlobalDomain AppleLocale -string "en_SE"
   defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
   defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
+  defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
   defaults write NSGlobalDomain AppleMetricUnits -bool true
 
   # Set the timezone and sync automatically from network
