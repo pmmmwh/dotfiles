@@ -4,7 +4,10 @@
 tap "homebrew/bundle"
 # Homebrew cask formulae for GUI apps and more
 tap "homebrew/cask"
+# Homebrew cask formulae for Logitech Options
 tap "homebrew/cask-drivers"
+# Formulae for bottom
+tap "ClementTsang/bottom"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
 # Formulae for version-specific AdoptOpenJDK
@@ -31,6 +34,7 @@ brew "wget"
 
 # Other miscellaneous binaries
 brew "ack"
+brew "bottom" # Rust
 brew "imagemagick"
 brew "jq"
 brew "mackup"    # Python
@@ -42,7 +46,7 @@ brew "pkg-config"
 brew "protobuf" # Python
 brew "readline"
 brew "sqlmap"
-# brew "thefuck" # Python
+brew "tealdeer" # Rust
 brew "tree"
 brew "xz"
 brew "zlib"
@@ -52,7 +56,6 @@ brew "zopfli"
 brew "gh" # Golang
 brew "git"
 brew "git-lfs" # Golang, Ruby
-brew "hub"     # Golang
 brew "nginx"
 brew "shellcheck"
 brew "watchman" # Python
