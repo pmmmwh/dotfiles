@@ -86,7 +86,7 @@ plugins=(
   pipenv
   pyenv
   rbenv
-  # thefuck # disabled because it requires installation beforehand
+  rust
   urltools
   yarn
   zsh-completions
