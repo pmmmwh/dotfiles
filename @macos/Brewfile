@@ -141,7 +141,6 @@ cask "imageoptim"
 cask "iterm2"
 cask "jetbrains-toolbox"
 cask "ngrok"
-cask "postman"
 cask "visual-studio-code"
 
 # Mobile
