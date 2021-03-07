@@ -68,6 +68,7 @@
 
   # Install global tools
   logger "info" "Installing global tools ..."
+  pip install pipx
   pipx install pipenv
   gem install bundler
   yarn global add serve

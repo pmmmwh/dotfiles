@@ -80,7 +80,6 @@ brew "yarn" # Node.js
 brew "goenv"
 
 # Python related tools
-brew "pipx" # Python
 brew "pyenv"
 
 # Ruby related tools
@@ -115,12 +114,10 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "alfred"
-cask "bartender"
 cask "fantastical"
 cask "logitech-options"
 cask "mullvadvpn"
 cask "notion"
-cask "pritunl"
 cask "setapp"
 cask "splashtop-business"
 cask "superhuman"
@@ -155,6 +152,7 @@ mas "Xcode", id: 497799835
 
 # OBSOLETE, Install From SetApp
 
+# cask "bartender"
 # cask "pixelsnap"
 # cask "sip"
 # mas "Lungo", id: 1263070803

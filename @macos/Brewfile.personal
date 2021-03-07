@@ -30,14 +30,13 @@ cask "microsoft-powerpoint"
 cask "microsoft-word"
 cask "omnidisksweeper"
 cask "parallels"
-cask "spotify"
 cask "vlc"
 cask "xld"
 
 # IM
 cask "discord"
 cask "whatsapp"
-cask "zoomus"
+cask "zoom"
 
 # Creative and Design
 cask "adobe-creative-cloud"
@@ -48,6 +47,7 @@ cask "sketchpacks"
 # Music
 cask "focusrite-control"
 cask "musescore"
+cask "native-access"
 cask "reaper"
 
 # Mobile
@@ -61,3 +61,7 @@ cask "steam"
 # MAC APPSTORE APPS
 
 mas "Microsoft Remote Desktop", id: 1295203466
+
+# OBSOLETE
+
+# cask "spotify"

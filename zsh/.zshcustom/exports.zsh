@@ -65,6 +65,10 @@ export NODE_REPL_HISTORY_SIZE=32768
 # Use sloppy mode by default, matching the behaviour of web browsers
 export NODE_REPL_MODE=sloppy
 
+# Enforce default root directory for `pyenv`
+export PYENV_ROOT=$HOME/.pyenv
+# Make `pipx` use Python in installed via `pyenv`
+export PIPX_DEFAULT_PYTHON=$PYENV_ROOT/shims/python
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
 
