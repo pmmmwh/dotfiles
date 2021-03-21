@@ -81,6 +81,7 @@ plugins=(
   docker
   gcloud
   # git # disabled because it mostly provides aliases
+  goenv
   nvm
   osx
   pipenv
@@ -97,6 +98,11 @@ plugins=(
 # We don't need to call `bashcompinit` or `compinit` here because oh-my-zsh does that for us.
 autoload -Uz bashcompinit
 autoload -Uz compinit
+
+# Add `~/bin` and `~/.local/bin` to $PATH,
+# ensures any binary dependencies of plugins get populated from Homebrew.
+typeset -U PATH path
+path=($HOME/bin $HOME/.local/bin $path)
 
 # Enable the oh-my-zsh framework
 source $ZSH/oh-my-zsh.sh
