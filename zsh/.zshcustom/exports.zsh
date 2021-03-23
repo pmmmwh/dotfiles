@@ -34,6 +34,13 @@ if (( ${+commands[brew]} )); then
 
     unset openSslPath
   fi
+
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12/bin(#qN) ]]; then
+    postgresqlPath=${BREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12
+
+    path=($postgresqlPath/bin $path)
+    pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
+  fi
 fi
 
 # Setup usage of VSCode from command line
@@ -55,8 +62,9 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # Make VSCode the default editor for commands that support the $EDITOR variable
-export EDITOR=code
-export K9S_EDITOR=code
+export EDITOR="code -w"
+export KUBE_EDITOR="code -w"
+export K9S_EDITOR="code"
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history

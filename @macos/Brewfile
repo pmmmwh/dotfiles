@@ -61,7 +61,7 @@ brew "shellcheck"
 brew "watchman" # Python
 
 # Database related tools
-brew "postgresql"
+brew "postgresql@12"
 brew "sqlite"
 
 # Docker related tools
