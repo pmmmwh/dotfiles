@@ -25,7 +25,7 @@
   brew install goenv nvm pyenv rbenv
 
   # Setup Golang with the latest stable version (i.e. not beta/rc)
-  GOLANG_VERSION=$(goenv install --list | sed "s/^  //" | grep "^\d" | grep -v "beta\|rc" | tail -1)
+  GOLANG_VERSION=$(goenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "beta\|rc" | tail -1)
   goenv install $GOLANG_VERSION
   goenv global $GOLANG_VERSION
   unset GOLANG_VERSION
@@ -38,14 +38,14 @@
   logger "success" "Successfully setup Node.js."
 
   # Setup Python with the latest stable version (i.e. not dev/alpha/beta)
-  PYTHON_VERSION=$(pyenv install --list | sed "s/^  //" | grep "^\d" | grep -v "dev\|a\|b" | tail -1)
+  PYTHON_VERSION=$(pyenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "dev\|a\|b" | tail -1)
   pyenv install $PYTHON_VERSION
   pyenv global $PYTHON_VERSION
   unset PYTHON_VERSION
   logger "success" "Successfully setup Python."
 
   # Setup Ruby with the latest stable version (i.e. not dev/preview/rc)
-  RUBY_VERSION=$(rbenv install --list-all | sed "s/^  //" | grep "^\d" | grep -v "dev\|p\|preview\|rc" | tail -1)
+  RUBY_VERSION=$(rbenv install --list-all | sed "s/^  //" | grep "^[0-9]" | grep -v "dev\|p\|preview\|rc" | tail -1)
   rbenv install $RUBY_VERSION
   rbenv global $RUBY_VERSION
   unset RUBY_VERSION
