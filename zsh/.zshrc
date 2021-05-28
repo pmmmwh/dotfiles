@@ -104,6 +104,9 @@ autoload -Uz compinit
 typeset -U PATH path
 path=($HOME/bin $HOME/.local/bin $path)
 
+# Setup path for pyenv
+(( ${+commands[pyenv]} )) && eval "$(pyenv init --path)"
+
 # Enable the oh-my-zsh framework
 source $ZSH/oh-my-zsh.sh
 
