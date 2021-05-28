@@ -76,15 +76,15 @@ NVM_LAZY_LOAD_EXTRA_COMMANDS=(
 # Load common useful plugins for macOS, Node.js and Python.
 # Add wisely - too many plugins will slow down shell startup.
 plugins=(
-  aws
+  # aws # disabled as it is rarely used currently
   commons
   docker
   gcloud
-  # git # disabled because it mostly provides aliases
+  # git # disabled as it mostly provides aliases
   goenv
   nvm
   osx
-  pipenv
+  # pipenv # disabled as functionality provided are not as useful
   pyenv
   rbenv
   rust
@@ -116,6 +116,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Add tab completion for `pipx`
 (( ${+commands[pipx]} )) && eval "$(register-python-argcomplete pipx)"
+
+# Add tab completion for `pipenv`
+(( ${+commands[pipenv]} )) && eval "$(pipenv --completion)"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
