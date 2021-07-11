@@ -133,6 +133,7 @@ cask "figma"
 # Development
 cask "dash"
 cask "docker"
+cask "flipper"
 cask "gpg-suite"
 cask "imageoptim"
 cask "iterm2"
