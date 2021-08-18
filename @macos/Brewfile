@@ -129,6 +129,7 @@ cask "telegram-desktop"
 
 # Creative and Design
 cask "figma"
+cask "sf-symbols"
 
 # Development
 cask "dash"
