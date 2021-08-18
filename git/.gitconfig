@@ -19,7 +19,7 @@
 	attributesFile = ~/.gitattributes
 	excludesFile = ~/.gitignore
 
-  # Revert unicode decomposition of filenames done by Mac OS
+	# Revert unicode decomposition of filenames done by Mac OS
 	precomposeUnicode = true
 
 	# Do not quote and escape Unicode characters
@@ -54,13 +54,12 @@
 [commit]
 
 	# Sign commits with GPG (i.e. `Verified` commits on GitHub)
-	# Temporarily disabled due to issues with unsupported tools
- 	# gpgSign = true
+ 	gpgSign = true
 
 [credential]
 
 	# Use macOS Keychain as default credential helper
-  	helper = osxkeychain
+	helper = osxkeychain
 
 [diff]
 
@@ -95,3 +94,8 @@
 
 	# Make `git push` also push relevant tags by default
 	followTags = true
+
+[tags]
+
+	# Sign tags with GPG (i.e. `Verified` tags on GitHub)
+	gpgSign = true
