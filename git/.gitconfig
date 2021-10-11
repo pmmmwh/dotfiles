@@ -95,7 +95,7 @@
 	# Make `git push` also push relevant tags by default
 	followTags = true
 
-[tags]
+[tag]
 
 	# Sign tags with GPG (i.e. `Verified` tags on GitHub)
 	gpgSign = true
