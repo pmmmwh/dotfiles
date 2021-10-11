@@ -40,5 +40,5 @@
   logger "success" "Successfully linked dotfiles."
 
   # Replace the shell instance with a new one
-  exec zsh
+  exec zsh -l
 }
