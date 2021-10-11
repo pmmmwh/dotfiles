@@ -86,8 +86,8 @@ plugins=(
   gcloud
   goenv
   osx
-  pipenv
   pyenv
+  python
   rbenv
   rust
   urltools
