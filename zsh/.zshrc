@@ -7,6 +7,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Run pre-prompt setup for Fig
+[ -s $HOME/.fig/shell/pre.sh ] && source $HOME/.fig/shell/pre.sh
+
 # Setup Homebrew - if it is available
 if type brew &>/dev/null ; then
   # Cache Homebrew's prefix for the session
@@ -65,9 +68,11 @@ HIST_STAMPS="%d/%m/%Y"
 # (The default is "$ZSH/custom")
 ZSH_CUSTOM=$HOME/.zshcustom
 
-# Lazyload `nvm` so it won't slow down shell initialisation
+# Enable completions for `nvm`
+NVM_COMPLETION=true
+# Lazy-load `nvm` so it won't slow down shell initialisation
 NVM_LAZY_LOAD="true"
-# Lazyload `nvm` on using these commands
+# Lazy-load `nvm` on using these commands
 NVM_LAZY_LOAD_EXTRA_COMMANDS=(
   serve
   yarn
@@ -76,15 +81,12 @@ NVM_LAZY_LOAD_EXTRA_COMMANDS=(
 # Load common useful plugins for macOS, Node.js and Python.
 # Add wisely - too many plugins will slow down shell startup.
 plugins=(
-  # aws # disabled as it is rarely used currently
   commons
   docker
   gcloud
-  # git # disabled as it mostly provides aliases
   goenv
-  nvm
   osx
-  # pipenv # disabled as functionality provided are not as useful
+  pipenv
   pyenv
   rbenv
   rust
@@ -117,9 +119,6 @@ source $ZSH/oh-my-zsh.sh
 # Add tab completion for `pipx`
 (( ${+commands[pipx]} )) && eval "$(register-python-argcomplete pipx)"
 
-# Add tab completion for `pipenv`
-(( ${+commands[pipenv]} )) && eval "$(pipenv --completion)"
-
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
 
@@ -128,3 +127,6 @@ complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm SystemUIServer Terminal" killall
+
+# Run post-prompt setup for Fig
+[ -s $HOME/.fig/fig.sh ] && source $HOME/.fig/fig.sh
