@@ -38,13 +38,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Ref: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random.
-# Setting this variable when ZSH_THEME=random,
-# will cause zsh to load a theme from this variable,
-# instead of looking in ~/.oh-my-zsh/themes/.
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
 # This changes how often oh-my-zsh is auto-updated (in days)
 # (The default is 13)
 export UPDATE_ZSH_DAYS=7
@@ -68,21 +61,12 @@ HIST_STAMPS="%d/%m/%Y"
 # (The default is "$ZSH/custom")
 ZSH_CUSTOM=$HOME/.zshcustom
 
-# Enable completions for `nvm`
-NVM_COMPLETION=true
-# Lazy-load `nvm` so it won't slow down shell initialisation
-NVM_LAZY_LOAD="true"
-# Lazy-load `nvm` on using these commands
-NVM_LAZY_LOAD_EXTRA_COMMANDS=(
-  serve
-  yarn
-)
-
 # Load common useful plugins for macOS, Node.js and Python.
 # Add wisely - too many plugins will slow down shell startup.
 plugins=(
   commons
   docker
+  fnm
   gcloud
   goenv
   osx
@@ -93,7 +77,6 @@ plugins=(
   urltools
   yarn
   zsh-completions
-  zsh-nvm
 )
 
 # Initialise the auto-completion system to consume extra completions (for bash/zsh).
@@ -111,9 +94,6 @@ path=($HOME/bin $HOME/.local/bin $path)
 
 # Enable the oh-my-zsh framework
 source $ZSH/oh-my-zsh.sh
-
-# Add tab completion for `pipx`
-(( ${+commands[pipx]} )) && eval "$(register-python-argcomplete pipx)"
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
