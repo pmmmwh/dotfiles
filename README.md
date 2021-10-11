@@ -85,7 +85,6 @@ Here's a list of all dependencies pulled in:
 
 - [`Oh My Zsh`](https://github.com/ohmyzsh/ohmyzsh)
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions.git)
-- [`zsh-nvm`](https://github.com/lukechilds/zsh-nvm.git)
 - [`Powerlevel10k`](https://github.com/romkatv/powerlevel10k.git)
 
 ## Acknowledgements

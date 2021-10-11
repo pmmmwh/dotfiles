@@ -10,12 +10,6 @@
 	path = zsh/.zshcustom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 
-[submodule "zsh/.zshcustom/plugins/zsh-nvm"]
-
-  # Enable the zsh-nvm plugin (instead of the builtin) for lazy init support
-	path = zsh/.zshcustom/plugins/zsh-nvm
-	url = https://github.com/lukechilds/zsh-nvm.git
-
 [submodule "zsh/.zshcustom/themes/powerlevel10k"]
 
   # Use the powerlevel10k theme for oh-my-zsh
