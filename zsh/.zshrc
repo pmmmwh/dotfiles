@@ -112,10 +112,6 @@ path=($HOME/bin $HOME/.local/bin $path)
 # Enable the oh-my-zsh framework
 source $ZSH/oh-my-zsh.sh
 
-# Enable the Powerlevel10k theme.
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
 # Add tab completion for `pipx`
 (( ${+commands[pipx]} )) && eval "$(register-python-argcomplete pipx)"
 
@@ -127,6 +123,10 @@ complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm SystemUIServer Terminal" killall
+
+# Enable the Powerlevel10k theme.
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Run post-prompt setup for Fig
 [ -s $HOME/.fig/fig.sh ] && source $HOME/.fig/fig.sh
