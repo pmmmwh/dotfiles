@@ -73,7 +73,7 @@ brew "kustomize"      # Golang
 brew "minikube"       # Golang
 
 # Node.js related tools
-brew "nvm"
+brew "fnm"
 brew "yarn" # Node.js
 
 # Go related tools

@@ -22,7 +22,7 @@
   # Since Homebrew's `ignore-dependencies` flag is not encouraged,
   # we will ensure the environment is properly setup before proceeding with `homebrew bundle`.
   logger "info" "Setting up the installation environment ..."
-  brew install goenv pyenv rbenv
+  brew install fnm goenv pyenv rbenv
 
   # Setup Golang with the latest stable version (i.e. not beta/rc)
   GOLANG_VERSION=$(goenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "beta\|rc" | tail -1)
@@ -32,8 +32,8 @@
   logger "success" "Successfully setup Golang."
 
   # Setup Node.js with the latest stable version
-  # `nvm` is installed/sourced via the `zsh-nvm` plugin
-  nvm install stable
+  NODE_VERSION=$(fnm ls-remote | sed "s/^  //" | grep "^v[0-9]" | tail -1)
+  fnm install $NODE_VERSION
   logger "success" "Successfully setup Node.js."
 
   # Setup Perl (for `lwp-request` HTTPS verification)
