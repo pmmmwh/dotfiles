@@ -22,9 +22,6 @@ brew "grep"
 brew "make"
 brew "gnu-sed"
 
-# GNU Privacy Guard, to enable GPG-signing commits
-brew "gnupg"
-
 # Get latest version of the OpenSSH utilities
 brew "openssh"
 brew "ssh-copy-id"
@@ -40,6 +37,7 @@ brew "jq"
 brew "mackup"    # Python
 brew "mas"       # Swift
 brew "mitmproxy" # Python
+brew "mkcert"    # Golang
 brew "p7zip"
 brew "pigz"
 brew "pkg-config"
@@ -49,10 +47,12 @@ brew "sqlmap"
 brew "tealdeer" # Rust
 brew "tree"
 brew "xz"
+brew "yq" # Golang
 brew "zlib"
 brew "zopfli"
 
 # General development tools
+brew "cmake"
 brew "gh" # Golang
 brew "git"
 brew "git-lfs" # Golang, Ruby
@@ -80,6 +80,7 @@ brew "yarn" # Node.js
 brew "goenv"
 
 # Python related tools
+brew "pipx"
 brew "pyenv"
 
 # Ruby related tools
