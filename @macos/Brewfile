@@ -115,13 +115,11 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "alfred"
-cask "fantastical"
 cask "logitech-options"
 cask "mullvadvpn"
 cask "notion"
 cask "setapp"
 cask "splashtop-business"
-cask "superhuman"
 cask "the-unarchiver"
 
 # IM
