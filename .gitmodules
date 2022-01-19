@@ -1,17 +1,23 @@
+[submodule "tmux/.tmux/plugins/tpm"]
+
+	# Use the tpm plugin manager
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+
 [submodule "zsh/.oh-my-zsh"]
 
-  # Apply the oh-my-zsh framework
+	# Apply the oh-my-zsh framework
 	path = zsh/.oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 
 [submodule "zsh/.zshcustom/plugins/zsh-completions"]
 
-  # Enable extra ZSH auto completions
+	# Enable extra ZSH auto completions
 	path = zsh/.zshcustom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 
 [submodule "zsh/.zshcustom/themes/powerlevel10k"]
 
-  # Use the powerlevel10k theme for oh-my-zsh
+	# Use the powerlevel10k theme for oh-my-zsh
 	path = zsh/.zshcustom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
