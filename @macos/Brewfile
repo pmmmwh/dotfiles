@@ -31,9 +31,11 @@ brew "wget"
 
 # Other miscellaneous binaries
 brew "ack"
+brew "bat"    # Rust
 brew "bottom" # Rust
 brew "imagemagick"
 brew "jq"
+brew "less"
 brew "mackup"    # Python
 brew "mas"       # Swift
 brew "mitmproxy" # Python
