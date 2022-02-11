@@ -72,7 +72,7 @@ plugins=(
   fnm
   gcloud
   goenv
-  osx
+  macos
   pyenv
   python
   rbenv
