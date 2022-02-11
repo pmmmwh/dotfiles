@@ -1,7 +1,7 @@
 [include]
 
 	# Local configuration for git credentials
-	path = ~/.gitcredentials
+	path = ./.gitcredentials
 
 [apply]
 
@@ -14,10 +14,6 @@
 	sort = -committerdate
 
 [core]
-
-	# Use custom `.gitattributes` and `.gitignore` in $HOME
-	attributesFile = ~/.gitattributes
-	excludesFile = ~/.gitignore
 
 	# Revert unicode decomposition of filenames done by Mac OS
 	precomposeUnicode = true

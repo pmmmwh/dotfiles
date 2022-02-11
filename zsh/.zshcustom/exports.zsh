@@ -57,6 +57,14 @@ path+=(
 
 # MISCELLANEOUS
 
+# Set global configuration files for `git`
+CURRENT_DIR="${"${(%):-%x}":A:h}"
+export GIT_CONFIG_COUNT=2
+export GIT_CONFIG_KEY_0=core.attributesFile
+export GIT_CONFIG_VALUE_0=$(echo $CURRENT_DIR/../../git/.gitattributes(:A))
+export GIT_CONFIG_KEY_1=core.excludesFile
+export GIT_CONFIG_VALUE_1=$(echo $CURRENT_DIR/../../git/.gitignore(:A))
+
 # Use US English and UTF-8 encoding by default
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"

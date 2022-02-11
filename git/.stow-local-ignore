@@ -1,3 +1,6 @@
-# Stow's built-in ignore list ignores `.gitignore`.
-# This empty local ignore list overrides that behaviour,
-# and thus ensures `.gitignore` will not be ignored.
+# From git 2.32, symlinks for git config files are not followed.
+# So, we will ignore them to prevent linking,
+# and wire them up using `.gitconfig`.
+.gitattributes
+.gitcredentials.local
+.gitignore
