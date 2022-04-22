@@ -84,8 +84,8 @@ External packages are applied using Git Submodules.
 Here's a list of all dependencies pulled in:
 
 - [`Oh My Zsh`](https://github.com/ohmyzsh/ohmyzsh)
-- [`zsh-completions`](https://github.com/zsh-users/zsh-completions.git)
-- [`Powerlevel10k`](https://github.com/romkatv/powerlevel10k.git)
+- [`tpm`](https://github.com/tmux-plugins/tpm)
+- [`zsh-completions`](https://github.com/zsh-users/zsh-completions)
 
 ## Acknowledgements
 
