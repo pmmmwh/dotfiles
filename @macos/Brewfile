@@ -6,6 +6,8 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 # Homebrew cask formulae for Logitech Options
 tap "homebrew/cask-drivers"
+# Homebrew cask formulae for Nerd Fonts
+tap "homebrew/cask-fonts"
 # Formulae for bottom
 tap "ClementTsang/bottom"
 # Formulae for webfont-related tools
@@ -130,6 +132,7 @@ cask "telegram-desktop"
 
 # Creative and Design
 cask "figma"
+cask "font-meslo-lg-nerd-font"
 cask "sf-symbols"
 
 # Development
