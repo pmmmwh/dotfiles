@@ -1,4 +1,4 @@
-right_format = '$time'
+# right_format = '$time'
 
 [aws]
 disabled = true
@@ -188,7 +188,7 @@ symbol = ' '
 format = '\[[$symbol$workspace]($style)\]'
 
 [time]
-disabled = false
+# disabled = false
 format = '\[[$time]($style)\]'
 
 [username]
