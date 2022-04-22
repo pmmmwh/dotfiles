@@ -8,7 +8,7 @@ ensure_env() {
   # the result will be stored in $PACKAGE_MANAGER.
   get_package_manager
 
-  for package (git stow); do
+  for package (curl git stow); do
     logger "info" "Checking for ${(C)package} installation ..."
 
     if (( ! ${+commands[$package]} )); then

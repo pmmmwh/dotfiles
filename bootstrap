@@ -27,7 +27,12 @@
   fi
 
   # Use GNU Stow to link up dotfiles
+  mkdir -p $HOME/.config
   if ! stow -t $HOME stow git mackup prefs tmux zsh >/dev/null 2>&1; then
+    logger "error" "Failed to link dotfiles!"
+    exit 1
+  fi
+  if ! stow -t $HOME/.config config >/dev/null 2>&1; then
     logger "error" "Failed to link dotfiles!"
     exit 1
   fi
@@ -38,6 +43,11 @@
   done
 
   logger "success" "Successfully linked dotfiles."
+
+  logger "info" "Installing Starship ..."
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+
+  logger "success" "Successfully installed Starship."
 
   # Replace the shell instance with a new one
   exec zsh -l
