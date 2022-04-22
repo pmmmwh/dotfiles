@@ -45,7 +45,7 @@
   logger "success" "Successfully linked dotfiles."
 
   logger "info" "Installing Starship ..."
-  curl -sS https://starship.rs/install.sh | sh -s -- -y
+  curl -sS https://starship.rs/install.sh | sh -s -- -y >/dev/null
 
   logger "success" "Successfully installed Starship."
 
