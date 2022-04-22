@@ -51,8 +51,9 @@ alias reload='exec ${SHELL} -l'
 # 3. Update apps from App Store
 # 4. Update npm and installed packages
 # 5. Update yarn installed packages
-# 6. Update installed Ruby gems
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; npm install npm -g; npm update -g; yarn global upgrade; sudo gem update --system; sudo gem update; sudo gem cleanup"
+# 6. Update pipx installed packages
+# 7. Update installed Ruby gems
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; npm install npm -g; npm update -g; yarn global upgrade; pipx upgrade-all; sudo gem update --system; sudo gem update; sudo gem cleanup"
 
 # Get current week (number)
 alias week="date +%V"
