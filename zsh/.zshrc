@@ -1,17 +1,5 @@
-# Run pre-prompt setup for Fig
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the start of this file.
-[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
-#### END FIG ENV VARIABLES ####
-
-# Enable Powerlevel10k instant prompt.
-# Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input
-# (password prompts, [y/n] confirmations, etc.) must go above this block;
-# everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 
 # Setup Homebrew - if it is available
 if type brew &>/dev/null ; then
@@ -39,7 +27,7 @@ export ZSH=$HOME/.oh-my-zsh
 # if set to "random", it will load a random theme each time oh-my-zsh is loaded,
 # in which case, to know which specific one was loaded, run: echo $RANDOM_THEME.
 # Ref: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME=""
 
 # This changes how often oh-my-zsh is auto-updated (in days)
 # (The default is 13)
@@ -73,6 +61,7 @@ plugins=(
   gcloud
   goenv
   macos
+  poetry
   pyenv
   python
   rbenv
@@ -107,12 +96,8 @@ complete -W "NSGlobalDomain" defaults
 # Add `killall` tab completion for frequently used apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm SystemUIServer Terminal" killall
 
-# Enable the Powerlevel10k theme.
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# Enable the Starship theme.
+eval "$(starship init zsh)"
 
-# Run post-prompt setup for Fig
-#### FIG ENV VARIABLES ####
-# Please make sure this block is at the end of this file.
-[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
-#### END FIG ENV VARIABLES ####
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
