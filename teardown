@@ -17,6 +17,13 @@
     logger "error" "Failed to unlink dotfiles!"
     exit 1
   fi
+  if ! stow -D -t $HOME/.config config >/dev/null 2>&1; then
+    logger "error" "Failed to unlink dotfiles!"
+    exit 1
+  fi
 
   logger "success" "Successfully unlinked dotfiles."
+
+  sh -c 'rm "$(command -v 'starship')"'
+  logger "success" "Successfully uninstalled Starship."
 }

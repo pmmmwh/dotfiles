@@ -15,9 +15,3 @@
 	# Enable extra ZSH auto completions
 	path = zsh/.zshcustom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-
-[submodule "zsh/.zshcustom/themes/powerlevel10k"]
-
-	# Use the powerlevel10k theme for oh-my-zsh
-	path = zsh/.zshcustom/themes/powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
