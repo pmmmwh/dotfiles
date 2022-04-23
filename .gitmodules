@@ -2,7 +2,7 @@
 
 	# Use the tpm plugin manager
 	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
 
 [submodule "zsh/.oh-my-zsh"]
 
