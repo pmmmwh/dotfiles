@@ -1,6 +1,5 @@
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
-
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 # Setup Homebrew - if it is available
 if type brew &>/dev/null ; then
   # Cache Homebrew's prefix for the session
@@ -100,4 +99,4 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm 
 eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"
