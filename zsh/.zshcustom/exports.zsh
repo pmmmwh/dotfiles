@@ -10,13 +10,14 @@ typeset -TU PKG_CONFIG_PATH pkg_config_path
 path=($HOME/bin $HOME/.local/bin $path)
 
 # Setup GNU utilities and OpenSSL
+# Note: intentionally skiping GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin(#qN) ]]; then
-    path=(${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnubin $path)
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin(#qN) ]]; then
+    path=(${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin $path)
   fi
 
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman(#qN) ]]; then
-    manpath=(${BREW_PREFIX:-$(brew --prefix)}/opt/*/libexec/gnuman $manpath)
+  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman(#qN) ]]; then
+    manpath=(${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman $manpath)
   fi
 
   if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1/bin(#qN) ]]; then
