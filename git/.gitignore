@@ -32,5 +32,6 @@ Temporary Items
 *.pyc
 
 # IDE setting files
+.fleet
 .idea
 .vscode

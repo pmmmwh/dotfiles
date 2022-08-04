@@ -95,3 +95,11 @@
 
 	# Sign tags with GPG (i.e. `Verified` tags on GitHub)
 	gpgSign = true
+
+[url "https://github.com/"]
+
+	insteadOf = git@github.com:
+
+[url "https://"]
+
+	insteadOf = git://
