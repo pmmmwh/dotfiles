@@ -67,6 +67,11 @@ alias week="date +%V"
 # If macOS has no `sha1sum`, use `shasum` as a fallback
 (( ${+commands[sha1sum]} )) || alias sha1sum="shasum"
 
+# If available, use `diff` from Git instead of default
+if (( ${+commands[git]} )); then
+  alias diff="git diff --no-index --color-words"
+fi
+
 # Simple HTTP request client for the shell
 for method (GET HEAD POST PUT DELETE TRACE OPTIONS); do
   alias "$method=lwp-request -m '$method'"
@@ -176,10 +181,3 @@ targz() {
 tre() {
   tree -aC -I ".git|node_modules" --dirsfirst "$@" | less -FNRX
 }
-
-# Use `diff` from Git instead of default (if available)
-if (( ${+commands[git]} )); then
-  diff() {
-    git diff --no-index --color-words "$@"
-  }
-fi
