@@ -59,7 +59,6 @@ brew "zopfli"
 brew "cmake"
 brew "gh" # Golang
 brew "git"
-brew "git-lfs" # Golang, Ruby
 brew "nginx"
 brew "shellcheck"
 brew "watchman" # Python

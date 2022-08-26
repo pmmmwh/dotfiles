@@ -62,16 +62,6 @@
 	# Detect copies as well as renames
 	renames = copies
 
-[filter "lfs"]
-
-	# Declare that the `lfs` turns unusable content into a usable ones
-	required = true
-
-	# Add commands for `lfs` to process files in the `git` lifecycle
-	clean = git-lfs clean -- %f
-	process = git-lfs filter-process
-	smudge = git-lfs smudge -- %f
-
 [help]
 
 	# Automatically correct and execute mistyped commands
