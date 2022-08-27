@@ -74,9 +74,9 @@
   # Install global tools
   logger "info" "Installing global tools ..."
   pip install pipx
-  pipx install pipenv
+  pipx install jupyterlab poetry
   gem install bundler
-  yarn global add serve
+  yarn global add react-devtools serve yalc
 
   logger "success" "Successfully setup Homebrew dependencies."
 }

@@ -19,6 +19,12 @@ ensure_brew() {
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+    if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
+      eval $(/opt/homebrew/bin/brew shellenv)
+    else
+      eval $(/usr/local/bin/brew shellenv)
+    fi
+
     logger "success" "Successfully installed Homebrew."
   fi
 }

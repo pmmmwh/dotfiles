@@ -10,8 +10,20 @@
 	path = zsh/.oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
 
+[submodule "zsh/.zshcustom/plugins/evalcache"]
+
+	# Cache eval to speed up shell init
+	path = zsh/.zshcustom/plugins/evalcache
+	url = https://github.com/mroth/evalcache.git
+
 [submodule "zsh/.zshcustom/plugins/zsh-completions"]
 
 	# Enable extra ZSH auto completions
 	path = zsh/.zshcustom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+
+[submodule "zsh/.zshcustom/plugins/zsh-lazyload"]
+
+	# Lazy load to speed up shell init
+	path = zsh/.zshcustom/plugins/zsh-lazyload
+	url = https://github.com/qoomon/zsh-lazyload.git
