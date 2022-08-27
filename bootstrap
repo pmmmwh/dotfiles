@@ -51,7 +51,7 @@
   else
     export STARSHIP_LOCATION="/usr/local/bin"
   fi
-  mkdir -p $STARSHIP_LOCATION
+  sudo mkdir -p $STARSHIP_LOCATION
   curl -sS https://starship.rs/install.sh | sh -s -- -b $STARSHIP_LOCATION -y >/dev/null
   unset STARSHIP_LOCATION
 
