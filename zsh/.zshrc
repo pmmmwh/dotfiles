@@ -1,18 +1,14 @@
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
-# Setup Homebrew - if it is available
-if type brew &>/dev/null ; then
-  # Cache Homebrew's prefix for the session
-  export BREW_PREFIX=$(brew --prefix)
 
-  typeset -U PATH path
-  typeset -U FPATH fpath
+# Disable filename expansion for `=`
+setopt noequals
 
-  # Add Homebrew binaries to PATH
-  path=($BREW_PREFIX/bin $path)
-  # Enable auto-completion for Homebrew
-  fpath=($BREW_PREFIX/share/zsh/site-functions $fpath)
-fi
+# Enable case-insensitive globing (used in pathname expansion)
+setopt nocaseglob
+
+# Enable extended globing for qualifiers
+setopt extendedglob
 
 # Use the text that has already been typed as the prefix for searching through commands
 # (i.e. enables a more intelligent Up/Down behavior)
@@ -42,10 +38,10 @@ ENABLE_CORRECTION="true"
 # This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Use dd/mm/yyyy format for the command execution timestamp in the history command output
+# Use yyyy-mm-dd format for the command execution timestamp in the history command output
 # This utilises `strftime` format specifications
 # Ref: `man strftime`
-HIST_STAMPS="%d/%m/%Y"
+HIST_STAMPS="%Y-%m-%d"
 
 # Use ~/.zshcustom as the ZSH_CUSTOM folder
 # (The default is "$ZSH/custom")
@@ -56,18 +52,14 @@ ZSH_CUSTOM=$HOME/.zshcustom
 plugins=(
   commons
   docker
+  evalcache
   fnm
   gcloud
-  goenv
-  macos
+  pipx
   poetry
-  pyenv
-  python
-  rbenv
   rust
   urltools
-  yarn
-  zsh-completions
+  zsh-lazyload
 )
 
 # Initialise the auto-completion system to consume extra completions (for bash/zsh).
@@ -75,16 +67,44 @@ plugins=(
 autoload -Uz bashcompinit
 autoload -Uz compinit
 
-# Add `~/bin` and `~/.local/bin` to $PATH,
-# ensures any binary dependencies of plugins get populated from Homebrew.
+# Initialise paths
 typeset -U PATH path
-path=($HOME/bin $HOME/.local/bin $path)
+typeset -U FPATH fpath
 
-# Setup path for pyenv
-(( ${+commands[pyenv]} )) && eval "$(pyenv init --path)"
+# Add `~/bin`, `~/.local/bin` and `/opt/starship/bin` to $PATH,
+# ensures any binary dependencies of plugins get populated from Homebrew.
+path=($HOME/bin $HOME/.local/bin /opt/starship/bin $path)
+
+# Setup extra ZSH completions
+fpath=($ZSH_CUSTOM/plugins/zsh-completions/src $fpath)
+
+# Setup Homebrew completions
+if (( ! $+commands[brew] )); then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    export BREW_LOCATION="/opt/homebrew/bin/brew"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    export BREW_LOCATION="/usr/local/bin/brew"
+  fi
+fi
+if [[ -n $BREW_LOCATION ]]; then
+  fpath=(${BREW_LOCATION:h:h}/share/zsh/site-functions $fpath)
+fi
 
 # Enable the oh-my-zsh framework
 source $ZSH/oh-my-zsh.sh
+
+# Enable the Starship theme
+_evalcache starship init zsh
+
+# Enable Homebrew
+[[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
+unset BREW_LOCATION
+
+# Enable language-specific tools
+(( $+commands[fnm] )) && lazyload fnm node npm react-devtools serve yalc yarn -- '_evalcache fnm env'
+(( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
+(( $+commands[pyenv] )) && lazyload jupyter keyring poetry pyenv python python3 -- '_evalcache pyenv init -'
+(( $+commands[rbenv] )) && lazyload bundle bundler gem ruby -- '_evalcache rbenv init -'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
@@ -94,9 +114,6 @@ complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm SystemUIServer Terminal" killall
-
-# Enable the Starship theme.
-eval "$(starship init zsh)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && . "$HOME/.fig/shell/zshrc.post.zsh"

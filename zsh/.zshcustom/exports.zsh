@@ -12,32 +12,16 @@ path=($HOME/bin $HOME/.local/bin $path)
 # Setup GNU utilities and OpenSSL
 # Note: intentionally skiping GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin(#qN) ]]; then
-    path=(${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin $path)
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin(#qN) ]]; then
+    path=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin $path)
   fi
 
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman(#qN) ]]; then
-    manpath=(${BREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman $manpath)
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman(#qN) ]]; then
+    manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman $manpath)
   fi
 
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1/bin(#qN) ]]; then
-    openSslPath=${BREW_PREFIX:-$(brew --prefix)}/opt/openssl@1.1
-
-    path=($openSslPath/bin $path)
-    pkg_config_path=($openSslPath/pkgconfig $pkg_config_path)
-
-    # Make compilers aware of upgraded OpenSSL 1.1
-    export CPPFLAGS=-I$openSslPath/include
-    export LDFLAGS=-L$openSslPath/lib
-
-    # Make `rbenv` use upgraded OpenSSL 1.1
-    export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$openSslPath"
-
-    unset openSslPath
-  fi
-
-  if [[ -n ${BREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12/bin(#qN) ]]; then
-    postgresqlPath=${BREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12/bin(#qN) ]]; then
+    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12
 
     path=($postgresqlPath/bin $path)
     pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)

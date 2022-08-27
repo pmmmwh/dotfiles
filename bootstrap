@@ -45,7 +45,15 @@
   logger "success" "Successfully linked dotfiles."
 
   logger "info" "Installing Starship ..."
-  curl -sS https://starship.rs/install.sh | sh -s -- -y >/dev/null
+
+  if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
+    export STARSHIP_LOCATION="/opt/starship/bin"
+  else
+    export STARSHIP_LOCATION="/usr/local/bin"
+  fi
+  sudo mkdir -p $STARSHIP_LOCATION
+  curl -sS https://starship.rs/install.sh | sh -s -- -b $STARSHIP_LOCATION -y >/dev/null
+  unset STARSHIP_LOCATION
 
   logger "success" "Successfully installed Starship."
 
