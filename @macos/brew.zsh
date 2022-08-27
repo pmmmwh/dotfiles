@@ -39,7 +39,7 @@
   # Setup Perl (for `lwp-request` HTTPS verification)
   PERL_MM_USE_DEFAULT=1
   cpan App::cpanminus
-  cpanm Mozilla::CA
+  sudo cpanm Mozilla::CA
   logger "success" "Successfully setup Perl."
 
   # Setup Python with the latest stable version (i.e. not dev/alpha/beta)
