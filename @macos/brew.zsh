@@ -22,7 +22,8 @@
   # Since Homebrew's `ignore-dependencies` flag is not encouraged,
   # we will ensure the environment is properly setup before proceeding with `homebrew bundle`.
   logger "info" "Setting up the installation environment ..."
-  brew install fnm goenv pyenv rbenv
+  brew install fnm pyenv rbenv
+  brew install goenv --HEAD
 
   # Setup Golang with the latest stable version (i.e. not beta/rc)
   GOLANG_VERSION=$(goenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "beta\|rc" | tail -1)

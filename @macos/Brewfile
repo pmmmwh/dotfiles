@@ -33,6 +33,8 @@ brew "wget"
 brew "ack"
 brew "bat"    # Rust
 brew "bottom" # Rust
+brew "graphviz"
+brew "imagemagick"
 brew "imagemagick"
 brew "jq"
 brew "less"
@@ -40,6 +42,7 @@ brew "mackup"    # Python
 brew "mas"       # Swift
 brew "mitmproxy" # Python
 brew "mkcert"    # Golang
+brew "neofetch"
 brew "p7zip"
 brew "pigz"
 brew "pkg-config"
@@ -115,8 +118,11 @@ cask "microsoft-edge"
 
 # Utilities
 cask "1password"
+cask "1password-cli"
 cask "alfred"
 cask "logitech-options"
+cask "microsoft-auto-update"
+cask "microsoft-office"
 cask "mullvadvpn"
 cask "notion"
 cask "setapp"
@@ -135,6 +141,7 @@ cask "sf-symbols"
 # Development
 cask "dash"
 cask "docker"
+cask "fig"
 cask "flipper"
 cask "gpg-suite"
 cask "imageoptim"
