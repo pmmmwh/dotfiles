@@ -74,7 +74,8 @@
   # Install global tools
   logger "info" "Installing global tools ..."
   pip install pipx
-  pipx install jupyterlab poetry
+  pipx install jupyterlab
+  pipx install poetry
   gem install bundler
   yarn global add react-devtools serve yalc
 

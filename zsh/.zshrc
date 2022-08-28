@@ -103,7 +103,7 @@ unset BREW_LOCATION
 # Enable language-specific tools
 (( $+commands[fnm] )) && lazyload fnm node npm react-devtools serve yalc yarn -- '_evalcache fnm env'
 (( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
-(( $+commands[pyenv] )) && lazyload jupyter keyring poetry pyenv python python3 -- '_evalcache pyenv init -'
+(( $+commands[pyenv] )) && lazyload jupyter keyring pip pip3 poetry pyenv python python3 -- '_evalcache pyenv init -'
 (( $+commands[rbenv] )) && lazyload bundle bundler gem ruby -- '_evalcache rbenv init -'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
