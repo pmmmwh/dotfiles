@@ -636,7 +636,7 @@ EOD
   /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Draw Powerline Glyphs' bool true" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Initial Text' string ''" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Minimum Contrast' integer 0" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Normal Font' 'MesloLGSNerdFontCompleteM-Regular 12'" "$PREFERENCES"
+  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Normal Font' 'MesloLGSNerdFontComplete-Regular 12'" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Only The Default BG Color Uses Transparency' bool true" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Option Key Sends' 2" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Right Option Key Sends' 2" "$PREFERENCES"
