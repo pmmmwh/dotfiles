@@ -473,10 +473,9 @@
     '/System/Applications/Launchpad.app'
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
-    '/Applications/Fantastical.app'
+    '/Applications/Mail.app'
+    '/Applications/Cron.app'
     '/Applications/Slack.app'
-    '/Applications/Notion.app'
-    '/Applications/Superhuman.app'
     '/Applications/iTerm.app'
     '/System/Applications/System Preferences.app'
   ); do
