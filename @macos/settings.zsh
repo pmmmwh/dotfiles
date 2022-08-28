@@ -473,7 +473,7 @@
     '/System/Applications/Launchpad.app'
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
-    '/Applications/Mail.app'
+    '/System/Applications/Mail.app'
     '/Applications/Cron.app'
     '/Applications/Slack.app'
     '/Applications/iTerm.app'
