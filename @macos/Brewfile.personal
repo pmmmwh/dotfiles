@@ -25,9 +25,7 @@ brew "rustup-init" # Rust
 
 # Utilities
 cask "dropbox"
-cask "microsoft-excel"
 cask "microsoft-powerpoint"
-cask "microsoft-word"
 cask "omnidisksweeper"
 cask "parallels"
 cask "vlc"
