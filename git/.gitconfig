@@ -1,7 +1,7 @@
 [include]
 
 	# Local configuration for git credentials
-	path = ./.gitcredentials
+	path = ~/.gitcredentials
 
 [apply]
 

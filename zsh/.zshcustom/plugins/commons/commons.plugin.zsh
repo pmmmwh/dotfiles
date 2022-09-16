@@ -54,7 +54,7 @@ alias reload='exec ${SHELL} -l'
 # 6. Update pipx installed packages
 # 7. Update installed Ruby gems
 # 8. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; npm install npm -g; npm update -g; yarn global upgrade; pipx upgrade-all; sudo gem update --system; sudo gem update; sudo gem cleanup; _evalcache_clear"
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; npm install npm -g; npm update -g; yarn global upgrade; pipx upgrade-all; gem update --system; gem update; gem cleanup; _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"

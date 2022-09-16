@@ -44,7 +44,7 @@
   logger "success" "Successfully setup Perl."
 
   # Setup Python with the latest stable version (i.e. not dev/alpha/beta)
-  PYTHON_VERSION=$(pyenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "dev\|a\|b" | tail -1)
+  PYTHON_VERSION=$(pyenv install --list | sed "s/^  //" | grep "^[0-9]" | grep -v "dev\|a\|b\|rc" | tail -1)
   pyenv install $PYTHON_VERSION
   pyenv global $PYTHON_VERSION
   unset PYTHON_VERSION
