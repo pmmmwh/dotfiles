@@ -32,6 +32,7 @@ fi
 path+="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Setup Android Studio development environment
+export JAVA_HOME=$(/usr/libexec/java_home)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 path+=(
   $ANDROID_HOME/emulator
