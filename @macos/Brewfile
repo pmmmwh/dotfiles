@@ -21,6 +21,7 @@ brew "findutils"
 brew "grep"
 brew "make"
 brew "gnu-sed"
+brew "stow"
 
 # Get latest version of the OpenSSH utilities
 brew "openssh"
@@ -65,7 +66,7 @@ brew "shellcheck"
 brew "watchman" # Python
 
 # Database related tools
-brew "postgresql@12"
+brew "postgresql@14"
 brew "sqlite"
 
 # Docker related tools
