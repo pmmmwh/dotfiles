@@ -10,6 +10,8 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 # Formulae for bottom
 tap "ClementTsang/bottom"
+# Formulae for sshpass
+tap "esolitos/ipa"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
 
@@ -24,8 +26,10 @@ brew "gnu-sed"
 brew "stow"
 
 # Get latest version of the OpenSSH utilities
-brew "openssh"
-brew "ssh-copy-id"
+# Disabled to not mess with Keychain integration
+# brew "openssh"
+# brew "ssh-copy-id"
+brew "sshpass"
 
 # The `wget` command
 brew "wget"
