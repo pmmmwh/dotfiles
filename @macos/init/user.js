@@ -21,3 +21,6 @@ user_pref("privacy.trackingprotection.enabled", true);
 user_pref("privacy.trackingprotection.cryptomining.enabled", true);
 // Blocks fingerprinting
 user_pref("privacy.trackingprotection.fingerprinting.enabled", true);
+
+// Enables SVG context properties
+user_pref("svg.context-properties.content.enabled", true);
