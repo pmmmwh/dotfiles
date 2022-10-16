@@ -103,7 +103,6 @@ brew "cocoapods"
 brew "jpegoptim"
 brew "pngquant" # Rust
 brew "optipng"
-brew "svgo" # Node.js
 
 # Tools to generate webfonts
 brew "sfnt2woff"

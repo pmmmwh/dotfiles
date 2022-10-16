@@ -78,7 +78,7 @@
   pipx install jupyterlab
   pipx install poetry
   gem install bundler
-  yarn global add react-devtools serve yalc
+  yarn global add react-devtools serve svgo yalc
 
   logger "success" "Successfully setup Homebrew dependencies."
 }
