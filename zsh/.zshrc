@@ -100,7 +100,7 @@ _evalcache starship init zsh
 unset BREW_LOCATION
 
 # Lazyload language-specific tools
-(( $+commands[fnm] )) && lazyload fnm node npm react-devtools serve svgo yalc yarn -- '_evalcache fnm env'
+(( $+commands[fnm] )) && lazyload fnm node npm npx react-devtools serve svgo yalc yarn -- '_evalcache fnm env'
 (( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
 # Check if Python is already initialized (compat for virtual env)
 (( ! $+commands[python] && $+commands[pyenv] )) && lazyload jupyter keyring pip pip3 poetry pyenv python python3 -- '_evalcache pyenv init -'
