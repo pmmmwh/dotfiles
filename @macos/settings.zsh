@@ -15,9 +15,9 @@
   # Request elevated permissions
   elevate
 
-  # Close any open System Preferences panes -
+  # Close any open System Settings panes -
   # this is to prevent them from overriding settings we’re about to change
-  osascript -e 'tell application "System Preferences" to quit'
+  osascript -e 'tell application "System Settings" to quit'
 
   logger "info" "Setting macOS defaults ..."
 
@@ -25,7 +25,7 @@
   # General UI/UX                                                               #
   ###############################################################################
 
-  # Set computer name, if possible (as done via System Preferences -> Sharing)
+  # Set computer name, if possible (as done via System Settings -> Sharing)
   if (( ${+COMPUTER_NAME} )); then
     sudo scutil --set ComputerName $COMPUTER_NAME
     sudo scutil --set HostName $COMPUTER_NAME
@@ -68,7 +68,7 @@
   defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
   # Enable window-saving on quit system-wide
-  defaults write -app "System Preferences" NSQuitAlwaysKeepsWindows -bool true
+  defaults write -app "System Settings" NSQuitAlwaysKeepsWindows -bool true
 
   # Disable window-saving on quit for QuickTime and Preview
   defaults write -app "QuickTime Player" NSQuitAlwaysKeepsWindows -bool false
@@ -477,7 +477,7 @@
     '/Applications/Cron.app'
     '/Applications/Slack.app'
     '/Applications/iTerm.app'
-    '/System/Applications/System Preferences.app'
+    '/System/Applications/System Settings.app'
   ); do
     add_app_to_dock $app
   done
