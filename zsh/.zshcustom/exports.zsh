@@ -60,9 +60,6 @@ export EDITOR="code -w"
 export KUBE_EDITOR="code -w"
 export K9S_EDITOR="code"
 
-# Use new GKE auth plugin
-export USE_GKE_GCLOUD_AUTH_PLUGIN=False
-
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history
 # Allow 32³ entries (The default is 1000)
