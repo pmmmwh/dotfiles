@@ -8,6 +8,8 @@ tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 # Homebrew cask formulae for Nerd Fonts
 tap "homebrew/cask-fonts"
+# Homebrew cask formulae for Zulu JDK
+tap "homebrew/cask-versions"
 # Formulae for bottom
 tap "ClementTsang/bottom"
 # Formulae for sshpass
@@ -113,7 +115,7 @@ brew "woff2"
 
 # Binaries and Drivers
 cask "google-cloud-sdk"
-cask "zulu"
+cask "zulu11"
 
 # Browsers
 cask "firefox"
