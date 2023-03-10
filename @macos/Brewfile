@@ -69,6 +69,7 @@ brew "gh" # Golang
 brew "git"
 brew "nginx"
 brew "shellcheck"
+brew "terraform"
 brew "watchman" # Python
 
 # Database related tools
