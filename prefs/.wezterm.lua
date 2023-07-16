@@ -130,6 +130,7 @@ return {
   tab_bar_at_bottom = true,
   tab_max_width = 48,
   use_fancy_tab_bar = false,
+  window_close_confirmation = 'NeverPrompt',
   window_padding = {
     bottom = '0.25cell',
     left = '1cell',
