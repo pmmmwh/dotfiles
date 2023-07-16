@@ -10,12 +10,16 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 # Homebrew cask formulae for Zulu JDK
 tap "homebrew/cask-versions"
+# Formulae for 1Password CLI
+tap "1password/tap"
 # Formulae for bottom
 tap "ClementTsang/bottom"
 # Formulae for sshpass
 tap "esolitos/ipa"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
+# Formulae for WezTerm
+tap "wez/wezterm"
 
 # BINARIES
 
@@ -38,6 +42,7 @@ brew "wget"
 
 # Other miscellaneous binaries
 brew "ack"
+brew "atuin"  # Rust
 brew "bat"    # Rust
 brew "bottom" # Rust
 brew "graphviz"
@@ -126,7 +131,6 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "1password-cli"
-cask "alfred"
 cask "cron"
 cask "karabiner-elements"
 cask "logi-options-plus"
@@ -135,6 +139,7 @@ cask "microsoft-excel"
 cask "microsoft-word"
 cask "mullvadvpn"
 cask "notion"
+cask "raycast"
 cask "setapp"
 cask "splashtop-business"
 cask "the-unarchiver"
@@ -155,10 +160,10 @@ cask "fig"
 cask "flipper"
 cask "gpg-suite"
 cask "imageoptim"
-cask "iterm2"
 cask "jetbrains-toolbox"
 cask "ngrok"
 cask "visual-studio-code"
+cask "wezterm"
 
 # Mobile
 cask "vysor"

@@ -1,7 +1,17 @@
-[include]
+[includeIf "gitdir:~/Developer/dotfiles/"]
 
-	# Local configuration for git credentials
-	path = ~/.gitcredentials
+	# Local configuration for personal git credentials
+	path = ~/.gitcredentials-personal
+
+[includeIf "gitdir:~/Developer/external/"]
+
+	# Local configuration for personal git credentials
+	path = ~/.gitcredentials-personal
+
+[includeIf "gitdir:~/Developer/projects/"]
+
+	# Local configuration for work git credentials
+	path = ~/.gitcredentials-work
 
 [apply]
 
@@ -77,6 +87,9 @@
 	rebase = true
 
 [push]
+
+	# Automatic setup remote branches
+	autoSetupRemote = true
 
 	# Make `git push` also push relevant tags by default
 	followTags = true

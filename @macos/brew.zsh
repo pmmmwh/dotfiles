@@ -77,6 +77,7 @@
   pip install pipx
   pipx install jupyterlab
   pipx install poetry
+  pipx inject poetry keyrings.google-artifactregistry-auth
   gem install bundler
   yarn global add react-devtools serve svgo yalc
 

@@ -45,6 +45,8 @@ alias path='echo -e ${PATH//:/\\n}'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload='exec ${SHELL} -l'
 
+alias starship-update='curl -sS https://starship.rs/install.sh | sh -s -- -b /opt/starship/bin -y'
+
 # Update software:
 # 1. Get macOS Software Updates
 # 2. Update Homebrew and installed formulae
@@ -54,7 +56,7 @@ alias reload='exec ${SHELL} -l'
 # 6. Update pipx installed packages
 # 7. Update installed Ruby gems
 # 8. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; npm install npm -g; npm update -g; yarn global upgrade; pipx upgrade-all; gem update --system; gem update; gem cleanup; _evalcache_clear"
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; npm install npm -g; npm update -g; yarn global upgrade; pipx upgrade-all; gem update --system; gem update; gem cleanup; _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"

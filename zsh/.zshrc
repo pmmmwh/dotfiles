@@ -99,13 +99,15 @@ _evalcache starship init zsh
 [[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
 unset BREW_LOCATION
 
-# Lazyload language-specific tools
-# (( $+commands[fnm] )) && lazyload fnm node npm npx react-devtools serve svgo yalc yarn -- '_evalcache fnm env'
+# Initialize tools (with lazyload if possible)
+(( $+commands[atuin] )) && _evalcache atuin init zsh
+# Always load Node.js (compat for global tools)
 (( $+commands[fnm] )) && _evalcache fnm env
-(( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
 # Check if Python is already initialized (compat for virtual env)
 (( ! $+commands[python] && $+commands[pyenv] )) && lazyload jupyter keyring pip pip3 poetry pyenv python python3 -- '_evalcache pyenv init -'
+(( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
 (( $+commands[rbenv] )) && lazyload bundle bundler gem ruby -- '_evalcache rbenv init -'
+(( $+commands[rustup-init] )) && lazyload cargo rustc rustup -- 'source $HOME/.cargo/env'
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
