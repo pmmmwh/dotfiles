@@ -116,7 +116,7 @@ unset BREW_LOCATION
 complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari iTerm SystemUIServer Terminal" killall
+complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari SystemUIServer Terminal wezterm-gui" killall
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

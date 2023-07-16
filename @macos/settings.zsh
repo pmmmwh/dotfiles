@@ -476,7 +476,7 @@
     '/System/Applications/Mail.app'
     '/Applications/Cron.app'
     '/Applications/Slack.app'
-    '/Applications/iTerm.app'
+    '/Applications/WezTerm.app'
     '/System/Applications/System Settings.app'
   ); do
     add_app_to_dock $app
@@ -569,7 +569,7 @@
   defaults write -app "Mail" DisableInlineAttachmentViewing -bool true
 
   ###############################################################################
-  # Terminal & iTerm 2                                                          #
+  # Terminal                                                                    #
   ###############################################################################
 
   # Use the Dracula theme by default in Terminal.app
@@ -623,47 +623,6 @@ EOD
   # Enable Secure Keyboard Entry in Terminal.app
   # See: https://security.stackexchange.com/a/47786/8918
   defaults write -app "Terminal" SecureKeyboardEntry -bool true
-
-  # Generate a new profile for iTerm
-  PREFERENCES="$HOME/Library/Preferences/com.googlecode.iterm2.plist"
-  PROFILE_GUID=$(uuidgen)
-  /usr/libexec/PlistBuddy -c "Copy ':New Bookmarks:0' ':New Bookmarks:1'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Guid' '$PROFILE_GUID'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Description' 'Dracula'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Description' 'Dracula'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Name' 'Dracula'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:ASCII Ligatures' bool true" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Draw Powerline Glyphs' bool true" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Initial Text' string ''" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Minimum Contrast' integer 0" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Normal Font' 'MesloLGSNerdFontComplete-Regular 12'" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Only The Default BG Color Uses Transparency' bool true" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Option Key Sends' 2" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set ':New Bookmarks:1:Right Option Key Sends' 2" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Add ':New Bookmarks:1:Show Mark Indicators' bool false" "$PREFERENCES"
-
-  # Set the new profile as default
-  defaults write -app "iTerm" "Default Bookmark Guid" $PROFILE_GUID
-  unset PREFERENCES
-  unset PROFILE_GUID
-
-  # Don’t display the annoying prompt when quitting iTerm
-  defaults write -app "iTerm" PromptOnQuit -bool false
-
-  # Don't snap to grid when resizing iTerm (conflicts with window managers)
-  defaults write -app "iTerm" DisableWindowSizeSnap -bool true
-
-  # Send arrow keys with scroll wheel in interactive CLIs
-  defaults write -app "iTerm" AlternateMouseScroll -bool true
-
-  # Automatically check for iTerm updates
-  defaults write -app "iTerm" SUEnableAutomaticChecks -bool true
-
-  # Disable tip of the day
-  defaults write -app "iTerm" NoSyncTipsDisabled -bool true
-
-  # Install the Dracula colors for iTerm
-  open "$SCRIPT_DIR/init/Dracula.itermcolors"
 
   ###############################################################################
   # Time Machine                                                                #
@@ -759,7 +718,6 @@ EOD
     "Finder"
     "Google Chrome"
     "Image Capture"
-    "iTerm2"
     "Mail"
     "Photos"
     "Safari"
@@ -767,6 +725,7 @@ EOD
     "Terminal"
     "TextEdit"
     "Time Machine"
+    "wezterm-gui"
   ); do
     killall "$app" &>/dev/null
   done
