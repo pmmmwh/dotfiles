@@ -27,7 +27,7 @@ end
 
 wezterm.on(
   'format-tab-title',
-  function(tab, _, _, _, _, max_width)
+  function(tab, tabs, panes, config, hover, max_width)
     local idx = string.format(' %s ', tab.tab_index + 1)
     local process = string.format('[%s]', get_current_process(tab))
     local dir = get_current_working_dir(tab)
@@ -40,7 +40,7 @@ wezterm.on(
       { Foreground = { Color = '#9cdbfb' } },
       { Text = process },
       'ResetAttributes',
-      { Text = wezterm.truncate_right(dir, max_width - (idx:len() + process:len() + separator:len())) },
+      { Text = wezterm.truncate_right(dir, max_width - (2 + idx:len() + process:len())) },
       { Attribute = { Intensity = 'Bold' } },
       { Foreground = { Color = '#1b2226' } },
       { Text = separator }
