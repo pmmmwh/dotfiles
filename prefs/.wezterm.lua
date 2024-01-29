@@ -4,47 +4,65 @@ local function basename(s)
   return s:gsub('(.*[/\\])(.*)', '%2'):match('%w+')
 end
 
-local function get_current_process(tab)
-  if tab.active_pane.user_vars.WEZTERM_PROG ~= '' then
-    return basename(tab.active_pane.user_vars.WEZTERM_PROG)
+local function is_not_empty(s)
+  return s ~= nil and #tostring(s) > 0
+end
+
+local function remove_trailing(s)
+  if string.sub(s, -1, -1) == "/" then
+    return string.sub(s, 1, -2)
   end
 
-  return basename(tab.active_pane.foreground_process_name)
+  return s
+end
+
+local function get_current_process(tab)
+  local wezterm_prog = tab.active_pane.user_vars.WEZTERM_PROG
+  if is_not_empty(wezterm_prog) then
+    return basename(wezterm_prog)
+  end
+
+  if is_not_empty(tab.active_pane.foreground_process_name) then
+    return basename(tab.active_pane.foreground_process_name)
+  end
+
+  return '?'
 end
 
 local function get_current_working_dir(tab)
-  local current_dir = tab.active_pane.current_working_dir:lower()
+  local current_dir_url = tab.active_pane.current_working_dir
+  if not is_not_empty(current_dir_url) then
+    return ' ?'
+  end
 
-  local hostname = tab.active_pane.user_vars.WEZTERM_HOST:lower()
-  local home_dir = string.format('file://%s%s/', hostname, os.getenv('HOME')):lower()
-
-  if current_dir == home_dir then
+  local home_dir = remove_trailing(os.getenv('HOME')) .. '/'
+  if current_dir_url.file_path == home_dir then
     return ' ~'
   end
 
-  return string.format(' %s', current_dir:gsub('(.*/)(.*)/', '%2'))
+  return ' ' .. current_dir_url.file_path:gsub('(.*/)(.*)/', '%2')
 end
 
 wezterm.on(
   'format-tab-title',
   function(tab, tabs, panes, config, hover, max_width)
-    local idx = string.format(' %s ', tab.tab_index + 1)
-    local process = string.format('[%s]', get_current_process(tab))
+    local idx = ' ' .. tab.tab_index + 1 .. ' '
+    local process = '[' .. get_current_process(tab) .. ']'
     local dir = get_current_working_dir(tab)
     local separator = ' ▕'
 
-    return wezterm.format({
+    return {
       { Attribute = { Intensity = 'Bold' } },
       { Text = idx },
       'ResetAttributes',
       { Foreground = { Color = '#9cdbfb' } },
       { Text = process },
       'ResetAttributes',
-      { Text = wezterm.truncate_right(dir, max_width - (2 + idx:len() + process:len())) },
+      { Text = wezterm.truncate_right(dir, max_width - (2 + #idx + #process)) },
       { Attribute = { Intensity = 'Bold' } },
       { Foreground = { Color = '#1b2226' } },
       { Text = separator }
-    })
+    }
   end
 )
 
@@ -53,7 +71,7 @@ wezterm.on(
   function(tab, _, tabs)
     local index = ''
     if #tabs > 1 then
-      index = string.format('[%d/%d] ', tab.tab_index + 1, #tabs)
+      index = '[' .. tab.tab_index + 1 .. '/' .. #tabs .. ']'
     end
 
     return index .. tab.window_title
