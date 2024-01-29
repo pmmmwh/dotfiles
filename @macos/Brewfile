@@ -121,7 +121,7 @@ brew "woff2"
 
 # Binaries and Drivers
 cask "google-cloud-sdk"
-cask "zulu11"
+cask "zulu17"
 
 # Browsers
 cask "firefox"
@@ -177,10 +177,3 @@ mas "Magnet", id: 441258766
 mas "Speedtest by Ookla", id: 1153157709
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835
-
-# OBSOLETE, Install From SetApp
-
-# cask "bartender"
-# cask "pixelsnap"
-# cask "sip"
-# mas "Lungo", id: 1263070803

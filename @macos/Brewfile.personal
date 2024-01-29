@@ -59,7 +59,3 @@ cask "steam"
 # MAC APPSTORE APPS
 
 mas "Microsoft Remote Desktop", id: 1295203466
-
-# OBSOLETE
-
-# cask "spotify"
