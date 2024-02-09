@@ -74,7 +74,7 @@ wezterm.on(
       index = '[' .. tab.tab_index + 1 .. '/' .. #tabs .. ']'
     end
 
-    return index .. tab.window_title
+    return index .. ' ' .. tab.window_title
   end
 )
 
