@@ -47,7 +47,6 @@ brew "bat"    # Rust
 brew "bottom" # Rust
 brew "graphviz"
 brew "imagemagick"
-brew "imagemagick"
 brew "jq"
 brew "less"
 brew "mackup"    # Python
@@ -72,13 +71,14 @@ brew "zopfli"
 brew "cmake"
 brew "gh" # Golang
 brew "git"
+brew "git-absorb" # Rust
 brew "nginx"
 brew "shellcheck"
 brew "terraform"
 brew "watchman" # Python
 
 # Database related tools
-brew "postgresql@14"
+brew "postgresql@15"
 brew "sqlite"
 
 # Docker related tools
@@ -91,7 +91,6 @@ brew "minikube"       # Golang
 
 # Node.js related tools
 brew "fnm"
-brew "yarn" # Node.js
 
 # Go related tools
 brew "goenv"
@@ -103,8 +102,10 @@ brew "pyenv"
 # Ruby related tools
 brew "rbenv"
 
+# Rust related tools
+brew "rustup-init" # Rust
+
 # Swift related tools
-brew "carthage"
 brew "cocoapods"
 
 # Tools to optimise images
@@ -131,15 +132,15 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "1password-cli"
-cask "cron"
+cask "craft"
 cask "karabiner-elements"
+cask "linear-linear"
 cask "logi-options-plus"
 cask "microsoft-auto-update"
 cask "microsoft-excel"
-cask "microsoft-word"
 cask "mimestream"
+cask "morgen"
 cask "mullvadvpn"
-cask "notion"
 cask "raycast"
 cask "setapp"
 cask "splashtop-business"
@@ -165,6 +166,7 @@ cask "imageoptim"
 cask "jetbrains-toolbox"
 cask "ngrok"
 cask "orbstack"
+cask "swiftformat-for-xcode"
 cask "visual-studio-code"
 cask "wezterm"
 

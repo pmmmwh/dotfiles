@@ -18,14 +18,12 @@ brew "circleci"              # Golang
 brew "mongodb-community"
 brew "mysql"
 
-# Rust related tools
-brew "rustup-init" # Rust
-
 # CASKS
 
 # Utilities
 cask "dropbox"
 cask "microsoft-powerpoint"
+cask "microsoft-word"
 cask "omnidisksweeper"
 cask "parallels"
 cask "vlc"
@@ -38,9 +36,7 @@ cask "zoom"
 
 # Creative and Design
 cask "adobe-creative-cloud"
-cask "framer-x"
-cask "sketch"
-cask "sketchpacks"
+cask "figma"
 
 # Music
 cask "focusrite-control"
@@ -50,6 +46,7 @@ cask "reaper"
 
 # Mobile
 cask "android-platform-tools"
+cask "expo-orbit"
 cask "impactor"
 
 # Gaming
