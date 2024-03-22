@@ -2,8 +2,6 @@
 
 # The `brew bundle` command
 tap "homebrew/bundle"
-# Homebrew cask formulae for GUI apps and more
-tap "homebrew/cask"
 # Formulae for MongoDB
 tap "mongodb/brew"
 

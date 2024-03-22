@@ -2,10 +2,6 @@
 
 # The `brew bundle` command
 tap "homebrew/bundle"
-# Homebrew cask formulae for GUI apps and more
-tap "homebrew/cask"
-# Homebrew cask formulae for Logitech Options
-tap "homebrew/cask-drivers"
 # Homebrew cask formulae for Nerd Fonts
 tap "homebrew/cask-fonts"
 # Homebrew cask formulae for Zulu JDK
