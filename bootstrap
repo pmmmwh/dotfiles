@@ -14,12 +14,12 @@
 
   # Pull in the latest dotfiles
   logger "info" "Pulling latest files from remote ..."
-  if ! git pull origin main >/dev/null 2>&1; then
-    logger "error" "Failed to pull in latest files from source!"
-    exit 1
+  if ! git pull origin main >/dev/null 2>&1
+  then
+    logger "warning" "Failed to pull in latest files from source!"
+  else
+    logger "success" "Successfully pulled in latest files."
   fi
-
-  logger "success" "Successfully pulled in latest files."
 
   prompt "This may overwrite existing files in your home directory ..."
   if (( $PROMPT_PROCEED != 0 )); then

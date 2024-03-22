@@ -21,9 +21,14 @@ ensure_brew() {
 
     if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
       eval $(/opt/homebrew/bin/brew shellenv)
+      export PATH
     else
       eval $(/usr/local/bin/brew shellenv)
     fi
+
+    # Initialise paths for Homebrew binaries
+    typeset -U PATH path
+    path=($(brew --prefix)/bin $path)
 
     logger "success" "Successfully installed Homebrew."
   fi
