@@ -47,7 +47,6 @@ brew "jq"
 brew "less"
 brew "mackup"    # Python
 brew "mas"       # Swift
-brew "mitmproxy" # Python
 brew "mkcert"    # Golang
 brew "neofetch"
 brew "p7zip"
@@ -118,6 +117,7 @@ brew "woff2"
 
 # Binaries and Drivers
 cask "google-cloud-sdk"
+cask "mitmproxy" # Python
 cask "zulu17"
 
 # Browsers
