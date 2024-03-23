@@ -36,7 +36,7 @@ Temporary Items
 .vscode
 
 # Local configuration files
-git/.gitcredentials
+git/.gitcredentials*
 tmux/.tmux/plugins/*
 !tmux/.tmux/plugins/tpm
 zsh/.zshcustom/extras.zsh

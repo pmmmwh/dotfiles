@@ -1,17 +1,17 @@
 [includeIf "gitdir:~/Developer/dotfiles/"]
 
 	# Local configuration for personal git credentials
-	path = ~/.gitcredentials-personal
+	path = ~/.gitcredentials.personal
 
 [includeIf "gitdir:~/Developer/external/"]
 
 	# Local configuration for personal git credentials
-	path = ~/.gitcredentials-personal
+	path = ~/.gitcredentials.personal
 
 [includeIf "gitdir:~/Developer/projects/"]
 
 	# Local configuration for work git credentials
-	path = ~/.gitcredentials-work
+	path = ~/.gitcredentials.work
 
 [apply]
 

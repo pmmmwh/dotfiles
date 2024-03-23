@@ -128,7 +128,6 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "1password-cli"
-cask "craft"
 cask "karabiner-elements"
 cask "linear-linear"
 cask "logi-options-plus"
@@ -137,6 +136,7 @@ cask "microsoft-excel"
 cask "mimestream"
 cask "morgen"
 cask "mullvadvpn"
+cask "notion"
 cask "raycast"
 cask "setapp"
 cask "splashtop-business"
@@ -171,7 +171,6 @@ cask "vysor"
 
 # MAC APPSTORE APPS
 
-mas "Magnet", id: 441258766
 mas "Speedtest by Ookla", id: 1153157709
 mas "WireGuard", id: 1451685025
 mas "Xcode", id: 497799835

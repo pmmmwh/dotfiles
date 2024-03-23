@@ -19,6 +19,7 @@ brew "mysql"
 # CASKS
 
 # Utilities
+cask "craft"
 cask "dropbox"
 cask "microsoft-powerpoint"
 cask "microsoft-word"

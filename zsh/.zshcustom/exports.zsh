@@ -56,9 +56,9 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # Make VSCode the default editor for commands that support the $EDITOR variable
-export EDITOR="zed -w"
-export KUBE_EDITOR="zed -w"
-export K9S_EDITOR="zed -w"
+export EDITOR="code -w"
+export KUBE_EDITOR="code -w"
+export K9S_EDITOR="code -w"
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history
