@@ -8,8 +8,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 # Formulae for 1Password CLI
 tap "1password/tap"
-# Formulae for bottom
-tap "ClementTsang/bottom"
+# Formulae for Graphite CLI
+tap "withgraphite/tap"
 # Formulae for sshpass
 tap "esolitos/ipa"
 # Formulae for webfont-related tools
@@ -31,7 +31,7 @@ brew "stow"
 # Disabled to not mess with Keychain integration
 # brew "openssh"
 # brew "ssh-copy-id"
-brew "sshpass"
+brew "esolitos/ipa/sshpass"
 
 # The `wget` command
 brew "wget"
@@ -70,7 +70,8 @@ brew "git-absorb" # Rust
 brew "nginx"
 brew "shellcheck"
 brew "terraform"
-brew "watchman" # Python
+brew "watchman"                  # Python
+brew "withgraphite/tap/graphite" # Node.js
 
 # Database related tools
 brew "postgresql@15"
@@ -109,9 +110,9 @@ brew "pngquant" # Rust
 brew "optipng"
 
 # Tools to generate webfonts
-brew "sfnt2woff"
-brew "sfnt2woff-zopfli"
-brew "woff2"
+brew "bramstein/webfonttools/sfnt2woff"
+brew "bramstein/webfonttools/sfnt2woff-zopfli"
+brew "bramstein/webfonttools/woff2"
 
 # CASKS
 
@@ -127,7 +128,7 @@ cask "microsoft-edge"
 
 # Utilities
 cask "1password"
-cask "1password-cli"
+cask "1password/tap/1password-cli"
 cask "karabiner-elements"
 cask "linear-linear"
 cask "logi-options-plus"
@@ -164,7 +165,7 @@ cask "ngrok"
 cask "orbstack"
 cask "swiftformat-for-xcode"
 cask "visual-studio-code"
-cask "wezterm"
+cask "wez/wezterm/wezterm"
 
 # Mobile
 cask "vysor"

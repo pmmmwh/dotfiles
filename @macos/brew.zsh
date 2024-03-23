@@ -79,7 +79,7 @@
   pipx install poetry
   pipx inject poetry keyrings.google-artifactregistry-auth
   gem install bundler
-  npm install -g @withgraphite/graphite-cli eas-cli node-gyp react-devtools serve sharp svgo yalc
+  npm install -g eas-cli node-gyp react-devtools serve sharp svgo yalc
 
   logger "success" "Successfully setup Homebrew dependencies."
 }
