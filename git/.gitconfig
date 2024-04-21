@@ -13,6 +13,14 @@
 	# Local configuration for work git credentials
 	path = ~/.gitcredentials.work
 
+[absorb]
+
+	# Auto-stage all changes by default
+	autoStageIfNothingStaged = true
+
+	# Try to group all fixups in the same commit
+	oneFixupPerCommit = true
+
 [apply]
 
 	# Detect and fix whitespace errors when applying a patch
@@ -22,6 +30,11 @@
 
 	# Sort branches by most recent change
 	sort = -committerdate
+
+[column]
+
+	# Uses column UI by default
+	ui = auto
 
 [core]
 
@@ -81,6 +94,14 @@
 
 	defaultBranch = main
 
+[maintenance]
+
+	# Run maintenance tasks even if thresholds aren't met
+	auto = false
+
+	# Runs maintenance tasks on a schedule
+	strategy = incremental
+
 [pull]
 
 	# Default to use rebase for pull
@@ -93,6 +114,16 @@
 
 	# Make `git push` also push relevant tags by default
 	followTags = true
+
+[rebase]
+
+	# Update refs on rebase by default
+	updateRefs = true
+
+[rerere]
+
+	# Enable `Reuse Recorded Resolution`
+	enabled = true
 
 [tag]
 
