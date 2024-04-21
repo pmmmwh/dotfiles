@@ -55,8 +55,9 @@ plugins=(
   evalcache
   fnm
   gcloud
+  graphite
+  orbstack
   pipx
-  poetry
   rust
   urltools
   zsh-lazyload
@@ -106,7 +107,8 @@ unset BREW_LOCATION
 (( $+commands[fnm] )) && _evalcache fnm env
 # Check if Python is already initialized (compat for virtual env)
 (( ! $+commands[python] && $+commands[pyenv] )) && lazyload jupyter keyring pip pip3 poetry pyenv python python3 -- '_evalcache pyenv init -'
-(( $+commands[goenv] )) && lazyload go goenv -- '_evalcache goenv init -'
+# Always load Golang (compat for Go tooling)
+(( $+commands[goenv] )) && _evalcache goenv init -
 (( $+commands[rbenv] )) && lazyload bundle bundler gem ruby -- '_evalcache rbenv init -'
 (( $+commands[rustup-init] )) && lazyload cargo rustc rustup -- 'source $HOME/.cargo/env'
 
