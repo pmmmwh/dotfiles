@@ -150,7 +150,6 @@ cask "font-meslo-lg-nerd-font"
 cask "sf-symbols"
 
 # Development
-cask "codewhisperer"
 cask "dash"
 cask "docker"
 cask "flipper"
