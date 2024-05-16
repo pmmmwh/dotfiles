@@ -85,6 +85,13 @@
 	# Detect copies as well as renames
 	renames = copies
 
+[gitbutler]
+
+	aiModelProvider = openai
+
+  # Tell GitButler to sign commits
+	signCommits = true
+
 [help]
 
 	# Automatically correct and execute mistyped commands
