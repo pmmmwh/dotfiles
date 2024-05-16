@@ -2,10 +2,6 @@
 
 # The `brew bundle` command
 tap "homebrew/bundle"
-# Homebrew cask formulae for Nerd Fonts
-tap "homebrew/cask-fonts"
-# Homebrew cask formulae for Zulu JDK
-tap "homebrew/cask-versions"
 # Formulae for 1Password CLI
 tap "1password/tap"
 # Formulae for Graphite CLI
