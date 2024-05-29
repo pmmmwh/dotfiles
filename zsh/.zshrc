@@ -3,9 +3,6 @@
 bindkey "\e[A" history-search-backward
 bindkey "\e[B" history-search-forward
 
-# Load plugins
-source $ZSH_CUSTOM/plugins/evalcache/evalcache.plugin.zsh
-
 # Load library files
 for libraryFile ($ZSH_CUSTOM/interactive/*.zsh); do
   source $libraryFile
