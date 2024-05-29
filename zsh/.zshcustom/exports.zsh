@@ -6,9 +6,6 @@ typeset -U PATH path
 typeset -U MANPATH manpath
 typeset -TU PKG_CONFIG_PATH pkg_config_path
 
-# Add `~/bin` and `~/.local/bin` to $PATH
-path=($HOME/bin $HOME/.local/bin $path)
-
 # Setup GNU utilities and OpenSSL
 # Note: intentionally skiping GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
@@ -20,8 +17,8 @@ if (( ${+commands[brew]} )); then
     manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman $manpath)
   fi
 
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12/bin(#qN) ]]; then
-    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@12
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@15/bin(#qN) ]]; then
+    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@15
 
     path=($postgresqlPath/bin $path)
     pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
@@ -67,10 +64,8 @@ export NODE_REPL_HISTORY_SIZE=32768
 # Use sloppy mode by default, matching the behaviour of web browsers
 export NODE_REPL_MODE=sloppy
 
-# Enforce default root directory for `pyenv`
-export PYENV_ROOT=$HOME/.pyenv
-# Make `pipx` use Python in installed via `pyenv`
-export PIPX_DEFAULT_PYTHON=$PYENV_ROOT/shims/python
+# Make `pipx` use Python in installed via `mise`
+export PIPX_DEFAULT_PYTHON=$(mise which python)
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
 

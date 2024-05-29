@@ -1,0 +1,5 @@
+[tools]
+node = "20"
+go = "1.22"
+python = "3.12"
+ruby = "3.3"
