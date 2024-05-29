@@ -9,3 +9,9 @@
 	# Cache eval to speed up shell init
 	path = zsh/.zshcustom/plugins/evalcache
 	url = https://github.com/mroth/evalcache.git
+
+[submodule "zsh/.zshcustom/plugins/zsh-completions"]
+
+	# Enable extra ZSH auto completions
+	path = zsh/.zshcustom/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
