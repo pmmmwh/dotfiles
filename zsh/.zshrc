@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 # Use the text that has already been typed as the prefix for searching through commands
 # (i.e. enables a more intelligent Up/Down behavior)
 bindkey "\e[A" history-search-backward
@@ -49,5 +47,3 @@ complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari SystemUIServer Terminal wezterm-gui" killall
-
-zprof

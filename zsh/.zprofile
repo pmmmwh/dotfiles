@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 # Disable filename expansion for `=`
 setopt noequals
 
@@ -42,5 +40,3 @@ source $ZSH_CUSTOM/plugins/evalcache/evalcache.plugin.zsh
 for libraryFile ($ZSH_CUSTOM/*.zsh); do
   source $libraryFile
 done
-
-zprof
