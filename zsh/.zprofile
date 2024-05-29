@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 # Disable filename expansion for `=`
 setopt noequals
 
@@ -13,7 +15,6 @@ export ZSH_CUSTOM=$HOME/.zshcustom
 
 # Initialise paths
 typeset -U PATH path
-typeset -U FPATH fpath
 
 # Add `~/bin`, `~/.local/bin` and `/opt/starship/bin` to $PATH,
 # ensures any binary dependencies of plugins get populated from Homebrew.
@@ -27,21 +28,19 @@ if (( ! $+commands[brew] )); then
     export BREW_LOCATION="/usr/local/bin/brew"
   fi
 fi
-if [[ -n $BREW_LOCATION ]]; then
-  fpath=(${BREW_LOCATION:h:h}/share/zsh/site-functions $fpath)
-fi
 
 # Load plugins
 source $ZSH_CUSTOM/plugins/evalcache/evalcache.plugin.zsh
 
 # Enable Homebrew
-[[ -n $BREW_LOCATION ]] && _evalcache "$("$BREW_LOCATION" shellenv)"
-unset BREW_LOCATION
+[[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
+
+# Enable shims from `mise`
+(( $+commands[mise] )) && _evalcache mise activate zsh --shims
 
 # Load library files
 for libraryFile ($ZSH_CUSTOM/*.zsh); do
   source $libraryFile
 done
 
-# Enable shims from `mise`
-(( $+commands[mise] )) && mise activate zsh --shims
+zprof

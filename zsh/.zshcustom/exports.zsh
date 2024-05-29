@@ -6,9 +6,6 @@ typeset -U PATH path
 typeset -U MANPATH manpath
 typeset -TU PKG_CONFIG_PATH pkg_config_path
 
-# Add `~/bin` and `~/.local/bin` to $PATH
-path=($HOME/bin $HOME/.local/bin $path)
-
 # Setup GNU utilities and OpenSSL
 # Note: intentionally skiping GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
