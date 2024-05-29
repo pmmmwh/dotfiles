@@ -75,11 +75,6 @@ if (( ${+commands[git]} )); then
   alias diff="git diff --no-index --color-words"
 fi
 
-# Simple HTTP request client for the shell
-for method (GET HEAD POST PUT DELETE TRACE OPTIONS); do
-  alias "$method=lwp-request -m '$method'"
-done
-
 # FUNCTIONS
 
 # Create a data URL from a file

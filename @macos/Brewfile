@@ -63,11 +63,13 @@ brew "cmake"
 brew "gh" # Golang
 brew "git"
 brew "git-absorb" # Rust
+brew "mise"       # Rust
 brew "nginx"
 brew "shellcheck"
 brew "terraform"
 brew "watchman"                  # Python
 brew "withgraphite/tap/graphite" # Node.js
+brew "xh"                        # Rust
 
 # Database related tools
 brew "postgresql@15"
@@ -80,19 +82,6 @@ brew "k9s"            # Golang
 brew "kubernetes-cli" # Golang
 brew "kustomize"      # Golang
 brew "minikube"       # Golang
-
-# Node.js related tools
-brew "fnm"
-
-# Go related tools
-brew "goenv"
-
-# Python related tools
-brew "pipx"
-brew "pyenv"
-
-# Ruby related tools
-brew "rbenv"
 
 # Rust related tools
 brew "rustup-init" # Rust
@@ -151,7 +140,6 @@ cask "sf-symbols"
 
 # Development
 cask "dash"
-cask "docker"
 cask "flipper"
 cask "gitbutler"
 cask "gpg-suite"
