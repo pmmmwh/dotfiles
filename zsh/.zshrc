@@ -3,9 +3,6 @@
 bindkey "\e[A" history-search-backward
 bindkey "\e[B" history-search-forward
 
-# Enable the Starship theme
-eval "$(starship init zsh)"
-
 # Load plugins
 source $ZSH_CUSTOM/plugins/evalcache/evalcache.plugin.zsh
 
@@ -13,6 +10,9 @@ source $ZSH_CUSTOM/plugins/evalcache/evalcache.plugin.zsh
 for libraryFile ($ZSH_CUSTOM/interactive/*.zsh); do
   source $libraryFile
 done
+
+# Enable the Starship theme
+_evalcache "$(starship init zsh)"
 
 # Initialize tools (with lazyload if possible)
 (( $+commands[atuin] )) && _evalcache atuin init zsh
