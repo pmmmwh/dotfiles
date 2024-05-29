@@ -83,11 +83,9 @@ The project have been structured as Stow packages and named with a specific conv
 External packages are applied using Git Submodules.
 Here's a list of all dependencies pulled in:
 
-- [`Oh My Zsh`](https://github.com/ohmyzsh/ohmyzsh)
 - [`evalcache`](https://github.com/mroth/evalcache)
 - [`tpm`](https://github.com/tmux-plugins/tpm)
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions)
-- [`zsh-lazyload`](https://github.com/qoomon/zsh-lazyload)
 
 ## Acknowledgements
 
