@@ -80,6 +80,16 @@
 	# Use macOS Keychain as default credential helper
 	helper = osxkeychain
 
+[credential "https://github.com"]
+
+	# Use gh CLI as default credential helper for GitHub
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+
+	# Use gh CLI as default credential helper for GitHub
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
 [diff]
 
 	# Detect copies as well as renames

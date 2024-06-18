@@ -8,7 +8,6 @@ setopt nocaseglob
 setopt extendedglob
 
 # Use ~/.zshcustom as the ZSH_CUSTOM folder
-# (The default is "$ZSH/custom")
 export ZSH_CUSTOM=$HOME/.zshcustom
 
 # Initialise paths
@@ -18,7 +17,7 @@ typeset -U PATH path
 # ensures any binary dependencies of plugins get populated from Homebrew.
 path=($HOME/bin $HOME/.local/bin /opt/starship/bin $path)
 
-# Setup Homebrew completions
+# Find Homebrew
 if (( ! $+commands[brew] )); then
   if [[ -x /opt/homebrew/bin/brew ]]; then
     export BREW_LOCATION="/opt/homebrew/bin/brew"
