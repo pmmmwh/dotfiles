@@ -1,7 +1,11 @@
 # Use the text that has already been typed as the prefix for searching through commands
 # (i.e. enables a more intelligent Up/Down behavior)
-bindkey "\e[A" history-search-backward
-bindkey "\e[B" history-search-forward
+bindkey "\e[A" history-search-backward # ↑
+bindkey "\e[B" history-search-forward  # ↓
+bindkey "\e[1;3D" backward-word        # ⌥←
+bindkey "\e[1;3C" forward-word         # ⌥→
+bindkey "^[[1;9D" beginning-of-line    # ⌘←
+bindkey "^[[1;9C" end-of-line          # ⌘→
 
 # Enable the Starship theme
 _evalcache starship init zsh
