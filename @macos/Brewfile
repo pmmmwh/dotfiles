@@ -4,8 +4,6 @@
 tap "homebrew/bundle"
 # Formulae for 1Password CLI
 tap "1password/tap"
-# Formulae for Graphite CLI
-tap "withgraphite/tap"
 # Formulae for sshpass
 tap "esolitos/ipa"
 # Formulae for webfont-related tools
@@ -60,7 +58,8 @@ brew "zopfli"
 
 # General development tools
 brew "cmake"
-brew "gh" # Golang
+brew "flyway" # Java
+brew "gh"     # Golang
 brew "git"
 brew "git-absorb" # Rust
 brew "mise"       # Rust
@@ -68,7 +67,6 @@ brew "nginx"
 brew "shellcheck"
 brew "terraform"
 brew "watchman"                  # Python
-brew "withgraphite/tap/graphite" # Node.js
 brew "xh"                        # Rust
 
 # Database related tools
