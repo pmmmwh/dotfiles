@@ -7,14 +7,14 @@ typeset -U MANPATH manpath
 typeset -TU PKG_CONFIG_PATH pkg_config_path
 
 # Setup GNU utilities and OpenSSL
-# Note: intentionally skiping GNU libtool and make - breaks GYP
+# Note: intentionally skiping GNU coreutils, GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin(#qN) ]]; then
-    path=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnubin $path)
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnubin(#qN) ]]; then
+    path=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnubin $path)
   fi
 
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman(#qN) ]]; then
-    manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(libtool|make)/libexec/gnuman $manpath)
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnuman(#qN) ]]; then
+    manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnuman $manpath)
   fi
 
   if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@15/bin(#qN) ]]; then
