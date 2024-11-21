@@ -50,4 +50,4 @@ fpath=(
 complete -W "NSGlobalDomain" defaults
 
 # Add `killall` tab completion for frequently used apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Music Safari SystemUIServer Terminal wezterm-gui" killall
+complete -o "nospace" -W "Contacts Calendar Dock Finder ghostty Mail Music Safari SystemUIServer Terminal" killall

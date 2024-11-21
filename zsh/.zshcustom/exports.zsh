@@ -25,6 +25,9 @@ if (( ${+commands[brew]} )); then
   fi
 fi
 
+# Setup usage of Ghostty from command line
+path+="/Applications/Ghostty.app/Contents/MacOS"
+
 # Setup usage of VSCode from command line
 path+="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 

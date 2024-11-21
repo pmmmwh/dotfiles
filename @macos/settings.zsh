@@ -490,7 +490,7 @@
     '/Applications/Morgen.app'
     '/Applications/Linear.app'
     '/Applications/Slack.app'
-    '/Applications/WezTerm.app'
+    '/Applications/Ghostty.app'
     '/System/Applications/System Settings.app'
   ); do
     add_app_to_dock $app
@@ -730,6 +730,7 @@ EOD
     "Disk Utility"
     "Dock"
     "Finder"
+    "ghostty"
     "Google Chrome"
     "Image Capture"
     "Mail"
@@ -739,7 +740,6 @@ EOD
     "Terminal"
     "TextEdit"
     "Time Machine"
-    "wezterm-gui"
   ); do
     killall "$app" &>/dev/null
   done
