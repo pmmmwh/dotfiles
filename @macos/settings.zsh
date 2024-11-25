@@ -367,11 +367,11 @@
   defaults write com.apple.finder NewWindowTarget -string "PfHm"
   defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
-  # Show icons for hard drives, servers, and removable media on the desktop
-  defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool "true"
-  defaults write com.apple.finder ShowHardDrivesOnDesktop -bool "true"
-  defaults write com.apple.finder ShowMountedServersOnDesktop -bool "true"
-  defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool "true"
+  # Hide icons for hard drives, servers, and removable media on the desktop
+  defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool "false"
+  defaults write com.apple.finder ShowHardDrivesOnDesktop -bool "false"
+  defaults write com.apple.finder ShowMountedServersOnDesktop -bool "false"
+  defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool "false"
 
   # Finder: show hidden files by default
   defaults write com.apple.finder AppleShowAllFiles -bool "true"
@@ -388,6 +388,9 @@
 
   # Keep folders on top when sorting by name
   defaults write com.apple.finder _FXSortFoldersFirst -bool "true"
+
+  # Keep folders on top in Desktop
+  defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool "true"
 
   # When performing a search, search the current folder by default
   defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
@@ -430,7 +433,7 @@
     Privileges -bool "true"
 
   ###############################################################################
-  # Dock and Dashboard                                                          #
+  # Dock, Dashboard   and Window Manager                                        #
   ###############################################################################
 
   # Move the dock on the left
@@ -453,6 +456,15 @@
 
   # Disable Dashboard
   defaults write com.apple.dashboard dashboard-enabled-state -int 1
+
+  # Set widget style to monochrome
+  defaults write com.apple.widgets widgetAppearance -int 0
+
+  # Don't add margin between tiled items
+  defaults write com.apple.windowmanager EnableTiledWindowMargins -bool "false"
+
+  # Make window fill screen on double-clicking its title bar
+   defaults write 'Apple Global Domain' AppleActionOnDoubleClick -string "Fill"
 
   # Don’t automatically rearrange Spaces based on most recent use
   defaults write com.apple.dock mru-spaces -bool "false"
