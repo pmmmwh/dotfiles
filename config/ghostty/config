@@ -208,7 +208,7 @@ font-thicken = false
 #     that things like status lines continue to look aligned.
 adjust-cell-width =
 
-adjust-cell-height =
+adjust-cell-height = 5%
 adjust-font-baseline =
 adjust-underline-position =
 adjust-underline-thickness =
