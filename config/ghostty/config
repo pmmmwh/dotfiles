@@ -341,7 +341,7 @@ selection-invert-fg-bg = false
 # that text will become black or white.
 #
 # This value does not apply to Emoji or images.
-minimum-contrast = 3
+minimum-contrast = 1
 
 # Swap the foreground and background colors of the cell under the cursor. This
 # option overrides the `cursor-color` and `cursor-text` options.
@@ -1073,7 +1073,7 @@ window-width = 0
 # The default value is `default`.
 #
 # This is currently only supported on macOS. This has no effect on Linux.
-window-save-state = default
+window-save-state = always
 
 # Resize the window in discrete increments of the focused surface's cell size.
 # If this is disabled, surfaces are resized in pixel increments. Currently
