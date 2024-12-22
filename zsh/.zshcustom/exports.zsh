@@ -50,6 +50,8 @@ export GIT_CONFIG_KEY_0=core.attributesFile
 export GIT_CONFIG_VALUE_0=$(echo $CURRENT_DIR/../../git/.gitattributes(:A))
 export GIT_CONFIG_KEY_1=core.excludesFile
 export GIT_CONFIG_VALUE_1=$(echo $CURRENT_DIR/../../git/.gitignore(:A))
+# Disable prompt for commit message on merge
+export GIT_MERGE_AUTOEDIT=no
 
 # Use US English and UTF-8 encoding by default
 export LANG="en_US.UTF-8"
