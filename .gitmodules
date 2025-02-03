@@ -12,13 +12,13 @@
 
 [submodule "zsh/.zshcustom/plugins/fast-syntax-highlighting"]
 
-  # Add syntax highlighting to shell
+	# Add syntax highlighting to shell
 	path = zsh/.zshcustom/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
 
 [submodule "zsh-autocomplete"]
 
-  # Add IDE-like auto completion
+	# Add IDE-like auto completion
 	path = zsh/.zshcustom/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
 
