@@ -38,7 +38,10 @@
 
 [core]
 
-	# Revert unicode decomposition of filenames done by Mac OS
+	# Use `delta` as pager
+	pager = delta
+
+	# Revert unicode decomposition of filenames done by macOS
 	precomposeUnicode = true
 
 	# Do not quote and escape Unicode characters
@@ -72,7 +75,7 @@
 
 [commit]
 
-	# Sign commits with GPG (i.e. `Verified` commits on GitHub)
+	# Sign commits with GPG (i.e. "Verified" commits on GitHub)
  	gpgSign = true
 
 [credential]
@@ -82,24 +85,29 @@
 
 [credential "https://github.com"]
 
-	# Use gh CLI as default credential helper for GitHub
+	# Use `gh` CLI as default credential helper for GitHub
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
 [credential "https://gist.github.com"]
 
-	# Use gh CLI as default credential helper for GitHub
+	# Use `gh` CLI as default credential helper for GitHub
 	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[delta]
+
+	# Use `n` and `N` to move between diff sections
+	navigate = true
 
 [diff]
 
-	# Detect copies as well as renames
+	# Detect copies as well as renames in diffs
 	renames = copies
 
 [gitbutler]
 
 	aiModelProvider = openai
 
-  # Tell GitButler to sign commits
+	# Tell GitButler to sign commits
 	signCommits = true
 
 [help]
@@ -111,6 +119,11 @@
 
 	defaultBranch = main
 
+[interactive]
+
+	# Use `delta` as pager in interactive mode
+	diffFilter = delta --color-only
+
 [maintenance]
 
 	# Run maintenance tasks even if thresholds aren't met
@@ -118,6 +131,11 @@
 
 	# Runs maintenance tasks on a schedule
 	strategy = incremental
+
+[merge]
+
+	# Nicer diffs with better handling for conflicts
+	conflictstyle = zdiff3
 
 [pull]
 
@@ -139,12 +157,12 @@
 
 [rerere]
 
-	# Enable `Reuse Recorded Resolution`
+	# Enable "Reuse Recorded Resolution"
 	enabled = true
 
 [tag]
 
-	# Sign tags with GPG (i.e. `Verified` tags on GitHub)
+	# Sign tags with GPG (i.e. "Verified" tags on GitHub)
 	gpgSign = true
 
 [url "https://github.com/"]

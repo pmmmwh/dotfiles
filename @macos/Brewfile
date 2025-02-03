@@ -56,10 +56,12 @@ brew "zopfli"
 
 # General development tools
 brew "cmake"
+brew "eza"    # Rust
 brew "flyway" # Java
 brew "gh"     # Golang
 brew "git"
 brew "git-absorb" # Rust
+brew "git-delta"  # Rust
 brew "mise"       # Rust
 brew "nginx"
 brew "shellcheck"
