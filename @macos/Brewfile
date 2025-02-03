@@ -8,8 +8,6 @@ tap "1password/tap"
 tap "esolitos/ipa"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
-# Formulae for WezTerm
-tap "wez/wezterm"
 
 # BINARIES
 
@@ -148,7 +146,6 @@ cask "ngrok"
 cask "orbstack"
 cask "swiftformat-for-xcode"
 cask "visual-studio-code"
-cask "wez/wezterm/wezterm"
 
 # Mobile
 cask "vysor"
