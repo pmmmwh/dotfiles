@@ -141,7 +141,6 @@ cask "font-meslo-lg-nerd-font"
 cask "sf-symbols"
 
 # Development
-cask "dash"
 cask "gitbutler"
 cask "gpg-suite"
 cask "httpie"
