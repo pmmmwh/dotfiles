@@ -69,8 +69,6 @@ export NODE_REPL_HISTORY_SIZE=32768
 # Use sloppy mode by default, matching the behaviour of web browsers
 export NODE_REPL_MODE=sloppy
 
-# Make `pipx` use Python in installed via `mise`
-export PIPX_DEFAULT_PYTHON=$(mise which python)
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
 

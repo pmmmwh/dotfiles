@@ -46,9 +46,7 @@
 
   # Install global tools
   logger "info" "Installing global tools ..."
-  pipx install jupyterlab
-  pipx install poetry
-  pipx inject poetry keyrings.google-artifactregistry-auth
+  uv install posting
 
   logger "success" "Successfully setup Homebrew dependencies."
 }

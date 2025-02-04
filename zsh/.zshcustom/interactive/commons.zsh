@@ -51,12 +51,12 @@ alias starship-update='curl -sS https://starship.rs/install.sh | sh -s -- -b /op
 # 1. Get macOS Software Updates
 # 2. Update Homebrew and installed formulae
 # 3. Update apps from App Store
+# 4. Update starship
 # 4. Update npm and installed packages
-# 5. Update yarn installed packages
-# 6. Update pipx installed packages
-# 7. Update installed Ruby gems
-# 8. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; npm install npm -g; npm update -g; pipx upgrade-all; gem update --system; gem update; gem cleanup; _evalcache_clear"
+# 5. Update uv installed packages
+# 6. Update installed Ruby gems
+# 7. Clear `eval` cache
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"
