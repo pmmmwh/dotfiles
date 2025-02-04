@@ -46,7 +46,6 @@
 
   # Install global tools
   logger "info" "Installing global tools ..."
-  uv install posting
 
   logger "success" "Successfully setup Homebrew dependencies."
 }
