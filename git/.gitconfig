@@ -39,8 +39,8 @@
 [core]
 
 	# Use custom `.gitattributes` and `.gitignore`
-	attributesFile = ./.gitattributes
-	excludesFile = ./.gitignore
+	attributesFile = ~/Developer/dotfiles/git/.gitattributes
+	excludesFile = ~/Developer/dotfiles/git/.gitignore
 
 	# Use `delta` as pager
 	pager = delta
