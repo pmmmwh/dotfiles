@@ -38,6 +38,10 @@
 
 [core]
 
+	# Use custom `.gitattributes` and `.gitignore`
+	attributesFile = ./.gitattributes
+	excludesFile = ./.gitignore
+
 	# Use `delta` as pager
 	pager = delta
 
