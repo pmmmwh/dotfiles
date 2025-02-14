@@ -13,11 +13,13 @@ done
 
 # Initialise key bindings
 bindkey "\e[A" atuin-up-search                                # ↑
+bindkey "\eOA" atuin-up-search                                # ↑
 bindkey "\e[1;3A" atuin-up-search                             # ⌥↑
 bindkey "\e[1;3D" backward-word                               # ⌥←
 bindkey "\e[1;3C" forward-word                                # ⌥→
 bindkey "^[[1;9D" beginning-of-line                           # ⌘←
 bindkey "^[[1;9C" end-of-line                                 # ⌘→
+bindkey '^P' atuin-up-search                                  # ^P
 bindkey '^R' atuin-search                                     # ^R
 bindkey '^S' atuin-search                                     # ^S
 bindkey "^I" menu-select                                      # ↹
