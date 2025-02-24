@@ -43,7 +43,7 @@
 	excludesFile = ~/Developer/dotfiles/git/.gitignore
 
 	# Use `delta` as pager
-	pager = delta
+	pager = LESS='FR --redraw-on-quit' delta
 
 	# Revert unicode decomposition of filenames done by macOS
 	precomposeUnicode = true
