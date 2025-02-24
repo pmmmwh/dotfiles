@@ -4,10 +4,12 @@
 tap "homebrew/bundle"
 # Formulae for 1Password CLI
 tap "1password/tap"
-# Formulae for sshpass
-tap "esolitos/ipa"
 # Formulae for webfont-related tools
 tap "bramstein/webfonttools"
+# Formulae for sshpass
+tap "esolitos/ipa"
+# Formulae for terraform
+tap "hashicorp/tap"
 
 # BINARIES
 
@@ -67,7 +69,7 @@ brew "hyperfine"  # Rust
 brew "mise"       # Rust
 brew "nginx"
 brew "shellcheck"
-brew "terraform"
+brew "hashicorp/tap/terraform"
 brew "watchman" # Python
 brew "xh"       # Rust
 
