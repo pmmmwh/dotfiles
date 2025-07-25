@@ -3,3 +3,6 @@ node = "22"
 go = "1.24"
 python = "3.12"
 ruby = "3.4"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node", "python"]
