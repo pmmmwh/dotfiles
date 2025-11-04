@@ -128,6 +128,7 @@ cask "microsoft-edge"
 # Utilities
 cask "1password"
 cask "1password/tap/1password-cli"
+cask "ghostty"
 cask "karabiner-elements"
 cask "linear-linear"
 cask "logi-options+"
