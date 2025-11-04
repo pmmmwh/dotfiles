@@ -109,7 +109,7 @@
 
 [gitbutler]
 
-	aiModelProvider = openai
+	aiModelProvider = anthropic
 
 	# Tell GitButler to sign commits
 	signCommits = true
