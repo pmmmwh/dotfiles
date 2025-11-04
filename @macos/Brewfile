@@ -118,7 +118,7 @@ brew "bramstein/webfonttools/woff2"
 # Binaries and Drivers
 cask "gcloud-cli"
 cask "mitmproxy" # Python
-cask "zulu17"
+cask "zulu@17"
 
 # Browsers
 cask "firefox"
