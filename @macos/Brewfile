@@ -2,12 +2,16 @@
 
 # Formulae for 1Password CLI
 tap "1password/tap"
-# Formulae for webfont-related tools
-tap "bramstein/webfonttools"
+# Formulae for dbt Cloud CLI
+tap "dbt-labs/dbt-cli"
+# Formulae for mole
+tap "tw93/tap"
 # Formulae for sshpass
 tap "esolitos/ipa"
 # Formulae for terraform
 tap "hashicorp/tap"
+# Formulae for webfont-related tools
+tap "bramstein/webfonttools"
 
 # BINARIES
 
@@ -33,6 +37,7 @@ brew "ack"
 brew "atuin"  # Rust
 brew "bat"    # Rust
 brew "bottom" # Rust
+brew "fastfetch"
 brew "graphviz"
 brew "imagemagick"
 brew "jq"
@@ -40,7 +45,7 @@ brew "less"
 brew "mackup"    # Python
 brew "mas"       # Swift
 brew "mkcert"    # Golang
-brew "neofetch"
+brew "onefetch"  # Rust
 brew "p7zip"
 brew "pigz"
 brew "pkg-config"
@@ -49,6 +54,7 @@ brew "readline"
 brew "sqlmap"
 brew "tealdeer" # Rust
 brew "tree"
+brew "tw93/tap/mole"
 brew "xz"
 brew "yq" # Golang
 brew "zlib"
@@ -72,6 +78,7 @@ brew "watchman" # Python
 brew "xh"       # Rust
 
 # Database related tools
+brew "dbt-labs/dbt-cli/dbt"
 brew "postgresql@17"
 brew "sqlite"
 
@@ -82,6 +89,12 @@ brew "k9s"            # Golang
 brew "kubernetes-cli" # Golang
 brew "kustomize"      # Golang
 brew "minikube"       # Golang
+
+# Golang related tools
+brew "golangci-lint" # Golang
+
+# Python related tools
+brew "uv" # Rust
 
 # Rust related tools
 brew "rustup-init" # Rust
@@ -128,7 +141,7 @@ cask "raycast"
 cask "setapp"
 cask "splashtop-business"
 cask "the-unarchiver"
-cask "yubico-yubikey-manager"
+cask "yubico-authenticator"
 
 # IM
 cask "signal"
@@ -150,6 +163,8 @@ cask "localcan"
 cask "orbstack"
 cask "swiftformat-for-xcode"
 cask "visual-studio-code"
+cask "yaak"
+cask "zed"
 
 # Mobile
 cask "vysor"
