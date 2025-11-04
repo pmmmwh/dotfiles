@@ -45,6 +45,7 @@ cask "reaper"
 cask "android-platform-tools"
 cask "expo-orbit"
 cask "impactor"
+cask "vysor"
 
 # Gaming
 cask "parsec"

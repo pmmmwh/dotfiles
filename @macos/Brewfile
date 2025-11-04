@@ -157,7 +157,6 @@ cask "sf-symbols"
 # Development
 cask "gitbutler"
 cask "gpg-suite"
-cask "httpie"
 cask "imageoptim"
 cask "jetbrains-toolbox"
 cask "localcan"
@@ -166,9 +165,6 @@ cask "swiftformat-for-xcode"
 cask "visual-studio-code"
 cask "yaak"
 cask "zed"
-
-# Mobile
-cask "vysor"
 
 # MAC APPSTORE APPS
 

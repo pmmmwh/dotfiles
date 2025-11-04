@@ -498,7 +498,7 @@
 
   # Add frequently used apps and folders to the Dock
   for app (
-    '/System/Applications/Launchpad.app'
+    '/System/Applications/Apps.app'
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
     '/Applications/Mimestream.app'
