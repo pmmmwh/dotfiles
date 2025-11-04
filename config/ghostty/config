@@ -1,5 +1,4 @@
 font-family = "Berkeley Mono"
-font-family = "MesloLGS Nerd Font Mono"
 font-size = 13
 
 adjust-cell-height = 5%
@@ -7,12 +6,17 @@ adjust-cell-height = 5%
 theme = "Material Oceanic"
 
 keybind = super+delete=text:\x0b
-keybind = opt+delete=esc:d
+keybind = alt+delete=esc:d
 
 window-padding-x = 12
 window-padding-y = 4
 
+window-inherit-working-directory = false
 window-save-state = always
+
+undo-timeout = 10s
+
+shell-integration-features = cursor, sudo, title, ssh-env, ssh-terminfo
 
 macos-option-as-alt = false
 
