@@ -50,6 +50,9 @@
   # Use dark mode by default
   defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
 
+  # Use dark icons by default
+  defaults write NSGlobalDomain AppleIconAppearanceTheme -string "RegularDark"
+
   # Use expanded save panel by default
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool "true"
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool "true"
@@ -464,7 +467,7 @@
   defaults write com.apple.windowmanager EnableTiledWindowMargins -bool "false"
 
   # Make window fill screen on double-clicking its title bar
-   defaults write 'Apple Global Domain' AppleActionOnDoubleClick -string "Fill"
+  defaults write 'Apple Global Domain' AppleActionOnDoubleClick -string "Fill"
 
   # Don’t automatically rearrange Spaces based on most recent use
   defaults write com.apple.dock mru-spaces -bool "false"
