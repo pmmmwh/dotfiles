@@ -1,7 +1,5 @@
 # TAPS
 
-# The `brew bundle` command
-tap "homebrew/bundle"
 # Formulae for 1Password CLI
 tap "1password/tap"
 # Formulae for webfont-related tools
@@ -74,7 +72,7 @@ brew "watchman" # Python
 brew "xh"       # Rust
 
 # Database related tools
-brew "postgresql@15"
+brew "postgresql@17"
 brew "sqlite"
 
 # Docker related tools

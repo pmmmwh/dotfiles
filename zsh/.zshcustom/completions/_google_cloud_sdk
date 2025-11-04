@@ -1,7 +1,7 @@
 #compdef bq gcloud gsutil
 
-# Find Cloud SDK
-if (( $+commands[gcloud] )); then
+# Find Google Cloud SDK
+if [ -z "$CLOUD_SDK_ROOT" ] && (( $+commands[gcloud] )); then
   if [[ -x /opt/homebrew/bin/gcloud ]]; then
     export CLOUD_SDK_ROOT="/opt/homebrew/share/google-cloud-sdk"
   elif [[ -x /usr/local/bin/gcloud ]]; then

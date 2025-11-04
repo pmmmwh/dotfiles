@@ -17,12 +17,23 @@ if (( ${+commands[brew]} )); then
     manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnuman $manpath)
   fi
 
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@15/bin(#qN) ]]; then
-    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@15
+  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17/bin(#qN) ]]; then
+    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17
 
     path=($postgresqlPath/bin $path)
     pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
   fi
+fi
+
+# Setup Google Cloud SDK
+if (( $+commands[gcloud] )); then
+  if [[ -x /opt/homebrew/bin/gcloud ]]; then
+    export CLOUD_SDK_ROOT="/opt/homebrew/share/google-cloud-sdk"
+  elif [[ -x /usr/local/bin/gcloud ]]; then
+    export CLOUD_SDK_ROOT="/usr/share/google-cloud-sdk"
+  fi
+
+  path+="$CLOUD_SDK_ROOT/bin"
 fi
 
 # Setup usage of Ghostty from command line

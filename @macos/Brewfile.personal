@@ -1,7 +1,5 @@
 # TAPS
 
-# The `brew bundle` command
-tap "homebrew/bundle"
 # Formulae for MongoDB
 tap "mongodb/brew"
 

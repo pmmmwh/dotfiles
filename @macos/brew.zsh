@@ -30,8 +30,6 @@
   logger "success" "Successfully setup tooling."
 
   logger "info" "Bundling dependencies with Homebrew ..."
-  # Initialise the `brew bundle` command
-  brew tap homebrew/bundle
 
   # Selectively install dependencies based on personal computer or not
   prompt "Are you setting up a personal computer?"
