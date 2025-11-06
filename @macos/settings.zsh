@@ -286,12 +286,12 @@
   # See `sudo systemsetup -listtimezones` for other values
 
   # Settings for Hong Kong
-  # sudo systemsetup -settimezone "Asia/Hong_Kong" >/dev/null
-  # sudo systemsetup -setnetworktimeserver "time.asia.apple.com"
+  # sudo systemsetup -settimezone "Asia/Hong_Kong" 2>/dev/null
+  # sudo systemsetup -setnetworktimeserver "time.asia.apple.com" 2>/dev/null
 
   # Settings for Stockholm
-  sudo systemsetup -settimezone "Europe/Stockholm" >/dev/null
-  sudo systemsetup -setnetworktimeserver "time.euro.apple.com"
+  sudo systemsetup -settimezone "Europe/Stockholm" 2>/dev/null
+  sudo systemsetup -setnetworktimeserver "time.euro.apple.com" 2>/dev/null
   sudo systemsetup -setusingnetworktime on
 
   ###############################################################################
@@ -305,7 +305,7 @@
   sudo pmset -a autorestart 1
 
   # Restart automatically if the computer freezes
-  sudo systemsetup -setrestartfreeze on
+  sudo systemsetup -setrestartfreeze on 2>/dev/null
 
   # Sleep the display after 15 minutes
   sudo pmset -a displaysleep 15
@@ -323,7 +323,7 @@
   sudo pmset -a standbydelayhigh 86400
 
   # Never go into computer sleep mode
-  sudo systemsetup -setcomputersleep Never >/dev/null
+  sudo systemsetup -setcomputersleep Never 2>/dev/null
 
   # Hibernation mode
   # 0: Disable hibernation (speeds up entering sleep mode)
@@ -436,7 +436,7 @@
     Privileges -bool "true"
 
   ###############################################################################
-  # Dock, Dashboard   and Window Manager                                        #
+  # Dock, Dashboard and Window Manager                                          #
   ###############################################################################
 
   # Move the dock on the left
@@ -485,7 +485,7 @@
   defaults write com.apple.dock show-recents -bool "false"
 
   # Reset Launchpad, but keep the desktop wallpaper intact
-  find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+  find "${HOME}/Library/Application Support/Dock" -maxdepth 1 -name "*-*.db" -delete
 
   # Add Simulator to Launchpad
   sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
