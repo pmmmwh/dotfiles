@@ -37,9 +37,9 @@
   # Install all dependencies from `Brewfile`
   brew bundle --file=$SCRIPT_DIR/Brewfile
 
-  # Install all dependencies from `Brewfile.personal` if specified
+  # Install all dependencies from `Personal.Brewfile` if specified
   if (( $PROMPT_PROCEED == 0 )); then
-    brew bundle --file=$SCRIPT_DIR/Brewfile.personal
+    brew bundle --file=$SCRIPT_DIR/Personal.Brewfile
   fi
 
   # Install global tools

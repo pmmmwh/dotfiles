@@ -1,173 +1,174 @@
 # TAPS
 
 # Formulae for 1Password CLI
-tap "1password/tap"
+tap '1password/tap'
 # Formulae for dbt Cloud CLI
-tap "dbt-labs/dbt-cli"
+tap 'dbt-labs/dbt-cli'
 # Formulae for mole
-tap "tw93/tap"
+tap 'tw93/tap'
 # Formulae for sshpass
-tap "esolitos/ipa"
+tap 'esolitos/ipa'
 # Formulae for terraform
-tap "hashicorp/tap"
+tap 'hashicorp/tap'
 # Formulae for webfont-related tools
-tap "bramstein/webfonttools"
+tap 'bramstein/webfonttools'
 
 # BINARIES
 
 # GNU utilities, to replace default BSD ones
-brew "coreutils"
-brew "findutils"
-brew "grep"
-brew "make"
-brew "gnu-sed"
-brew "stow"
+brew 'coreutils'
+brew 'findutils'
+brew 'grep'
+brew 'make'
+brew 'gnu-sed'
+brew 'stow'
 
 # Get latest version of the OpenSSH utilities
 # Disabled to not mess with Keychain integration
-# brew "openssh"
-# brew "ssh-copy-id"
-brew "esolitos/ipa/sshpass"
+# brew 'openssh'
+# brew 'ssh-copy-id'
+brew 'esolitos/ipa/sshpass'
 
 # The `wget` command
-brew "wget"
+brew 'wget'
 
 # Other miscellaneous binaries
-brew "ack"
-brew "atuin"  # Rust
-brew "bat"    # Rust
-brew "bottom" # Rust
-brew "fastfetch"
-brew "graphviz"
-brew "imagemagick"
-brew "jq"
-brew "less"
-brew "mackup"    # Python
-brew "mas"       # Swift
-brew "mkcert"    # Golang
-brew "onefetch"  # Rust
-brew "p7zip"
-brew "pigz"
-brew "pkg-config"
-brew "protobuf" # Python
-brew "readline"
-brew "sqlmap"
-brew "tealdeer" # Rust
-brew "tree"
-brew "tw93/tap/mole"
-brew "xz"
-brew "yq" # Golang
-brew "zlib"
-brew "zopfli"
+brew 'ack'
+brew 'atuin'  # Rust
+brew 'bat'    # Rust
+brew 'bottom' # Rust
+brew 'fastfetch'
+brew 'graphviz'
+brew 'imagemagick'
+brew 'jq'
+brew 'less'
+brew 'mackup'    # Python
+brew 'mas'       # Swift
+brew 'mkcert'    # Golang
+brew 'onefetch'  # Rust
+brew 'p7zip'
+brew 'pigz'
+brew 'pkg-config'
+brew 'protobuf' # Python
+brew 'readline'
+brew 'sqlmap'
+brew 'tealdeer' # Rust
+brew 'tree'
+brew 'tw93/tap/mole'
+brew 'xz'
+brew 'yq' # Golang
+brew 'zlib'
+brew 'zopfli'
 
 # General development tools
-brew "cloudflared" # Golang
-brew "cmake"
-brew "eza"    # Rust
-brew "flyway" # Java
-brew "gh"     # Golang
-brew "git"
-brew "git-absorb" # Rust
-brew "git-delta"  # Rust
-brew "hyperfine"  # Rust
-brew "mise"       # Rust
-brew "nginx"
-brew "shellcheck"
-brew "hashicorp/tap/terraform"
-brew "watchman" # Python
-brew "xh"       # Rust
+brew 'cloudflared' # Golang
+brew 'cmake'
+brew 'eza'    # Rust
+brew 'flyway' # Java
+brew 'gh'     # Golang
+brew 'git'
+brew 'git-absorb' # Rust
+brew 'git-delta'  # Rust
+brew 'hyperfine'  # Rust
+brew 'mise'       # Rust
+brew 'nginx'
+brew 'shellcheck'
+brew 'hashicorp/tap/terraform'
+brew 'watchman' # Python
+brew 'xh'       # Rust
 
 # Database related tools
-brew "dbt-labs/dbt-cli/dbt"
-brew "postgresql@17"
-brew "sqlite"
+brew 'dbt-labs/dbt-cli/dbt'
+brew 'postgresql@17'
+brew 'sqlite'
 
 # Docker related tools
-brew "hadolint"       # Haskell
-brew "helm"           # Golang
-brew "k9s"            # Golang
-brew "kubernetes-cli" # Golang
-brew "kustomize"      # Golang
-brew "minikube"       # Golang
+brew 'hadolint'       # Haskell
+brew 'helm'           # Golang
+brew 'k9s'            # Golang
+brew 'kubernetes-cli' # Golang
+brew 'kustomize'      # Golang
+brew 'minikube'       # Golang
 
 # Golang related tools
-brew "golangci-lint" # Golang
+brew 'golangci-lint' # Golang
 
 # Python related tools
-brew "uv" # Rust
+brew 'uv' # Rust
 
 # Rust related tools
-brew "rustup-init" # Rust
+brew 'rustup-init' # Rust
 
 # Swift related tools
-brew "cocoapods"
-brew "swiftformat"
+brew 'cocoapods'
+brew 'swiftformat'
 
 # Tools to optimise images
-brew "jpegoptim"
-brew "pngquant" # Rust
-brew "optipng"
+brew 'jpegoptim'
+brew 'pngquant' # Rust
+brew 'optipng'
 
 # Tools to generate webfonts
-brew "bramstein/webfonttools/sfnt2woff"
-brew "bramstein/webfonttools/sfnt2woff-zopfli"
-brew "bramstein/webfonttools/woff2"
+brew 'bramstein/webfonttools/sfnt2woff'
+brew 'bramstein/webfonttools/sfnt2woff-zopfli'
+brew 'bramstein/webfonttools/woff2'
 
 # CASKS
 
 # Binaries and Drivers
-cask "gcloud-cli"
-cask "mitmproxy" # Python
-cask "zulu@17"
+cask 'gcloud-cli'
+cask 'mitmproxy' # Python
+cask 'zulu@17'
 
 # Browsers
-cask "firefox"
-cask "google-chrome"
-cask "microsoft-edge"
+cask 'firefox'
+cask 'google-chrome'
+cask 'microsoft-edge'
 
 # Utilities
-cask "1password"
-cask "1password/tap/1password-cli"
-cask "ghostty"
-cask "karabiner-elements"
-cask "linear-linear"
-cask "logi-options+"
-cask "microsoft-auto-update"
-cask "microsoft-excel"
-cask "mimestream"
-cask "morgen"
-cask "mullvad-vpn"
-cask "notion"
-cask "raycast"
-cask "setapp"
-cask "splashtop-business"
-cask "the-unarchiver"
-cask "yubico-authenticator"
+cask '1password'
+cask '1password/tap/1password-cli'
+cask 'ghostty'
+cask 'karabiner-elements'
+cask 'linear-linear'
+cask 'logi-options+'
+cask 'microsoft-auto-update'
+cask 'microsoft-excel'
+cask 'mimestream'
+cask 'morgen'
+cask 'mullvad-vpn'
+cask 'notion'
+cask 'raycast'
+cask 'setapp'
+cask 'splashtop-business'
+cask 'the-unarchiver'
+cask 'yubico-authenticator'
 
 # IM
-cask "signal"
-cask "slack"
-cask "telegram-desktop"
+cask 'signal'
+cask 'slack'
+cask 'telegram-desktop'
 
 # Creative and Design
-cask "figma"
-cask "font-meslo-lg-nerd-font"
-cask "sf-symbols"
+cask 'figma'
+cask 'font-meslo-lg-nerd-font'
+cask 'sf-symbols'
 
 # Development
-cask "gitbutler"
-cask "gpg-suite"
-cask "imageoptim"
-cask "jetbrains-toolbox"
-cask "localcan"
-cask "orbstack"
-cask "swiftformat-for-xcode"
-cask "visual-studio-code"
-cask "yaak"
-cask "zed"
+cask 'gitbutler'
+cask 'gpg-suite'
+cask 'imageoptim'
+cask 'jetbrains-toolbox'
+cask 'localcan'
+cask 'orbstack'
+cask 'swiftformat-for-xcode'
+cask 'visual-studio-code'
+cask 'yaak'
+cask 'zed'
 
 # MAC APPSTORE APPS
 
-mas "Speedtest by Ookla", id: 1153157709
-mas "WireGuard", id: 1451685025
-mas "Xcode", id: 497799835
+mas 'Flighty', id: 1358823008
+mas 'Speedtest by Ookla', id: 1153157709
+mas 'WireGuard', id: 1451685025
+mas 'Xcode', id: 497799835
