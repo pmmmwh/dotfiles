@@ -13,7 +13,7 @@
   ensure_env
 
   # Use GNU Stow to unlink dotfiles
-  if ! stow -D -t $HOME stow git mackup prefs tmux zsh >/dev/null 2>&1; then
+  if ! stow -D -t $HOME stow git mackup prefs zsh >/dev/null 2>&1; then
     logger "error" "Failed to unlink dotfiles!"
     exit 1
   fi

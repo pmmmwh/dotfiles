@@ -84,7 +84,6 @@ External packages are applied using Git Submodules.
 Here's a list of all dependencies pulled in:
 
 - [`evalcache`](https://github.com/mroth/evalcache)
-- [`tpm`](https://github.com/tmux-plugins/tpm)
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions)
 
 ## Acknowledgements

@@ -37,6 +37,4 @@ Temporary Items
 
 # Local configuration files
 git/.gitcredentials*
-tmux/.tmux/plugins/*
-!tmux/.tmux/plugins/tpm
 zsh/.zshcustom/extras.zsh
