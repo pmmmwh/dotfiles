@@ -1,0 +1,40 @@
+# List of dictionaries to use for spell checking
+# Available dictionaries:
+#  - English: "en_us", "en_gb"
+#  - German: "de", "de_at", "de_ch"
+#  - Dutch: "nl_nl"
+#  - Spanish: "es"
+#  - French: "fr"
+#  - Italian: "it"
+#  - Portuguese (Brazil): "pt_br"
+#  - Russian: "ru"
+#  - Swedish: "sv"
+#  - Danish: "da"
+#  - Latvian: "lv"
+#  - Vietnamese: "vi_vn"
+#  - Polish: "pl"
+dictionaries = ["en_gb", "en_us"]
+# Custom allowlist of words to ignore (case-insensitive)
+# Codebook will add words here when you select "Add to dictionary"
+words = ["Mimo"]
+# Words that should always be flagged as incorrect
+flag_words = []
+# List of glob patterns for paths to ignore when spell checking
+ignore_paths = [
+    ".git/**/*",
+    ".next/**/*",
+    ".venv/**/*",
+    "build/**/*",
+    "dist/**/*",
+    "node_modules/**/*",
+]
+# List of regex patterns to ignore when spell checking
+# For code files: patterns match against the full source, tokens within matches are skipped
+# Tip: Use single quotes for literal strings to avoid escaping backslashes
+ignore_patterns = [
+    'https?://[^\s]+',  # URLs
+]
+# Minimum word length to check (words shorter than this are ignored)
+# Set to 0 to check all words including single letters
+# Set to 2 to check words with 2 or more characters
+min_word_length = 3
