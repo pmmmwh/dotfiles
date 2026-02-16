@@ -57,7 +57,7 @@ alias starship-update='curl -sS https://starship.rs/install.sh | sh -s -- -b /op
 # 7. Update uv installed packages
 # 8. Update installed Ruby gems
 # 9. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; mise up; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; _evalcache_clear"
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; mise up; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"

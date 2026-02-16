@@ -1,7 +1,7 @@
 {
   "overrides": [
     {
-      "files": ["*.jsonc"],
+      "files": ["tsconfig.json", "*.jsonc"],
       "options": {
         "parser": "json",
         "trailingComma": "none"

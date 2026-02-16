@@ -97,6 +97,11 @@
 	# Use `gh` CLI as default credential helper for GitHub
 	helper = !/opt/homebrew/bin/gh auth git-credential
 
+[credential "https://gitlab.com"]
+
+	# Use `glab` CLI as default credential helper for GitLab
+	helper = !/opt/homebrew/bin/glab auth git-credential
+
 [delta]
 
 	# Use `n` and `N` to move between diff sections
