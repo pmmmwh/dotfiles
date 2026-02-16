@@ -84,6 +84,8 @@ External packages are applied using Git Submodules.
 Here's a list of all dependencies pulled in:
 
 - [`evalcache`](https://github.com/mroth/evalcache)
+- [`fast-syntax-highlighting`](https://github.com/zdharma-continuum/fast-syntax-highlighting)
+- [`zsh-autocomplete`](https://github.com/marlonrichert/zsh-autocomplete)
 - [`zsh-completions`](https://github.com/zsh-users/zsh-completions)
 
 ## Acknowledgements
