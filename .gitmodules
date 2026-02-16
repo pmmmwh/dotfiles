@@ -1,9 +1,3 @@
-[submodule "tmux/.tmux/plugins/tpm"]
-
-	# Use the tpm plugin manager
-	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
-
 [submodule "zsh/.zshcustom/plugins/evalcache"]
 
 	# Cache eval to speed up shell init
