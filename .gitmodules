@@ -16,7 +16,7 @@
 	path = zsh/.zshcustom/plugins/fast-syntax-highlighting
 	url = https://github.com/zdharma-continuum/fast-syntax-highlighting.git
 
-[submodule "zsh-autocomplete"]
+[submodule "zsh/.zshcustom/plugins/zsh-autocomplete"]
 
 	# Add IDE-like auto completion
 	path = zsh/.zshcustom/plugins/zsh-autocomplete
@@ -27,6 +27,3 @@
 	# Enable extra ZSH auto completions
 	path = zsh/.zshcustom/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "zsh/.zshcustom/plugins/zsh-autocomplete"]
-	path = zsh/.zshcustom/plugins/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete.git
