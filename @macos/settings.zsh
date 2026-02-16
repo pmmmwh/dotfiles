@@ -498,11 +498,10 @@
 
   # Add frequently used apps and folders to the Dock
   for app (
-    '/System/Applications/Apps.app'
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
     '/Applications/Mimestream.app'
-    '/Applications/Morgen.app'
+    '/System/Applications/Calendar.app'
     '/Applications/Linear.app'
     '/Applications/Slack.app'
     '/Applications/Ghostty.app'
