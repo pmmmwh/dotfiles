@@ -1,0 +1,6 @@
+toml-version = "v1.0.0"
+
+[format]
+[format.rules]
+indent-width = 4
+line-width = 120
