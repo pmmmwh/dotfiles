@@ -5,8 +5,8 @@
 Desktop.ini
 
 # Icon must end with two \r
-Icon
-
+Icon[
+]
 
 # Thumbnail cache files
 ._*
@@ -32,8 +32,10 @@ Temporary Items
 *.pyc
 
 # IDE setting files
+.fleet
 .idea
 .vscode
+.zed
 
 # Local configuration files
 git/.gitcredentials*

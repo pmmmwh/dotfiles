@@ -39,8 +39,8 @@ fi
 # Setup usage of Ghostty from command line
 path+="/Applications/Ghostty.app/Contents/MacOS"
 
-# Setup usage of VSCode from command line
-path+="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# Setup usage of GitButler from command line
+path+="/Applications/GitButler.app/Contents/MacOS"
 
 # Setup Android Studio development environment
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -68,10 +68,10 @@ export GIT_MERGE_AUTOEDIT=no
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# Make VSCode the default editor for commands that support the $EDITOR variable
-export EDITOR="code -w"
-export KUBE_EDITOR="code -w"
-export K9S_EDITOR="code -w"
+# Make Zed the default editor for commands that support the $EDITOR variable
+export EDITOR="zed -w"
+export KUBE_EDITOR="zed -w"
+export K9S_EDITOR="zed -w"
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history

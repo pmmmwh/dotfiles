@@ -9,8 +9,10 @@ Desktop.ini
 .gitignore
 
 # IDE setting files
+.fleet
 .idea
 .vscode
+.zed
 
 # Stow local files
 .stow-local-ignore
