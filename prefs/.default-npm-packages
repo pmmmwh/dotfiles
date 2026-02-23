@@ -3,5 +3,6 @@ node-gyp
 react-devtools
 serve
 sharp
+sql-formatter
 svgo
 vercel

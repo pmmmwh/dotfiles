@@ -69,11 +69,11 @@ brew 'gh'     # Golang
 brew 'git'
 brew 'git-absorb' # Rust
 brew 'git-delta'  # Rust
+brew 'hashicorp/tap/terraform'
 brew 'hyperfine'  # Rust
 brew 'mise'       # Rust
 brew 'nginx'
 brew 'shellcheck'
-brew 'hashicorp/tap/terraform'
 brew 'watchman' # Python
 brew 'xh'       # Rust
 
@@ -83,12 +83,7 @@ brew 'postgresql@17'
 brew 'sqlite'
 
 # Docker related tools
-brew 'hadolint'       # Haskell
-brew 'helm'           # Golang
-brew 'k9s'            # Golang
-brew 'kubernetes-cli' # Golang
-brew 'kustomize'      # Golang
-brew 'minikube'       # Golang
+brew 'hadolint' # Haskell
 
 # Golang related tools
 brew 'golangci-lint' # Golang
