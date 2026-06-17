@@ -4,3 +4,8 @@ toml-version = "v1.0.0"
 [format.rules]
 indent-width = 4
 line-width = 120
+
+[lsp]
+# TOML edits in Zed somehow trigger a type definition jump,
+# disabled for now to avoid rapid spawning of type definition popups
+goto-type-definition.enabled = false

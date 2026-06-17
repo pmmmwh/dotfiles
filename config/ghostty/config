@@ -11,6 +11,7 @@ keybind = alt+delete=esc:d
 window-padding-x = 12
 window-padding-y = 4
 
+tab-inherit-working-directory = true
 window-inherit-working-directory = false
 window-save-state = always
 

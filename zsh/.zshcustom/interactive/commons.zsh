@@ -45,6 +45,7 @@ alias path='echo -e ${PATH//:/\\n}'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload='exec ${SHELL} -l'
 
+# Update starship to latest version
 alias starship-update='curl -sS https://starship.rs/install.sh | sh -s -- -b /opt/starship/bin -y'
 
 # Update software:
