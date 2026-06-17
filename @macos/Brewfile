@@ -4,6 +4,8 @@
 tap '1password/tap'
 # Formulae for dbt Cloud CLI
 tap 'dbt-labs/dbt-cli'
+# Formulae for flux-markdown
+tap 'xykong/tap'
 # Formulae for mole
 tap 'tw93/tap'
 # Formulae for sshpass
@@ -136,6 +138,7 @@ cask 'raycast'
 cask 'setapp'
 cask 'splashtop-business'
 cask 'the-unarchiver'
+cask 'xykong/tap/flux-markdown'
 cask 'yubico-authenticator'
 
 # IM
