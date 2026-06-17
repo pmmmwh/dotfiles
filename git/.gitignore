@@ -36,3 +36,6 @@ Temporary Items
 .idea
 .vscode
 .zed
+
+# MCP files
+.serena

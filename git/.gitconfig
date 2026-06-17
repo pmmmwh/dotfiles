@@ -31,6 +31,11 @@
 	# Sort branches by most recent change
 	sort = -committerdate
 
+[blame]
+
+	# Optionally ignore revisions in `.git-blame-ignore-revs`
+	ignoreRevsFile = :(optional).git-blame-ignore-revs
+
 [column]
 
 	# Uses column UI by default
