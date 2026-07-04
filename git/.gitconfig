@@ -85,7 +85,7 @@
 [commit]
 
 	# Sign commits with GPG (i.e. "Verified" commits on GitHub)
- 	gpgSign = true
+	gpgSign = true
 
 [credential]
 
@@ -182,7 +182,3 @@
 [url "https://github.com/"]
 
 	insteadOf = git@github.com:
-
-[url "https://"]
-
-	insteadOf = git://

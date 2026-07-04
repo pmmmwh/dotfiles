@@ -7,7 +7,7 @@ symbol = " "
 
 [azure]
 disabled = true
-format = '\[[$symbol($subsctiption)]($style)\]'
+format = '\[[$symbol($subscription)]($style)\]'
 
 [buf]
 format = '\[[$symbol($version \(Buf $buf_version\) )]($style)\]'
