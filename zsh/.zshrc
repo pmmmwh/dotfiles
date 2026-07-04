@@ -1,3 +1,19 @@
+# Disable filename expansion for `=`
+setopt noequals
+
+# Enable case-insensitive globing (used in pathname expansion)
+setopt nocaseglob
+
+# Enable extended globing for qualifiers
+setopt extendedglob
+
+# Load universal library files, if in a non-login shell (i.e. .zprofile not sourced)
+if [[ ! -o login ]]; then
+  for libraryFile ($ZSH_CUSTOM/*.zsh(N)); do
+    source $libraryFile
+  done
+fi
+
 # Enable the Starship theme
 _evalcache starship init zsh
 
@@ -6,8 +22,8 @@ source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plu
 source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
 
-# Load library files
-for libraryFile ($ZSH_CUSTOM/interactive/*.zsh); do
+# Load interactive library files
+for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N)); do
   source $libraryFile
 done
 
@@ -34,11 +50,8 @@ if [[ -n $BREW_LOCATION ]]; then
 fi
 fpath=($ZSH_CUSTOM/completions $fpath)
 
-# Initialize tools (with lazyload if possible)
+# Initialize atuin
 (( $+commands[atuin] )) && _evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r
-(( $+commands[mise] )) && _evalcache mise activate zsh
-(( $+commands[orbctl] )) && [[ -n $HOME/.orbstack/shell/init.zsh ]] && source $HOME/.orbstack/shell/init.zsh
-(( $+commands[rustup-init] )) && [[ -n $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
 [ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh

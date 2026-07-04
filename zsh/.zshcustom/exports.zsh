@@ -2,28 +2,54 @@
 
 # PATHS
 
+# Initialise path variables and ensure uniqueness
 typeset -U PATH path
 typeset -U MANPATH manpath
 typeset -TU PKG_CONFIG_PATH pkg_config_path
 
+# Add `~/bin`, `~/.local/bin` and `/opt/starship/bin` to $PATH,
+# ensures any binary dependencies of plugins get populated.
+path=($HOME/bin $HOME/.local/bin /opt/starship/bin $path)
+
+# Find Homebrew
+if (( ! $+commands[brew] )); then
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    export BREW_LOCATION="/opt/homebrew/bin/brew"
+  elif [[ -x /usr/local/bin/brew ]]; then
+    export BREW_LOCATION="/usr/local/bin/brew"
+  fi
+fi
+
+# Enable Homebrew
+[[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
+
 # Setup GNU utilities and OpenSSL
 # Note: intentionally skiping GNU coreutils, GNU libtool and make - breaks GYP
 if (( ${+commands[brew]} )); then
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnubin(#qN) ]]; then
-    path=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnubin $path)
-  fi
+  () {
+    setopt local_options extended_glob
+    local brewPrefix=${HOMEBREW_PREFIX:-$(brew --prefix)}
 
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnuman(#qN) ]]; then
-    manpath=(${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/^(coreutils|libtool|make)/libexec/gnuman $manpath)
-  fi
+    path=($brewPrefix/opt/^(coreutils|libtool|make)/libexec/gnubin(#qN) $path)
+    manpath=($brewPrefix/opt/^(coreutils|libtool|make)/libexec/gnuman(#qN) $manpath)
 
-  if [[ -n ${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17/bin(#qN) ]]; then
-    postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17
+    if [[ -d $brewPrefix/opt/postgresql@17/bin ]]; then
+      local postgresqlPath=$brewPrefix/opt/postgresql@17
 
-    path=($postgresqlPath/bin $path)
-    pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
-  fi
+      path=($postgresqlPath/bin $path)
+      pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
+    fi
+  }
 fi
+
+# Setup mise
+(( $+commands[mise] )) && _evalcache mise activate zsh --shims
+
+# Setup OrbStack
+(( $+commands[orbctl] )) && [[ -r $HOME/.orbstack/shell/init.zsh ]] && source $HOME/.orbstack/shell/init.zsh
+
+# Setup Cargo
+(( $+commands[rustup-init] )) && [[ -r $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 # Setup Google Cloud SDK
 if (( $+commands[gcloud] )); then
@@ -37,30 +63,44 @@ if (( $+commands[gcloud] )); then
 fi
 
 # Setup usage of Ghostty from command line
-path+="/Applications/Ghostty.app/Contents/MacOS"
+if [[ -d "/Applications/Ghostty.app/Contents/MacOS" ]]; then
+  path+="/Applications/Ghostty.app/Contents/MacOS"
+fi
 
-# Setup usage of GitButler from command line
-path+="/Applications/GitButler.app/Contents/MacOS"
+# Setup LM Studio CLI
+if [[ -d "$HOME/.lmstudio/bin" ]]; then
+  path+="$HOME/.lmstudio/bin"
+fi
 
-# Setup Android Studio development environment
-export JAVA_HOME=$(/usr/libexec/java_home)
-export ANDROID_HOME=$HOME/Library/Android/sdk
-path+=(
-  $ANDROID_HOME/emulator
-  $ANDROID_HOME/tools
-  $ANDROID_HOME/tools/bin
-  $ANDROID_HOME/platform-tools
-)
+# Setup Java, if a JDK is installed
+() {
+  local javaHome
+  javaHome=$(/usr/libexec/java_home 2>/dev/null) && export JAVA_HOME=$javaHome
+}
+
+# Setup Android Studio development environment, if the SDK is installed
+if [[ -d $HOME/Library/Android/sdk ]]; then
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  path+=(
+    $ANDROID_HOME/emulator
+    $ANDROID_HOME/tools
+    $ANDROID_HOME/tools/bin
+    $ANDROID_HOME/platform-tools
+  )
+fi
 
 # MISCELLANEOUS
 
 # Set global configuration files for `git`
-CURRENT_DIR="${"${(%):-%x}":A:h}"
-export GIT_CONFIG_COUNT=2
-export GIT_CONFIG_KEY_0=core.attributesFile
-export GIT_CONFIG_VALUE_0=$(echo $CURRENT_DIR/../../git/.gitattributes(:A))
-export GIT_CONFIG_KEY_1=core.excludesFile
-export GIT_CONFIG_VALUE_1=$(echo $CURRENT_DIR/../../git/.gitignore(:A))
+() {
+  local gitConfigDir=${${(%):-%x}:A:h}/../../git
+  gitConfigDir=${gitConfigDir:A}
+  export GIT_CONFIG_COUNT=2
+  export GIT_CONFIG_KEY_0=core.attributesFile
+  export GIT_CONFIG_VALUE_0=$gitConfigDir/.gitattributes
+  export GIT_CONFIG_KEY_1=core.excludesFile
+  export GIT_CONFIG_VALUE_1=$gitConfigDir/.gitignore
+}
 # Disable prompt for commit message on merge
 export GIT_MERGE_AUTOEDIT=no
 
