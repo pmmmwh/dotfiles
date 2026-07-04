@@ -2,10 +2,10 @@
 
 () {
   # Get the current execution context
-  SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
+  local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
 
   # Source commons (e.g. logging)
-  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh $SCRIPT_DIR/../_lib/@macos/*.zsh); do
+  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N) $SCRIPT_DIR/../_lib/@macos/*.zsh(N)); do
     source $libraryFile
   done
 
@@ -41,9 +41,6 @@
   if (( $PROMPT_PROCEED == 0 )); then
     brew bundle --file=$SCRIPT_DIR/Personal.Brewfile
   fi
-
-  # Install global tools
-  logger "info" "Installing global tools ..."
 
   logger "success" "Successfully setup Homebrew dependencies."
 }

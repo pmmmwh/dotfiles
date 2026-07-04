@@ -36,6 +36,7 @@ elevate() {
     sleep 60
     kill -0 "$$" || exit
   done 2>/dev/null &
+  export SUDO_KEEPALIVE_PID=$!
 }
 
 prompt() {

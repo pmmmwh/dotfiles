@@ -2,10 +2,10 @@
 
 () {
   # Get the current execution context
-  SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
+  local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
 
   # Source commons (e.g. logging)
-  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh $SCRIPT_DIR/../_lib/@macos/*.zsh); do
+  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N) $SCRIPT_DIR/../_lib/@macos/*.zsh(N)); do
     source $libraryFile
   done
 
@@ -378,7 +378,6 @@
 
   # Finder: show hidden files by default
   defaults write com.apple.finder AppleShowAllFiles -bool "true"
-  defaults write com.apple.finder "AppleShowAllFiles" -bool "true"
 
   # Finder: show all filename extensions
   defaults write NSGlobalDomain AppleShowAllExtensions -bool "true"
@@ -414,11 +413,10 @@
   defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool "true"
 
   # Enable snap-to-grid for icons on the desktop and in other icon views
-  PREFERENCES="$HOME/Library/Preferences/com.apple.finder.plist"
+  local PREFERENCES="$HOME/Library/Preferences/com.apple.finder.plist"
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
   /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
-  unset PREFERENCES
 
   # Use list view in all Finder windows by default
   # Four-letter codes for the other view modes: `Icnv`, `Clmv`, `Glyv`
@@ -497,6 +495,7 @@
   defaults write com.apple.dock persistent-others -array
 
   # Add frequently used apps and folders to the Dock
+  local app folder
   for app (
     '/System/Applications/Music.app'
     '/Applications/Firefox.app'
@@ -509,12 +508,10 @@
   ); do
     add_app_to_dock $app
   done
-  unset app
 
   for folder ($HOME/Downloads); do
     add_folder_to_dock $folder -a 2
   done
-  unset folder
 
 
   ###############################################################################

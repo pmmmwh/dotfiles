@@ -3,13 +3,22 @@ ensure_brew() {
     xcode-select --print-path &>/dev/null
   }
 
-  # Check for Xcode CLI tools
+  # Check for Xcode CLI tools, installing them if missing
   logger "info" "Checking for Xcode CLI tools ..."
-  xcode-select --install 2>/dev/null
+  if ! installed_xcode_cli_tools; then
+    xcode-select --install 2>/dev/null
 
-  until installed_xcode_cli_tools; do
-    sleep 5
-  done
+    # Bound the wait so a dismissed installer dialog can't hang setup forever
+    local waited=0
+    until installed_xcode_cli_tools; do
+      if (( waited >= 600 )); then
+        logger "error" "Timed out waiting for Xcode CLI tools installation!"
+        exit 1
+      fi
+      sleep 5
+      (( waited += 5 ))
+    done
+  fi
 
   # Check for Homebrew, and install it if not found
   logger "info" "Checking for Homebrew installation ..."

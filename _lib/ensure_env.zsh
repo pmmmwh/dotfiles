@@ -12,8 +12,13 @@ ensure_env() {
     logger "info" "Checking for ${(C)package} installation ..."
 
     if (( ! ${+commands[$package]} )); then
-      $PACKAGE_MANAGER install $package
-      logger "success" "Successfully installed ${(C)package}."
+      if $PACKAGE_MANAGER install $package; then
+        rehash
+        logger "success" "Successfully installed ${(C)package}."
+      else
+        logger "error" "Failed to install ${(C)package}!"
+        exit 1
+      fi
     fi
   done
 

@@ -2,11 +2,11 @@
 
 () {
   # Get the current execution context and move into it
-  SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
-  cd $SCRIPT_DIR || return
+  local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
+  cd "$SCRIPT_DIR" || exit 1
 
   # Source commons (e.g. logging)
-  for libraryFile (_lib/*.zsh); do
+  for libraryFile (_lib/*.zsh(N)); do
     source $libraryFile
   done
 
@@ -46,16 +46,22 @@
 
   logger "info" "Installing Starship ..."
 
+  local STARSHIP_LOCATION
   if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
-    export STARSHIP_LOCATION="/opt/starship/bin"
+    STARSHIP_LOCATION="/opt/starship/bin"
   else
-    export STARSHIP_LOCATION="/usr/local/bin"
+    STARSHIP_LOCATION="/usr/local/bin"
   fi
   sudo mkdir -p $STARSHIP_LOCATION
   curl -sS https://starship.rs/install.sh | sh -s -- -b $STARSHIP_LOCATION -y >/dev/null
-  unset STARSHIP_LOCATION
 
   logger "success" "Successfully installed Starship."
+
+  # Stop the sudo keep-alive:
+  # `exec` preserves $$, so its `kill -0 "$$"` guard would never fire,
+  # and the loop would refresh sudo forever in the new shell
+  [[ -n $SUDO_KEEPALIVE_PID ]] && kill $SUDO_KEEPALIVE_PID 2>/dev/null
+  unset SUDO_KEEPALIVE_PID
 
   # Replace the shell instance with a new one
   exec zsh -l
