@@ -50,7 +50,7 @@ brew 'mkcert'    # Golang
 brew 'onefetch'  # Rust
 brew 'p7zip'
 brew 'pigz'
-brew 'pkg-config'
+brew 'pkgconf'
 brew 'protobuf' # Python
 brew 'readline'
 brew 'sqlmap'
@@ -94,7 +94,7 @@ brew 'golangci-lint' # Golang
 brew 'uv' # Rust
 
 # Rust related tools
-brew 'rustup-init' # Rust
+brew 'rustup' # Rust
 
 # Swift related tools
 brew 'cocoapods'
@@ -127,7 +127,7 @@ cask '1password'
 cask '1password/tap/1password-cli'
 cask 'ghostty'
 cask 'karabiner-elements'
-cask 'linear-linear'
+cask 'linear'
 cask 'logi-options+'
 cask 'microsoft-auto-update'
 cask 'microsoft-excel'
