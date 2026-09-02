@@ -1,0 +1,33 @@
+[dotfiles]
+# Only .gitconfig is linked - git does not follow symlinked config files since 2.32,
+# so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
+"~/.gitconfig" = "git/.gitconfig"
+
+"~/.mackup.cfg" = "mackup/.mackup.cfg"
+"~/.mackup" = "mackup/.mackup"
+
+"~/.curlrc" = "prefs/.curlrc"
+"~/.wgetrc" = "prefs/.wgetrc"
+"~/.editorconfig" = "prefs/.editorconfig"
+"~/.prettierrc.json" = "prefs/.prettierrc.json"
+"~/.sql-formatter.json" = "prefs/.sql-formatter.json"
+"~/.default-gems" = "prefs/.default-gems"
+"~/.default-npm-packages" = "prefs/.default-npm-packages"
+
+"~/.zshenv" = "zsh/.zshenv"
+"~/.zprofile" = "zsh/.zprofile"
+"~/.zshrc" = "zsh/.zshrc"
+"~/.hushlogin" = "zsh/.hushlogin"
+
+# Must stay a real directory so plugin checkouts can live under it.
+# extras.zsh is a machine-local override and belongs in the target, not the repo.
+"~/.zshcustom" = { source = "zsh/.zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
+
+# Linked per file - the target also holds config this repo does not own.
+"~/.config" = { source = "config", mode = "symlink-each" }
+
+[bootstrap.repos]
+"~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
+"~/.zshcustom/plugins/fast-syntax-highlighting" = { url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" }
+"~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
+"~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
