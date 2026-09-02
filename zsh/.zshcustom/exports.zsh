@@ -18,6 +18,8 @@ if (( ! $+commands[brew] )); then
   elif [[ -x /usr/local/bin/brew ]]; then
     export BREW_LOCATION="/usr/local/bin/brew"
   fi
+else
+  export BREW_LOCATION=$commands[brew]
 fi
 
 # Enable Homebrew
