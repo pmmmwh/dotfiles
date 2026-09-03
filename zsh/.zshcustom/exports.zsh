@@ -11,6 +11,10 @@ typeset -TU PKG_CONFIG_PATH pkg_config_path
 # ensures any binary dependencies of plugins get populated.
 path=($HOME/bin $HOME/.local/bin $path)
 
+# Add  `/usr/sbin` and `/sbin` to $PATH -
+# macOS `path_helper` populates these, but only for login shells
+path+=(/usr/sbin /sbin)
+
 # Find Homebrew
 if (( ! $+commands[brew] )); then
   if [[ -x /opt/homebrew/bin/brew ]]; then
