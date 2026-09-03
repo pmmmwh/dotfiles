@@ -7,9 +7,9 @@ typeset -U PATH path
 typeset -U MANPATH manpath
 typeset -TU PKG_CONFIG_PATH pkg_config_path
 
-# Add `~/bin`, `~/.local/bin` and `/opt/starship/bin` to $PATH,
+# Add `~/bin` and `~/.local/bin` to $PATH,
 # ensures any binary dependencies of plugins get populated.
-path=($HOME/bin $HOME/.local/bin /opt/starship/bin $path)
+path=($HOME/bin $HOME/.local/bin $path)
 
 # Find Homebrew
 if (( ! $+commands[brew] )); then
@@ -44,14 +44,8 @@ if (( ${+commands[brew]} )); then
   }
 fi
 
-# Setup mise
-(( $+commands[mise] )) && _evalcache mise activate zsh --shims
-
 # Setup OrbStack
 (( $+commands[orbctl] )) && [[ -r $HOME/.orbstack/shell/init.zsh ]] && source $HOME/.orbstack/shell/init.zsh
-
-# Setup Cargo
-(( $+commands[rustup-init] )) && [[ -r $HOME/.cargo/env ]] && source $HOME/.cargo/env
 
 # Setup Google Cloud SDK
 if (( $+commands[gcloud] )); then
@@ -73,12 +67,6 @@ fi
 if [[ -d "$HOME/.lmstudio/bin" ]]; then
   path+="$HOME/.lmstudio/bin"
 fi
-
-# Setup Java, if a JDK is installed
-() {
-  local javaHome
-  javaHome=$(/usr/libexec/java_home 2>/dev/null) && export JAVA_HOME=$javaHome
-}
 
 # Setup Android Studio development environment, if the SDK is installed
 if [[ -d $HOME/Library/Android/sdk ]]; then
