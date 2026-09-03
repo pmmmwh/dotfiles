@@ -1,7 +1,5 @@
 # TAPS
 
-# Formulae for 1Password CLI
-tap '1password/tap'
 # Formulae for dbt Cloud CLI
 tap 'dbt-labs/dbt-cli'
 # Formulae for flux-markdown
@@ -10,8 +8,6 @@ tap 'xykong/tap'
 tap 'tw93/tap'
 # Formulae for sshpass
 tap 'esolitos/ipa'
-# Formulae for terraform
-tap 'hashicorp/tap'
 # Formulae for webfont-related tools
 tap 'bramstein/webfonttools'
 
@@ -71,7 +67,6 @@ brew 'gh'     # Golang
 brew 'git'
 brew 'git-absorb' # Rust
 brew 'git-delta'  # Rust
-brew 'hashicorp/tap/terraform'
 brew 'hyperfine'  # Rust
 brew 'mise'       # Rust
 brew 'nginx'
@@ -93,9 +88,6 @@ brew 'golangci-lint' # Golang
 # Python related tools
 brew 'uv' # Rust
 
-# Rust related tools
-brew 'rustup' # Rust
-
 # Swift related tools
 brew 'cocoapods'
 brew 'swiftformat'
@@ -115,7 +107,6 @@ brew 'bramstein/webfonttools/woff2'
 # Binaries and Drivers
 cask 'gcloud-cli'
 cask 'mitmproxy' # Python
-cask 'zulu@17'
 
 # Browsers
 cask 'firefox'
@@ -124,7 +115,6 @@ cask 'microsoft-edge'
 
 # Utilities
 cask '1password'
-cask '1password/tap/1password-cli'
 cask 'ghostty'
 cask 'karabiner-elements'
 cask 'linear'

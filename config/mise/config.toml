@@ -1,8 +1,14 @@
 [tools]
-node = "24"
 go = "1.26"
+java = "zulu-17"
+node = "24"
 python = "3.12"
 ruby = "3.4"
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
+
+"1password-cli" = "latest"
+starship = "latest"
+terraform = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python"]
