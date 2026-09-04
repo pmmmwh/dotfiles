@@ -36,11 +36,6 @@
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
 
-# Sudo, host-scoped and collection-valued settings mise cannot express.
-[tasks.macos-settings]
-description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
-run = "./@macos/settings.zsh"
-
 [bootstrap.macos.defaults."NSGlobalDomain"]
 # Trackpad: enable force-click
 "com.apple.trackpad.forceClick" = true
@@ -79,6 +74,9 @@ NSAutomaticQuoteSubstitutionEnabled = false
 # Enable spellchecker auto language identification
 NSSpellCheckerAutomaticallyIdentifiesLanguages = true
 "com.apple.mouse.tapBehavior" = 1
+# Trackpad: enable secondary click
+# Also written host-scoped by the macos-settings task, which macOS reads for HID keys
+"com.apple.trackpad.enableSecondaryClick" = true
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 AppleKeyboardUIMode = 3
@@ -337,3 +335,8 @@ AutoUpdateRestartRequired = true
 DisablePrintPreview = true
 # Expand the print dialog by default
 PMPrintingExpandedStateForPrint2 = true
+
+# Sudo, host-scoped and collection-valued settings mise cannot express.
+[tasks.macos-settings]
+description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
+run = "./@macos/settings.zsh"
