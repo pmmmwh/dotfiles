@@ -50,6 +50,7 @@
 "brew:less" = "latest"
 "brew:mackup" = "latest"  # Python
 "brew:mas" = "latest"  # Swift
+"brew:mole" = "latest"
 "brew:onefetch" = "latest"  # Rust
 "brew:p7zip" = "latest"
 "brew:pigz" = "latest"

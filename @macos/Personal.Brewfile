@@ -1,18 +1,7 @@
 # TAPS
 
-# Formulae for MongoDB
-tap 'mongodb/brew'
-
 # General development tools
-brew 'awscli'                # Python
-brew 'aws-elasticbeanstalk'  # Python
-brew 'aws-iam-authenticator' # Golang
 brew 'caddy'                 # Golang
-brew 'circleci'              # Golang
-
-# Database related tools
-brew 'mongodb-community'
-brew 'mysql'
 
 # CASKS
 

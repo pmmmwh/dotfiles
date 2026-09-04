@@ -4,25 +4,15 @@
 tap 'dbt-labs/dbt-cli'
 # Formulae for flux-markdown
 tap 'xykong/tap'
-# Formulae for mole
-tap 'tw93/tap'
 # Formulae for sshpass
 tap 'esolitos/ipa'
-# Formulae for webfont-related tools
-tap 'bramstein/webfonttools'
 
 # BINARIES
 
 brew 'esolitos/ipa/sshpass'
-brew 'tw93/tap/mole'
 
 # Database related tools
 brew 'dbt-labs/dbt-cli/dbt'
-
-# Tools to generate webfonts
-brew 'bramstein/webfonttools/sfnt2woff'
-brew 'bramstein/webfonttools/sfnt2woff-zopfli'
-brew 'bramstein/webfonttools/woff2'
 
 # CASKS
 
