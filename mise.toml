@@ -32,6 +32,10 @@
 "~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
+# Homebrew still owns casks, App Store apps and tapped formulae.
+[bootstrap.hooks.post-tools]
+run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Brewfile"
+
 # Applied standalone, the defaults phase has no other chance to relaunch these.
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"

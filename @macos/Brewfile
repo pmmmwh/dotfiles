@@ -32,17 +32,11 @@ brew 'wget'
 
 # Other miscellaneous binaries
 brew 'ack'
-brew 'atuin'  # Rust
-brew 'bat'    # Rust
-brew 'bottom' # Rust
-brew 'fastfetch'
 brew 'graphviz'
 brew 'imagemagick'
-brew 'jq'
 brew 'less'
 brew 'mackup'    # Python
 brew 'mas'       # Swift
-brew 'mkcert'    # Golang
 brew 'onefetch'  # Rust
 brew 'p7zip'
 brew 'pigz'
@@ -50,29 +44,23 @@ brew 'pkgconf'
 brew 'protobuf' # Python
 brew 'readline'
 brew 'sqlmap'
-brew 'tealdeer' # Rust
 brew 'tree'
 brew 'tw93/tap/mole'
 brew 'xz'
-brew 'yq' # Golang
 brew 'zlib'
 brew 'zopfli'
 
 # General development tools
-brew 'cloudflared' # Golang
 brew 'cmake'
 brew 'eza'    # Rust
 brew 'flyway' # Java
-brew 'gh'     # Golang
 brew 'git'
 brew 'git-absorb' # Rust
 brew 'git-delta'  # Rust
-brew 'hyperfine'  # Rust
 brew 'mise'       # Rust
 brew 'nginx'
 brew 'shellcheck'
 brew 'watchman' # Python
-brew 'xh'       # Rust
 
 # Database related tools
 brew 'dbt-labs/dbt-cli/dbt'
@@ -84,9 +72,6 @@ brew 'hadolint' # Haskell
 
 # Golang related tools
 brew 'golangci-lint' # Golang
-
-# Python related tools
-brew 'uv' # Rust
 
 # Swift related tools
 brew 'cocoapods'
