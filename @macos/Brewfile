@@ -13,74 +13,11 @@ tap 'bramstein/webfonttools'
 
 # BINARIES
 
-# GNU utilities, to replace default BSD ones
-brew 'coreutils'
-brew 'findutils'
-brew 'grep'
-brew 'make'
-brew 'gnu-sed'
-brew 'stow'
-
-# Get latest version of the OpenSSH utilities
-# Disabled to not mess with Keychain integration
-# brew 'openssh'
-# brew 'ssh-copy-id'
 brew 'esolitos/ipa/sshpass'
-
-# The `wget` command
-brew 'wget'
-
-# Other miscellaneous binaries
-brew 'ack'
-brew 'graphviz'
-brew 'imagemagick'
-brew 'less'
-brew 'mackup'    # Python
-brew 'mas'       # Swift
-brew 'onefetch'  # Rust
-brew 'p7zip'
-brew 'pigz'
-brew 'pkgconf'
-brew 'protobuf' # Python
-brew 'readline'
-brew 'sqlmap'
-brew 'tree'
 brew 'tw93/tap/mole'
-brew 'xz'
-brew 'zlib'
-brew 'zopfli'
-
-# General development tools
-brew 'cmake'
-brew 'eza'    # Rust
-brew 'flyway' # Java
-brew 'git'
-brew 'git-absorb' # Rust
-brew 'git-delta'  # Rust
-brew 'mise'       # Rust
-brew 'nginx'
-brew 'shellcheck'
-brew 'watchman' # Python
 
 # Database related tools
 brew 'dbt-labs/dbt-cli/dbt'
-brew 'postgresql@17'
-brew 'sqlite'
-
-# Docker related tools
-brew 'hadolint' # Haskell
-
-# Golang related tools
-brew 'golangci-lint' # Golang
-
-# Swift related tools
-brew 'cocoapods'
-brew 'swiftformat'
-
-# Tools to optimise images
-brew 'jpegoptim'
-brew 'pngquant' # Rust
-brew 'optipng'
 
 # Tools to generate webfonts
 brew 'bramstein/webfonttools/sfnt2woff'

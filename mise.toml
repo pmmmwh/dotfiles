@@ -32,6 +32,60 @@
 "~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
+[bootstrap.packages]
+
+# GNU utilities, to replace default BSD ones
+"brew:coreutils" = "latest"
+"brew:findutils" = "latest"
+"brew:grep" = "latest"
+"brew:make" = "latest"
+"brew:gnu-sed" = "latest"
+"brew:stow" = "latest"
+# The `wget` command
+"brew:wget" = "latest"
+# Other miscellaneous binaries
+"brew:ack" = "latest"
+"brew:graphviz" = "latest"
+"brew:imagemagick" = "latest"
+"brew:less" = "latest"
+"brew:mackup" = "latest"  # Python
+"brew:mas" = "latest"  # Swift
+"brew:onefetch" = "latest"  # Rust
+"brew:p7zip" = "latest"
+"brew:pigz" = "latest"
+"brew:pkgconf" = "latest"
+"brew:protobuf" = "latest"  # Python
+"brew:readline" = "latest"
+"brew:sqlmap" = "latest"
+"brew:tree" = "latest"
+"brew:xz" = "latest"
+"brew:zlib" = "latest"
+"brew:zopfli" = "latest"
+# General development tools
+"brew:cmake" = "latest"
+"brew:eza" = "latest"  # Rust
+"brew:flyway" = "latest"  # Java
+"brew:git" = "latest"
+"brew:git-absorb" = "latest"  # Rust
+"brew:git-delta" = "latest"  # Rust
+"brew:mise" = "latest"  # Rust
+"brew:nginx" = "latest"
+"brew:shellcheck" = "latest"
+"brew:watchman" = "latest"  # Python
+"brew:postgresql@17" = "latest"
+"brew:sqlite" = "latest"
+# Docker related tools
+"brew:hadolint" = "latest"  # Haskell
+# Golang related tools
+"brew:golangci-lint" = "latest"  # Golang
+# Swift related tools
+"brew:cocoapods" = "latest"
+"brew:swiftformat" = "latest"
+# Tools to optimise images
+"brew:jpegoptim" = "latest"
+"brew:pngquant" = "latest"  # Rust
+"brew:optipng" = "latest"
+
 # Homebrew still owns casks, App Store apps and tapped formulae.
 [bootstrap.hooks.post-tools]
 run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Brewfile"
