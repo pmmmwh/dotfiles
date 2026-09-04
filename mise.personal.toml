@@ -1,0 +1,9 @@
+# Loaded only with `-E personal`, replacing the prompt brew.zsh used to ask.
+
+[bootstrap.packages]
+"brew:caddy" = "latest"
+
+# Merges with the base post-tools hook rather than replacing it,
+# so both Brewfiles run on a personal machine.
+[bootstrap.hooks.post-tools]
+run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Personal.Brewfile"

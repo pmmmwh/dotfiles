@@ -1,8 +1,3 @@
-# TAPS
-
-# General development tools
-brew 'caddy'                 # Golang
-
 # CASKS
 
 # Utilities
@@ -17,12 +12,10 @@ cask 'xld'
 
 # IM
 cask 'discord'
-cask 'whatsapp'
 cask 'zoom'
 
 # Creative and Design
 cask 'adobe-creative-cloud'
-cask 'figma'
 
 # Music
 cask 'focusrite-control'
