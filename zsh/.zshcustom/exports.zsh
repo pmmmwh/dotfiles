@@ -67,11 +67,6 @@ if [[ -d "/Applications/Ghostty.app/Contents/MacOS" ]]; then
   path+="/Applications/Ghostty.app/Contents/MacOS"
 fi
 
-# Setup LM Studio CLI
-if [[ -d "$HOME/.lmstudio/bin" ]]; then
-  path+="$HOME/.lmstudio/bin"
-fi
-
 # Setup Android Studio development environment, if the SDK is installed
 if [[ -d $HOME/Library/Android/sdk ]]; then
   export ANDROID_HOME=$HOME/Library/Android/sdk

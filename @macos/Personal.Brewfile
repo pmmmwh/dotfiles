@@ -1,8 +1,14 @@
+# TAPS
+
+# Formulae for entire
+tap 'entireio/tap'
+
 # CASKS
 
 # Utilities
 cask 'craft'
 cask 'dropbox'
+cask 'entireio/tap/entire'
 cask 'microsoft-powerpoint'
 cask 'microsoft-word'
 cask 'omnidisksweeper'
@@ -16,6 +22,8 @@ cask 'zoom'
 
 # Creative and Design
 cask 'adobe-creative-cloud'
+cask 'affinity-designer'
+cask 'affinity-photo'
 
 # Music
 cask 'focusrite-control'
