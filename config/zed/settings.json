@@ -1,0 +1,190 @@
+{
+  "agent": {
+    "dock": "right",
+    "expand_terminal_card": false,
+    "model_parameters": [],
+    "thinking_display": "preview",
+    "use_modifier_to_send": true,
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": { "mode": "auto" },
+      "env": {
+        "ENABLE_TOOL_SEARCH": "true",
+      },
+      "type": "registry",
+    },
+    "gemini": {
+      "default_mode": "default",
+      "type": "registry",
+    },
+  },
+  "bottom_dock_layout": "contained",
+  "buffer_font_fallbacks": ["MesloLGS Nerd Font Mono"],
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 14,
+  "calls": {
+    "mute_on_join": true,
+  },
+  "cli_default_open_behavior": "new_window",
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "colorize_brackets": true,
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "remote": false,
+      "settings": {},
+    },
+  },
+  "file_types": {
+    "Dockerfile": ["Dockerfile.*"],
+    "XML": ["*.svg"],
+  },
+  "format_on_save": "on",
+  "git_panel": {
+    "diff_stats": true,
+    "dock": "left",
+    "tree_view": true,
+  },
+  "icon_theme": "Material Icon Theme",
+  "languages": {
+    "Dockerfile": {
+      "formatter": "language_server",
+    },
+    "Go": {
+      "language_servers": ["...", "golangci-lint"],
+    },
+    "HTML": {
+      "prettier": { "allowed": true },
+    },
+    "JSDoc": {
+      "prettier": { "allowed": true },
+    },
+    "JSON": {
+      "prettier": { "allowed": true },
+    },
+    "JSONC": {
+      "prettier": { "allowed": true },
+    },
+    "JavaScript": {
+      "prettier": { "allowed": true },
+    },
+    "Markdown": {
+      "prettier": { "allowed": true },
+    },
+    "Markdown-Inline": {
+      "prettier": { "allowed": true },
+    },
+    "Python": {
+      "formatter": [
+        { "code_action": "source.fixAll.ruff" },
+        { "code_action": "source.organizeImports.ruff" },
+        { "language_server": { "name": "ruff" } },
+      ],
+      "language_servers": ["basedpyright", "ruff"],
+    },
+    "SQL": {
+      "formatter": {
+        "external": { "command": "sql-formatter" },
+      },
+    },
+    "Svelte": {
+      "prettier": { "allowed": true },
+      "tab_size": 2,
+    },
+    "TOML": {
+      "formatter": {
+        "language_server": { "name": "tombi" },
+      },
+    },
+    "TSX": {
+      "prettier": { "allowed": true },
+    },
+    "TypeScript": {
+      "prettier": { "allowed": true },
+    },
+    "XML": {
+      "prettier": { "allowed": true },
+    },
+    "YAML": {
+      "prettier": { "allowed": true },
+    },
+  },
+  "lsp": {
+    "bash-language-server": {
+      "settings": {
+        "bashIde": {
+          "shellcheckArguments": ["--exclude=SC2034"],
+        },
+      },
+    },
+    "golangci-lint": {
+      "initialization_options": {
+        "command": ["golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false", "--issues-exit-code=1"],
+      },
+    },
+    "tailwindcss-language-server": {
+      "settings": {
+        "classAttributes": [
+          ".*ClassName.*",
+          "\\{\\s*class:\\s*'([^']*)'",
+          "\\{\\s*class:\\s*\"([^\"]*)\"",
+          "class",
+          "class:\\s*([^\\s{]+)",
+          "class:list",
+          "class='([^']*)'",
+          "class=\"([^\"]*)\"",
+          "className",
+          "ngClass",
+        ],
+        "classFunctions": ["cn", "cva", "tv"],
+        "includeLanguages": {
+          "svelte": "html",
+        },
+      },
+    },
+  },
+  "outline_panel": {
+    "dock": "left",
+  },
+  "preferred_line_length": 120,
+  "prettier": {
+    "allowed": false,
+  },
+  "project_panel": {
+    "dock": "left",
+    "hide_gitignore": false,
+    "hide_hidden": false,
+    "hide_root": false,
+  },
+  "semantic_tokens": "combined",
+  "tab_bar": {
+    "show": true,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "terminal": {
+    "option_as_meta": true,
+    "toolbar": {
+      "breadcrumbs": false,
+    },
+  },
+  "theme": {
+    "dark": "Fleet Dark",
+    "light": "Fleet Light",
+    "mode": "system",
+  },
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_menus": false,
+  },
+  "toolbar": {
+    "code_actions": true,
+  },
+  "ui_font_size": 16,
+  "use_system_window_tabs": false,
+}

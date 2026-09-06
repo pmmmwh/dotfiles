@@ -21,7 +21,7 @@ mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
 
 **Personal Stuff**
 
-On a personal machine, add `-E personal` to pull in extra apps and tools:
+On my personal machines, `-E personal` is added to pull in extra apps and tools:
 
 ```sh
 mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
@@ -32,7 +32,7 @@ write macOS defaults and install tool chains.
 
 **macOS Settings**
 
-Some macOS settings cannot be expressed in mise, they can be applied as a separate, deliberate step:
+Some macOS settings cannot be expressed in mise, and they are applied as a separate step:
 
 ```sh
 mise run macos-settings
@@ -75,7 +75,8 @@ To exit with non-zero when something is out of sync, add `--missing` to the comm
 ### Customisation
 
 Any `.zsh` file inside [`.zshcustom`](./zsh/.zshcustom) is sourced at startup.
-Machine-local values that should not be committed can be added via unmanaged Zsh files (e.g. `~/.zshcustom/extras.zsh`).
+If you have machine-local values that should not be committed,
+you can utilise unmanaged Zsh files in the directory (e.g. `~/.zshcustom/extras.zsh`).
 
 ### Reverting
 
@@ -83,9 +84,14 @@ Machine-local values that should not be committed can be added via unmanaged Zsh
 mise bootstrap dotfiles unapply
 ```
 
-This removes the symlinks mise created, leaving the sources alone.
-Packages, tools and macOS defaults are not reverted -
-mise never deletes a default, and removing packages is left to `brew uninstall`.
+This will remove all symlinks mise created,
+but not revert any installed packages and tools, or any applied macOS defaults.
+
+If you need to uninstall packages:
+
+```sh
+brew uninstall
+```
 
 ## Acknowledgements
 
