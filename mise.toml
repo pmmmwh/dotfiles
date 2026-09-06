@@ -40,7 +40,6 @@
 "brew:grep" = "latest"
 "brew:make" = "latest"
 "brew:gnu-sed" = "latest"
-"brew:stow" = "latest"
 # The `wget` command
 "brew:wget" = "latest"
 # Other miscellaneous binaries
@@ -86,6 +85,14 @@
 "brew:jpegoptim" = "latest"
 "brew:pngquant" = "latest"  # Rust
 "brew:optipng" = "latest"
+
+# Homebrew is still needed for casks, App Store apps and tapped formulae,
+# and needs the CLI tools itself.
+[bootstrap.hooks.pre-packages]
+run = [
+  'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }',
+  'command -v brew >/dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+]
 
 # Homebrew still owns casks, App Store apps and tapped formulae.
 [bootstrap.hooks.post-tools]
