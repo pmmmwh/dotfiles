@@ -7,29 +7,32 @@
 > The setup here have been tweaked to cater my personal workflow.
 > They don't suit everyone, so please review the code to make sure the dotfiles fit your setup.
 
-Everything is driven by [`mise`](https://mise.jdx.dev), which is the only thing
-that has to be installed by hand:
+First, install [`mise`](https://mise.jdx.dev), which will drive everything:
 
 ```sh
 curl https://mise.run | sh
 ```
 
-From there, one command sets up the machine:
+Then, run `bootstrap`:
 
 ```sh
 mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
 ```
 
-On a personal machine, add `-E personal` to also pull in the apps and tools
-that only belong there:
+**Personal Stuff**
+
+On a personal machine, add `-E personal` to pull in extra apps and tools:
 
 ```sh
 mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
 ```
 
-That installs system packages, clones the Zsh plugins, links the dotfiles,
-writes the macOS defaults and installs the tools. macOS settings that mise
-cannot express are a separate, deliberate step:
+This will install system packages, clone Zsh plugins, link the dotfiles,
+write macOS defaults and install tool chains.
+
+**macOS Settings**
+
+Some macOS settings cannot be expressed in mise, they can be applied as a separate, deliberate step:
 
 ```sh
 mise run macos-settings
@@ -39,23 +42,27 @@ mise run macos-settings
 
 ### Structure
 
-| Where                              | What                                                        |
-| ---------------------------------- | ----------------------------------------------------------- |
-| `mise.toml`                        | Machine setup - dotfiles, plugin repos, packages, defaults  |
-| `mise.personal.toml`               | The same, for personal machines only                        |
-| `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`   |
-| `config/mise/config.personal.toml` | Tools for personal machines                                 |
+| Where                              | What                                                          |
+| ---------------------------------- | ------------------------------------------------------------- |
+| `mise.toml`                        | Machine setup - dotfiles, plugin repos, packages, defaults    |
+| `mise.personal.toml`               | Same as above, for personal machines                          |
+| `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`     |
+| `config/mise/config.personal.toml` | Sams as above, for personal machines                          |
 | `@macos/Brewfile`                  | Casks, App Store apps, and formulae from taps mise can't pour |
-| `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings |
+| `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings  |
 
-Anything under `@` is operating-system specific; anything under `_` is not
-linked anywhere.
+Anything under `@` is operating-system specific;
+anything under `_` is not linked anywhere.
 
 ### Inspecting
 
-`mise bootstrap status` reports every declarative part at once - packages,
-repos, dotfiles, macOS defaults and tools. The narrower commands are useful
-when you only care about one:
+```sh
+mise bootstrap status
+```
+
+This will report every managed part.
+
+If you only care about one, you can use the narrower commands:
 
 ```sh
 mise bootstrap dotfiles status
@@ -63,15 +70,12 @@ mise bootstrap packages status
 mise bootstrap macos defaults status
 ```
 
-Add `--missing` to any of them to exit non-zero when something is out of sync.
-Nothing is ever applied implicitly - `apply` and `mise bootstrap` are the only
-commands that change anything, and both take `--dry-run`.
+To exit with non-zero when something is out of sync, add `--missing` to the commands.
 
 ### Customisation
 
 Any `.zsh` file inside [`.zshcustom`](./zsh/.zshcustom) is sourced at startup.
-Machine-local values that should not be committed go in
-`~/.zshcustom/extras.zsh`, which mise deliberately does not manage.
+Machine-local values that should not be committed can be added via unmanaged Zsh files (e.g. `~/.zshcustom/extras.zsh`).
 
 ### Reverting
 
@@ -79,9 +83,9 @@ Machine-local values that should not be committed go in
 mise bootstrap dotfiles unapply
 ```
 
-This removes the symlinks mise created, leaving the sources alone. Packages,
-tools and macOS defaults are not reverted - mise never deletes a default, and
-removing packages is left to `brew uninstall` so it stays an explicit choice.
+This removes the symlinks mise created, leaving the sources alone.
+Packages, tools and macOS defaults are not reverted -
+mise never deletes a default, and removing packages is left to `brew uninstall`.
 
 ## Acknowledgements
 
