@@ -1,24 +1,14 @@
 # TAPS
 
-# Formulae for MongoDB
-tap 'mongodb/brew'
-
-# General development tools
-brew 'awscli'                # Python
-brew 'aws-elasticbeanstalk'  # Python
-brew 'aws-iam-authenticator' # Golang
-brew 'caddy'                 # Golang
-brew 'circleci'              # Golang
-
-# Database related tools
-brew 'mongodb-community'
-brew 'mysql'
+# Formulae for entire
+tap 'entireio/tap'
 
 # CASKS
 
 # Utilities
 cask 'craft'
 cask 'dropbox'
+cask 'entireio/tap/entire'
 cask 'microsoft-powerpoint'
 cask 'microsoft-word'
 cask 'omnidisksweeper'
@@ -28,12 +18,12 @@ cask 'xld'
 
 # IM
 cask 'discord'
-cask 'whatsapp'
 cask 'zoom'
 
 # Creative and Design
 cask 'adobe-creative-cloud'
-cask 'figma'
+cask 'affinity-designer'
+cask 'affinity-photo'
 
 # Music
 cask 'focusrite-control'

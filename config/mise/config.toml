@@ -1,8 +1,34 @@
 [tools]
+go = "1.27"
+java = "zulu-17"
 node = "24"
-go = "1.26"
 python = "3.12"
 ruby = "3.4"
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
+
+"1password-cli" = "latest"
+atuin = "latest"
+bat = "latest"
+bottom = "latest"
+cloudflared = "latest"
+fastfetch = "latest"
+gh = "latest"
+hyperfine = "latest"
+jq = "latest"
+mkcert = "latest"
+shfmt = "latest"
+starship = "latest"
+tealdeer = "latest"
+terraform = "latest"
+tokei = "latest"
+uv = "latest"
+xh = "latest"
+yq = "latest"
+
+"aqua:temporalio/cli" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python"]
+
+[settings.github]
+gh_cli_tokens = false

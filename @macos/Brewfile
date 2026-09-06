@@ -1,130 +1,31 @@
 # TAPS
 
-# Formulae for 1Password CLI
-tap '1password/tap'
 # Formulae for dbt Cloud CLI
 tap 'dbt-labs/dbt-cli'
 # Formulae for flux-markdown
 tap 'xykong/tap'
-# Formulae for mole
-tap 'tw93/tap'
 # Formulae for sshpass
 tap 'esolitos/ipa'
-# Formulae for terraform
-tap 'hashicorp/tap'
-# Formulae for webfont-related tools
-tap 'bramstein/webfonttools'
 
 # BINARIES
 
-# GNU utilities, to replace default BSD ones
-brew 'coreutils'
-brew 'findutils'
-brew 'grep'
-brew 'make'
-brew 'gnu-sed'
-brew 'stow'
-
-# Get latest version of the OpenSSH utilities
-# Disabled to not mess with Keychain integration
-# brew 'openssh'
-# brew 'ssh-copy-id'
 brew 'esolitos/ipa/sshpass'
-
-# The `wget` command
-brew 'wget'
-
-# Other miscellaneous binaries
-brew 'ack'
-brew 'atuin'  # Rust
-brew 'bat'    # Rust
-brew 'bottom' # Rust
-brew 'fastfetch'
-brew 'graphviz'
-brew 'imagemagick'
-brew 'jq'
-brew 'less'
-brew 'mackup'    # Python
-brew 'mas'       # Swift
-brew 'mkcert'    # Golang
-brew 'onefetch'  # Rust
-brew 'p7zip'
-brew 'pigz'
-brew 'pkgconf'
-brew 'protobuf' # Python
-brew 'readline'
-brew 'sqlmap'
-brew 'tealdeer' # Rust
-brew 'tree'
-brew 'tw93/tap/mole'
-brew 'xz'
-brew 'yq' # Golang
-brew 'zlib'
-brew 'zopfli'
-
-# General development tools
-brew 'cloudflared' # Golang
-brew 'cmake'
-brew 'eza'    # Rust
-brew 'flyway' # Java
-brew 'gh'     # Golang
-brew 'git'
-brew 'git-absorb' # Rust
-brew 'git-delta'  # Rust
-brew 'hashicorp/tap/terraform'
-brew 'hyperfine'  # Rust
-brew 'mise'       # Rust
-brew 'nginx'
-brew 'shellcheck'
-brew 'watchman' # Python
-brew 'xh'       # Rust
 
 # Database related tools
 brew 'dbt-labs/dbt-cli/dbt'
-brew 'postgresql@17'
-brew 'sqlite'
-
-# Docker related tools
-brew 'hadolint' # Haskell
-
-# Golang related tools
-brew 'golangci-lint' # Golang
-
-# Python related tools
-brew 'uv' # Rust
-
-# Rust related tools
-brew 'rustup' # Rust
-
-# Swift related tools
-brew 'cocoapods'
-brew 'swiftformat'
-
-# Tools to optimise images
-brew 'jpegoptim'
-brew 'pngquant' # Rust
-brew 'optipng'
-
-# Tools to generate webfonts
-brew 'bramstein/webfonttools/sfnt2woff'
-brew 'bramstein/webfonttools/sfnt2woff-zopfli'
-brew 'bramstein/webfonttools/woff2'
 
 # CASKS
 
 # Binaries and Drivers
 cask 'gcloud-cli'
 cask 'mitmproxy' # Python
-cask 'zulu@17'
 
 # Browsers
 cask 'firefox'
 cask 'google-chrome'
-cask 'microsoft-edge'
 
 # Utilities
 cask '1password'
-cask '1password/tap/1password-cli'
 cask 'ghostty'
 cask 'karabiner-elements'
 cask 'linear'
@@ -137,6 +38,7 @@ cask 'notion'
 cask 'raycast'
 cask 'setapp'
 cask 'splashtop-business'
+cask 'tablepro'
 cask 'the-unarchiver'
 cask 'xykong/tap/flux-markdown'
 cask 'yubico-authenticator'

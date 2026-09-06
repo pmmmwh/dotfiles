@@ -1,0 +1,9 @@
+[tools]
+"npm:wasm-pack" = "latest"
+glab = "latest"
+hunk = "latest"
+rclone = "latest"
+xcodegen = "latest"
+
+[settings.gitlab]
+glab_cli_tokens = false

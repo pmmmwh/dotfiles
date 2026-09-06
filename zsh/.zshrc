@@ -14,6 +14,9 @@ if [[ ! -o login ]]; then
   done
 fi
 
+# Enable mise environment
+(( $+commands[mise] )) && _evalcache mise activate zsh
+
 # Enable the Starship theme
 _evalcache starship init zsh
 
