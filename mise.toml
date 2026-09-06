@@ -94,7 +94,7 @@ run = [
 ]
 
 [bootstrap.hooks.post-tools]
-run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Brewfile"
+run = "command -v brew >/dev/null || exit 0; brew bundle install --no-upgrade --file=@macos/Brewfile"
 
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"

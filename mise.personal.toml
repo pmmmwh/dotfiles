@@ -2,4 +2,4 @@
 "brew:caddy" = "latest"
 
 [bootstrap.hooks.post-tools]
-run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Personal.Brewfile"
+run = "command -v brew >/dev/null || exit 0; brew bundle install --no-upgrade --file=@macos/Personal.Brewfile"
