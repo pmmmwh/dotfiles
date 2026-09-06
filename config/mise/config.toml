@@ -17,13 +17,14 @@ jq = "latest"
 mkcert = "latest"
 shfmt = "latest"
 tealdeer = "latest"
-temporal = "latest"
+
 tokei = "latest"
 uv = "latest"
 xh = "latest"
 yq = "latest"
 
 "1password-cli" = "latest"
+"aqua:temporalio/cli" = "latest"
 starship = "latest"
 terraform = "latest"
 
