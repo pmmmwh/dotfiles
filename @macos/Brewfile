@@ -23,7 +23,6 @@ cask 'mitmproxy' # Python
 # Browsers
 cask 'firefox'
 cask 'google-chrome'
-cask 'microsoft-edge'
 
 # Utilities
 cask '1password'
