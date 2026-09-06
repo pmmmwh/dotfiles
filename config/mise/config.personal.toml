@@ -1,13 +1,9 @@
-# Loaded with `-E personal`. Tools only personal machines need on PATH.
-
 [tools]
+"npm:wasm-pack" = "latest"
 glab = "latest"
 hunk = "latest"
-"npm:wasm-pack" = "latest"
 rclone = "latest"
 xcodegen = "latest"
 
-[settings]
-# glab's stored OAuth token expires and then 401s the release fetch;
-# the releases are public, so ask for them unauthenticated.
-gitlab.glab_cli_tokens = false
+[settings.gitlab]
+glab_cli_tokens = false

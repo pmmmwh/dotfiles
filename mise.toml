@@ -1,30 +1,24 @@
 [dotfiles]
+"~/.curlrc" = "prefs/.curlrc"
+"~/.default-gems" = "prefs/.default-gems"
+"~/.default-npm-packages" = "prefs/.default-npm-packages"
+"~/.editorconfig" = "prefs/.editorconfig"
 # Only .gitconfig is linked - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
-
-"~/.mackup.cfg" = "mackup/.mackup.cfg"
+"~/.hushlogin" = "zsh/.hushlogin"
 "~/.mackup" = "mackup/.mackup"
-
-"~/.curlrc" = "prefs/.curlrc"
-"~/.wgetrc" = "prefs/.wgetrc"
-"~/.editorconfig" = "prefs/.editorconfig"
+"~/.mackup.cfg" = "mackup/.mackup.cfg"
 "~/.prettierrc.json" = "prefs/.prettierrc.json"
 "~/.sql-formatter.json" = "prefs/.sql-formatter.json"
-"~/.default-gems" = "prefs/.default-gems"
-"~/.default-npm-packages" = "prefs/.default-npm-packages"
-
-"~/.zshenv" = "zsh/.zshenv"
+"~/.wgetrc" = "prefs/.wgetrc"
 "~/.zprofile" = "zsh/.zprofile"
+"~/.zshenv" = "zsh/.zshenv"
 "~/.zshrc" = "zsh/.zshrc"
-"~/.hushlogin" = "zsh/.hushlogin"
 
-# Must stay a real directory so plugin checkouts can live under it.
-# extras.zsh is a machine-local override and belongs in the target, not the repo.
-"~/.zshcustom" = { source = "zsh/.zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
-
-# Linked per file - the target also holds config this repo does not own.
+# Directories - they will contain code not owned by the repo.
 "~/.config" = { source = "config", mode = "symlink-each" }
+"~/.zshcustom" = { source = "zsh/.zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
@@ -33,72 +27,75 @@
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
 [bootstrap.packages]
-
-# GNU utilities, to replace default BSD ones
+# GNU utilities, to replace BSD ones on macOS
 "brew:coreutils" = "latest"
 "brew:findutils" = "latest"
 "brew:grep" = "latest"
 "brew:make" = "latest"
 "brew:gnu-sed" = "latest"
+
 # The `wget` command
 "brew:wget" = "latest"
+
 # Other miscellaneous binaries
 "brew:ack" = "latest"
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
 "brew:less" = "latest"
-"brew:mackup" = "latest"  # Python
-"brew:mas" = "latest"  # Swift
+"brew:mackup" = "latest"
+"brew:mas" = "latest"
 "brew:mole" = "latest"
-"brew:onefetch" = "latest"  # Rust
+"brew:onefetch" = "latest"
 "brew:p7zip" = "latest"
 "brew:pigz" = "latest"
 "brew:pkgconf" = "latest"
-"brew:protobuf" = "latest"  # Python
+"brew:protobuf" = "latest"
 "brew:readline" = "latest"
 "brew:sqlmap" = "latest"
 "brew:tree" = "latest"
 "brew:xz" = "latest"
 "brew:zlib" = "latest"
 "brew:zopfli" = "latest"
+
 # General development tools
 "brew:cmake" = "latest"
-"brew:eza" = "latest"  # Rust
-"brew:flyway" = "latest"  # Java
+"brew:eza" = "latest"
+"brew:flyway" = "latest"
 "brew:git" = "latest"
-"brew:git-absorb" = "latest"  # Rust
-"brew:git-delta" = "latest"  # Rust
-"brew:mise" = "latest"  # Rust
+"brew:git-absorb" = "latest"
+"brew:git-delta" = "latest"
+"brew:mise" = "latest"
 "brew:nginx" = "latest"
 "brew:shellcheck" = "latest"
-"brew:watchman" = "latest"  # Python
+"brew:watchman" = "latest"
 "brew:postgresql@17" = "latest"
 "brew:sqlite" = "latest"
+
 # Docker related tools
-"brew:hadolint" = "latest"  # Haskell
+"brew:hadolint" = "latest"
+
 # Golang related tools
-"brew:golangci-lint" = "latest"  # Golang
+"brew:golangci-lint" = "latest"
+
 # Swift related tools
 "brew:cocoapods" = "latest"
 "brew:swiftformat" = "latest"
+
 # Tools to optimise images
 "brew:jpegoptim" = "latest"
-"brew:pngquant" = "latest"  # Rust
+"brew:pngquant" = "latest"
 "brew:optipng" = "latest"
 
-# Homebrew is still needed for casks, App Store apps and tapped formulae,
-# and needs the CLI tools itself.
 [bootstrap.hooks.pre-packages]
 run = [
-  'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }',
-  'command -v brew >/dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
+    'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }',
+    # Homebrew is needed for tapped formulae, casks and App Store apps
+    'command -v brew >/dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
 ]
 
-# Homebrew still owns casks, App Store apps and tapped formulae.
 [bootstrap.hooks.post-tools]
 run = "command -v brew >/dev/null || exit 0; brew bundle --file=@macos/Brewfile"
 
-# Applied standalone, the defaults phase has no other chance to relaunch these.
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
 
@@ -145,7 +142,7 @@ NSSpellCheckerAutomaticallyIdentifiesLanguages = true
 "com.apple.trackpad.enableSecondaryClick" = true
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
-AppleKeyboardUIMode = 3
+AppleKeyboardUIMode = 2
 # Enable press-and-hold - this is useful for typing "accents"
 ApplePressAndHoldEnabled = true
 AppleLocale = "en_SE"
@@ -197,10 +194,6 @@ DateFormat = "\"EEE HH:mm:ss\""
 ShowDate = true
 ShowDayOfWeek = false
 ShowSeconds = true
-
-[bootstrap.macos.defaults."com.apple.LaunchServices"]
-# Disable the “Are you sure you want to open this application?” dialog
-LSQuarantine = false
 
 [bootstrap.macos.defaults."com.apple.frameworks.diskimages"]
 # Disable disk image verification
@@ -368,7 +361,7 @@ SortDirection = 0
 
 [bootstrap.macos.defaults."com.apple.TextEdit"]
 # Use plain text mode for new TextEdit documents
-RichText = 0
+RichText = false
 # Open and save files as UTF-8 in TextEdit
 PlainTextEncoding = 4
 PlainTextEncodingForWrite = 4
