@@ -30,9 +30,9 @@
 # GNU utilities, to replace BSD ones on macOS
 "brew:coreutils" = "latest"
 "brew:findutils" = "latest"
+"brew:gnu-sed" = "latest"
 "brew:grep" = "latest"
 "brew:make" = "latest"
-"brew:gnu-sed" = "latest"
 
 # The `wget` command
 "brew:wget" = "latest"
@@ -66,10 +66,10 @@
 "brew:git-delta" = "latest"
 "brew:mise" = "latest"
 "brew:nginx" = "latest"
-"brew:shellcheck" = "latest"
-"brew:watchman" = "latest"
 "brew:postgresql@17" = "latest"
+"brew:shellcheck" = "latest"
 "brew:sqlite" = "latest"
+"brew:watchman" = "latest"
 
 # Docker related tools
 "brew:hadolint" = "latest"
@@ -83,8 +83,8 @@
 
 # Tools to optimise images
 "brew:jpegoptim" = "latest"
-"brew:pngquant" = "latest"
 "brew:optipng" = "latest"
+"brew:pngquant" = "latest"
 
 [bootstrap.hooks.pre-packages]
 run = [
@@ -111,9 +111,9 @@ SortColumn = "CPUUsage"
 SortDirection = 0
 
 [bootstrap.macos.defaults."com.apple.AppleMultitouchTrackpad"]
-# Trackpad: enable tap to click for this user and for the login screen
+# Enable tap to click for this user and for the login screen
 Clicking = true
-# Trackpad: enable tap to right-click
+# Enable tap to right-click
 TrackpadRightClick = true
 
 [bootstrap.macos.defaults."com.apple.BluetoothAudioAgent"]
