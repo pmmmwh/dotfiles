@@ -22,9 +22,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# Show all active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
-
 # Show current public IP address
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 # Show all IP addresses of local network interfaces
@@ -38,30 +35,22 @@ alias listeningports="sudo lsof -iTCP -sTCP:LISTEN -nP"
 # `find . -name .gitattributes | map dirname`
 alias map="xargs -n1"
 
-# Merge PDF files, preserving hyperlinks
-# Usage: `mergepdf input{1,2,3}.pdf`
-alias mergepdf="gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf"
-
 # Prints all PATH entries, each on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload='exec ${SHELL} -l'
 
-# Update starship to latest version
-alias starship-update='curl -sS https://starship.rs/install.sh | sh -s -- -b /opt/starship/bin -y'
-
 # Update software:
 # 1. Get macOS Software Updates
 # 2. Update Homebrew and installed formulae
 # 3. Update apps from App Store
-# 4. Update starship
-# 5. Update tools from mise-en-place
-# 6. Update npm and installed packages
-# 7. Update uv installed packages
-# 8. Update installed Ruby gems
-# 9. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; starship-update; mise up; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
+# 4. Update tools from mise-en-place
+# 5. Update npm and installed packages
+# 6. Update uv installed packages
+# 7. Update installed Ruby gems
+# 8. Clear `eval` cache
+alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; mise up; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"
@@ -128,6 +117,16 @@ gz() {
 
   printf "Original: %d bytes\n" "$origSize"
   printf "Gzipped : %d bytes (%2.2f%%)\n" "$gzipSize" "$ratio"
+}
+
+# Show all active network interfaces
+ifactive() {
+  # awk rather than grep: a match spans the whole indented block, not one line
+  ifconfig | awk '
+    /^[^\t]/ { if (block ~ /status: active/) printf "%s", block; block = "" }
+              { block = block $0 "\n" }
+    END       { if (block ~ /status: active/) printf "%s", block }
+  '
 }
 
 # Show the IP address of the currently active network interface

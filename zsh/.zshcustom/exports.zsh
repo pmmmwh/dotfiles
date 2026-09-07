@@ -29,19 +29,12 @@ fi
 # Enable Homebrew
 [[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
 
-# Setup GNU utilities and OpenSSL
-# Note: intentionally skiping GNU coreutils, GNU libtool and make - breaks GYP
+# Setup PostgreSQL, which is keg-only
 if (( ${+commands[brew]} )); then
   () {
-    setopt local_options extended_glob
-    local brewPrefix=${HOMEBREW_PREFIX:-$(brew --prefix)}
+    local postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17
 
-    path=($brewPrefix/opt/^(coreutils|libtool|make)/libexec/gnubin(#qN) $path)
-    manpath=($brewPrefix/opt/^(coreutils|libtool|make)/libexec/gnuman(#qN) $manpath)
-
-    if [[ -d $brewPrefix/opt/postgresql@17/bin ]]; then
-      local postgresqlPath=$brewPrefix/opt/postgresql@17
-
+    if [[ -d $postgresqlPath/bin ]]; then
       path=($postgresqlPath/bin $path)
       pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
     fi
