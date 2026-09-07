@@ -27,13 +27,6 @@
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
 [bootstrap.packages]
-# GNU utilities, to replace BSD ones on macOS
-"brew:coreutils" = "latest"
-"brew:findutils" = "latest"
-"brew:gnu-sed" = "latest"
-"brew:grep" = "latest"
-"brew:make" = "latest"
-
 # The `wget` command
 "brew:wget" = "latest"
 
