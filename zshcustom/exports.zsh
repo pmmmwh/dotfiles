@@ -75,7 +75,7 @@ fi
 
 # Set global configuration files for `git`
 () {
-  local gitConfigDir=${${(%):-%x}:A:h}/../../git
+  local gitConfigDir=${${(%):-%x}:A:h}/../git
   gitConfigDir=${gitConfigDir:A}
   export GIT_CONFIG_COUNT=2
   export GIT_CONFIG_KEY_0=core.attributesFile
