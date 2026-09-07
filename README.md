@@ -100,6 +100,6 @@ brew uninstall
   which is an amazing starting point for custom dotfiles
   (also contains the amazing `~/.macos` script!)
 - [Dotfiles](https://github.com/driesvints/dotfiles) by [@driesvints](https://github.com/driesvints),
-  which introduced me to tools like `mackup` and `mas` to manage apps and preferences
+  which introduced me to tools like `mas` to manage apps
 - [Dock.sh](https://gist.github.com/kamui545/c810eccf6281b33a53e094484247f5e8) by [@kamui545](https://github.com/kamui545),
   which is used here to programmatically setup the macOS Dock

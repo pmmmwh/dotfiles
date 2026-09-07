@@ -7,8 +7,6 @@
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
 "~/.hushlogin" = "zsh/.hushlogin"
-"~/.mackup" = "mackup/.mackup"
-"~/.mackup.cfg" = "mackup/.mackup.cfg"
 "~/.prettierrc.json" = "prefs/.prettierrc.json"
 "~/.sql-formatter.json" = "prefs/.sql-formatter.json"
 "~/.wgetrc" = "prefs/.wgetrc"
@@ -35,7 +33,6 @@
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
 "brew:less" = "latest"
-"brew:mackup" = "latest"
 "brew:mas" = "latest"
 "brew:mole" = "latest"
 "brew:onefetch" = "latest"
