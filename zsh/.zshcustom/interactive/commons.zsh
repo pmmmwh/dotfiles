@@ -119,6 +119,16 @@ gz() {
   printf "Gzipped : %d bytes (%2.2f%%)\n" "$gzipSize" "$ratio"
 }
 
+# Show all active network interfaces
+ifactive() {
+  # awk rather than grep: a match spans the whole indented block, not one line
+  ifconfig | awk '
+    /^[^\t]/ { if (block ~ /status: active/) printf "%s", block; block = "" }
+              { block = block $0 "\n" }
+    END       { if (block ~ /status: active/) printf "%s", block }
+  '
+}
+
 # Show the IP address of the currently active network interface
 localip() {
   ipconfig getifaddr "$(netstat -rn | grep default | awk '{print $NF}' | head -1)"
