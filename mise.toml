@@ -58,7 +58,6 @@
 "brew:nginx" = "latest"
 "brew:postgresql@17" = "latest"
 "brew:shellcheck" = "latest"
-"brew:sqlite" = "latest"
 "brew:watchman" = "latest"
 
 # Docker related tools
