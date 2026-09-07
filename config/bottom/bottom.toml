@@ -1,0 +1,29 @@
+[flags]
+hide_table_gap = true
+
+[[row]]
+    [[row.child]]
+        ratio = 8
+        type = "cpu"
+    [[row.child]]
+        ratio = 4
+        type = "battery"
+
+[[row]]
+    [[row.child]]
+        ratio = 4
+        type = "memory"
+    [[row.child]]
+        ratio = 4
+        type = "network"
+    [[row.child]]
+        ratio = 4
+        [[row.child.child]]
+            type = "temperature"
+        [[row.child.child]]
+            type = "disk"
+
+[[row]]
+    [[row.child]]
+        type = "process"
+        default = true
