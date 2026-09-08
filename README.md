@@ -74,7 +74,7 @@ To exit with non-zero when something is out of sync, add `--missing` to the comm
 
 ### Customisation
 
-Any `.zsh` file inside [`.zshcustom`](./zsh/.zshcustom) is sourced at startup.
+Any `.zsh` file inside [`.zshcustom`](./zshcustom) is sourced at startup.
 If you have machine-local values that should not be committed,
 you can utilise unmanaged Zsh files in the directory (e.g. `~/.zshcustom/extras.zsh`).
 

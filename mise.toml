@@ -1,22 +1,11 @@
 [dotfiles]
-"~/.curlrc" = "prefs/.curlrc"
-"~/.default-gems" = "prefs/.default-gems"
-"~/.default-npm-packages" = "prefs/.default-npm-packages"
-"~/.editorconfig" = "prefs/.editorconfig"
+"~" = { source = "home", mode = "symlink-each" }
+"~/.config" = { source = "config", mode = "symlink-each" }
+"~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
+
 # Only .gitconfig is linked - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
-"~/.hushlogin" = "zsh/.hushlogin"
-"~/.prettierrc.json" = "prefs/.prettierrc.json"
-"~/.sql-formatter.json" = "prefs/.sql-formatter.json"
-"~/.wgetrc" = "prefs/.wgetrc"
-"~/.zprofile" = "zsh/.zprofile"
-"~/.zshenv" = "zsh/.zshenv"
-"~/.zshrc" = "zsh/.zshrc"
-
-# Directories - they will contain code not owned by the repo.
-"~/.config" = { source = "config", mode = "symlink-each" }
-"~/.zshcustom" = { source = "zsh/.zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
