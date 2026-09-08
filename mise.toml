@@ -54,6 +54,7 @@
 
 # Golang related tools
 "brew:golangci-lint" = "latest"
+"brew:gotestsum" = "latest"
 
 # Swift related tools
 "brew:cocoapods" = "latest"

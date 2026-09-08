@@ -9,6 +9,11 @@
     source $libraryFile
   done
 
+  if [[ $OSTYPE != darwin* ]]; then
+    logger "error" "These settings only apply to macOS."
+    exit 1
+  fi
+
   # Adopted from Mathias Bynens' dotfiles - originally licensed under MIT
   # ~/.macos - https://mths.be/macos
 

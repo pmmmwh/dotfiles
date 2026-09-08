@@ -17,11 +17,13 @@ path+=(/usr/sbin /sbin)
 
 # Find Homebrew
 if (( ! $+commands[brew] )); then
-  if [[ -x /opt/homebrew/bin/brew ]]; then
-    export BREW_LOCATION="/opt/homebrew/bin/brew"
-  elif [[ -x /usr/local/bin/brew ]]; then
-    export BREW_LOCATION="/usr/local/bin/brew"
-  fi
+  for brewCandidate in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+    if [[ -x $brewCandidate ]]; then
+      export BREW_LOCATION=$brewCandidate
+      break
+    fi
+  done
+  unset brewCandidate
 else
   export BREW_LOCATION=$commands[brew]
 fi
@@ -46,13 +48,13 @@ fi
 
 # Setup Google Cloud SDK
 if (( $+commands[gcloud] )); then
-  if [[ -x /opt/homebrew/bin/gcloud ]]; then
-    export CLOUD_SDK_ROOT="/opt/homebrew/share/google-cloud-sdk"
-  elif [[ -x /usr/local/bin/gcloud ]]; then
-    export CLOUD_SDK_ROOT="/usr/share/google-cloud-sdk"
+  if [[ -n $HOMEBREW_PREFIX && -d $HOMEBREW_PREFIX/share/google-cloud-sdk ]]; then
+    export CLOUD_SDK_ROOT=$HOMEBREW_PREFIX/share/google-cloud-sdk
+  elif [[ -d /usr/share/google-cloud-sdk ]]; then
+    export CLOUD_SDK_ROOT=/usr/share/google-cloud-sdk
   fi
 
-  path+="$CLOUD_SDK_ROOT/bin"
+  [[ -n $CLOUD_SDK_ROOT ]] && path+=$CLOUD_SDK_ROOT/bin
 fi
 
 # Setup usage of Ghostty from command line
