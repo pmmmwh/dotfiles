@@ -1,5 +1,43 @@
+min_version = "2026.10.9"
+
+[bootstrap.brew.taps]
+"entireio/tap" = "https://github.com/entireio/homebrew-tap.git"
+
 [bootstrap.packages]
 "brew:caddy" = "latest"
 
-[bootstrap.hooks.post-tools]
-run = "command -v brew >/dev/null || exit 0; brew bundle install --no-upgrade --file=@macos/Personal.Brewfile"
+# Utilities
+"brew-cask:craft" = { version = "latest", os = "macos" }
+"brew-cask:dropbox" = { version = "latest", os = "macos" }
+"brew-cask:entireio/tap/entire" = { version = "latest", os = "macos" }
+"brew-cask:microsoft-powerpoint" = { version = "latest", os = "macos" }
+"brew-cask:microsoft-word" = { version = "latest", os = "macos" }
+"brew-cask:omnidisksweeper" = { version = "latest", os = "macos" }
+"brew-cask:parallels" = { version = "latest", os = "macos" }
+"brew-cask:vlc" = { version = "latest", os = "macos" }
+"brew-cask:xld" = { version = "latest", os = "macos" }
+
+# Instant messaging
+"brew-cask:discord" = { version = "latest", os = "macos" }
+"brew-cask:zoom" = { version = "latest", os = "macos" }
+
+# Creative and design
+"brew-cask:adobe-creative-cloud" = { version = "latest", os = "macos" }
+"brew-cask:affinity-designer" = { version = "latest", os = "macos" }
+"brew-cask:affinity-photo" = { version = "latest", os = "macos" }
+
+# Music
+"brew-cask:focusrite-control" = { version = "latest", os = "macos" }
+"brew-cask:musescore" = { version = "latest", os = "macos" }
+"brew-cask:native-access" = { version = "latest", os = "macos" }
+"brew-cask:reaper" = { version = "latest", os = "macos" }
+
+# Mobile
+"brew-cask:android-platform-tools" = { version = "latest", os = "macos" }
+"brew-cask:expo-orbit" = { version = "latest", os = "macos" }
+"brew-cask:impactor" = { version = "latest", os = "macos" }
+"brew-cask:vysor" = { version = "latest", os = "macos" }
+
+# Gaming
+"brew-cask:parsec" = { version = "latest", os = "macos" }
+"brew-cask:steam" = { version = "latest", os = "macos" }

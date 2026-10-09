@@ -48,7 +48,6 @@ mise run macos-settings
 | `mise.personal.toml`               | Same as above, for personal machines                          |
 | `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`     |
 | `config/mise/config.personal.toml` | Sams as above, for personal machines                          |
-| `@macos/Brewfile`                  | Casks, App Store apps, and formulae from taps mise can't pour |
 | `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings  |
 
 Anything under `@` is operating-system specific;
