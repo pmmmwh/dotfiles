@@ -43,7 +43,6 @@
 "brew:git" = "latest"
 "brew:git-absorb" = "latest"
 "brew:git-delta" = "latest"
-"brew:mise" = "latest"
 "brew:nginx" = "latest"
 "brew:postgresql@17" = "latest"
 "brew:shellcheck" = "latest"
