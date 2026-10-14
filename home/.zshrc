@@ -14,16 +14,23 @@ if [[ ! -o login ]]; then
   done
 fi
 
-# Enable mise environment
-(( $+commands[mise] )) && _evalcache mise activate zsh
-
-# Enable the Starship theme
-_evalcache starship init zsh
+# Load completion files
+typeset -U FPATH fpath
+if [[ -n $BREW_LOCATION ]]; then
+  fpath=(${BREW_LOCATION:h:h}/share/zsh/site-functions $fpath)
+fi
+fpath=($ZSH_CUSTOM/completions $fpath)
 
 # Load plugins
 source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
+
+# Enable mise environment
+(( $+commands[mise] )) && _evalcache mise activate zsh
+
+# Enable the Starship theme
+_evalcache starship init zsh
 
 # Load interactive library files
 for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N)); do
@@ -45,13 +52,6 @@ bindkey "^I" menu-select                                      # ↹
 bindkey -M menuselect "^I" menu-complete                      # ↹
 bindkey "$terminfo[kcbt]" reverse-menu-select                 # ⇧↹
 bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete # ⇧↹
-
-# Load completion files
-typeset -U FPATH fpath
-if [[ -n $BREW_LOCATION ]]; then
-  fpath=(${BREW_LOCATION:h:h}/share/zsh/site-functions $fpath)
-fi
-fpath=($ZSH_CUSTOM/completions $fpath)
 
 # Initialize atuin
 (( $+commands[atuin] )) && _evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r
