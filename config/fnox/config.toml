@@ -1,0 +1,6 @@
+#:schema https://fnox.jdx.dev/schema.json
+
+default_provider = "op"
+
+[providers.op]
+type = "1password"

@@ -12,6 +12,7 @@ bat = "latest"
 bottom = "latest"
 cloudflared = "latest"
 fastfetch = "latest"
+fnox = { version = "latest", workflow = "release.yml" }
 gh = "latest"
 hyperfine = "latest"
 jq = "latest"
