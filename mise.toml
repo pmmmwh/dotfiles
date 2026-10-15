@@ -9,6 +9,9 @@ min_version = "2026.10.9"
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
 
+[bootstrap.user]
+login_shell = "/bin/zsh"
+
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
 "~/.zshcustom/plugins/fast-syntax-highlighting" = { url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" }
@@ -141,6 +144,19 @@ run = [
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
 
+[bootstrap.macos.dock]
+# Add frequently used apps to the Dock, replacing whatever is pinned
+apps = [
+    "/System/Applications/Music.app",
+    "/Applications/Firefox.app",
+    "/Applications/Mimestream.app",
+    "/System/Applications/Calendar.app",
+    "/Applications/Linear.app",
+    "/Applications/Slack.app",
+    "/Applications/Ghostty.app",
+    "/System/Applications/System Settings.app",
+]
+
 [bootstrap.macos.defaults."com.apple.ActivityMonitor"]
 # Visualize CPU usage in the Activity Monitor Dock icon
 IconType = 5
@@ -157,6 +173,8 @@ SortDirection = 0
 Clicking = true
 # Enable tap to right-click
 TrackpadRightClick = true
+# Disable the four-finger pinch gesture
+TrackpadFourFingerPinchGesture = 0
 
 [bootstrap.macos.defaults."com.apple.BluetoothAudioAgent"]
 # Improve sound quality for Bluetooth headphones/headsets
@@ -209,6 +227,7 @@ tilesize = 32
 [bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
 Clicking = true
 TrackpadRightClick = true
+TrackpadFourFingerPinchGesture = 0
 
 [bootstrap.macos.defaults."com.apple.finder"]
 # Finder: show hidden files by default
@@ -309,6 +328,8 @@ WebKitJavaScriptCanOpenWindowsAutomatically = false
 WebKitTabToLinksPreferenceKey = true
 
 [bootstrap.macos.defaults."com.apple.screencapture"]
+# Save screenshots to the desktop; screencapture expands the tilde itself
+location = "~/Desktop"
 # Disable shadow in screenshots
 "disable-shadow" = true
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
@@ -336,6 +357,8 @@ ScheduleFrequency = 1
 NSQuitAlwaysKeepsWindows = true
 
 [bootstrap.macos.defaults."com.apple.Terminal"]
+# Only use UTF-8 in Terminal.app
+StringEncodings = [4]
 # Enable Secure Keyboard Entry in Terminal.app
 # See: https://security.stackexchange.com/a/47786/8918
 SecureKeyboardEntry = true
@@ -381,6 +404,7 @@ AppleInterfaceStyle = "Dark"
 # Enable full keyboard access for all controls
 # (e.g. enable Tab in modal dialogs)
 AppleKeyboardUIMode = 2
+AppleLanguages = ["en-GB", "zh-Hant-HK", "sv-SE"]
 AppleLocale = "en_SE"
 AppleMeasurementUnits = "Centimeters"
 AppleMetricUnits = true
@@ -401,7 +425,7 @@ CGFontRenderingFontSmoothingDisabled = false
 # Enable spring loading for directories
 "com.apple.springing.enabled" = true
 # Trackpad: enable secondary click
-# Also written host-scoped by the macos-settings task, which macOS reads for HID keys
+# Also declared host-scoped below, which macOS reads for HID keys
 "com.apple.trackpad.enableSecondaryClick" = true
 # Trackpad: enable force-click
 "com.apple.trackpad.forceClick" = true
@@ -436,6 +460,128 @@ WebKitDeveloperExtras = true
 [bootstrap.macos.defaults."org.cups.PrintingPrefs"]
 # Automatically quit printer apps once the print jobs complete
 "Quit When Finished" = true
+
+# Show battery percentage in menu bar
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.controlcenter"
+host = "current"
+key = "BatteryShowPercentage"
+value = true
+
+# Hide displays in menu bar
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.controlcenter"
+host = "current"
+key = "Display"
+value = 8
+
+# Hide now playing in menu bar
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.controlcenter"
+host = "current"
+key = "NowPlaying"
+value = 8
+
+# Hide screen mirroring in menu bar
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.controlcenter"
+host = "current"
+key = "ScreenMirroring"
+value = 8
+
+# Hide sound level in menu bar
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.controlcenter"
+host = "current"
+key = "Sound"
+value = 8
+
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+host = "current"
+key = "com.apple.mouse.tapBehavior"
+value = 1
+
+[[bootstrap.macos.defaults_entries]]
+domain = "NSGlobalDomain"
+host = "current"
+key = "com.apple.trackpad.enableSecondaryClick"
+value = true
+
+# Snap-to-grid for desktop icons
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "DesktopViewSettings"
+path = ["IconViewSettings", "arrangeBy"]
+value = "grid"
+
+# Snap-to-grid for finder icons
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "FK_StandardViewSettings"
+path = ["IconViewSettings", "arrangeBy"]
+value = "grid"
+
+# Snap-to-grid for finder icons
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "StandardViewSettings"
+path = ["IconViewSettings", "arrangeBy"]
+value = "grid"
+
+# Expand the "General" File Info pane
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "FXInfoPanesExpanded"
+path = ["General"]
+value = true
+
+# Expand the "Open with" File Info pane
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "FXInfoPanesExpanded"
+path = ["OpenWith"]
+value = true
+
+# Expand the "Sharing & Permissions" File Info pane
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.finder"
+key = "FXInfoPanesExpanded"
+path = ["Privileges"]
+value = true
+
+# Send an email with Command-Return
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.mail"
+key = "NSUserKeyEquivalents"
+path = ["Send"]
+value = "@\u21A9"
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.mail"
+key = "DraftsViewerAttributes"
+path = ["DisplayInThreadedMode"]
+value = true
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.mail"
+key = "DraftsViewerAttributes"
+path = ["SortedDescending"]
+value = true
+
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.mail"
+key = "DraftsViewerAttributes"
+path = ["SortOrder"]
+value = "received-date"
+
+# Prevent Photos from opening automatically when devices are plugged in
+[[bootstrap.macos.defaults_entries]]
+domain = "com.apple.Image_Capture"
+host = "current"
+key = "disableHotPlug"
+value = true
 
 [tasks.macos-settings]
 description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
