@@ -14,6 +14,9 @@
       },
       "type": "registry",
     },
+    "codex-acp": {
+      "type": "registry",
+    },
     "gemini": {
       "default_mode": "default",
       "type": "registry",

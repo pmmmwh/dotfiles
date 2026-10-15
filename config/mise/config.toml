@@ -7,6 +7,9 @@ ruby = "3.4"
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = "latest"
+"aqua:temporalio/cli" = "latest"
+"github:can1357/oh-my-pi" = "latest"
+agent-browser = "latest"
 atuin = "latest"
 bat = "latest"
 bottom = "latest"
@@ -14,6 +17,7 @@ cloudflared = "latest"
 fastfetch = "latest"
 fnox = { version = "latest", workflow = "release.yml" }
 gh = "latest"
+golangci-lint = "latest"
 hyperfine = "latest"
 jq = "latest"
 mkcert = "latest"
@@ -26,10 +30,9 @@ uv = "latest"
 xh = "latest"
 yq = "latest"
 
-"aqua:temporalio/cli" = "latest"
-
 [settings]
 idiomatic_version_file_enable_tools = ["node", "python"]
+self_update.auto = true
 
 [settings.github]
 gh_cli_tokens = false
