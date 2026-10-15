@@ -173,6 +173,8 @@ SortDirection = 0
 Clicking = true
 # Enable tap to right-click
 TrackpadRightClick = true
+# Disable the four-finger pinch gesture
+TrackpadFourFingerPinchGesture = 0
 
 [bootstrap.macos.defaults."com.apple.BluetoothAudioAgent"]
 # Improve sound quality for Bluetooth headphones/headsets
@@ -225,6 +227,7 @@ tilesize = 32
 [bootstrap.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
 Clicking = true
 TrackpadRightClick = true
+TrackpadFourFingerPinchGesture = 0
 
 [bootstrap.macos.defaults."com.apple.finder"]
 # Finder: show hidden files by default
