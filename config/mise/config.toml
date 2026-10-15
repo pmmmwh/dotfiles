@@ -31,7 +31,8 @@ xh = "latest"
 yq = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node", "python"]
+idiomatic_version_file_enable_tools = ["go", "node", "python"]
+lockfile = true
 self_update.auto = true
 
 [settings.github]
