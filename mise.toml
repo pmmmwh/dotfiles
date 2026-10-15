@@ -407,6 +407,18 @@ DisablePrintPreview = true
 # Expand the print dialog by default
 PMPrintingExpandedStateForPrint2 = true
 
+[bootstrap.macos.defaults."com.raycast.macos"]
+emojiPicker_skinTone = "light"
+navigationCommandStyleIdentifierKey = "macos"
+# Return to the root search after 90 seconds in the background
+popToRootTimeout = 90
+# Do not let Quicklinks take over the search bar
+quicklinks_enableAutoFillLink = false
+quicklinks_enableQuickSearch = false
+# Open Raycast with the Spotlight hotkey; "49" is the keycode for space
+raycastGlobalHotkey = "Command-49"
+showFavoritesInCompactMode = true
+
 [bootstrap.macos.defaults."NSGlobalDomain"]
 # Make window fill screen on double-clicking its title bar
 AppleActionOnDoubleClick = "Fill"
