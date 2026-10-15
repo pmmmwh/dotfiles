@@ -43,14 +43,13 @@ alias reload='exec ${SHELL} -l'
 
 # Update software:
 # 1. Get macOS Software Updates
-# 2. Update Homebrew and installed formulae
+# 2. Update mise-en-place, then the tools it installed and the packages it declares
 # 3. Update apps from App Store
-# 4. Update mise-en-place itself, then the tools it installed
-# 5. Update npm and installed packages
-# 6. Update uv installed packages
-# 7. Update installed Ruby gems
-# 8. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; brew update; brew upgrade; mas upgrade; mise self-update -y; mise up; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
+# 4. Update npm and installed packages
+# 5. Update uv installed packages
+# 6. Update installed Ruby gems
+# 7. Clear `eval` cache
+alias update="sudo softwareupdate -i -a; mise self-update -y; mise up; mise bootstrap packages upgrade; mas upgrade; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
 
 # Get current week (number)
 alias week="date +%V"

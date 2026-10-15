@@ -16,8 +16,8 @@ fi
 
 # Load completion files
 typeset -U FPATH fpath
-if [[ -n $BREW_LOCATION ]]; then
-  fpath=(${BREW_LOCATION:h:h}/share/zsh/site-functions $fpath)
+if [[ -n $HOMEBREW_PREFIX ]]; then
+  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 fi
 fpath=($ZSH_CUSTOM/completions $fpath)
 

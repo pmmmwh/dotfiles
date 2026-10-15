@@ -15,26 +15,24 @@ path=($HOME/bin $HOME/.local/bin $path)
 # macOS `path_helper` populates these, but only for login shells
 path+=(/usr/sbin /sbin)
 
-# Find Homebrew
-if (( ! $+commands[brew] )); then
-  for brewCandidate in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
-    if [[ -x $brewCandidate ]]; then
-      export BREW_LOCATION=$brewCandidate
-      break
-    fi
-  done
-  unset brewCandidate
-else
-  export BREW_LOCATION=$commands[brew]
-fi
+# Find the Homebrew prefix -
+# packages are installed by `mise` so `brew` might not be available
+for brewPrefixCandidate in /opt/homebrew /usr/local /home/linuxbrew/.linuxbrew; do
+  if [[ -d $brewPrefixCandidate/Cellar ]]; then
+    export HOMEBREW_PREFIX=$brewPrefixCandidate
+    break
+  fi
+done
+unset brewPrefixCandidate
 
-# Enable Homebrew
-[[ -n $BREW_LOCATION ]] && _evalcache "$BREW_LOCATION" shellenv
+# Setup Homebrew paths
+if [[ -n $HOMEBREW_PREFIX ]]; then
+  path=($HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin $path)
+  manpath=($HOMEBREW_PREFIX/share/man $manpath)
 
-# Setup PostgreSQL, which is keg-only
-if (( ${+commands[brew]} )); then
+  # Setup PostgreSQL, which is keg-only
   () {
-    local postgresqlPath=${HOMEBREW_PREFIX:-$(brew --prefix)}/opt/postgresql@17
+    local postgresqlPath=$HOMEBREW_PREFIX/opt/postgresql@17
 
     if [[ -d $postgresqlPath/bin ]]; then
       path=($postgresqlPath/bin $path)
@@ -107,6 +105,6 @@ export NODE_REPL_MODE=sloppy
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
 
-# Avoid issues with `gpg` (installed via Homebrew)
+# Avoid issues with `gpg`
 # Ref: https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty)

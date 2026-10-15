@@ -136,10 +136,7 @@ login_shell = "/bin/zsh"
 "mas:497799835" = "latest"
 
 [bootstrap.hooks.pre-packages]
-run = [
-    'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }',
-    'command -v brew >/dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
-]
+run = 'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }'
 
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
