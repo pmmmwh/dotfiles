@@ -40,3 +40,4 @@ Temporary Items
 # Local configuration files
 git/.gitcredentials*
 zsh/.zshcustom/extras.zsh
+mise.local.toml

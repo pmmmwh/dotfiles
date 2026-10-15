@@ -5,9 +5,31 @@ min_version = "2026.10.9"
 "~/.config" = { source = "config", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 
-# Only .gitconfig is linked - git does not follow symlinked config files since 2.32,
+# Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
+"~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
+"~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
+
+[vars.git_name]
+prompt = "Name on git commits"
+required = "Run `mise vars prompt git_name`"
+
+[vars.git_personal_email]
+prompt = "Email address for personal git commits"
+required = "Run `mise vars prompt git_personal_email`"
+
+[vars.git_personal_signing_key]
+prompt = "GPG signing key for personal git commits"
+required = "Run `mise vars prompt git_personal_signing_key`"
+
+[vars.git_work_email]
+prompt = "Email address for work git commits"
+required = "Run `mise vars prompt git_work_email`"
+
+[vars.git_work_signing_key]
+prompt = "GPG signing key for work git commits"
+required = "Run `mise vars prompt git_work_signing_key`"
 
 [bootstrap.user]
 login_shell = "/bin/zsh"
