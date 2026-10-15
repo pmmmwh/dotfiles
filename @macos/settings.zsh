@@ -42,22 +42,9 @@
   # when clicking the clock in the login window
   sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
-  # Show battery percentage in menu bar
-  defaults write $HOME/Library/Preferences/ByHost/com.apple.controlcenter.plist "BatteryShowPercentage" -bool "true"
-
-  # Hide unwanted items in menu bar
-  defaults write $HOME/Library/Preferences/ByHost/com.apple.controlcenter.plist "Display" -int 8
-  defaults write $HOME/Library/Preferences/ByHost/com.apple.controlcenter.plist "NowPlaying" -int 8
-  defaults write $HOME/Library/Preferences/ByHost/com.apple.controlcenter.plist "ScreenMirroring" -int 8
-  defaults write $HOME/Library/Preferences/ByHost/com.apple.controlcenter.plist "Sound" -int 8
-
   ###############################################################################
   # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
   ###############################################################################
-
-  defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-  defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool "true"
 
   # Use scroll gesture with the Ctrl (^) modifier key to zoom
   sudo defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool "true"
@@ -65,9 +52,6 @@
 
   # Follow the keyboard focus while zoomed in
   sudo defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool "true"
-
-  # Set language and text formats
-  defaults write NSGlobalDomain AppleLanguages -array "en-GB" "zh-Hant-HK" "sv-SE"
 
   # Set the timezone and sync automatically from network
   # See `sudo systemsetup -listtimezones` for other values
@@ -121,9 +105,6 @@
   # Screen                                                                      #
   ###############################################################################
 
-  # Save screenshots to the desktop
-  defaults write com.apple.screencapture location -string "$HOME/Desktop"
-
   # Enable HiDPI display modes (requires restart)
   sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool "true"
 
@@ -133,22 +114,9 @@
 
   defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
 
-  # Enable snap-to-grid for icons on the desktop and in other icon views
-  local PREFERENCES="$HOME/Library/Preferences/com.apple.finder.plist"
-  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
-  /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" "$PREFERENCES"
-
   # Show the ~/Library folder
   xattr -d com.apple.FinderInfo ~/Library 2>/dev/null
   chflags nohidden ~/Library
-
-  # Expand the following File Info panes:
-  # “General”, “Open with”, and “Sharing & Permissions”
-  defaults write com.apple.finder FXInfoPanesExpanded -dict \
-    General -bool "true" \
-    OpenWith -bool "true" \
-    Privileges -bool "true"
 
   ###############################################################################
   # Dock, Dashboard and Window Manager                                          #
@@ -158,58 +126,18 @@
   find "${HOME}/Library/Application Support/Dock" -maxdepth 1 -name "*-*.db" -delete
 
   # Add Simulator to Launchpad
+  # Left here rather than declared: a [dotfiles] entry whose source is missing
+  # aborts the whole dotfiles phase, and Xcode is not always fully installed
   sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
-
-  # Wipe all (default) app icons from the Dock
-  defaults write com.apple.dock persistent-apps -array
 
   # Wipe all (default) folder icons from the Dock
   defaults write com.apple.dock persistent-others -array
 
-  # Add frequently used apps and folders to the Dock
-  local app folder
-  for app (
-    '/System/Applications/Music.app'
-    '/Applications/Firefox.app'
-    '/Applications/Mimestream.app'
-    '/System/Applications/Calendar.app'
-    '/Applications/Linear.app'
-    '/Applications/Slack.app'
-    '/Applications/Ghostty.app'
-    '/System/Applications/System Settings.app'
-  ); do
-    add_app_to_dock $app
-  done
-
+  # Add frequently used folders to the Dock
+  local folder
   for folder ($HOME/Downloads); do
     add_folder_to_dock $folder -a 2
   done
-
-  ###############################################################################
-  # Mail                                                                        #
-  ###############################################################################
-
-  # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
-  defaults write -app "Mail" NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
-
-  # Display emails in threaded mode, sorted by date (oldest at the top)
-  defaults write -app "Mail" DraftsViewerAttributes -dict-add "DisplayInThreadedMode" -bool "true"
-  defaults write -app "Mail" DraftsViewerAttributes -dict-add "SortedDescending" -bool "true"
-  defaults write -app "Mail" DraftsViewerAttributes -dict-add "SortOrder" -string "received-date"
-
-  ###############################################################################
-  # Terminal                                                                    #
-  ###############################################################################
-
-  # Only use UTF-8 in Terminal.app
-  defaults write -app "Terminal" StringEncodings -array 4
-
-  ###############################################################################
-  # Photos                                                                      #
-  ###############################################################################
-
-  # Prevent Photos from opening automatically when devices are plugged in
-  defaults -currentHost write -app "Image Capture" disableHotPlug -bool "true"
 
   ###############################################################################
   # Kill affected applications                                                  #
