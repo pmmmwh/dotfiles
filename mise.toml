@@ -1,3 +1,5 @@
+min_version = "2026.10.9"
+
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
 "~/.config" = { source = "config", mode = "symlink-each" }
@@ -13,16 +15,22 @@
 "~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
+[bootstrap.brew.taps]
+"dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
+"esolitos/ipa" = "https://github.com/esolitos/homebrew-ipa.git"
+"xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
+
 [bootstrap.packages]
 # The `wget` command
 "brew:wget" = "latest"
 
 # Other miscellaneous binaries
 "brew:ack" = "latest"
+"brew:esolitos/ipa/sshpass" = "latest"
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
 "brew:less" = "latest"
-"brew:mas" = "latest"
+"brew:mas" = "latest"  # needs to be installed before `mas:` entries below
 "brew:mole" = "latest"
 "brew:onefetch" = "latest"
 "brew:p7zip" = "latest"
@@ -48,6 +56,9 @@
 "brew:shellcheck" = "latest"
 "brew:watchman" = "latest"
 
+# Database related tools
+"brew:dbt-labs/dbt-cli/dbt" = "latest"
+
 # Docker related tools
 "brew:hadolint" = "latest"
 
@@ -64,15 +75,68 @@
 "brew:optipng" = "latest"
 "brew:pngquant" = "latest"
 
+# Binaries and drivers
+"brew-cask:gcloud-cli" = { version = "latest", os = "macos" }
+"brew-cask:mitmproxy" = { version = "latest", os = "macos" }
+
+# Browsers
+"brew-cask:firefox" = { version = "latest", os = "macos" }
+"brew-cask:google-chrome" = { version = "latest", os = "macos" }
+
+# Utilities
+"brew-cask:1password" = { version = "latest", os = "macos" }
+"brew-cask:ghostty" = { version = "latest", os = "macos" }
+"brew-cask:karabiner-elements" = { version = "latest", os = "macos" }
+"brew-cask:linear" = { version = "latest", os = "macos" }
+"brew-cask:logi-options+" = { version = "latest", os = "macos" }
+"brew-cask:microsoft-auto-update" = { version = "latest", os = "macos" }
+"brew-cask:microsoft-excel" = { version = "latest", os = "macos" }
+"brew-cask:mimestream" = { version = "latest", os = "macos" }
+"brew-cask:mullvad-vpn" = { version = "latest", os = "macos" }
+"brew-cask:notion" = { version = "latest", os = "macos" }
+"brew-cask:raycast" = { version = "latest", os = "macos" }
+"brew-cask:setapp" = { version = "latest", os = "macos" }
+"brew-cask:splashtop-business" = { version = "latest", os = "macos" }
+"brew-cask:tablepro" = { version = "latest", os = "macos" }
+"brew-cask:the-unarchiver" = { version = "latest", os = "macos" }
+"brew-cask:xykong/tap/flux-markdown" = { version = "latest", os = "macos" }
+"brew-cask:yubico-authenticator" = { version = "latest", os = "macos" }
+
+# Instant messaging
+"brew-cask:signal" = { version = "latest", os = "macos" }
+"brew-cask:slack" = { version = "latest", os = "macos" }
+"brew-cask:telegram-desktop" = { version = "latest", os = "macos" }
+
+# Creative and design
+"brew-cask:figma" = { version = "latest", os = "macos" }
+"brew-cask:font-meslo-lg-nerd-font" = { version = "latest", os = ["linux", "macos"] }
+"brew-cask:sf-symbols" = { version = "latest", os = "macos" }
+
+# Development
+"brew-cask:gitbutler" = { version = "latest", os = "macos" }
+"brew-cask:gpg-suite" = { version = "latest", os = "macos" }
+"brew-cask:imageoptim" = { version = "latest", os = "macos" }
+"brew-cask:jetbrains-toolbox" = { version = "latest", os = "macos" }
+"brew-cask:localcan" = { version = "latest", os = "macos" }
+"brew-cask:orbstack" = { version = "latest", os = "macos" }
+"brew-cask:swiftformat-for-xcode" = { version = "latest", os = "macos" }
+"brew-cask:yaak" = { version = "latest", os = "macos" }
+"brew-cask:zed" = { version = "latest", os = "macos" }
+
+# Flighty
+"mas:1358823008" = "latest"
+# Speedtest by Ookla
+"mas:1153157709" = "latest"
+# WireGuard
+"mas:1451685025" = "latest"
+# Xcode
+"mas:497799835" = "latest"
+
 [bootstrap.hooks.pre-packages]
 run = [
     'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }',
-    # Homebrew is needed for tapped formulae, casks and App Store apps
     'command -v brew >/dev/null || NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
 ]
-
-[bootstrap.hooks.post-tools]
-run = "command -v brew >/dev/null || exit 0; brew bundle install --no-upgrade --file=@macos/Brewfile"
 
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
