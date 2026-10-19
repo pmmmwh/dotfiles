@@ -4,129 +4,156 @@
     "expand_terminal_card": false,
     "model_parameters": [],
     "thinking_display": "preview",
-    "use_modifier_to_send": true,
+    "use_modifier_to_send": true
   },
   "agent_servers": {
     "claude-acp": {
       "default_config_options": { "mode": "auto" },
       "env": {
-        "ENABLE_TOOL_SEARCH": "true",
+        "ENABLE_TOOL_SEARCH": "true"
       },
-      "type": "registry",
+      "type": "registry"
     },
     "codex-acp": {
-      "type": "registry",
+      "type": "registry"
     },
     "gemini": {
       "default_mode": "default",
-      "type": "registry",
-    },
+      "type": "registry"
+    }
   },
   "bottom_dock_layout": "contained",
   "buffer_font_fallbacks": ["MesloLGS Nerd Font Mono"],
   "buffer_font_family": "Berkeley Mono",
   "buffer_font_size": 14,
   "calls": {
-    "mute_on_join": true,
+    "mute_on_join": true
   },
   "cli_default_open_behavior": "new_window",
   "collaboration_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "colorize_brackets": true,
   "context_servers": {
     "mcp-server-context7": {
       "enabled": true,
       "remote": false,
-      "settings": {},
-    },
+      "settings": {}
+    }
   },
   "file_types": {
     "Dockerfile": ["Dockerfile.*"],
-    "XML": ["*.svg"],
+    "XML": ["*.svg"]
   },
   "format_on_save": "on",
   "git_panel": {
     "diff_stats": true,
     "dock": "left",
-    "tree_view": true,
+    "tree_view": true
   },
   "icon_theme": "Material Icon Theme",
   "languages": {
+    "CSS": {
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    },
     "Dockerfile": {
-      "formatter": "language_server",
+      "formatter": "language_server"
     },
     "Go": {
-      "language_servers": ["...", "golangci-lint"],
+      "language_servers": ["...", "golangci-lint"]
     },
     "HTML": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "JSDoc": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "JSON": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "JSONC": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "JavaScript": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "Markdown": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "Markdown-Inline": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "Python": {
       "formatter": [
         { "code_action": "source.fixAll.ruff" },
         { "code_action": "source.organizeImports.ruff" },
-        { "language_server": { "name": "ruff" } },
+        { "language_server": { "name": "ruff" } }
       ],
-      "language_servers": ["basedpyright", "ruff"],
+      "language_servers": ["basedpyright", "ruff"]
     },
     "SQL": {
       "formatter": {
-        "external": { "command": "sql-formatter" },
-      },
+        "external": { "command": "sql-formatter" }
+      }
     },
     "Svelte": {
       "prettier": { "allowed": true },
-      "tab_size": 2,
+      "tab_size": 2
     },
     "TOML": {
       "formatter": {
-        "language_server": { "name": "tombi" },
-      },
+        "language_server": { "name": "tombi" }
+      }
     },
     "TSX": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "TypeScript": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "XML": {
-      "prettier": { "allowed": true },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
     },
     "YAML": {
-      "prettier": { "allowed": true },
-    },
+      "formatter": [{ "language_server": { "name": "oxfmt" } }]
+    }
   },
   "lsp": {
     "bash-language-server": {
       "settings": {
         "bashIde": {
-          "shellcheckArguments": ["--exclude=SC2034"],
-        },
-      },
+          "shellcheckArguments": ["--exclude=SC2034"]
+        }
+      }
     },
     "golangci-lint": {
       "initialization_options": {
-        "command": ["golangci-lint", "run", "--output.json.path=stdout", "--show-stats=false", "--issues-exit-code=1"],
-      },
+        "command": [
+          "golangci-lint",
+          "run",
+          "--output.json.path=stdout",
+          "--show-stats=false",
+          "--issues-exit-code=1"
+        ]
+      }
+    },
+    "oxfmt": {
+      "initialization_options": {
+        "settings": {
+          "fmt.disableNestedConfig": false,
+          "run": "onSave"
+        }
+      }
+    },
+    "oxlint": {
+      "initialization_options": {
+        "settings": {
+          "disableNestedConfig": false,
+          "fixKind": "safe_fix",
+          "run": "onType",
+          "unusedDisableDirectives": "deny"
+        }
+      }
     },
     "tailwindcss-language-server": {
       "settings": {
@@ -140,54 +167,54 @@
           "class='([^']*)'",
           "class=\"([^\"]*)\"",
           "className",
-          "ngClass",
+          "ngClass"
         ],
         "classFunctions": ["cn", "cva", "tv"],
         "includeLanguages": {
-          "svelte": "html",
-        },
-      },
-    },
+          "svelte": "html"
+        }
+      }
+    }
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "preferred_line_length": 120,
   "prettier": {
-    "allowed": false,
+    "allowed": false
   },
   "project_panel": {
     "dock": "left",
     "hide_gitignore": false,
     "hide_hidden": false,
-    "hide_root": false,
+    "hide_root": false
   },
   "semantic_tokens": "combined",
   "tab_bar": {
-    "show": true,
+    "show": true
   },
   "tabs": {
     "file_icons": true,
-    "git_status": true,
+    "git_status": true
   },
   "terminal": {
     "option_as_meta": true,
     "toolbar": {
-      "breadcrumbs": false,
-    },
+      "breadcrumbs": false
+    }
   },
   "theme": {
     "dark": "Fleet Dark",
     "light": "Fleet Light",
-    "mode": "system",
+    "mode": "system"
   },
   "title_bar": {
     "show_branch_status_icon": true,
-    "show_menus": false,
+    "show_menus": false
   },
   "toolbar": {
-    "code_actions": true,
+    "code_actions": true
   },
   "ui_font_size": 16,
-  "use_system_window_tabs": false,
+  "use_system_window_tabs": false
 }
