@@ -543,13 +543,6 @@ host = "current"
 key = "com.apple.trackpad.enableSecondaryClick"
 value = true
 
-# Snap-to-grid for desktop icons
-[[bootstrap.macos.defaults_entries]]
-domain = "com.apple.finder"
-key = "DesktopViewSettings"
-path = ["IconViewSettings", "arrangeBy"]
-value = "grid"
-
 # Snap-to-grid for finder icons
 [[bootstrap.macos.defaults_entries]]
 domain = "com.apple.finder"
