@@ -5,6 +5,9 @@ min_version = "2026.10.9"
 "~/.config" = { source = "config", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 
+# Copied, as Karabiner-Elements replaces the file when it saves
+"~/.config/karabiner/karabiner.json" = { source = "karabiner/karabiner.json", mode = "copy", permissions = "0600" }
+
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
