@@ -3,6 +3,7 @@ min_version = "2026.10.9"
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
 "~/.config" = { source = "config", mode = "symlink-each" }
+"~/.gnupg" = { source = "gnupg", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 
 # Copied, as Karabiner-Elements replaces the file when it saves
