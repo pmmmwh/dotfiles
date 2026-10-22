@@ -5,7 +5,7 @@
   local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
 
   # Source commons (e.g. logging)
-  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N) $SCRIPT_DIR/../_lib/@macos/*.zsh(N)); do
+  for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N)); do
     source $libraryFile
   done
 
