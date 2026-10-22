@@ -23,17 +23,9 @@ required = "Run `mise vars prompt git_name`"
 prompt = "Email address for personal git commits"
 required = "Run `mise vars prompt git_personal_email`"
 
-[vars.git_personal_signing_key]
-prompt = "GPG signing key for personal git commits"
-required = "Run `mise vars prompt git_personal_signing_key`"
-
 [vars.git_work_email]
 prompt = "Email address for work git commits"
 required = "Run `mise vars prompt git_work_email`"
-
-[vars.git_work_signing_key]
-prompt = "GPG signing key for work git commits"
-required = "Run `mise vars prompt git_work_signing_key`"
 
 [bootstrap.user]
 login_shell = "/bin/zsh"
@@ -166,6 +158,9 @@ run = 'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish
 
 [bootstrap.hooks.post-defaults]
 run = "killall Dock Finder SystemUIServer || true"
+
+[bootstrap.hooks.post-dotfiles]
+run = "'{{ config_root }}/git/generate-signing-keys.zsh'"
 
 [bootstrap.macos.dock]
 # Add frequently used apps to the Dock, replacing whatever is pinned
