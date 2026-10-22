@@ -7,7 +7,7 @@
 > The setup here have been tweaked to cater my personal workflow.
 > They don't suit everyone, so please review the code to make sure the dotfiles fit your setup.
 
-First, install [`mise`](https://mise.jdx.dev), which will drive everything:
+First, install [`mise`](https://mise.jdx.dev), which will then drive everything:
 
 ```sh
 curl https://mise.run | sh
@@ -32,7 +32,7 @@ write macOS defaults and install tool chains.
 
 **macOS Settings**
 
-Some macOS settings cannot be expressed in mise, and they are applied as a separate step:
+Some macOS defaults cannot be expressed in mise, and they are applied as a separate step:
 
 ```sh
 mise run macos-settings
@@ -42,16 +42,18 @@ mise run macos-settings
 
 ### Structure
 
-| Where                              | What                                                          |
-| ---------------------------------- | ------------------------------------------------------------- |
-| `mise.toml`                        | Machine setup - dotfiles, plugin repos, packages, defaults    |
-| `mise.personal.toml`               | Same as above, for personal machines                          |
-| `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`     |
-| `config/mise/config.personal.toml` | Sams as above, for personal machines                          |
-| `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings  |
+| Where                              | What                                                            |
+| ---------------------------------- | --------------------------------------------------------------- |
+| `mise.toml`                        | Machine setup - dotfiles, vars, plugin repos, login shell       |
+| `mise/conf.d/packages.toml`        | Homebrew taps and system packages                               |
+| `mise/conf.d/macos.toml`           | Dock and macOS defaults                                         |
+| `mise.personal.toml`               | Extra packages for personal machines, loaded with `-E personal` |
+| `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`       |
+| `config/mise/config.personal.toml` | Same as above, for personal machines                            |
+| `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings    |
 
 Anything under `@` is operating-system specific;
-anything under `_` is not linked anywhere.
+anything under `_` or `mise/` is not linked anywhere.
 
 ### Inspecting
 
@@ -84,7 +86,7 @@ mise bootstrap dotfiles unapply
 ```
 
 This will remove all symlinks mise created,
-but not revert any installed packages and tools, or any applied macOS defaults.
+but will not revert any installed packages and tools, or any applied macOS defaults.
 
 If you need to uninstall packages:
 
