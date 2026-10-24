@@ -73,6 +73,20 @@ mise bootstrap macos defaults status
 
 To exit with non-zero when something is out of sync, add `--missing` to the commands.
 
+### Updating
+
+```sh
+mise bootstrap --update --upgrade --only packages,repos,tools --yes
+```
+
+`--update` refreshes package metadata and pulls the Zsh plugin repositories,
+`--upgrade` upgrades what is already installed instead of only filling in what is missing.
+Add `-E personal` on personal machines, as with `bootstrap` itself.
+
+Tool versions stay inside the ranges in `config/mise/config.toml`,
+so widening one (e.g. `node = "24"` to `"26"`) remains a manual edit.
+Both flags rewrite `config/mise/mise.lock`, which is committed.
+
 ### Customisation
 
 Any `.zsh` file inside [`.zshcustom`](./zshcustom) is sourced at startup.
