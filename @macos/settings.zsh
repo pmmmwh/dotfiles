@@ -143,24 +143,7 @@
   # Kill affected applications                                                  #
   ###############################################################################
 
-  for app (
-    "Activity Monitor"
-    "App Store"
-    "cfprefsd"
-    "Disk Utility"
-    "Dock"
-    "Finder"
-    "ghostty"
-    "Image Capture"
-    "Mail"
-    "Photos"
-    "SystemUIServer"
-    "Terminal"
-    "TextEdit"
-    "Time Machine"
-  ); do
-    killall "$app" &>/dev/null
-  done
+  killall Dock Finder &>/dev/null
 
   logger "success" "Successfully set macOS defaults. Note that some changes require a logout/restart to take effect."
 }
