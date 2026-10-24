@@ -5,39 +5,49 @@ min_version = "2026.10.9"
 
 [bootstrap.packages]
 "brew:caddy" = "latest"
+"brew:nginx" = "latest"
+
+# Swift related tools
+"brew:cocoapods" = "latest"
+"brew:swiftformat" = "latest"
 
 # Utilities
-"brew-cask:craft" = { version = "latest", os = "macos" }
-"brew-cask:dropbox" = { version = "latest", os = "macos" }
-"brew-cask:entireio/tap/entire" = { version = "latest", os = "macos" }
-"brew-cask:microsoft-powerpoint" = { version = "latest", os = "macos" }
-"brew-cask:microsoft-word" = { version = "latest", os = "macos" }
-"brew-cask:omnidisksweeper" = { version = "latest", os = "macos" }
-"brew-cask:parallels" = { version = "latest", os = "macos" }
-"brew-cask:vlc" = { version = "latest", os = "macos" }
-"brew-cask:xld" = { version = "latest", os = "macos" }
+"brew-cask:craft" = "latest"
+"brew-cask:dropbox" = "latest"
+"brew-cask:entireio/tap/entire" = "latest"
+"brew-cask:microsoft-powerpoint" = "latest"
+"brew-cask:microsoft-word" = "latest"
+"brew-cask:omnidisksweeper" = "latest"
+"brew-cask:parallels" = "latest"
+"brew-cask:splashtop-business" = "latest"
+"brew-cask:vlc" = "latest"
+"brew-cask:xld" = "latest"
 
 # Instant messaging
-"brew-cask:discord" = { version = "latest", os = "macos" }
-"brew-cask:zoom" = { version = "latest", os = "macos" }
+"brew-cask:discord" = "latest"
+"brew-cask:zoom" = "latest"
 
 # Creative and design
-"brew-cask:adobe-creative-cloud" = { version = "latest", os = "macos" }
-"brew-cask:affinity-designer" = { version = "latest", os = "macos" }
-"brew-cask:affinity-photo" = { version = "latest", os = "macos" }
+"brew-cask:adobe-creative-cloud" = "latest"
+"brew-cask:affinity-designer" = "latest"
+"brew-cask:affinity-photo" = "latest"
 
 # Music
-"brew-cask:focusrite-control" = { version = "latest", os = "macos" }
-"brew-cask:musescore" = { version = "latest", os = "macos" }
-"brew-cask:native-access" = { version = "latest", os = "macos" }
-"brew-cask:reaper" = { version = "latest", os = "macos" }
+"brew-cask:focusrite-control" = "latest"
+"brew-cask:musescore" = "latest"
+"brew-cask:native-access" = "latest"
+"brew-cask:reaper" = "latest"
 
 # Mobile
-"brew-cask:android-platform-tools" = { version = "latest", os = "macos" }
-"brew-cask:expo-orbit" = { version = "latest", os = "macos" }
-"brew-cask:impactor" = { version = "latest", os = "macos" }
-"brew-cask:vysor" = { version = "latest", os = "macos" }
+"brew-cask:android-platform-tools" = "latest"
+"brew-cask:expo-orbit" = "latest"
+"brew-cask:impactor" = "latest"
+"brew-cask:swiftformat-for-xcode" = "latest"
+"brew-cask:vysor" = "latest"
 
 # Gaming
-"brew-cask:parsec" = { version = "latest", os = "macos" }
-"brew-cask:steam" = { version = "latest", os = "macos" }
+"brew-cask:parsec" = "latest"
+"brew-cask:steam" = "latest"
+
+# WireGuard
+"mas:1451685025" = "latest"

@@ -1,5 +1,4 @@
 [bootstrap.brew.taps]
-"dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
 "esolitos/ipa" = "https://github.com/esolitos/homebrew-ipa.git"
 "xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
 
@@ -30,17 +29,12 @@
 # General development tools
 "brew:cmake" = "latest"
 "brew:eza" = "latest"
-"brew:flyway" = "latest"
 "brew:git" = "latest"
 "brew:git-absorb" = "latest"
 "brew:git-delta" = "latest"
-"brew:nginx" = "latest"
 "brew:postgresql@17" = "latest"
 "brew:shellcheck" = "latest"
 "brew:watchman" = "latest"
-
-# Database related tools
-"brew:dbt-labs/dbt-cli/dbt" = "latest"
 
 # Docker related tools
 "brew:hadolint" = "latest"
@@ -49,17 +43,12 @@
 "brew:golangci-lint" = "latest"
 "brew:gotestsum" = "latest"
 
-# Swift related tools
-"brew:cocoapods" = "latest"
-"brew:swiftformat" = "latest"
-
 # Tools to optimise images
 "brew:jpegoptim" = "latest"
 "brew:optipng" = "latest"
 "brew:pngquant" = "latest"
 
 # Binaries and drivers
-"brew-cask:gcloud-cli" = "latest"
 "brew-cask:mitmproxy" = "latest"
 
 # Browsers
@@ -79,7 +68,6 @@
 "brew-cask:notion" = "latest"
 "brew-cask:raycast" = "latest"
 "brew-cask:setapp" = "latest"
-"brew-cask:splashtop-business" = "latest"
 "brew-cask:tablepro" = "latest"
 "brew-cask:the-unarchiver" = "latest"
 "brew-cask:xykong/tap/flux-markdown" = "latest"
@@ -99,19 +87,13 @@
 "brew-cask:gitbutler" = "latest"
 "brew-cask:gpg-suite" = "latest"
 "brew-cask:imageoptim" = "latest"
-"brew-cask:jetbrains-toolbox" = "latest"
 "brew-cask:localcan" = "latest"
 "brew-cask:orbstack" = "latest"
-"brew-cask:swiftformat-for-xcode" = "latest"
 "brew-cask:yaak" = "latest"
 "brew-cask:zed" = "latest"
 
 # Flighty
 "mas:1358823008" = "latest"
-# Speedtest by Ookla
-"mas:1153157709" = "latest"
-# WireGuard
-"mas:1451685025" = "latest"
 # Xcode
 "mas:497799835" = "latest"
 
