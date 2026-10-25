@@ -1,7 +1,7 @@
 [tools]
 go = "1.27"
 java = "zulu-17"
-node = "24"
+node = "26"
 python = "3.12"
 ruby = "3.4"
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
