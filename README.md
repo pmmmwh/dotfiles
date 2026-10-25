@@ -30,6 +30,14 @@ mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
 This will install system packages, clone Zsh plugins, link the dotfiles,
 write macOS defaults and install tool chains.
 
+**Work Stuff**
+
+On work machines, `-E work` pulls in work-only tooling instead:
+
+```sh
+mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
+```
+
 **macOS Settings**
 
 Some macOS defaults cannot be expressed in mise, and they are applied as a separate step:
@@ -48,6 +56,7 @@ mise run macos-settings
 | `mise/conf.d/packages.toml`        | Homebrew taps and system packages                               |
 | `mise/conf.d/macos.toml`           | Dock and macOS defaults                                         |
 | `mise.personal.toml`               | Extra packages for personal machines, loaded with `-E personal` |
+| `mise.work.toml`                   | Extra packages for work machines, loaded with `-E work`         |
 | `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`       |
 | `config/mise/config.personal.toml` | Same as above, for personal machines                            |
 | `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings    |
@@ -81,7 +90,7 @@ mise bootstrap --update --upgrade --only packages,repos,tools --yes
 
 `--update` refreshes package metadata and pulls the Zsh plugin repositories,
 `--upgrade` upgrades what is already installed instead of only filling in what is missing.
-Add `-E personal` on personal machines, as with `bootstrap` itself.
+Add `-E personal` or `-E work` here too, as with `bootstrap` itself.
 
 Tool versions stay inside the ranges in `config/mise/config.toml`,
 so widening one (e.g. `node = "24"` to `"26"`) remains a manual edit.

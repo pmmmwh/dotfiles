@@ -1,0 +1,14 @@
+min_version = "2026.10.9"
+
+[bootstrap.brew.taps]
+"dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
+
+[bootstrap.packages]
+# General development tools
+"brew:flyway" = "latest"
+
+# Database related tools
+"brew:dbt-labs/dbt-cli/dbt" = "latest"
+
+# Binaries and drivers
+"brew-cask:gcloud-cli" = "latest"
