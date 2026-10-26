@@ -1,4 +1,8 @@
-min_version = "2026.10.9"
+min_version = "2026.10.19"
+
+[settings]
+# `mise dot add` writes entries here rather than into the global tools config
+write_targets.dotfiles = "mise.toml"
 
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
@@ -14,6 +18,33 @@ min_version = "2026.10.9"
 "~/.gitconfig" = "git/.gitconfig"
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
+
+# Load this repository as global config, so every mise command sees the setup
+# without `--from` or a working directory inside the clone
+[dotfiles."mise-conf-d"]
+source = "."
+mode = "symlink"
+variants = [{ default = true, target = "{{ mise_config_dir }}/conf.d/dotfiles" }]
+
+# A conf.d folder reads only mise.toml and mise.<env>.toml, so the fragments
+# are linked as fragments of their own
+[dotfiles."mise-conf-d-packages"]
+source = "mise/conf.d/packages.toml"
+mode = "symlink"
+variants = [{ default = true, target = "{{ mise_config_dir }}/conf.d/packages.toml" }]
+
+[dotfiles."mise-conf-d-macos"]
+source = "mise/conf.d/macos.toml"
+mode = "symlink"
+variants = [{ default = true, target = "{{ mise_config_dir }}/conf.d/macos.toml" }]
+
+# Records the environment chosen on the first bootstrap, so later runs need no
+# `-E`; renders empty, and is removed, when no environment is selected
+[dotfiles."mise-env"]
+source = "mise/miserc.local.toml.tera"
+mode = "template"
+remove_empty = true
+variants = [{ default = true, target = "{{ mise_config_dir }}/miserc.local.toml" }]
 
 [vars.git_name]
 prompt = "Name on git commits"

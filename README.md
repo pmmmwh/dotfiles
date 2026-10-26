@@ -16,15 +16,20 @@ curl https://mise.run | sh
 Then, run `bootstrap`:
 
 ```sh
-mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
+mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir ~/Developer/dotfiles --yes
 ```
+
+`--from-dir` decides where the clone lands.
+As it applies, the repository links itself into `~/.config/mise/conf.d`,
+so from then on it is global config:
+later commands need neither `--from` nor a working directory inside the clone.
 
 **Personal Stuff**
 
 On my personal machines, `-E personal` is added to pull in extra apps and tools:
 
 ```sh
-mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
+mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir ~/Developer/dotfiles --yes
 ```
 
 This will install system packages, clone Zsh plugins, link the dotfiles,
@@ -35,8 +40,11 @@ write macOS defaults and install tool chains.
 On work machines, `-E work` pulls in work-only tooling instead:
 
 ```sh
-mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --yes
+mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir ~/Developer/dotfiles --yes
 ```
+
+The chosen environment is recorded in `~/.config/mise/miserc.local.toml`,
+so `-E` is only needed on this first run.
 
 **macOS Settings**
 
@@ -60,12 +68,15 @@ This task ends by restarting Dock, Finder and SystemUIServer.
 | `mise/conf.d/macos.toml`           | Dock and macOS defaults                                         |
 | `mise.personal.toml`               | Extra packages for personal machines, loaded with `-E personal` |
 | `mise.work.toml`                   | Extra packages for work machines, loaded with `-E work`         |
+| `mise/miserc.local.toml.tera`      | Records the environment chosen on the first bootstrap           |
 | `config/mise/config.toml`          | Tools available everywhere, symlinked to `~/.config/mise`       |
 | `config/mise/config.personal.toml` | Same as above, for personal machines                            |
 | `@macos/settings.zsh`              | Privileged, host-scoped and collection-valued macOS settings    |
 
-Anything under `@` is operating-system specific;
-anything under `_` or `mise/` is not linked anywhere.
+Anything under `@` is operating-system specific, and anything under `_` is not linked anywhere.
+Nothing under `mise/` is linked into `$HOME`: the fragments are symlinked into `~/.config/mise/conf.d`
+and the template is rendered to `~/.config/mise/miserc.local.toml`,
+which is what makes this repository mise's global config.
 
 ### Inspecting
 
@@ -88,16 +99,18 @@ To exit with non-zero when something is out of sync, add `--missing` to the comm
 ### Updating
 
 ```sh
-mise bootstrap --update --upgrade --only packages,repos,tools --yes
+git -C ~/Developer/dotfiles pull
+mise bootstrap --update --upgrade --yes
 ```
 
 `--update` refreshes package metadata and pulls the Zsh plugin repositories,
 `--upgrade` upgrades what is already installed instead of only filling in what is missing.
-Add `-E personal` or `-E work` here too, as with `bootstrap` itself.
+Neither needs `-E` nor a working directory inside the clone.
 
 Tool versions stay inside the ranges in `config/mise/config.toml`,
 so widening one (e.g. `node = "24"` to `"26"`) remains a manual edit.
-Both flags rewrite `config/mise/mise.lock`, which is committed.
+Both flags rewrite `config/mise/mise.lock`, which is committed;
+mise rebuilds it from the current requests, so it covers every platform rather than only this machine.
 
 ### Customisation
 
