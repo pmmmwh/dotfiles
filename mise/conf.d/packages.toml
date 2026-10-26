@@ -1,3 +1,8 @@
+min_version = "2026.10.20"
+
+[bootstrap.brew]
+homebrew_metadata = true
+
 [bootstrap.brew.taps]
 "esolitos/ipa" = "https://github.com/esolitos/homebrew-ipa.git"
 "xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
@@ -96,6 +101,3 @@
 "mas:1358823008" = "latest"
 # Xcode
 "mas:497799835" = "latest"
-
-[bootstrap.hooks.pre-packages]
-run = 'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }'
