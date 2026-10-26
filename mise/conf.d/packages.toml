@@ -96,6 +96,3 @@
 "mas:1358823008" = "latest"
 # Xcode
 "mas:497799835" = "latest"
-
-[bootstrap.hooks.pre-packages]
-run = 'xcode-select -p >/dev/null 2>&1 || { xcode-select --install; echo "Finish the Xcode CLI tools install, then re-run"; exit 1; }'
