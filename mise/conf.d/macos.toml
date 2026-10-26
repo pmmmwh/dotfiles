@@ -1,6 +1,3 @@
-[bootstrap.hooks.post-defaults]
-run = "killall Dock Finder SystemUIServer || true"
-
 [bootstrap.macos.dock]
 # Add frequently used apps to the Dock, replacing whatever is pinned
 apps = [
