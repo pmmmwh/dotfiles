@@ -143,7 +143,7 @@
   # Kill affected applications                                                  #
   ###############################################################################
 
-  killall Dock Finder &>/dev/null
+  killall Dock Finder SystemUIServer &>/dev/null
 
   logger "success" "Successfully set macOS defaults. Note that some changes require a logout/restart to take effect."
 }

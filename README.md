@@ -46,6 +46,9 @@ Some macOS defaults cannot be expressed in mise, and they are applied as a separ
 mise run macos-settings
 ```
 
+mise prints a reminder when it writes a preference that needs a relaunch.
+This task ends by restarting Dock, Finder and SystemUIServer.
+
 ## Operations
 
 ### Structure
