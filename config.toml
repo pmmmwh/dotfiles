@@ -1,12 +1,10 @@
 min_version = "2026.10.21"
 
 [settings]
+github.gh_cli_tokens = false
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
 lockfile = true
 self_update.auto = true
-
-[settings.github]
-gh_cli_tokens = false
 
 [tools]
 go = "1.27"
@@ -17,8 +15,6 @@ ruby = "3.4"
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = "latest"
-"aqua:temporalio/cli" = "latest"
-"github:can1357/oh-my-pi" = "latest"
 agent-browser = "latest"
 atuin = "latest"
 bat = "latest"
@@ -31,9 +27,11 @@ golangci-lint = "latest"
 hyperfine = "latest"
 jq = "latest"
 mkcert = "latest"
+"github:can1357/oh-my-pi" = "latest"
 shfmt = "latest"
 starship = "latest"
 tealdeer = "latest"
+"aqua:temporalio/cli" = "latest"
 terraform = "latest"
 tokei = "latest"
 uv = "latest"
@@ -55,8 +53,7 @@ yq = "latest"
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
 
-# Records the environment chosen on the first bootstrap, so later runs need no
-# `-E`; renders empty, and is removed, when no environment is selected
+# Records the environment chosen on the first bootstrap, so later runs do not need to re-specify
 [dotfiles."mise-env"]
 source = "miserc.local.toml.tera"
 mode = "template"

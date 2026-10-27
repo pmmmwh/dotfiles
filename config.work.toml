@@ -1,5 +1,3 @@
-min_version = "2026.10.9"
-
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
 

@@ -1,5 +1,3 @@
-min_version = "2026.10.20"
-
 [bootstrap.brew]
 homebrew_metadata = true
 

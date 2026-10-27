@@ -1,7 +1,5 @@
-min_version = "2026.10.9"
-
-[settings.gitlab]
-glab_cli_tokens = false
+[settings]
+gitlab.glab_cli_tokens = false
 
 [tools]
 glab = "latest"
