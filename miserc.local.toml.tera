@@ -1,0 +1,2 @@
+{% if mise_env is defined %}env = {{ mise_env | json_encode() }}
+{% endif %}

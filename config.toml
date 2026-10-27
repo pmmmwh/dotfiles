@@ -1,4 +1,44 @@
-min_version = "2026.10.9"
+min_version = "2026.10.21"
+
+[settings]
+idiomatic_version_file_enable_tools = ["go", "node", "python"]
+lockfile = true
+self_update.auto = true
+
+[settings.github]
+gh_cli_tokens = false
+
+[tools]
+go = "1.27"
+java = "zulu-17"
+node = "26"
+python = "3.12"
+ruby = "3.4"
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
+
+"1password-cli" = "latest"
+"aqua:temporalio/cli" = "latest"
+"github:can1357/oh-my-pi" = "latest"
+agent-browser = "latest"
+atuin = "latest"
+bat = "latest"
+bottom = "latest"
+cloudflared = "latest"
+fastfetch = "latest"
+fnox = { version = "latest", workflow = "release.yml" }
+gh = "latest"
+golangci-lint = "latest"
+hyperfine = "latest"
+jq = "latest"
+mkcert = "latest"
+shfmt = "latest"
+starship = "latest"
+tealdeer = "latest"
+terraform = "latest"
+tokei = "latest"
+uv = "latest"
+xh = "latest"
+yq = "latest"
 
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
@@ -14,6 +54,14 @@ min_version = "2026.10.9"
 "~/.gitconfig" = "git/.gitconfig"
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
+
+# Records the environment chosen on the first bootstrap, so later runs need no
+# `-E`; renders empty, and is removed, when no environment is selected
+[dotfiles."mise-env"]
+source = "miserc.local.toml.tera"
+mode = "template"
+remove_empty = true
+variants = [{ default = true, target = "{{ mise_config_dir }}/miserc.local.toml" }]
 
 [vars.git_name]
 prompt = "Name on git commits"
@@ -37,8 +85,8 @@ login_shell = "/bin/zsh"
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
 [bootstrap.hooks.post-dotfiles]
-run = "'{{ config_root }}/git/generate-signing-keys.zsh'"
+run = "'{{ mise_config_dir }}/git/generate-signing-keys.zsh'"
 
 [tasks.macos-settings]
 description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
-run = "./@macos/settings.zsh"
+run = "{{ mise_config_dir }}/@macos/settings.zsh"

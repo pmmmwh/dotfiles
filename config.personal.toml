@@ -1,5 +1,16 @@
 min_version = "2026.10.9"
 
+[settings.gitlab]
+glab_cli_tokens = false
+
+[tools]
+glab = "latest"
+hunk = "latest"
+rclone = "latest"
+xcodegen = "latest"
+
+"npm:wasm-pack" = "latest"
+
 [bootstrap.brew.taps]
 "entireio/tap" = "https://github.com/entireio/homebrew-tap.git"
 
