@@ -21,7 +21,10 @@
     name=$(git config --file $credentials user.name)
     email=$(git config --file $credentials user.email)
 
-    if gpg --list-secret-keys "<$email>" &>/dev/null; then
+    # The full uid, not just the address:
+    # with no `user.signingKey`, git asks gpg for `name <email>`,
+    # so a key carrying the address under another name is no use
+    if gpg --list-secret-keys "$name <$email>" &>/dev/null; then
       continue
     fi
 
