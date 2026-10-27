@@ -1,8 +1,10 @@
 [bootstrap.brew.taps]
+"auth0/auth0-cli" = "https://github.com/auth0/homebrew-auth0-cli.git"
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
 
 [bootstrap.packages]
 # General development tools
+"brew:auth0/auth0-cli/auth0" = "latest"
 "brew:flyway" = "latest"
 
 # Database related tools
