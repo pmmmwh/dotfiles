@@ -13,71 +13,60 @@ First, install [`mise`](https://mise.jdx.dev), which will then drive everything:
 curl https://mise.run | sh
 ```
 
-Then, run `bootstrap`:
+Then, run `bootstrap`, with `<checkout>` being wherever this repository should live:
 
 ```sh
 mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
 ```
 
-`<checkout>` is wherever you want the clone to live, and `--config-dir .` links
-`~/.config/mise` to it, so the repository _is_ mise's global config from the
-first run on: later commands need neither `--from` nor a working directory
-inside the clone.
+This will install system packages, clone Zsh plugins, link the dotfiles, write macOS defaults and install tool chains.
 
-**Personal Stuff**
+**Environments**
 
-On my personal machines, `-E personal` is added to pull in extra apps and tools:
+When `-E personal` or `-E work` is specified, the corresponding extras are applied:
 
 ```sh
 mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
-```
-
-This will install system packages, clone Zsh plugins, link the dotfiles,
-write macOS defaults and install tool chains.
-
-**Work Stuff**
-
-On work machines, `-E work` pulls in work-only tooling instead:
-
-```sh
 mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
 ```
 
-The chosen environment is recorded in `miserc.local.toml`, which is not
-committed, so `-E` is only needed on this first run.
+The chosen environment is recorded in `miserc.local.toml` (non-committed), so `-E` is only needed on this first run.
 
 **macOS Settings**
 
-Some macOS defaults cannot be expressed in mise, and they are applied as a separate step:
+Most macOS defaults are managed in mise.
+There are some exceptions where sudo is required, and they are applied as a separate step:
 
 ```sh
 mise run macos-settings
 ```
 
-mise prints a reminder when it writes a preference that needs a relaunch.
-This task ends by restarting Dock, Finder and SystemUIServer.
+When defaults are written, sometimes a relaunch is required for them to take effect.
+For those managed by mise, it will print a reminder when this is needed.
+For those handled by the task, this is handled automatically on completion (restarts Dock, Finder and SystemUIServer).
 
 ## Operations
 
 ### Structure
 
-This repository is mise's global config directory, so its files are the ones
-mise reads from `~/.config/mise`.
+This repository is mise's global config directory, so files are laid out for how mise reads them:
 
-| Where                    | What                                                          |
-| ------------------------ | ------------------------------------------------------------- |
-| `config.toml`            | Tools, settings, dotfiles, vars, plugin repos, login shell    |
-| `conf.d/packages.toml`   | Homebrew taps and system packages                             |
-| `conf.d/macos.toml`      | Dock and macOS defaults                                       |
-| `config.personal.toml`   | Extra tools and packages for personal machines, `-E personal` |
-| `config.work.toml`       | Extra packages for work machines, `-E work`                   |
-| `miserc.local.toml.tera` | Renders the environment marker, which is not committed        |
-| `mise.lock`              | Locked tool versions and checksums, committed                 |
-| `@macos/settings.zsh`    | Privileged, host-scoped and collection-valued macOS settings  |
+| Where                    | What                                                         |
+| ------------------------ | ------------------------------------------------------------ |
+| `config.toml`            | Tools, settings, dotfiles, vars, plugin repos, login shell   |
+| `conf.d/packages.toml`   | Homebrew taps and system packages                            |
+| `conf.d/macos.toml`      | Dock and macOS defaults                                      |
+| `config.personal.toml`   | Extras for personal machines, `-E personal`                  |
+| `config.work.toml`       | Extras for work machines, `-E work`                          |
+| `miserc.local.toml.tera` | Template for the uncommitted flavour marker                  |
+| `mise.lock`              | Lockfile for tool versions with checksums                    |
+| `@macos/settings.zsh`    | Privileged, host-scoped and collection-valued macOS settings |
 
-Anything under `@` is operating-system specific, and anything under `_` is not linked anywhere.
-Paths inside these files resolve against `{{ mise_config_dir }}`, not the working directory,
-because for global config mise treats `$HOME` as the config root.
+> Anything in this repository with a `@` prefix is operating-system specific,
+> and anything with a `_` prefix is expected to be linked anywhere.
+
+When specifying paths inside mise config files,
+ensure that paths are resolved against `{{ mise_config_dir }}`, as mise would otherwise use `$HOME` as the config root.
 
 ### Inspecting
 
@@ -87,7 +76,7 @@ mise bootstrap status
 
 This will report every managed part.
 
-If you only care about one, you can use the narrower commands:
+The narrower commands can be used to only view a certain part:
 
 ```sh
 mise bootstrap dotfiles status
@@ -104,20 +93,14 @@ git -C <checkout> pull
 mise bootstrap --update --upgrade --yes
 ```
 
-`--update` refreshes package metadata and pulls the Zsh plugin repositories,
-`--upgrade` upgrades what is already installed instead of only filling in what is missing.
-Neither needs `-E` nor a working directory inside the clone.
-
-Tool versions stay inside the ranges in `config.toml`,
-so widening one (e.g. `node = "24"` to `"26"`) remains a manual edit.
-Both flags rewrite `mise.lock`, which is committed;
-mise rebuilds it from the current requests, so it covers every platform rather than only this machine.
+Note that tool versions updated this way will stay inside the ranges in `config.toml`.
 
 ### Customisation
 
 Any `.zsh` file inside [`.zshcustom`](./zshcustom) is sourced at startup.
-If you have machine-local values that should not be committed,
-you can utilise unmanaged Zsh files in the directory (e.g. `~/.zshcustom/extras.zsh`).
+
+For machine-local values that should not be committed,
+unmanaged Zsh files in the directory (e.g. `~/.zshcustom/extras.zsh`) can be utilised.
 
 ### Reverting
 
@@ -125,10 +108,10 @@ you can utilise unmanaged Zsh files in the directory (e.g. `~/.zshcustom/extras.
 mise bootstrap dotfiles unapply
 ```
 
-This will remove all symlinks mise created,
+This will remove all symlinks created by mise,
 but will not revert any installed packages and tools, or any applied macOS defaults.
 
-If you need to uninstall packages:
+If packages need to be uninstalled:
 
 ```sh
 brew uninstall
