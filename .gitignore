@@ -41,3 +41,9 @@ Temporary Items
 git/.gitcredentials*
 zsh/.zshcustom/extras.zsh
 mise.local.toml
+config.local.toml
+config.*.local.toml
+miserc.local.toml
+
+# mise's own state, since the repository is its config directory
+locks/

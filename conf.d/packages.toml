@@ -1,5 +1,3 @@
-min_version = "2026.10.20"
-
 [bootstrap.brew]
 homebrew_metadata = true
 
@@ -13,7 +11,7 @@ homebrew_metadata = true
 
 # Other miscellaneous binaries
 "brew:ack" = "latest"
-"brew:esolitos/ipa/sshpass" = "latest"
+"brew:ffmpeg" = "latest"
 "brew:graphviz" = "latest"
 "brew:imagemagick" = "latest"
 "brew:less" = "latest"
@@ -25,6 +23,7 @@ homebrew_metadata = true
 "brew:pkgconf" = "latest"
 "brew:protobuf" = "latest"
 "brew:readline" = "latest"
+"brew:esolitos/ipa/sshpass" = "latest"
 "brew:sqlmap" = "latest"
 "brew:tree" = "latest"
 "brew:xz" = "latest"
@@ -62,6 +61,7 @@ homebrew_metadata = true
 
 # Utilities
 "brew-cask:1password" = "latest"
+"brew-cask:xykong/tap/flux-markdown" = "latest"
 "brew-cask:ghostty" = "latest"
 "brew-cask:karabiner-elements" = "latest"
 "brew-cask:linear" = "latest"
@@ -75,7 +75,6 @@ homebrew_metadata = true
 "brew-cask:setapp" = "latest"
 "brew-cask:tablepro" = "latest"
 "brew-cask:the-unarchiver" = "latest"
-"brew-cask:xykong/tap/flux-markdown" = "latest"
 "brew-cask:yubico-authenticator" = "latest"
 
 # Instant messaging
