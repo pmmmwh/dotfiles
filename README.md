@@ -111,11 +111,19 @@ mise bootstrap dotfiles unapply
 This will remove all symlinks created by mise,
 but will not revert any installed packages and tools, or any applied macOS defaults.
 
-If packages need to be uninstalled:
+Packages come out with `prune`, which removes whatever no config declares:
 
 ```sh
-brew uninstall
+mise bootstrap packages prune --dry-run
+mise bootstrap packages prune
+mise bootstrap packages prune --manager brew-cask
 ```
+
+The `brew` pass also removes formulae installed by hand with Homebrew,
+so dry run it first, or record those with `mise bootstrap packages import`.
+The `brew-cask` pass only removes casks mise installed and can prove unchanged;
+`--force` covers the rest, such as apps that update themselves.
+Mac App Store apps have no prune, so uninstall those yourself.
 
 ## Acknowledgements
 
