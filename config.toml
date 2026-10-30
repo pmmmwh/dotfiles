@@ -1,7 +1,7 @@
 min_version = "2026.10.21"
 
 [settings]
-github.gh_cli_tokens = false
+github.credential_command = 'gh auth token --hostname "$MISE_CREDENTIAL_HOST"'
 idiomatic_version_file_enable_tools = ["go", "node", "python"]
 lockfile = true
 self_update.auto = true
@@ -40,12 +40,12 @@ yq = "latest"
 
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
-"~/.config" = { source = "config", mode = "symlink-each" }
+"~/.config" = { source = "config", mode = "symlink-each", exclude = ["karabiner"] }
+# Copied, as Karabiner-Elements replaces the file when it saves
+"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600" }
 "~/.gnupg" = { source = "gnupg", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
-
-# Copied, as Karabiner-Elements replaces the file when it saves
-"~/.config/karabiner/karabiner.json" = { source = "karabiner/karabiner.json", mode = "copy", permissions = "0600" }
+"~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
@@ -82,6 +82,7 @@ login_shell = "/bin/zsh"
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 
 [bootstrap.hooks.post-dotfiles]
+description = "Generate GPG signing keys for the git identities that lack one"
 run = "'{{ mise_config_dir }}/git/generate-signing-keys.zsh'"
 
 [tasks.macos-settings]

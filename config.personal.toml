@@ -1,6 +1,3 @@
-[settings]
-gitlab.glab_cli_tokens = false
-
 [tools]
 glab = "latest"
 hunk = "latest"
