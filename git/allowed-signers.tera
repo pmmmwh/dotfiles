@@ -1,0 +1,3 @@
+# Keys trusted to have signed commits, one principal per git identity
+{{ vars.git_personal_email }} {{ vars.git_personal_signing_key }}
+{{ vars.git_work_email }} {{ vars.git_work_signing_key }}

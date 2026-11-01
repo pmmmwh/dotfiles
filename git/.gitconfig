@@ -76,7 +76,7 @@
 
 [commit]
 
-	# Sign commits with GPG (i.e. "Verified" commits on GitHub)
+	# Sign commits (i.e. "Verified" commits on GitHub)
 	gpgSign = true
 
 [credential]
@@ -117,6 +117,19 @@
 
 	# Tell GitButler to sign commits
 	signCommits = true
+
+[gpg]
+
+	# Sign with SSH keys rather than OpenPGP
+	format = ssh
+
+[gpg "ssh"]
+
+	# Set allowed signers; required for local signature verification
+	allowedSignersFile = ~/.ssh/allowed_signers
+
+	# Utilise managed SSH private keys via 1Password with its signer
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 [help]
 
@@ -170,7 +183,7 @@
 
 [tag]
 
-	# Sign tags with GPG (i.e. "Verified" tags on GitHub)
+	# Sign tags (i.e. "Verified" tags on GitHub)
 	gpgSign = true
 
 [url "https://github.com/"]
