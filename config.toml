@@ -54,7 +54,6 @@ yq = "latest"
 "~/.config" = { source = "config", mode = "symlink-each", exclude = ["karabiner"] }
 # Copied, as Karabiner-Elements replaces the file when it saves
 "~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600" }
-"~/.gnupg" = { source = "gnupg", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
