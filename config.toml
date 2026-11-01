@@ -91,6 +91,7 @@ login_shell = "/bin/zsh"
 "~/.zshcustom/plugins/fast-syntax-highlighting" = { url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" }
 "~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
+"~/.zshcustom/plugins/zsh-defer" = { url = "https://github.com/romkatv/zsh-defer.git" }
 
 [bootstrap.hooks.post-dotfiles]
 description = "Generate GPG signing keys for the git identities that lack one"
