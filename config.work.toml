@@ -12,4 +12,4 @@ CLOUDSDK_PYTHON = "{{ env.MISE_DATA_DIR | default(value=xdg_data_home ~ '/mise')
 
 [bootstrap.packages]
 # Database related tools
-"brew:dbt-labs/dbt-cli/dbt" = "latest"
+"brew:dbt-labs/dbt-cli/dbt" = { os = "macos" }
