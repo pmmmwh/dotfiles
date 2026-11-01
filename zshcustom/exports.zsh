@@ -29,16 +29,6 @@ unset brewPrefixCandidate
 if [[ -n $HOMEBREW_PREFIX ]]; then
   path=($HOMEBREW_PREFIX/bin $HOMEBREW_PREFIX/sbin $path)
   manpath=($HOMEBREW_PREFIX/share/man $manpath)
-
-  # Setup PostgreSQL, which is keg-only
-  () {
-    local postgresqlPath=$HOMEBREW_PREFIX/opt/postgresql@17
-
-    if [[ -d $postgresqlPath/bin ]]; then
-      path=($postgresqlPath/bin $path)
-      pkg_config_path=($postgresqlPath/pkgconfig $pkg_config_path)
-    fi
-  }
 fi
 
 # Setup OrbStack

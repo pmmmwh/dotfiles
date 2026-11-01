@@ -54,6 +54,9 @@ alias update="sudo softwareupdate -i -a; mise self-update -y; mise up; mise boot
 # Get current week (number)
 alias week="date +%V"
 
+# Alias 7-zip to `7z`
+(( ${+commands[7z]} )) || alias 7z="7zz"
+
 # If macOS has no command for canonical hex dump, set the alias as a fallback
 (( ${+commands[hd]} )) || alias hd="hexdump -C"
 

@@ -17,11 +17,9 @@ homebrew_metadata = true
 "brew:less" = "latest"
 "brew:mas" = "latest"  # needs to be installed before `mas:` entries below
 "brew:mole" = "latest"
-"brew:onefetch" = "latest"
-"brew:p7zip" = "latest"
+"brew:nextdns" = "latest"
 "brew:pigz" = "latest"
 "brew:pkgconf" = "latest"
-"brew:protobuf" = "latest"
 "brew:readline" = "latest"
 "brew:esolitos/ipa/sshpass" = "latest"
 "brew:sqlmap" = "latest"
@@ -31,29 +29,13 @@ homebrew_metadata = true
 "brew:zopfli" = "latest"
 
 # General development tools
-"brew:cmake" = "latest"
-"brew:eza" = "latest"
 "brew:git" = "latest"
-"brew:git-absorb" = "latest"
-"brew:git-delta" = "latest"
-"brew:postgresql@17" = "latest"
-"brew:shellcheck" = "latest"
 "brew:watchman" = "latest"
-
-# Docker related tools
-"brew:hadolint" = "latest"
-
-# Golang related tools
-"brew:golangci-lint" = "latest"
-"brew:gotestsum" = "latest"
 
 # Tools to optimise images
 "brew:jpegoptim" = "latest"
 "brew:optipng" = "latest"
 "brew:pngquant" = "latest"
-
-# Binaries and drivers
-"brew-cask:mitmproxy" = "latest"
 
 # Browsers
 "brew-cask:firefox" = "latest"
@@ -74,6 +56,7 @@ homebrew_metadata = true
 "brew-cask:raycast" = "latest"
 "brew-cask:setapp" = "latest"
 "brew-cask:tablepro" = "latest"
+"brew-cask:tailscale" = "latest"
 "brew-cask:the-unarchiver" = "latest"
 "brew-cask:yubico-authenticator" = "latest"
 

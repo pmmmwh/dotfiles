@@ -1,4 +1,4 @@
-min_version = "2026.10.21"
+min_version = "2026.10.22"
 
 [settings]
 github.credential_command = 'gh auth token --hostname "$MISE_CREDENTIAL_HOST"'
@@ -15,19 +15,30 @@ ruby = "3.4"
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = "latest"
+"7zip" = "latest"
 agent-browser = "latest"
 atuin = "latest"
 bat = "latest"
 bottom = "latest"
 cloudflared = "latest"
+cmake = "latest"
+delta = "latest"
+eza = "latest"
 fastfetch = "latest"
 fnox = { version = "latest", workflow = "release.yml" }
 gh = "latest"
 golangci-lint = "latest"
+gotestsum = "latest"
+hadolint = "latest"
 hyperfine = "latest"
 jq = "latest"
 mkcert = "latest"
-"github:can1357/oh-my-pi" = "latest"
+"pypi:mitmproxy" = "latest"
+oh-my-pi = "latest"
+onefetch = "latest"
+postgres = "17"
+protoc = "latest"
+shellcheck = "latest"
 shfmt = "latest"
 starship = "latest"
 tealdeer = "latest"
