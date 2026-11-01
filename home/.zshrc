@@ -27,18 +27,10 @@ source $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
 source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
 zsh-defer source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-# Setup `compdef` -
-# without it, mise's activation runs a full `compinit -i`, which is a lot slower than a cached one
-() {
-  local dump=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
-  local -a stale=($dump(N.mh+24))
-  autoload -Uz compinit
-  if [[ -r $dump && -z $stale ]]; then
-    compinit -C -d $dump
-  else
-    compinit -d $dump
-  fi
-}
+# Queue `compdef` calls for zsh-autocomplete, which does the only `compinit`;
+# having it defined also stops mise's activation from running its own
+typeset -ga _zshrc_compdef_queue=()
+compdef() { _zshrc_compdef_queue+=("${(j: :)${(@q+)@}}") }
 
 # Enable mise environment
 (( $+commands[mise] )) && eval "$(mise activate zsh)"
@@ -51,11 +43,11 @@ for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N)); do
   source $libraryFile
 done
 
-# Define custom completions -
-# must be queued before zsh-autocomplete, whose `compdef` stub drops registrations,
-# once mise's activation hook has already run `compinit`
+# Custom completions, after the queued `compdef` calls are handed to zsh-autocomplete
 _zshrc_completions() {
-  autoload -Uz bashcompinit && bashcompinit
+  local queued
+  for queued in $_zshrc_compdef_queue; do eval "compdef $queued"; done
+  unset _zshrc_compdef_queue
 
   # Add tab completion for `defaults read|write NSGlobalDomain`
   complete -W "NSGlobalDomain" defaults
@@ -66,9 +58,8 @@ _zshrc_completions() {
   # Add tab completion for Terraform
   (( $+commands[terraform] )) && complete -o "nospace" -C "$commands[terraform]" terraform
 }
-zsh-defer _zshrc_completions
-
 zsh-defer source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+zsh-defer _zshrc_completions
 
 # Initialize atuin, before the key bindings that use its widgets
 (( $+commands[atuin] )) && zsh-defer -c '_evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r'
@@ -83,6 +74,7 @@ _zshrc_key_bindings() {
   bindkey "^[[1;9D" beginning-of-line                           # ⌘←
   bindkey "^[[1;9C" end-of-line                                 # ⌘→
   bindkey '^P' atuin-up-search                                  # ^P
+  bindkey "\ep" atuin-up-search                                 # ⌥P
   bindkey '^R' atuin-search                                     # ^R
   bindkey '^S' atuin-search                                     # ^S
   bindkey "^I" menu-select                                      # ↹

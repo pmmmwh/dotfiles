@@ -96,7 +96,7 @@ login_shell = "/bin/zsh"
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
 "~/.zshcustom/plugins/fast-syntax-highlighting" = { url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git" }
-"~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
+"~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git", ref = "26.08.04" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 "~/.zshcustom/plugins/zsh-defer" = { url = "https://github.com/romkatv/zsh-defer.git" }
 
