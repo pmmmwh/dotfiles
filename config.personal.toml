@@ -1,7 +1,10 @@
 [tools]
+caddy = "latest"
+"gem:cocoapods" = "latest"
 glab = "latest"
 hunk = "latest"
 rclone = "latest"
+swiftformat = "latest"
 xcodegen = "latest"
 
 "npm:wasm-pack" = "latest"
@@ -10,12 +13,7 @@ xcodegen = "latest"
 "entireio/tap" = "https://github.com/entireio/homebrew-tap.git"
 
 [bootstrap.packages]
-"brew:caddy" = "latest"
 "brew:nginx" = "latest"
-
-# Swift related tools
-"brew:cocoapods" = "latest"
-"brew:swiftformat" = "latest"
 
 # Utilities
 "brew-cask:craft" = "latest"

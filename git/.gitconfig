@@ -13,14 +13,6 @@
 	# Local configuration for work git credentials
 	path = ~/.gitcredentials.work
 
-[absorb]
-
-	# Auto-stage all changes by default
-	autoStageIfNothingStaged = true
-
-	# Try to group all fixups in the same commit
-	oneFixupPerCommit = true
-
 [apply]
 
 	# Detect and fix whitespace errors when applying a patch

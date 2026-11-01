@@ -1,14 +1,15 @@
+[tools]
+"aqua:auth0/auth0-cli" = "latest"
+flyway = "latest"
+gcloud = "latest"
+
+[env]
+# Make gcloud use managed Python, if available
+CLOUDSDK_PYTHON = { value = "{% if tools.python is defined %}{{ tools.python.path }}/bin/python3{% endif %}", tools = true }
+
 [bootstrap.brew.taps]
-"auth0/auth0-cli" = "https://github.com/auth0/homebrew-auth0-cli.git"
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
 
 [bootstrap.packages]
-# General development tools
-"brew:auth0/auth0-cli/auth0" = "latest"
-"brew:flyway" = "latest"
-
 # Database related tools
 "brew:dbt-labs/dbt-cli/dbt" = "latest"
-
-# Binaries and drivers
-"brew-cask:gcloud-cli" = "latest"
