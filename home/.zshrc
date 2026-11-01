@@ -9,7 +9,7 @@ setopt extendedglob
 
 # Load universal library files, if in a non-login shell (i.e. .zprofile not sourced)
 if [[ ! -o login ]]; then
-  for libraryFile ($ZSH_CUSTOM/*.zsh(N)); do
+  for libraryFile ($ZSH_CUSTOM/*.zsh(N) $ZSH_CUSTOM/@$ZSH_PLATFORM/*.zsh(N)); do
     source $libraryFile
   done
 fi
@@ -39,7 +39,7 @@ compdef() { _zshrc_compdef_queue+=("${(j: :)${(@q+)@}}") }
 _evalcache starship init zsh
 
 # Load interactive library files
-for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N)); do
+for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N) $ZSH_CUSTOM/interactive/@$ZSH_PLATFORM/*.zsh(N)); do
   source $libraryFile
 done
 
@@ -49,11 +49,13 @@ _zshrc_completions() {
   for queued in $_zshrc_compdef_queue; do eval "compdef $queued"; done
   unset _zshrc_compdef_queue
 
-  # Add tab completion for `defaults read|write NSGlobalDomain`
-  complete -W "NSGlobalDomain" defaults
+  if [[ $ZSH_PLATFORM == macos ]]; then
+    # Add tab completion for `defaults read|write NSGlobalDomain`
+    complete -W "NSGlobalDomain" defaults
 
-  # Add `killall` tab completion for frequently used apps
-  complete -o "nospace" -W "Contacts Calendar Dock Finder ghostty Mail Music Safari SystemUIServer Terminal" killall
+    # Add `killall` tab completion for frequently used apps
+    complete -o "nospace" -W "Contacts Calendar Dock Finder ghostty Mail Music Safari SystemUIServer Terminal" killall
+  fi
 
   # Add tab completion for Terraform
   (( $+commands[terraform] )) && complete -o "nospace" -C "$commands[terraform]" terraform

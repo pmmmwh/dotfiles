@@ -31,9 +31,6 @@ if [[ -n $HOMEBREW_PREFIX ]]; then
   manpath=($HOMEBREW_PREFIX/share/man $manpath)
 fi
 
-# Setup OrbStack
-(( $+commands[orbctl] )) && [[ -r $HOME/.orbstack/shell/init.zsh ]] && source $HOME/.orbstack/shell/init.zsh
-
 # Setup Google Cloud SDK
 if (( $+commands[gcloud] )); then
   if [[ -n $HOMEBREW_PREFIX && -d $HOMEBREW_PREFIX/share/google-cloud-sdk ]]; then
@@ -43,22 +40,6 @@ if (( $+commands[gcloud] )); then
   fi
 
   [[ -n $CLOUD_SDK_ROOT ]] && path+=$CLOUD_SDK_ROOT/bin
-fi
-
-# Setup usage of Ghostty from command line
-if [[ -d "/Applications/Ghostty.app/Contents/MacOS" ]]; then
-  path+="/Applications/Ghostty.app/Contents/MacOS"
-fi
-
-# Setup Android Studio development environment, if the SDK is installed
-if [[ -d $HOME/Library/Android/sdk ]]; then
-  export ANDROID_HOME=$HOME/Library/Android/sdk
-  path+=(
-    $ANDROID_HOME/emulator
-    $ANDROID_HOME/tools
-    $ANDROID_HOME/tools/bin
-    $ANDROID_HOME/platform-tools
-  )
 fi
 
 # MISCELLANEOUS
@@ -80,10 +61,15 @@ export GIT_MERGE_AUTOEDIT=no
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# Make Zed the default editor for commands that support the $EDITOR variable
-export EDITOR="zed -w"
-export KUBE_EDITOR="zed -w"
-export K9S_EDITOR="zed -w"
+# Make Zed the default editor for commands that support the $EDITOR variable,
+# falling back to Vim where Zed is not installed (e.g. on a server)
+() {
+  local editor=vim
+  (( $+commands[zed] )) && editor="zed -w"
+  export EDITOR=$editor
+  export KUBE_EDITOR=$editor
+  export K9S_EDITOR=$editor
+}
 
 # Enable persistent REPL history for `node`
 export NODE_REPL_HISTORY=$HOME/.node_repl_history
