@@ -21,13 +21,27 @@ if [[ -n $HOMEBREW_PREFIX ]]; then
 fi
 fpath=($ZSH_CUSTOM/completions $fpath)
 
-# Load plugins
-source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# Load plugins -
+# only `zsh-completions` (fpath-only) is needed up front, the rest run after the first prompt
+source $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
 source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
+zsh-defer source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# Setup `compdef` -
+# without it, mise's activation runs a full `compinit -i`, which is a lot slower than a cached one
+() {
+  local dump=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/compdump
+  local -a stale=($dump(N.mh+24))
+  autoload -Uz compinit
+  if [[ -r $dump && -z $stale ]]; then
+    compinit -C -d $dump
+  else
+    compinit -d $dump
+  fi
+}
 
 # Enable mise environment
-(( $+commands[mise] )) && _evalcache mise activate zsh
+(( $+commands[mise] )) && eval "$(mise activate zsh)"
 
 # Enable the Starship theme
 _evalcache starship init zsh
@@ -37,33 +51,43 @@ for libraryFile ($ZSH_CUSTOM/interactive/*.zsh(N)); do
   source $libraryFile
 done
 
-# Initialise key bindings
-bindkey "\e[A" atuin-up-search                                # ↑
-bindkey "\eOA" atuin-up-search                                # ↑
-bindkey "\e[1;3A" atuin-up-search                             # ⌥↑
-bindkey "\e[1;3D" backward-word                               # ⌥←
-bindkey "\e[1;3C" forward-word                                # ⌥→
-bindkey "^[[1;9D" beginning-of-line                           # ⌘←
-bindkey "^[[1;9C" end-of-line                                 # ⌘→
-bindkey '^P' atuin-up-search                                  # ^P
-bindkey '^R' atuin-search                                     # ^R
-bindkey '^S' atuin-search                                     # ^S
-bindkey "^I" menu-select                                      # ↹
-bindkey -M menuselect "^I" menu-complete                      # ↹
-bindkey "$terminfo[kcbt]" reverse-menu-select                 # ⇧↹
-bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete # ⇧↹
+# Define custom completions -
+# must be queued before zsh-autocomplete, whose `compdef` stub drops registrations,
+# once mise's activation hook has already run `compinit`
+_zshrc_completions() {
+  autoload -Uz bashcompinit && bashcompinit
 
-# Initialize atuin
-(( $+commands[atuin] )) && _evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r
+  # Add tab completion for `defaults read|write NSGlobalDomain`
+  complete -W "NSGlobalDomain" defaults
 
-# Add tab completion for SSH hostnames based on ~/.ssh/config (ignoring wildcards)
-[ -e $HOME/.ssh/config ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh
+  # Add `killall` tab completion for frequently used apps
+  complete -o "nospace" -W "Contacts Calendar Dock Finder ghostty Mail Music Safari SystemUIServer Terminal" killall
 
-# Add tab completion for `defaults read|write NSGlobalDomain`
-complete -W "NSGlobalDomain" defaults
+  # Add tab completion for Terraform
+  (( $+commands[terraform] )) && complete -o "nospace" -C "$commands[terraform]" terraform
+}
+zsh-defer _zshrc_completions
 
-# Add `killall` tab completion for frequently used apps
-complete -o "nospace" -W "Contacts Calendar Dock Finder ghostty Mail Music Safari SystemUIServer Terminal" killall
+zsh-defer source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
-# Add tab completion for Terraform
-(( $+commands[terraform] )) && complete -o "nospace" -C "$commands[terraform]" terraform
+# Initialize atuin, before the key bindings that use its widgets
+(( $+commands[atuin] )) && zsh-defer -c '_evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r'
+
+# Key bindings use widgets from the deferred plugins above
+_zshrc_key_bindings() {
+  bindkey "\e[A" atuin-up-search                                # ↑
+  bindkey "\eOA" atuin-up-search                                # ↑
+  bindkey "\e[1;3A" atuin-up-search                             # ⌥↑
+  bindkey "\e[1;3D" backward-word                               # ⌥←
+  bindkey "\e[1;3C" forward-word                                # ⌥→
+  bindkey "^[[1;9D" beginning-of-line                           # ⌘←
+  bindkey "^[[1;9C" end-of-line                                 # ⌘→
+  bindkey '^P' atuin-up-search                                  # ^P
+  bindkey '^R' atuin-search                                     # ^R
+  bindkey '^S' atuin-search                                     # ^S
+  bindkey "^I" menu-select                                      # ↹
+  bindkey -M menuselect "^I" menu-complete                      # ↹
+  bindkey "$terminfo[kcbt]" reverse-menu-select                 # ⇧↹
+  bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete # ⇧↹
+}
+zsh-defer _zshrc_key_bindings
