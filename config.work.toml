@@ -1,11 +1,11 @@
 [tools]
 "aqua:auth0/auth0-cli" = "latest"
 flyway = "latest"
-gcloud = "latest"
+gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credential-gcr"] }
 
 [env]
-# Make gcloud use managed Python, if available
-CLOUDSDK_PYTHON = { value = "{% if tools.python is defined %}{{ tools.python.path }}/bin/python3{% endif %}", tools = true }
+# Make gcloud use the managed Python minor version its installer expects, if available
+CLOUDSDK_PYTHON = { value = "{% for p in tools.python %}{% if p.version | truncate(length=4, end='') == '3.14' %}{{ p.path }}/bin/python3{% endif %}{% endfor %}", tools = true }
 
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
