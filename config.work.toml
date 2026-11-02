@@ -5,7 +5,7 @@ gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credenti
 
 [env]
 # Make gcloud use the managed Python minor version its installer expects, if available
-CLOUDSDK_PYTHON = { value = "{% for p in tools.python %}{% if p.version | truncate(length=4, end='') == '3.14' %}{{ p.path }}/bin/python3{% endif %}{% endfor %}", tools = true }
+CLOUDSDK_PYTHON = { value = "{% set pys = tools.python %}{% if pys.version is defined %}{% set pys = [pys] %}{% endif %}{% for p in pys %}{% if p.version | truncate(length=4, end='') == '3.14' %}{{ p.path }}/bin/python3{% endif %}{% endfor %}", tools = true }
 
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
