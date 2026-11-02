@@ -149,52 +149,6 @@ checksum_source = "mise-versions"
 url = "https://github.com/ip7z/7zip/releases/download/26.05/7z2605-extra.7z"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/662536626"
 
-[[tools.agent-browser]]
-version = "0.41.0"
-backend = "aqua:vercel-labs/agent-browser"
-specifiers = ["latest"]
-
-[tools.agent-browser."platforms.linux-arm64"]
-checksum = "sha256:e196e9cabe6cb1b01bd5912973628361b9f40a332683a12426abad007f0d3589"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-linux-arm64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153004"
-
-[tools.agent-browser."platforms.linux-arm64-musl"]
-checksum = "sha256:e196e9cabe6cb1b01bd5912973628361b9f40a332683a12426abad007f0d3589"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-linux-arm64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153004"
-
-[tools.agent-browser."platforms.linux-x64"]
-checksum = "sha256:9585897e9453517683a4ca42f3c3f8d8376282f3160268d911ed219b2e0ad62a"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-linux-musl-x64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153010"
-
-[tools.agent-browser."platforms.linux-x64-musl"]
-checksum = "sha256:9585897e9453517683a4ca42f3c3f8d8376282f3160268d911ed219b2e0ad62a"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-linux-musl-x64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153010"
-
-[tools.agent-browser."platforms.macos-arm64"]
-checksum = "sha256:a402fef2489c221b17522aa21f103ca5dc47f00ff5879d4a72c39881544730ab"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-darwin-arm64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153002"
-
-[tools.agent-browser."platforms.macos-x64"]
-checksum = "sha256:f108d4aa02f41eee05d6b1b05817475fd5d576d802826783ef80800da16f33e2"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-darwin-x64"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153011"
-
-[tools.agent-browser."platforms.windows-x64"]
-checksum = "sha256:dee86b78071cbe7217f71ec1c9df6a50efa73cd44d64a18877bb36556fc8e270"
-checksum_source = "mise-versions"
-url = "https://github.com/vercel-labs/agent-browser/releases/download/v0.41.0/agent-browser-win32-x64.exe"
-url_api = "https://api.github.com/repos/vercel-labs/agent-browser/releases/assets/687153057"
-
 [[tools."aqua:temporalio/cli"]]
 version = "1.9.1"
 backend = "aqua:temporalio/cli"
@@ -1007,6 +961,12 @@ url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz"
 [tools.node."platforms.windows-x64"]
 checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a"
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
+
+[[tools."npm:agent-browser"]]
+version = "0.41.0"
+aube = { path = "locks/npm-agent-browser/0.41.0", digest = "sha256:a638ea117f197d70986e7c7e301831bf19e6068c4bc69918b6c2a59c1a55b549" }
+backend = "npm:agent-browser"
+specifiers = ["latest"]
 
 [[tools."npm:node-gyp"]]
 version = "13.1.0"
