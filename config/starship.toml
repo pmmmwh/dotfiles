@@ -1,38 +1,72 @@
-# right_format = '$time'
+"$schema" = 'https://starship.rs/config-schema.json'
 
 [aws]
 disabled = true
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
-symbol = " "
+symbol = " "
 
 [azure]
 disabled = true
 format = '\[[$symbol($subscription)]($style)\]'
+symbol = " "
+
+[battery]
+format = '\[[$symbol$percentage]($style)\]'
+full_symbol = "󰁹 "
+charging_symbol = "󰂄 "
+discharging_symbol = "󰂃 "
+unknown_symbol = "󰂑 "
+empty_symbol = "󰂎 "
 
 [buf]
-format = '\[[$symbol($version \(Buf $buf_version\) )]($style)\]'
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[bun]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[c]
+format = '\[[$symbol($version(-$name))]($style)\]'
+symbol = " "
 
 [cmake]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [cmd_duration]
-format = '\[[⏱  $duration]($style)\]'
+format = '\[[⏱ $duration]($style)\]'
 
 [cobol]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [conda]
 format = '\[[$symbol$environment]($style)\]'
+symbol = " "
+
+[container]
+format = '\[[$symbol \[$name\]]($style)\]'
+symbol = " "
+
+[cpp]
+format = '\[[$symbol($version(-$name))]($style)\]'
+symbol = " "
 
 [crystal]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[daml]
 format = '\[[$symbol($version)]($style)\]'
 
 [dart]
 format = '\[[$symbol($version)]($style)\]'
-symbol = " "
+symbol = " "
 
 [deno]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [directory]
 home_symbol = "󰋜"
@@ -41,15 +75,19 @@ repo_root_format = "[$repo_root]($style)[$path]($style)[$read_only]($read_only_s
 repo_root_style = ""
 truncation_length = 5
 truncation_symbol = "…/"
+substitutions = [
+  { from = "Desktop", to = "󰇄" },
+  { from = "Developer", to = "" },
+  { from = "Documents", to = "󰈙" },
+  { from = "Downloads", to = "" },
+  { from = "Movies", to = "󰎁" },
+  { from = "Music", to = "" },
+  { from = "Pictures", to = "" },
+]
 
-[directory.substitutions]
-'Desktop' = "󰇄"
-'Developer' = ""
-'Documents' = "󰈙"
-'Downloads' = ""
-'Movies' = "󰎁"
-'Music' = ""
-'Pictures' = ""
+[direnv]
+format = '\[[$symbol$loaded/$allowed]($style)\]'
+symbol = " "
 
 [docker_context]
 format = '\[[$symbol$context]($style)\]'
@@ -69,40 +107,104 @@ symbol = " "
 
 [erlang]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[fennel]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[fortran]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[fossil_branch]
+format = '\[[$symbol$branch]($style)\]'
+symbol = " "
+
+[fossil_metrics]
+format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
 
 [gcloud]
 disabled = true
 format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
-symbol = " "
+symbol = "󱇶 "
 
 [git_branch]
 format = '\[[$symbol$branch]($style)\]'
-symbol = " "
+symbol = " "
+
+[git_commit]
+format = '\[[\($hash$tag\)]($style)\]'
+tag_symbol = "  "
+
+[git_metrics]
+format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
+
+[git_state]
+format = '\[[$state ($progress_current/$progress_total)]($style)\]'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+format = '([\[$conflicted$stashed$worktree_added$worktree_deleted$worktree_modified$worktree_typechanged$untracked\]]($style))'
+worktree_added = '+'
+worktree_deleted = '✘'
+worktree_modified = '!'
+worktree_typechanged = '~'
+
+[gleam]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
 
+[gradle]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[guix_shell]
+format = '\[[$symbol]($style)\]'
+symbol = " "
+
 [haskell]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
 
+[haxe]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
 [helm]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [hg_branch]
 format = '\[[$symbol$branch]($style)\]'
-symbol = " "
+symbol = " "
 
 [hostname]
-format = '\[[$hostname]($style)\]'
+format = '\[[$ssh_symbol($hostname)]($style)\] '
+ssh_symbol = " "
 
 [java]
 format = '\[[$symbol($version)]($style)\]'
-symbol = " "
+symbol = " "
+
+[jj_bookmark]
+format = '\[[$symbol$bookmark(@$remote)$diverged( \(+$overflow_count others\))]($style)\]'
+symbol = " "
+
+[jj_change]
+format = '\[[\($change\)]($style)\]'
+
+[jj_metrics]
+format = '(\[[+$added]($added_style)\])(\[[-$deleted]($deleted_style)\])'
+
+[jj_status]
+format = '([\[$all\]]($style))'
+
+[jobs]
+format = '\[[$symbol$number]($style)\]'
 
 [julia]
 format = '\[[$symbol($version)]($style)\]'
@@ -110,20 +212,49 @@ symbol = " "
 
 [kotlin]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [kubernetes]
-format = '\[[$symbol$context( \($namespace\))]($style)\] '
+format = '\[[$symbol$context( \($namespace\))]($style)\]'
+symbol = "󱃾 "
+
+[localip]
+format = '\[[$localipv4]($style)\]'
 
 [lua]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
 
+[maven]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
 [memory_usage]
 format = '\[$symbol[$ram( | $swap)]($style)\]'
 symbol = "󰍛 "
 
+[meson]
+format = '\[[$symbol$project]($style)\]'
+symbol = "󰔷 "
+
+[mise]
+format = '\[[$symbol$health]($style)\]'
+
+[mojo]
+format = '\[[$symbol($version)]($style)\]'
+symbol = "󰈸 "
+
+[nats]
+format = '\[[$symbol$name]($style)\]'
+symbol = " "
+
+[netns]
+format = '\[[$symbol \[$name\]]($style)\]'
+symbol = "󰛳 "
+
 [nim]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [nix_shell]
 format = '\[[$symbol$state( \($name\))]($style)\]'
@@ -131,54 +262,177 @@ symbol = " "
 
 [nodejs]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [ocaml]
 format = '\[[$symbol($version)(\($switch_indicator$switch_name\))]($style)\]'
+symbol = " "
+
+[odin]
+format = '\[[$symbol($version )]($style)\]'
+symbol = "󰟢 "
+
+[opa]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [openstack]
 format = '\[[$symbol$cloud(\($project\))]($style)\]'
+symbol = " "
+
+[os]
+format = '\[[$symbol]($style)\]'
+
+[os.symbols]
+AIX = ""
+AlmaLinux = ""
+Alpaquita = ""
+Alpine = ""
+ALTLinux = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = ""
+Artix = ""
+Bazzite = ""
+Bluefin = ""
+CachyOS = ""
+CentOS = ""
+Debian = ""
+DragonFly = ""
+Elementary = ""
+Emscripten = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = ""
+Gentoo = ""
+HardenedBSD = "󰞌"
+Hurd = ""
+Illumos = ""
+InstantOS = ""
+Ios = "󰀷"
+Kali = ""
+KDENeon = ""
+Linux = ""
+Mabox = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+MidnightBSD = ""
+Mint = ""
+NetBSD = ""
+NixOS = ""
+Nobara = ""
+OpenBSD = ""
+OpenCloudOS = ""
+openEuler = ""
+openSUSE = ""
+OracleLinux = "󰺡"
+PikaOS = ""
+Pop = ""
+Raspbian = ""
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Redox = "󰀘"
+RockyLinux = ""
+Solus = ""
+SUSE = ""
+Ubuntu = ""
+Ultramarine = ""
+Unknown = ""
+Uos = ""
+Void = ""
+Windows = "󰍲"
+Zorin = ""
 
 [package]
 format = '\[[$symbol$version]($style)\]'
+symbol = "󰏗 "
 
 [perl]
 format = '\[[$symbol($version)]($style)\]'
-symbol = " "
+symbol = " "
 
 [php]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
 
+[pijul_channel]
+format = '\[[$symbol$channel]($style)\]'
+symbol = " "
+
+[pixi]
+format = '\[[$symbol$version( $environment)]($style)\]'
+symbol = "󰏗 "
+
+[profiles]
+claude-code = '$claude_model$claude_context$claude_cost'
+
 [pulumi]
-format = '\[[$symbol($username@)$stack]($style)\]'
+format = '\[[$symbol$stack]($style)\]'
+symbol = " "
 
 [purescript]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [python]
-format = '\[[$symbol$pyenv_prefix($version)( \($virtualenv\))]($style)\]'
-symbol = " "
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+symbol = " "
+
+[quarto]
+format = '\[[$symbol($version)]($style)\]'
+
+[raku]
+format = '\[[$symbol($version-$vm_version)]($style)\]'
+symbol = "󱖊 "
 
 [red]
 format = '\[[$symbol($version)]($style)\]'
+symbol = "󱍼 "
 
 [rlang]
 format = '\[[$symbol($version)]($style)\]'
+symbol = "󰟔 "
 
 [ruby]
 format = '\[[$symbol($version)]($style)\]'
-symbol = " "
+symbol = " "
 
 [rust]
 format = '\[[$symbol($version)]($style)\]'
-symbol = " "
+symbol = "󱘗 "
 
 [scala]
 format = '\[[$symbol($version)]($style)\]'
 symbol = " "
 
+[shell]
+format = '\[[$indicator]($style)\]'
+
+[shlvl]
+symbol = "󰹍 "
+
 [singularity]
-format = '\[[$symbol\($env\)]($style)\]'
+format = '\[[$symbol\[$env\]]($style)\]'
+symbol = " "
+
+[solidity]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[spack]
+format = '\[[$symbol$environment]($style)\]'
+symbol = " "
+
+[status]
+format = '\[[$symbol$status]($style)\]'
+symbol = " "
+
+[sudo]
+format = '\[[as $symbol]($style)\]'
+symbol = " "
 
 [swift]
 format = '\[[$symbol($version)]($style)\]'
@@ -186,18 +440,33 @@ symbol = " "
 
 [terraform]
 format = '\[[$symbol$workspace]($style)\]'
+symbol = " "
 
 [time]
 format = '\[[$time]($style)\]'
+
+[typst]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [username]
 format = '\[[$user]($style)\]'
 
 [vagrant]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[vcsh]
+format = '\[vcsh [$symbol$repo]($style)\]'
 
 [vlang]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
+
+[xmake]
+format = '\[[$symbol($version)]($style)\]'
+symbol = " "
 
 [zig]
 format = '\[[$symbol($version)]($style)\]'
+symbol = " "
