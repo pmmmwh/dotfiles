@@ -6,6 +6,10 @@ idiomatic_version_file_enable_tools = ["go", "node", "python"]
 lockfile = true
 self_update.auto = true
 
+[env]
+# mise installs and upgrades Claude Code, so it should not replace itself
+DISABLE_AUTOUPDATER = "1"
+
 [tools]
 go = "1.27"
 java = { version = "zulu-17", os = "macos" }
@@ -19,8 +23,10 @@ rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets
 atuin = "latest"
 bat = "latest"
 bottom = "latest"
+claude-code = "latest"
 cloudflared = "latest"
 cmake = "latest"
+codex = "latest"
 delta = "latest"
 eza = "latest"
 fastfetch = "latest"
