@@ -763,40 +763,6 @@ checksum = "sha256:42637464c337a3da203fbd4e8c688e4b2d511fd42bd19c337c0422e923a7b
 url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_windows_amd64.tar.gz"
 url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564295046"
 
-[[tools."aqua:tummychow/git-absorb"]]
-version = "0.9.0"
-backend = "aqua:tummychow/git-absorb"
-specifiers = ["latest"]
-
-[tools."aqua:tummychow/git-absorb"."platforms.linux-x64"]
-checksum = "sha256:517b442260a38617b05df0078b9e659b95068fabe8d0a83a33589d15f198d9a7"
-checksum_source = "mise-versions"
-url = "https://github.com/tummychow/git-absorb/releases/download/0.9.0/git-absorb-0.9.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tummychow/git-absorb/releases/assets/355709221"
-
-[tools."aqua:tummychow/git-absorb"."platforms.linux-x64-musl"]
-checksum = "sha256:517b442260a38617b05df0078b9e659b95068fabe8d0a83a33589d15f198d9a7"
-checksum_source = "mise-versions"
-url = "https://github.com/tummychow/git-absorb/releases/download/0.9.0/git-absorb-0.9.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/tummychow/git-absorb/releases/assets/355709221"
-
-[tools."aqua:tummychow/git-absorb"."platforms.macos-arm64"]
-checksum = "sha256:1df9ad9206b2a2f0ce312a89188f80d3bace8471ca2799533beec6d83371f760"
-url = "https://github.com/tummychow/git-absorb/releases/download/0.9.0/git-absorb-0.9.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tummychow/git-absorb/releases/assets/355709117"
-
-[tools."aqua:tummychow/git-absorb"."platforms.macos-x64"]
-checksum = "sha256:1df9ad9206b2a2f0ce312a89188f80d3bace8471ca2799533beec6d83371f760"
-checksum_source = "mise-versions"
-url = "https://github.com/tummychow/git-absorb/releases/download/0.9.0/git-absorb-0.9.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/tummychow/git-absorb/releases/assets/355709117"
-
-[tools."aqua:tummychow/git-absorb"."platforms.windows-x64"]
-checksum = "sha256:3fcf1d9b4f42017dbffe90539c6be5ac415e9b119552c5ae5cdbb034d36aab87"
-checksum_source = "mise-versions"
-url = "https://github.com/tummychow/git-absorb/releases/download/0.9.0/git-absorb-0.9.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/tummychow/git-absorb/releases/assets/355709171"
-
 [[tools.atuin]]
 version = "18.24.4"
 backend = "aqua:atuinsh/atuin"
@@ -1591,84 +1557,84 @@ checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b591
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
 
 [[tools.oh-my-pi]]
-version = "18.14.1"
+version = "18.14.2"
 backend = "github:can1357/oh-my-pi"
 specifiers = ["latest"]
 
 [tools.oh-my-pi."platforms.linux-arm64"]
-checksum = "sha256:1fd31f1c9471a3f8417571cba857de0fa2ec1678b93d5251750120baab3460e6"
+checksum = "sha256:afbdf04be3ddbe34a07e91c913ddb6d335a3a0210f520ac5a197a245888ad63e"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-linux-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961157"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073839"
 
 [tools.oh-my-pi."platforms.linux-arm64-musl"]
-checksum = "sha256:e26e74423565057dafaa36d631d6bdfdb8663dd7f8108b0119ebe58da6d7e152"
+checksum = "sha256:a743f0b3e10dda03c3eb317ea377e76263772887c83e54aff45cc508aa62df24"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-linux-musl-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961162"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-musl-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073844"
 
 [tools.oh-my-pi."platforms.linux-x64"]
-checksum = "sha256:02d76a0cfeee473ffa387f50cf0378b0de1c44684c83e67ca27ba4d717cfb0d0"
+checksum = "sha256:cde0bc4ac8ec333c4880039a5242ff33dbfc6544747d67aeb99bb077874aeec1"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-linux-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961158"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073838"
 
 [tools.oh-my-pi."platforms.linux-x64-musl"]
-checksum = "sha256:0013cb19b5f9b6f9e364c39a638124dc8ae747303510ab4ce2494e8c8831f2a8"
+checksum = "sha256:e66e537d86189bc47b059f94d512915c2ed5dfc8541729c5c5e000557c65391b"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-linux-musl-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961151"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-musl-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073834"
 
 [tools.oh-my-pi."platforms.macos-arm64"]
-checksum = "sha256:1cef852c6cb00a86b555efd703efe5192200d302601ff29048e152495362bff9"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-darwin-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961155"
+checksum = "sha256:9b7bda0bd8ec8d1fd8f8deda076180deef2d4921ee60e7d2f39044ee7d9437ee"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-darwin-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073843"
 
 [tools.oh-my-pi."platforms.macos-x64"]
-checksum = "sha256:eed7a65291c5bb75534e57634e3b7c5c0a5adfc39457977dcd5ddcbaaa0c5cca"
+checksum = "sha256:62835e51acc0f07d19493da736b7215d3224fd5099754b7e42c3b0fdc2eb7f45"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-darwin-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961160"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-darwin-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073842"
 
 [tools.oh-my-pi."platforms.windows-x64"]
-checksum = "sha256:5b72f0e46e9cd441793d399d36f319a656f2e3c9a3f1997342e46fa885614913"
+checksum = "sha256:aa04e4ff3b2d97d604839edf1bcf5a0085818389d9fc8c1a18875ee7b5e3b0f8"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.1/omp-windows-x64.exe"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/693961150"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-windows-x64.exe"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073835"
 
 [[tools.onefetch]]
-version = "3.1.0"
+version = "3.2.0"
 backend = "aqua:o2sh/onefetch"
 specifiers = ["latest"]
 
 [tools.onefetch."platforms.linux-x64"]
-checksum = "sha256:db1963759d11f3acc1b30f112d407c97a3c17ec63675cc2a3587f4c5de0f2794"
+checksum = "sha256:7acadb6abcc29940f6b6b143c6bbc8b472c8bb3a9ec83a7bdeb0bcab7f152413"
 checksum_source = "mise-versions"
-url = "https://github.com/o2sh/onefetch/releases/download/3.1.0/onefetch-linux.tar.gz"
-url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/654434243"
+url = "https://github.com/o2sh/onefetch/releases/download/3.2.0/onefetch-linux.tar.gz"
+url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/695398143"
 
 [tools.onefetch."platforms.linux-x64-musl"]
-checksum = "sha256:db1963759d11f3acc1b30f112d407c97a3c17ec63675cc2a3587f4c5de0f2794"
+checksum = "sha256:7acadb6abcc29940f6b6b143c6bbc8b472c8bb3a9ec83a7bdeb0bcab7f152413"
 checksum_source = "mise-versions"
-url = "https://github.com/o2sh/onefetch/releases/download/3.1.0/onefetch-linux.tar.gz"
-url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/654434243"
+url = "https://github.com/o2sh/onefetch/releases/download/3.2.0/onefetch-linux.tar.gz"
+url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/695398143"
 
 [tools.onefetch."platforms.macos-arm64"]
-checksum = "sha256:57d058910c83cd9d791464b1082a4232f4ce6530ad3dd6756033ad05dc1f8022"
-url = "https://github.com/o2sh/onefetch/releases/download/3.1.0/onefetch-mac.tar.gz"
-url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/654436243"
+checksum = "sha256:2c88f84ccf63bddb03f61c3899932445a91e1f0610ac1b97168f13435939c19d"
+url = "https://github.com/o2sh/onefetch/releases/download/3.2.0/onefetch-mac.tar.gz"
+url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/695398394"
 
 [tools.onefetch."platforms.macos-x64"]
-checksum = "sha256:57d058910c83cd9d791464b1082a4232f4ce6530ad3dd6756033ad05dc1f8022"
+checksum = "sha256:2c88f84ccf63bddb03f61c3899932445a91e1f0610ac1b97168f13435939c19d"
 checksum_source = "mise-versions"
-url = "https://github.com/o2sh/onefetch/releases/download/3.1.0/onefetch-mac.tar.gz"
-url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/654436243"
+url = "https://github.com/o2sh/onefetch/releases/download/3.2.0/onefetch-mac.tar.gz"
+url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/695398394"
 
 [tools.onefetch."platforms.windows-x64"]
-checksum = "sha256:da8bbfb4566c2d4ef5303b9f126b08d5176060f508f94b75bba5d5320bc9bc76"
+checksum = "sha256:adeabb2b1ee201dad52a084adee3449a489c652672c8ec4fc0c0008d2aa145a5"
 checksum_source = "mise-versions"
-url = "https://github.com/o2sh/onefetch/releases/download/3.1.0/onefetch-win.tar.gz"
-url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/654438530"
+url = "https://github.com/o2sh/onefetch/releases/download/3.2.0/onefetch-win.tar.gz"
+url_api = "https://api.github.com/repos/o2sh/onefetch/releases/assets/695411153"
 
 [[tools.postgres]]
 version = "17.11"
