@@ -8,13 +8,13 @@ self_update.auto = true
 
 [tools]
 go = "1.27"
-java = "zulu-17"
+java = { version = "zulu-17", os = "macos" }
 node = "26"
 python = ["3.12", "3.14"]
-ruby = "3.4"
+ruby = { version = "3.4", os = "macos" }
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
-"1password-cli" = "latest"
+"1password-cli" = { version = "latest", os = "macos" }
 "7zip" = "latest"
 agent-browser = "latest"
 atuin = "latest"
@@ -35,7 +35,7 @@ jq = "latest"
 mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
-postgres = "17"
+postgres = { version = "17", os = "macos" }
 protoc = "latest"
 shellcheck = "latest"
 shfmt = "latest"
@@ -48,17 +48,26 @@ uv = "latest"
 xh = "latest"
 yq = "latest"
 
+"npm:node-gyp" = "latest"
+"npm:sharp" = "latest"
+"npm:sql-formatter" = "latest"
+"npm:svgo" = "latest"
+
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
-"~/.config" = { source = "config", mode = "symlink-each", exclude = ["karabiner"] }
+"~/.config" = { source = "config", mode = "symlink-each", exclude = ["ghostty", "karabiner", "zed"] }
+# Apps that are only installed on macOS
+"~/.config/ghostty" = { source = "config/ghostty", mode = "symlink-each", variants = [{ os = "macos" }] }
+"~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
 # Copied, as Karabiner-Elements replaces the file when it saves
-"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600" }
+"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600", variants = [{ os = "macos" }] }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
+"~/.gitconfig.macos" = { source = "git/macos.gitconfig", variants = [{ os = "macos" }] }
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
 "~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }

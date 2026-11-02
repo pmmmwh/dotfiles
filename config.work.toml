@@ -3,6 +3,8 @@
 flyway = "latest"
 gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credential-gcr"] }
 
+"npm:vercel" = "latest"
+
 [env]
 # gcloud's installer expects Python 3.14, so use the managed install whichever Python a project pins
 CLOUDSDK_PYTHON = "{{ env.MISE_DATA_DIR | default(value=xdg_data_home ~ '/mise') }}/installs/python/3.14/bin/python3"
@@ -12,4 +14,4 @@ CLOUDSDK_PYTHON = "{{ env.MISE_DATA_DIR | default(value=xdg_data_home ~ '/mise')
 
 [bootstrap.packages]
 # Database related tools
-"brew:dbt-labs/dbt-cli/dbt" = "latest"
+"brew:dbt-labs/dbt-cli/dbt" = { os = "macos" }

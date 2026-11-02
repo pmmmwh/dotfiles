@@ -1,5 +1,5 @@
 # Load library files
-for libraryFile ($ZSH_CUSTOM/*.zsh(N)); do
+for libraryFile ($ZSH_CUSTOM/*.zsh(N) $ZSH_CUSTOM/@$ZSH_PLATFORM/*.zsh(N)); do
   source $libraryFile
 done
 

@@ -1,57 +1,59 @@
 [tools]
 caddy = "latest"
-"gem:cocoapods" = "latest"
+"gem:cocoapods" = { version = "latest", os = "macos" }
 glab = "latest"
 hunk = "latest"
 rclone = "latest"
-swiftformat = "latest"
-xcodegen = "latest"
+swiftformat = { version = "latest", os = "macos" }
+xcodegen = { version = "latest", os = "macos" }
 
+"npm:eas-cli" = "latest"
+"npm:react-devtools" = { version = "latest", os = "macos" }
 "npm:wasm-pack" = "latest"
 
 [bootstrap.brew.taps]
 "entireio/tap" = "https://github.com/entireio/homebrew-tap.git"
 
 [bootstrap.packages]
-"brew:nginx" = "latest"
+"brew:nginx" = { os = "macos" }
 
 # Utilities
-"brew-cask:craft" = "latest"
-"brew-cask:dropbox" = "latest"
-"brew-cask:entireio/tap/entire" = "latest"
-"brew-cask:microsoft-powerpoint" = "latest"
-"brew-cask:microsoft-word" = "latest"
-"brew-cask:omnidisksweeper" = "latest"
-"brew-cask:parallels" = "latest"
-"brew-cask:splashtop-business" = "latest"
-"brew-cask:vlc" = "latest"
-"brew-cask:xld" = "latest"
+"brew-cask:craft" = { os = "macos" }
+"brew-cask:dropbox" = { os = "macos" }
+"brew-cask:entireio/tap/entire" = { os = "macos" }
+"brew-cask:microsoft-powerpoint" = { os = "macos" }
+"brew-cask:microsoft-word" = { os = "macos" }
+"brew-cask:omnidisksweeper" = { os = "macos" }
+"brew-cask:parallels" = { os = "macos" }
+"brew-cask:splashtop-business" = { os = "macos" }
+"brew-cask:vlc" = { os = "macos" }
+"brew-cask:xld" = { os = "macos" }
 
 # Instant messaging
-"brew-cask:discord" = "latest"
-"brew-cask:zoom" = "latest"
+"brew-cask:discord" = { os = "macos" }
+"brew-cask:zoom" = { os = "macos" }
 
 # Creative and design
-"brew-cask:adobe-creative-cloud" = "latest"
-"brew-cask:affinity-designer" = "latest"
-"brew-cask:affinity-photo" = "latest"
+"brew-cask:adobe-creative-cloud" = { os = "macos" }
+"brew-cask:affinity-designer" = { os = "macos" }
+"brew-cask:affinity-photo" = { os = "macos" }
 
 # Music
-"brew-cask:focusrite-control" = "latest"
-"brew-cask:musescore" = "latest"
-"brew-cask:native-access" = "latest"
-"brew-cask:reaper" = "latest"
+"brew-cask:focusrite-control" = { os = "macos" }
+"brew-cask:musescore" = { os = "macos" }
+"brew-cask:native-access" = { os = "macos" }
+"brew-cask:reaper" = { os = "macos" }
 
 # Mobile
-"brew-cask:android-platform-tools" = "latest"
-"brew-cask:expo-orbit" = "latest"
-"brew-cask:impactor" = "latest"
-"brew-cask:swiftformat-for-xcode" = "latest"
-"brew-cask:vysor" = "latest"
+"brew-cask:android-platform-tools" = { os = "macos" }
+"brew-cask:expo-orbit" = { os = "macos" }
+"brew-cask:impactor" = { os = "macos" }
+"brew-cask:swiftformat-for-xcode" = { os = "macos" }
+"brew-cask:vysor" = { os = "macos" }
 
 # Gaming
-"brew-cask:parsec" = "latest"
-"brew-cask:steam" = "latest"
+"brew-cask:parsec" = { os = "macos" }
+"brew-cask:steam" = { os = "macos" }
 
 # WireGuard
-"mas:1451685025" = "latest"
+"mas:1451685025" = { os = "macos" }

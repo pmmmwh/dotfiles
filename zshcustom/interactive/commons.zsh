@@ -2,30 +2,8 @@
 
 # ALIASES
 
-# Kill all the tabs in Chrome to free up memory
-# Explanation: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper (Renderer) --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-
 # Run claude with personal config
 alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude.personal claude"
-
-# Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Empties trash files on the machine:
-# - Empty the Trash on all mounted volumes and the main HDD
-# - Clear macOS System Logs to improve shell startup speed
-# - Clear download history from system quarantine
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'"
-
-# Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Show current public IP address
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-# Show all IP addresses of local network interfaces
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show all ports that are currently listning by a process
 alias listeningports="sudo lsof -iTCP -sTCP:LISTEN -nP"
@@ -41,30 +19,11 @@ alias path='echo -e ${PATH//:/\\n}'
 # Reload the shell (i.e. invoke as a login shell)
 alias reload='exec ${SHELL} -l'
 
-# Update software:
-# 1. Get macOS Software Updates
-# 2. Update mise-en-place, then the tools it installed and the packages it declares
-# 3. Update apps from App Store
-# 4. Update npm and installed packages
-# 5. Update uv installed packages
-# 6. Update installed Ruby gems
-# 7. Clear `eval` cache
-alias update="sudo softwareupdate -i -a; mise self-update -y; mise up; mise bootstrap packages upgrade; mas upgrade; npm install npm -g; npm update -g; uv tool upgrade --all; gem update --system; gem update; gem cleanup; yes | _evalcache_clear"
-
 # Get current week (number)
 alias week="date +%V"
 
 # Alias 7-zip to `7z`
 (( ${+commands[7z]} )) || alias 7z="7zz"
-
-# If macOS has no command for canonical hex dump, set the alias as a fallback
-(( ${+commands[hd]} )) || alias hd="hexdump -C"
-
-# If macOS has no `md5sum`, use `md5` as a fallback
-(( ${+commands[md5sum]} )) || alias md5sum="md5"
-
-# If macOS has no `sha1sum`, use `shasum` as a fallback
-(( ${+commands[sha1sum]} )) || alias sha1sum="shasum"
 
 # If available, use `diff` from Git instead of default
 if (( ${+commands[git]} )); then
@@ -121,21 +80,6 @@ gz() {
   printf "Gzipped : %d bytes (%2.2f%%)\n" "$gzipSize" "$ratio"
 }
 
-# Show all active network interfaces
-ifactive() {
-  # awk rather than grep: a match spans the whole indented block, not one line
-  ifconfig | awk '
-    /^[^\t]/ { if (block ~ /status: active/) printf "%s", block; block = "" }
-              { block = block $0 "\n" }
-    END       { if (block ~ /status: active/) printf "%s", block }
-  '
-}
-
-# Show the IP address of the currently active network interface
-localip() {
-  ipconfig getifaddr "$(netstat -rn | grep default | awk '{print $NF}' | head -1)"
-}
-
 # Create a new directory and move inside it
 mkd() {
   mkdir -p "$@" && cd "$_" || return
@@ -184,4 +128,27 @@ targz() {
 # A shorthand for `tree`, with colour, defaulted hidden files and sort (directories first)
 tre() {
   tree -aC -I ".git|node_modules" --dirsfirst "$@" | less -FNRX
+}
+
+# Update software:
+# 1. Update the operating system and its packages
+# 2. Update mise-en-place, then the tools it installed and the packages it declares
+# 3. Update npm and installed packages
+# 4. Update uv installed packages
+# 5. Update installed Ruby gems
+# 6. Clear `eval` cache
+update() {
+  (( $+functions[_update_system] )) && _update_system
+  mise self-update -y
+  mise up
+  mise bootstrap packages upgrade
+  npm install npm -g
+  npm update -g
+  uv tool upgrade --all
+  if (( $+commands[gem] )); then
+    gem update --system
+    gem update
+    gem cleanup
+  fi
+  yes | _evalcache_clear
 }

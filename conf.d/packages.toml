@@ -6,79 +6,103 @@ homebrew_metadata = true
 "xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
 
 [bootstrap.packages]
+### macOS ###
 # The `wget` command
-"brew:wget" = "latest"
+"brew:wget" = { os = "macos" }
 
 # Other miscellaneous binaries
-"brew:ack" = "latest"
-"brew:ffmpeg" = "latest"
-"brew:graphviz" = "latest"
-"brew:imagemagick" = "latest"
-"brew:less" = "latest"
-"brew:mas" = "latest"  # needs to be installed before `mas:` entries below
-"brew:mole" = "latest"
-"brew:nextdns" = "latest"
-"brew:pigz" = "latest"
-"brew:pkgconf" = "latest"
-"brew:readline" = "latest"
-"brew:esolitos/ipa/sshpass" = "latest"
-"brew:sqlmap" = "latest"
-"brew:tree" = "latest"
-"brew:xz" = "latest"
-"brew:zlib" = "latest"
-"brew:zopfli" = "latest"
+"brew:ack" = { os = "macos" }
+"brew:ffmpeg" = { os = "macos" }
+"brew:graphviz" = { os = "macos" }
+"brew:imagemagick" = { os = "macos" }
+"brew:less" = { os = "macos" }
+"brew:mas" = { os = "macos" }  # needs to be installed before `mas:` entries below
+"brew:mole" = { os = "macos" }
+"brew:nextdns" = { os = "macos" }
+"brew:pigz" = { os = "macos" }
+"brew:pkgconf" = { os = "macos" }
+"brew:readline" = { os = "macos" }
+"brew:esolitos/ipa/sshpass" = { os = "macos" }
+"brew:sqlmap" = { os = "macos" }
+"brew:tree" = { os = "macos" }
+"brew:xz" = { os = "macos" }
+"brew:zlib" = { os = "macos" }
+"brew:zopfli" = { os = "macos" }
 
 # General development tools
-"brew:git" = "latest"
-"brew:watchman" = "latest"
+"brew:git" = { os = "macos" }
+"brew:watchman" = { os = "macos" }
 
 # Tools to optimise images
-"brew:jpegoptim" = "latest"
-"brew:optipng" = "latest"
-"brew:pngquant" = "latest"
+"brew:jpegoptim" = { os = "macos" }
+"brew:optipng" = { os = "macos" }
+"brew:pngquant" = { os = "macos" }
 
 # Browsers
-"brew-cask:firefox" = "latest"
-"brew-cask:google-chrome" = "latest"
+"brew-cask:firefox" = { os = "macos" }
+"brew-cask:google-chrome" = { os = "macos" }
 
 # Utilities
-"brew-cask:1password" = "latest"
-"brew-cask:xykong/tap/flux-markdown" = "latest"
-"brew-cask:ghostty" = "latest"
-"brew-cask:karabiner-elements" = "latest"
-"brew-cask:linear" = "latest"
-"brew-cask:logi-options+" = "latest"
-"brew-cask:microsoft-auto-update" = "latest"
-"brew-cask:microsoft-excel" = "latest"
-"brew-cask:mimestream" = "latest"
-"brew-cask:mullvad-vpn" = "latest"
-"brew-cask:notion" = "latest"
-"brew-cask:raycast" = "latest"
-"brew-cask:setapp" = "latest"
-"brew-cask:tablepro" = "latest"
-"brew-cask:tailscale" = "latest"
-"brew-cask:the-unarchiver" = "latest"
-"brew-cask:yubico-authenticator" = "latest"
+"brew-cask:1password" = { os = "macos" }
+"brew-cask:xykong/tap/flux-markdown" = { os = "macos" }
+"brew-cask:ghostty" = { os = "macos" }
+"brew-cask:karabiner-elements" = { os = "macos" }
+"brew-cask:linear" = { os = "macos" }
+"brew-cask:logi-options+" = { os = "macos" }
+"brew-cask:microsoft-auto-update" = { os = "macos" }
+"brew-cask:microsoft-excel" = { os = "macos" }
+"brew-cask:mimestream" = { os = "macos" }
+"brew-cask:mullvad-vpn" = { os = "macos" }
+"brew-cask:notion" = { os = "macos" }
+"brew-cask:raycast" = { os = "macos" }
+"brew-cask:setapp" = { os = "macos" }
+"brew-cask:tablepro" = { os = "macos" }
+"brew-cask:tailscale" = { os = "macos" }
+"brew-cask:the-unarchiver" = { os = "macos" }
+"brew-cask:yubico-authenticator" = { os = "macos" }
 
 # Instant messaging
-"brew-cask:signal" = "latest"
-"brew-cask:slack" = "latest"
-"brew-cask:telegram-desktop" = "latest"
+"brew-cask:signal" = { os = "macos" }
+"brew-cask:slack" = { os = "macos" }
+"brew-cask:telegram-desktop" = { os = "macos" }
 
 # Creative and design
-"brew-cask:figma" = "latest"
-"brew-cask:font-meslo-lg-nerd-font" = "latest"
-"brew-cask:sf-symbols" = "latest"
+"brew-cask:figma" = { os = "macos" }
+"brew-cask:font-meslo-lg-nerd-font" = { os = "macos" }
+"brew-cask:sf-symbols" = { os = "macos" }
 
 # Development
-"brew-cask:gitbutler" = "latest"
-"brew-cask:imageoptim" = "latest"
-"brew-cask:localcan" = "latest"
-"brew-cask:orbstack" = "latest"
-"brew-cask:yaak" = "latest"
-"brew-cask:zed" = "latest"
+"brew-cask:gitbutler" = { os = "macos" }
+"brew-cask:imageoptim" = { os = "macos" }
+"brew-cask:localcan" = { os = "macos" }
+"brew-cask:orbstack" = { os = "macos" }
+"brew-cask:yaak" = { os = "macos" }
+"brew-cask:zed" = { os = "macos" }
 
 # Flighty
-"mas:1358823008" = "latest"
+"mas:1358823008" = { os = "macos" }
 # Xcode
-"mas:497799835" = "latest"
+"mas:497799835" = { os = "macos" }
+
+### Linux ###
+# The `wget` command
+"apt:wget" = "latest"
+
+# Other miscellaneous binaries
+"apt:ack" = "latest"
+"apt:build-essential" = "latest"
+"apt:graphviz" = "latest"
+"apt:pigz" = "latest"
+"apt:pkgconf" = "latest"
+"apt:sshpass" = "latest"
+"apt:tree" = "latest"
+"apt:unzip" = "latest"
+"apt:xz-utils" = "latest"
+"apt:zopfli" = "latest"
+"apt:zsh" = "latest"
+
+# General development tools
+"apt:docker-buildx" = "latest"
+"apt:docker-compose-v2" = "latest"
+"apt:docker.io" = "latest"
+"apt:git" = "latest"

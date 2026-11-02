@@ -167,3 +167,9 @@ url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-591.0.0
 [tools.gcloud."platforms.windows-x64"]
 checksum = "sha256:f011188d735a63ee5278ce41e6f1a9388dbd17232238be31a1c2cfc39933bada"
 url = "https://storage.googleapis.com/cloud-sdk-release/google-cloud-sdk-591.0.0-windows-x86_64-bundled-python.zip"
+
+[[tools."npm:vercel"]]
+version = "65.9.0"
+aube = { path = "locks/mise.work/npm-vercel/65.9.0", digest = "sha256:daed52bf478bba8c6b887ad179964e136e283f32d3fb773c9b777c81e0c7ac49" }
+backend = "npm:vercel"
+specifiers = ["latest"]
