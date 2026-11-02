@@ -46,7 +46,6 @@ homebrew_metadata = true
 "brew-cask:1password" = { os = "macos" }
 "brew-cask:xykong/tap/flux-markdown" = { os = "macos" }
 "brew-cask:ghostty" = { os = "macos" }
-"brew-cask:karabiner-elements" = { os = "macos" }
 "brew-cask:logi-options+" = { os = "macos" }
 "brew-cask:microsoft-auto-update" = { os = "macos" }
 "brew-cask:microsoft-excel" = { os = "macos" }
