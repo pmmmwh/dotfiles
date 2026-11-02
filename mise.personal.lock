@@ -2,6 +2,58 @@
 
 lockfile_version = 3
 
+[[tools.caddy]]
+version = "2.11.7"
+backend = "aqua:caddyserver/caddy"
+specifiers = ["latest"]
+
+[tools.caddy."platforms.linux-arm64"]
+checksum = "sha256:d8fc6d179a5d283028a472a5618564f6ad8a86fed513e64f032b3b0b7cc45e42"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607244906"
+
+[tools.caddy."platforms.linux-arm64-musl"]
+checksum = "sha256:d8fc6d179a5d283028a472a5618564f6ad8a86fed513e64f032b3b0b7cc45e42"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607244906"
+
+[tools.caddy."platforms.linux-x64"]
+checksum = "sha256:727b91701a392de6ebc5027509f548bf39979e5216340d0faed8fa5e69c84f8b"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607245028"
+
+[tools.caddy."platforms.linux-x64-musl"]
+checksum = "sha256:727b91701a392de6ebc5027509f548bf39979e5216340d0faed8fa5e69c84f8b"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_linux_amd64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607245028"
+
+[tools.caddy."platforms.macos-arm64"]
+checksum = "sha256:cda3030e5d5b13eb9f0b6fb541037f633bddd958c070c5f561d7a5cccb581665"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_mac_arm64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607245027"
+
+[tools.caddy."platforms.macos-x64"]
+checksum = "sha256:110c53e5c093e4cfce6eda787f94f23bef913c309f620fab26b4f678031841ad"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_mac_amd64.tar.gz"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607244902"
+
+[tools.caddy."platforms.windows-x64"]
+checksum = "sha256:0a1edc0b799512051c57071ce0e798d3f2cf67dc98171366f1d2b326072e3b06"
+checksum_source = "mise-versions"
+url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_windows_amd64.zip"
+url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607244987"
+
+[[tools."gem:cocoapods"]]
+version = "1.17.0"
+backend = "gem:cocoapods"
+specifiers = ["latest"]
+
 [[tools.glab]]
 version = "1.116.0"
 backend = "gitlab:gitlab-org/cli"
@@ -82,6 +134,18 @@ checksum = "sha256:874b10ea2729832849f9c773bf4b227d18512c491be59f7bda3984b32a045
 url = "https://github.com/modem-dev/hunk/releases/download/v0.21.0/hunkdiff-windows-x64.tar.gz"
 url_api = "https://api.github.com/repos/modem-dev/hunk/releases/assets/541386505"
 
+[[tools."npm:eas-cli"]]
+version = "27.2.0"
+aube = { path = "locks/mise.personal/npm-eas-cli/27.2.0", digest = "sha256:a4dd8706e6e49ce93e119474451ee1d2efe32373d5bb3d412a82dec5302cb7d9" }
+backend = "npm:eas-cli"
+specifiers = ["latest"]
+
+[[tools."npm:react-devtools"]]
+version = "8.0.0"
+aube = { path = "locks/mise.personal/npm-react-devtools/8.0.0", digest = "sha256:ae4f0714a04210bfae2c595d8f4f7c6b849c25501885d5ce660718df75f59595" }
+backend = "npm:react-devtools"
+specifiers = ["latest"]
+
 [[tools."npm:wasm-pack"]]
 version = "0.15.0"
 aube = { path = "locks/mise.personal/npm-wasm-pack/0.15.0", digest = "sha256:cf0831db639edf1a0349fbdef66f87ef9d2d8a86f3b12f83d13d6ed342f92bf3" }
@@ -127,6 +191,26 @@ url_api = "https://api.github.com/repos/rclone/rclone/releases/assets/544645299"
 checksum = "sha256:200eb602c126d82aa38b51e0f6b9ae837473ff99b51278d3f6f837574c494d6e"
 url = "https://github.com/rclone/rclone/releases/download/v1.75.1/rclone-v1.75.1-windows-amd64.zip"
 url_api = "https://api.github.com/repos/rclone/rclone/releases/assets/544647178"
+
+[[tools.swiftformat]]
+version = "0.64.5"
+backend = "github:nicklockwood/SwiftFormat"
+specifiers = ["latest"]
+
+[tools.swiftformat.options]
+no_app = "true"
+
+[tools.swiftformat."platforms.macos-arm64"]
+checksum = "sha256:ec017c91fdd46233e5a22dc43ff9564a3cc4b37023d3b4681b6c7d7b781de113"
+checksum_source = "mise-versions"
+url = "https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.5/swiftformat.zip"
+url_api = "https://api.github.com/repos/nicklockwood/SwiftFormat/releases/assets/695931753"
+
+[tools.swiftformat."platforms.macos-x64"]
+checksum = "sha256:ec017c91fdd46233e5a22dc43ff9564a3cc4b37023d3b4681b6c7d7b781de113"
+checksum_source = "mise-versions"
+url = "https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.5/swiftformat.zip"
+url_api = "https://api.github.com/repos/nicklockwood/SwiftFormat/releases/assets/695931753"
 
 [[tools.xcodegen]]
 version = "2.46.0"

@@ -7,6 +7,8 @@ rclone = "latest"
 swiftformat = { version = "latest", os = "macos" }
 xcodegen = { version = "latest", os = "macos" }
 
+"npm:eas-cli" = "latest"
+"npm:react-devtools" = { version = "latest", os = "macos" }
 "npm:wasm-pack" = "latest"
 
 [bootstrap.brew.taps]

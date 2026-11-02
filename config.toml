@@ -48,6 +48,11 @@ uv = "latest"
 xh = "latest"
 yq = "latest"
 
+"npm:node-gyp" = "latest"
+"npm:sharp" = "latest"
+"npm:sql-formatter" = "latest"
+"npm:svgo" = "latest"
+
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
 "~/.config" = { source = "config", mode = "symlink-each", exclude = ["ghostty", "karabiner", "zed"] }

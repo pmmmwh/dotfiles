@@ -1008,6 +1008,30 @@ url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz"
 checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b59150a"
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
 
+[[tools."npm:node-gyp"]]
+version = "13.1.0"
+aube = { path = "locks/npm-node-gyp/13.1.0", digest = "sha256:c35f5fdad4e967871ac32fa190af8ad785ece8b308e928d8ce6de80c9e3837d7" }
+backend = "npm:node-gyp"
+specifiers = ["latest"]
+
+[[tools."npm:sharp"]]
+version = "0.35.5"
+aube = { path = "locks/npm-sharp/0.35.5", digest = "sha256:421709d84f2d929cf51c3683a0c44787decf0fd5f3e1896090ec395dc2769975" }
+backend = "npm:sharp"
+specifiers = ["latest"]
+
+[[tools."npm:sql-formatter"]]
+version = "15.9.0"
+aube = { path = "locks/npm-sql-formatter/15.9.0", digest = "sha256:e764f888c1d24086a7b65f7904818a7dbe1abe225b7b76b65bacab69d91289c0" }
+backend = "npm:sql-formatter"
+specifiers = ["latest"]
+
+[[tools."npm:svgo"]]
+version = "4.1.0"
+aube = { path = "locks/npm-svgo/4.1.0", digest = "sha256:fd1cc63e72fe11fe1c4c911053192e0d192b1f2fb40a7f67b2963063b9d3632e" }
+backend = "npm:svgo"
+specifiers = ["latest"]
+
 [[tools.oh-my-pi]]
 version = "18.14.2"
 backend = "github:can1357/oh-my-pi"
