@@ -4,8 +4,8 @@ flyway = "latest"
 gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credential-gcr"] }
 
 [env]
-# Make gcloud use the managed Python minor version its installer expects, if available
-CLOUDSDK_PYTHON = { value = "{% set pys = tools.python %}{% if pys.version is defined %}{% set pys = [pys] %}{% endif %}{% for p in pys %}{% if p.version | truncate(length=4, end='') == '3.14' %}{{ p.path }}/bin/python3{% endif %}{% endfor %}", tools = true }
+# gcloud's installer expects Python 3.14, so use the managed install whichever Python a project pins
+CLOUDSDK_PYTHON = "{{ env.MISE_DATA_DIR | default(value=xdg_data_home ~ '/mise') }}/installs/python/3.14/bin/python3"
 
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
