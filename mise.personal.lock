@@ -49,7 +49,54 @@ checksum_source = "mise-versions"
 url = "https://github.com/caddyserver/caddy/releases/download/v2.11.7/caddy_2.11.7_windows_amd64.zip"
 url_api = "https://api.github.com/repos/caddyserver/caddy/releases/assets/607244987"
 
-[[tools."gem:cocoapods"]]
+[[tools.cloudflared]]
+version = "2026.10.7"
+backend = "aqua:cloudflare/cloudflared"
+specifiers = ["latest"]
+
+[tools.cloudflared."platforms.linux-arm64"]
+checksum = "sha256:3df43aedc9ff291d1735b5cb576cb97e0b157488796db2e32b28aecabb445775"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-arm64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692818763"
+
+[tools.cloudflared."platforms.linux-arm64-musl"]
+checksum = "sha256:3df43aedc9ff291d1735b5cb576cb97e0b157488796db2e32b28aecabb445775"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-arm64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692818763"
+
+[tools.cloudflared."platforms.linux-x64"]
+checksum = "sha256:1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-amd64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692817008"
+
+[tools.cloudflared."platforms.linux-x64-musl"]
+checksum = "sha256:1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-amd64"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692817008"
+
+[tools.cloudflared."platforms.macos-arm64"]
+checksum = "sha256:3586ccf397e98e5f437e60e7c307ca6ac463e110580503af8bb8e6f9ebf831bd"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-darwin-arm64.tgz"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692819281"
+
+[tools.cloudflared."platforms.macos-x64"]
+checksum = "sha256:02f3edfd87684dd5b705607688e4eb4b323f6e777b81e7b3a85af556aa356848"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-darwin-amd64.tgz"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692819049"
+
+[tools.cloudflared."platforms.windows-x64"]
+checksum = "sha256:2493dbc168923bb3e59e5e7716f71deced92992eea9acd6e9d74f84ac7751343"
+checksum_source = "mise-versions"
+url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-windows-amd64.exe"
+url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692820426"
+
+[[tools.cocoapods]]
 version = "1.17.0"
 backend = "gem:cocoapods"
 specifiers = ["latest"]
@@ -134,6 +181,19 @@ checksum = "sha256:874b10ea2729832849f9c773bf4b227d18512c491be59f7bda3984b32a045
 url = "https://github.com/modem-dev/hunk/releases/download/v0.21.0/hunkdiff-windows-x64.tar.gz"
 url_api = "https://api.github.com/repos/modem-dev/hunk/releases/assets/541386505"
 
+[[tools.java]]
+version = "zulu-17.70.113.0"
+backend = "core:java"
+specifiers = ["zulu-17"]
+
+[tools.java."platforms.macos-arm64"]
+checksum = "sha256:f4a4d641d4441f480939176208f333aa9403e0a68d27e87245cec98cc994f943"
+url = "https://cdn.azul.com/zulu/bin/zulu17.70.113-ca-jdk17.0.21.0.3-macosx_aarch64.tar.gz"
+
+[tools.java."platforms.macos-x64"]
+checksum = "sha256:6de9a31bd21c09b787781ce90d5791168b522c2213571d742141e610b81ff7fd"
+url = "https://cdn.azul.com/zulu/bin/zulu17.70.113-ca-jdk17.0.21.0.3-macosx_x64.tar.gz"
+
 [[tools."npm:eas-cli"]]
 version = "27.2.0"
 aube = { path = "locks/mise.personal/npm-eas-cli/27.2.0", digest = "sha256:a4dd8706e6e49ce93e119474451ee1d2efe32373d5bb3d412a82dec5302cb7d9" }
@@ -191,6 +251,35 @@ url_api = "https://api.github.com/repos/rclone/rclone/releases/assets/544645299"
 checksum = "sha256:200eb602c126d82aa38b51e0f6b9ae837473ff99b51278d3f6f837574c494d6e"
 url = "https://github.com/rclone/rclone/releases/download/v1.75.1/rclone-v1.75.1-windows-amd64.zip"
 url_api = "https://api.github.com/repos/rclone/rclone/releases/assets/544647178"
+
+[[tools.ruby]]
+version = "3.4.12"
+backend = "core:ruby"
+specifiers = ["3.4"]
+
+[tools.ruby.options]
+compile = "false"
+precompiled_url = "jdx/ruby"
+ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
+ruby_install = "false"
+
+[tools.ruby."platforms.macos-arm64"]
+checksum = "sha256:865b429c511c40a96fe3c25466bbf9b300e5cae22c70c7dd68e0af003b849de4"
+url = "https://github.com/jdx/ruby/releases/download/3.4.12-1/ruby-3.4.12.macos.tar.gz"
+provenance = "github-attestations"
+
+[tools.ruby."platforms.macos-x64"]
+checksum = "sha256:5e5d85ad93b0adcccbad47733680f4892bd0078e3342437f7babce01c1872479"
+url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.12.tar.gz"
+
+[[tools.rust]]
+version = "1.99.1"
+backend = "core:rust"
+specifiers = ["latest"]
+
+[tools.rust.options]
+components = "rust-analyzer,rust-src"
+targets = "wasm32-unknown-unknown"
 
 [[tools.swiftformat]]
 version = "0.64.5"

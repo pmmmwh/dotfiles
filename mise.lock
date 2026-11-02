@@ -149,46 +149,6 @@ checksum_source = "mise-versions"
 url = "https://github.com/ip7z/7zip/releases/download/26.05/7z2605-extra.7z"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/662536626"
 
-[[tools."aqua:temporalio/cli"]]
-version = "1.9.1"
-backend = "aqua:temporalio/cli"
-specifiers = ["latest"]
-
-[tools."aqua:temporalio/cli"."platforms.linux-arm64"]
-checksum = "sha256:6c57c352d52fc3df34412376fd9ba6f74b7e3ace8e426e6cba8600156d36a145"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294917"
-
-[tools."aqua:temporalio/cli"."platforms.linux-arm64-musl"]
-checksum = "sha256:6c57c352d52fc3df34412376fd9ba6f74b7e3ace8e426e6cba8600156d36a145"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294917"
-
-[tools."aqua:temporalio/cli"."platforms.linux-x64"]
-checksum = "sha256:09a0326a51db84d02735e53542b9ebd8c4758daf47482a9ab0abce15844e60d5"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294919"
-
-[tools."aqua:temporalio/cli"."platforms.linux-x64-musl"]
-checksum = "sha256:09a0326a51db84d02735e53542b9ebd8c4758daf47482a9ab0abce15844e60d5"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_linux_amd64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294919"
-
-[tools."aqua:temporalio/cli"."platforms.macos-arm64"]
-checksum = "sha256:41e0425378fcb4fb5766340b97435e20fe47bbff2d7bf644ec2d51f7662b7c56"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_darwin_arm64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294914"
-
-[tools."aqua:temporalio/cli"."platforms.macos-x64"]
-checksum = "sha256:48cdd6c84c56e27ae8e4d9a47052b89289a9c552dee029b49dd312c6fb72873f"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_darwin_amd64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564294918"
-
-[tools."aqua:temporalio/cli"."platforms.windows-x64"]
-checksum = "sha256:42637464c337a3da203fbd4e8c688e4b2d511fd42bd19c337c0422e923a7b619"
-url = "https://github.com/temporalio/cli/releases/download/v1.9.1/temporal_cli_1.9.1_windows_amd64.tar.gz"
-url_api = "https://api.github.com/repos/temporalio/cli/releases/assets/564295046"
-
 [[tools.atuin]]
 version = "18.24.4"
 backend = "aqua:atuinsh/atuin"
@@ -363,52 +323,6 @@ checksum = "sha256:c77cb13c50365de63ad3a0e09c915294a9d1657627b82a6fc3c1bdf327e6a
 checksum_source = "mise-versions"
 url = "https://github.com/anthropics/claude-code/releases/download/v2.1.316/claude-win32-x64.zip"
 url_api = "https://api.github.com/repos/anthropics/claude-code/releases/assets/693882322"
-
-[[tools.cloudflared]]
-version = "2026.10.7"
-backend = "aqua:cloudflare/cloudflared"
-specifiers = ["latest"]
-
-[tools.cloudflared."platforms.linux-arm64"]
-checksum = "sha256:3df43aedc9ff291d1735b5cb576cb97e0b157488796db2e32b28aecabb445775"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-arm64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692818763"
-
-[tools.cloudflared."platforms.linux-arm64-musl"]
-checksum = "sha256:3df43aedc9ff291d1735b5cb576cb97e0b157488796db2e32b28aecabb445775"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-arm64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692818763"
-
-[tools.cloudflared."platforms.linux-x64"]
-checksum = "sha256:1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-amd64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692817008"
-
-[tools.cloudflared."platforms.linux-x64-musl"]
-checksum = "sha256:1f99fb518b83dec2ba8d870a7cc991d82a77e6196295a3d2754ba17ab9f91872"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-linux-amd64"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692817008"
-
-[tools.cloudflared."platforms.macos-arm64"]
-checksum = "sha256:3586ccf397e98e5f437e60e7c307ca6ac463e110580503af8bb8e6f9ebf831bd"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-darwin-arm64.tgz"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692819281"
-
-[tools.cloudflared."platforms.macos-x64"]
-checksum = "sha256:02f3edfd87684dd5b705607688e4eb4b323f6e777b81e7b3a85af556aa356848"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-darwin-amd64.tgz"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692819049"
-
-[tools.cloudflared."platforms.windows-x64"]
-checksum = "sha256:2493dbc168923bb3e59e5e7716f71deced92992eea9acd6e9d74f84ac7751343"
-checksum_source = "mise-versions"
-url = "https://github.com/cloudflare/cloudflared/releases/download/2026.10.7/cloudflared-windows-amd64.exe"
-url_api = "https://api.github.com/repos/cloudflare/cloudflared/releases/assets/692820426"
 
 [[tools.cmake]]
 version = "4.4.5"
@@ -923,19 +837,6 @@ checksum = "sha256:3dec51acee1060908e67948838d6bc0a7aacde0774acebfa4afb220dcf0bc
 url = "https://github.com/sharkdp/hyperfine/releases/download/v2.0.0/hyperfine-v2.0.0-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/sharkdp/hyperfine/releases/assets/619834237"
 
-[[tools.java]]
-version = "zulu-17.70.113.0"
-backend = "core:java"
-specifiers = ["zulu-17"]
-
-[tools.java."platforms.macos-arm64"]
-checksum = "sha256:f4a4d641d4441f480939176208f333aa9403e0a68d27e87245cec98cc994f943"
-url = "https://cdn.azul.com/zulu/bin/zulu17.70.113-ca-jdk17.0.21.0.3-macosx_aarch64.tar.gz"
-
-[tools.java."platforms.macos-x64"]
-checksum = "sha256:6de9a31bd21c09b787781ce90d5791168b522c2213571d742141e610b81ff7fd"
-url = "https://cdn.azul.com/zulu/bin/zulu17.70.113-ca-jdk17.0.21.0.3-macosx_x64.tar.gz"
-
 [[tools.jq]]
 version = "1.8.2"
 backend = "aqua:jqlang/jq"
@@ -1355,35 +1256,6 @@ provenance = "github-attestations"
 checksum = "sha256:c1876a9795d3a94ee49a1499a69cd91e26ca3e2829593f93fa6e4db90d05402b"
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10+20261026-x86_64-pc-windows-msvc-install_only_stripped.tar.gz"
 provenance = "github-attestations"
-
-[[tools.ruby]]
-version = "3.4.12"
-backend = "core:ruby"
-specifiers = ["3.4"]
-
-[tools.ruby.options]
-compile = "false"
-precompiled_url = "jdx/ruby"
-ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
-ruby_install = "false"
-
-[tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:865b429c511c40a96fe3c25466bbf9b300e5cae22c70c7dd68e0af003b849de4"
-url = "https://github.com/jdx/ruby/releases/download/3.4.12-1/ruby-3.4.12.macos.tar.gz"
-provenance = "github-attestations"
-
-[tools.ruby."platforms.macos-x64"]
-checksum = "sha256:5e5d85ad93b0adcccbad47733680f4892bd0078e3342437f7babce01c1872479"
-url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.12.tar.gz"
-
-[[tools.rust]]
-version = "1.99.1"
-backend = "core:rust"
-specifiers = ["latest"]
-
-[tools.rust.options]
-components = "rust-analyzer,rust-src"
-targets = "wasm32-unknown-unknown"
 
 [[tools.shellcheck]]
 version = "0.11.0"

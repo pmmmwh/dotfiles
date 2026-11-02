@@ -5,7 +5,6 @@ apps = [
     "/Applications/Firefox.app",
     "/Applications/Mimestream.app",
     "/System/Applications/Calendar.app",
-    "/Applications/Linear.app",
     "/Applications/Slack.app",
     "/Applications/Ghostty.app",
     "/System/Applications/System Settings.app",

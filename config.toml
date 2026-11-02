@@ -12,11 +12,8 @@ DISABLE_AUTOUPDATER = "1"
 
 [tools]
 go = "1.27"
-java = { version = "zulu-17", os = "macos" }
 node = "26"
 python = ["3.12", "3.14"]
-ruby = { version = "3.4", os = "macos" }
-rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = { version = "latest", os = "macos" }
 "7zip" = "latest"
@@ -24,7 +21,6 @@ atuin = "latest"
 bat = "latest"
 bottom = "latest"
 claude-code = "latest"
-cloudflared = "latest"
 cmake = "latest"
 codex = "latest"
 delta = "latest"
@@ -46,7 +42,6 @@ shellcheck = "latest"
 shfmt = "latest"
 starship = "latest"
 tealdeer = "latest"
-"aqua:temporalio/cli" = "latest"
 terraform = "latest"
 tokei = "latest"
 uv = "latest"
