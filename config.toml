@@ -55,13 +55,14 @@ yq = "latest"
 "~/.config/ghostty" = { source = "config/ghostty", mode = "symlink-each", variants = [{ os = "macos" }] }
 "~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
 # Copied, as Karabiner-Elements replaces the file when it saves
-"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600" }
+"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600", variants = [{ os = "macos" }] }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
+"~/.gitconfig.macos" = { source = "git/macos.gitconfig", variants = [{ os = "macos" }] }
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
 "~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }

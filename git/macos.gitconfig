@@ -1,0 +1,9 @@
+[credential]
+
+	# Use macOS Keychain as default credential helper
+	helper = osxkeychain
+
+[gpg "ssh"]
+
+	# Utilise managed SSH private keys via 1Password with its signer
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
