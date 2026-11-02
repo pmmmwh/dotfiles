@@ -6,6 +6,7 @@ homebrew_metadata = true
 "xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
 
 [bootstrap.packages]
+### macOS ###
 # The `wget` command
 "brew:wget" = { os = "macos" }
 
@@ -83,20 +84,25 @@ homebrew_metadata = true
 # Xcode
 "mas:497799835" = { os = "macos" }
 
-# Linux counterparts of the Homebrew formulae above, plus what a fresh server lacks
+### Linux ###
+# The `wget` command
+"apt:wget" = "latest"
+
+# Other miscellaneous binaries
 "apt:ack" = "latest"
 "apt:build-essential" = "latest"
-"apt:docker-buildx" = "latest"
-"apt:docker-compose-v2" = "latest"
-"apt:docker.io" = "latest"
-"apt:git" = "latest"
 "apt:graphviz" = "latest"
 "apt:pigz" = "latest"
 "apt:pkgconf" = "latest"
 "apt:sshpass" = "latest"
 "apt:tree" = "latest"
 "apt:unzip" = "latest"
-"apt:wget" = "latest"
 "apt:xz-utils" = "latest"
 "apt:zopfli" = "latest"
 "apt:zsh" = "latest"
+
+# General development tools
+"apt:docker-buildx" = "latest"
+"apt:docker-compose-v2" = "latest"
+"apt:docker.io" = "latest"
+"apt:git" = "latest"
