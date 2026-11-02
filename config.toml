@@ -54,7 +54,6 @@ yq = "latest"
 "~/.config" = { source = "config", mode = "symlink-each", exclude = ["karabiner"] }
 # Copied, as Karabiner-Elements replaces the file when it saves
 "~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600" }
-"~/.gnupg" = { source = "gnupg", mode = "symlink-each" }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
@@ -63,6 +62,7 @@ yq = "latest"
 "~/.gitconfig" = "git/.gitconfig"
 "~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
 "~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
+"~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }
 
 # Records the environment chosen on the first bootstrap, so later runs do not need to re-specify
 [dotfiles."mise-env"]
@@ -79,9 +79,17 @@ required = "Run `mise vars prompt git_name`"
 prompt = "Email address for personal git commits"
 required = "Run `mise vars prompt git_personal_email`"
 
+[vars.git_personal_signing_key]
+prompt = "SSH public key for signing personal git commits"
+required = "Run `mise vars prompt git_personal_signing_key`"
+
 [vars.git_work_email]
 prompt = "Email address for work git commits"
 required = "Run `mise vars prompt git_work_email`"
+
+[vars.git_work_signing_key]
+prompt = "SSH public key for signing work git commits"
+required = "Run `mise vars prompt git_work_signing_key`"
 
 [bootstrap.user]
 login_shell = "/bin/zsh"
@@ -92,10 +100,6 @@ login_shell = "/bin/zsh"
 "~/.zshcustom/plugins/zsh-autocomplete" = { url = "https://github.com/marlonrichert/zsh-autocomplete.git" }
 "~/.zshcustom/plugins/zsh-completions" = { url = "https://github.com/zsh-users/zsh-completions.git" }
 "~/.zshcustom/plugins/zsh-defer" = { url = "https://github.com/romkatv/zsh-defer.git" }
-
-[bootstrap.hooks.post-dotfiles]
-description = "Generate GPG signing keys for the git identities that lack one"
-run = "'{{ mise_config_dir }}/git/generate-signing-keys.zsh'"
 
 [tasks.macos-settings]
 description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"

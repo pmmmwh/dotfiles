@@ -72,7 +72,6 @@ homebrew_metadata = true
 
 # Development
 "brew-cask:gitbutler" = "latest"
-"brew-cask:gpg-suite" = "latest"
 "brew-cask:imageoptim" = "latest"
 "brew-cask:localcan" = "latest"
 "brew-cask:orbstack" = "latest"

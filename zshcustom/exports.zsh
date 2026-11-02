@@ -94,7 +94,3 @@ export NODE_REPL_MODE=sloppy
 
 # Make Python use UTF-8 encoding for IO (stdin, stdout, and stderr)
 export PYTHONIOENCODING="UTF-8"
-
-# Avoid issues with `gpg`
-# Ref: https://stackoverflow.com/a/42265848/96656
-export GPG_TTY=$(tty)
