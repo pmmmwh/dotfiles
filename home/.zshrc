@@ -64,7 +64,7 @@ zsh-defer source $ZSH_CUSTOM/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zs
 zsh-defer _zshrc_completions
 
 # Initialize atuin, before the key bindings that use its widgets
-(( $+commands[atuin] )) && zsh-defer -c '_evalcache atuin init zsh --disable-up-arrow --disable-ctrl-r'
+(( $+commands[atuin] )) && zsh-defer -c '_evalcache atuin init zsh --disable-ai --disable-up-arrow --disable-ctrl-r'
 
 # Key bindings use widgets from the deferred plugins above
 _zshrc_key_bindings() {

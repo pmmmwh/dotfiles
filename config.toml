@@ -55,12 +55,15 @@ yq = "latest"
 
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
+"~/.atuin/config.toml" = "atuin/config.toml"
 "~/.config" = { source = "config", mode = "symlink-each", exclude = ["ghostty", "karabiner", "zed"] }
 # Apps that are only installed on macOS
 "~/.config/ghostty" = { source = "config/ghostty", mode = "symlink-each", variants = [{ os = "macos" }] }
-"~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
 # Copied, as Karabiner-Elements replaces the file when it saves
-"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600", variants = [{ os = "macos" }] }
+"~/.config/karabiner/karabiner.json" = { source = "config/karabiner/karabiner.json", mode = "copy", permissions = "0600", variants = [
+    { os = "macos" }
+] }
+"~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
