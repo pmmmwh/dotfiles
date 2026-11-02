@@ -70,9 +70,10 @@ yq = "latest"
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"
-"~/.gitconfig.macos" = { source = "git/macos.gitconfig", variants = [{ os = "macos" }] }
-"~/.gitcredentials.personal" = { source = "git/gitcredentials.personal.tera", mode = "template", permissions = "0600" }
-"~/.gitcredentials.work" = { source = "git/gitcredentials.work.tera", mode = "template", permissions = "0600" }
+"~/.gitconfig.dotfiles" = { source = "git/.gitconfig.dotfiles.tera", mode = "template" }
+"~/.gitconfig.macos" = { source = "git/.gitconfig.macos", variants = [{ os = "macos" }] }
+"~/.gitcredentials.personal" = { source = "git/.gitcredentials.personal.tera", mode = "template", permissions = "0600" }
+"~/.gitcredentials.work" = { source = "git/.gitcredentials.work.tera", mode = "template", permissions = "0600" }
 "~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }
 
 # Records the environment chosen on the first bootstrap, so later runs do not need to re-specify

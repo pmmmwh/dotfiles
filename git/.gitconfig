@@ -3,10 +3,8 @@
 	# Configuration that relies on macOS apps, only linked there
 	path = ~/.gitconfig.macos
 
-[includeIf "gitdir:~/Developer/dotfiles/"]
-
-	# Local configuration for personal git credentials
-	path = ~/.gitcredentials.personal
+	# Personal git credentials for this repository, wherever it is checked out
+	path = ~/.gitconfig.dotfiles
 
 [includeIf "gitdir:~/Developer/external/"]
 
@@ -41,8 +39,8 @@
 [core]
 
 	# Use custom `.gitattributes` and `.gitignore`
-	attributesFile = ~/Developer/dotfiles/git/.gitattributes
-	excludesFile = ~/Developer/dotfiles/git/.gitignore
+	attributesFile = ~/.config/mise/git/.gitattributes
+	excludesFile = ~/.config/mise/git/.gitignore
 
 	# Use `delta` as pager
 	pager = LESS='FR --redraw-on-quit' delta
