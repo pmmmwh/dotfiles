@@ -8,13 +8,13 @@ self_update.auto = true
 
 [tools]
 go = "1.27"
-java = "zulu-17"
+java = { version = "zulu-17", os = "macos" }
 node = "26"
 python = ["3.12", "3.14"]
-ruby = "3.4"
+ruby = { version = "3.4", os = "macos" }
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
-"1password-cli" = "latest"
+"1password-cli" = { version = "latest", os = "macos" }
 "7zip" = "latest"
 agent-browser = "latest"
 atuin = "latest"
@@ -35,7 +35,7 @@ jq = "latest"
 mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
-postgres = "17"
+postgres = { version = "17", os = "macos" }
 protoc = "latest"
 shellcheck = "latest"
 shfmt = "latest"

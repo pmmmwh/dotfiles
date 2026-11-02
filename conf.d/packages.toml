@@ -86,6 +86,9 @@ homebrew_metadata = true
 # Linux counterparts of the Homebrew formulae above, plus what a fresh server lacks
 "apt:ack" = "latest"
 "apt:build-essential" = "latest"
+"apt:docker-buildx" = "latest"
+"apt:docker-compose-v2" = "latest"
+"apt:docker.io" = "latest"
 "apt:git" = "latest"
 "apt:graphviz" = "latest"
 "apt:pigz" = "latest"
