@@ -1,6 +1,11 @@
 [tools]
+java = { version = "zulu-17", os = "macos" }
+ruby = { version = "3.4", os = "macos" }
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
+
 caddy = "latest"
-"gem:cocoapods" = { version = "latest", os = "macos" }
+cloudflared = "latest"
+cocoapods = { version = "latest", os = "macos" }
 glab = "latest"
 hunk = "latest"
 rclone = "latest"
@@ -57,3 +62,6 @@ xcodegen = { version = "latest", os = "macos" }
 
 # WireGuard
 "mas:1451685025" = { os = "macos" }
+
+# Xcode
+"mas:497799835" = { os = "macos" }

@@ -1,5 +1,6 @@
 [tools]
 "aqua:auth0/auth0-cli" = "latest"
+"aqua:temporalio/cli" = "latest"
 flyway = "latest"
 gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credential-gcr"] }
 
@@ -9,9 +10,25 @@ gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credenti
 # gcloud's installer expects Python 3.14, so use the managed install whichever Python a project pins
 CLOUDSDK_PYTHON = "{{ env.MISE_DATA_DIR | default(value=xdg_data_home ~ '/mise') }}/installs/python/3.14/bin/python3"
 
+[bootstrap.macos.dock]
+apps = [
+    "/System/Applications/Music.app",
+    "/Applications/Firefox.app",
+    "/Applications/Mimestream.app",
+    "/System/Applications/Calendar.app",
+    "/Applications/Linear.app",
+    "/Applications/Slack.app",
+    "/Applications/Ghostty.app",
+    "/System/Applications/System Settings.app",
+]
+
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
 
 [bootstrap.packages]
 # Database related tools
 "brew:dbt-labs/dbt-cli/dbt" = { os = "macos" }
+
+# Utilities
+"brew-cask:linear" = { os = "macos" }
+"brew-cask:notion" = { os = "macos" }

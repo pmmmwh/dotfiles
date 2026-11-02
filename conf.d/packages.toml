@@ -47,13 +47,11 @@ homebrew_metadata = true
 "brew-cask:xykong/tap/flux-markdown" = { os = "macos" }
 "brew-cask:ghostty" = { os = "macos" }
 "brew-cask:karabiner-elements" = { os = "macos" }
-"brew-cask:linear" = { os = "macos" }
 "brew-cask:logi-options+" = { os = "macos" }
 "brew-cask:microsoft-auto-update" = { os = "macos" }
 "brew-cask:microsoft-excel" = { os = "macos" }
 "brew-cask:mimestream" = { os = "macos" }
 "brew-cask:mullvad-vpn" = { os = "macos" }
-"brew-cask:notion" = { os = "macos" }
 "brew-cask:raycast" = { os = "macos" }
 "brew-cask:setapp" = { os = "macos" }
 "brew-cask:tablepro" = { os = "macos" }
@@ -81,8 +79,6 @@ homebrew_metadata = true
 
 # Flighty
 "mas:1358823008" = { os = "macos" }
-# Xcode
-"mas:497799835" = { os = "macos" }
 
 ### Linux ###
 # The `wget` command
