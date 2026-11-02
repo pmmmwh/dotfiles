@@ -122,7 +122,11 @@ format = '\[[+$added]($added_style)\]\[[-$deleted]($deleted_style)\]'
 format = '\[[$state ($progress_current/$progress_total)]($style)\]'
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+format = '([\[$conflicted$stashed$worktree_added$worktree_deleted$worktree_modified$worktree_typechanged$untracked\]]($style))'
+worktree_added = '+'
+worktree_deleted = '✘'
+worktree_modified = '!'
+worktree_typechanged = '~'
 
 [gleam]
 format = '\[[$symbol($version)]($style)\]'
@@ -253,6 +257,9 @@ format = '\[[$symbol$channel]($style)\]'
 
 [pixi]
 format = '\[[$symbol$version( $environment)]($style)\]'
+
+[profiles]
+claude-code = '$claude_model$claude_context$claude_cost'
 
 [pulumi]
 format = '\[[$symbol$stack]($style)\]'
