@@ -10,6 +10,12 @@ apps = [
     "/System/Applications/System Settings.app",
 ]
 
+[bootstrap.macos.launchd.agents.keyboard-remap]
+# Remaps keys for convenience using hidutil
+program = "/bin/zsh"
+args = ["-f", "{{ mise_config_dir }}/@macos/keyboard-remap.zsh"]
+run_at_load = true
+
 [bootstrap.macos.defaults."com.apple.ActivityMonitor"]
 # Visualize CPU usage in the Activity Monitor Dock icon
 IconType = 5
