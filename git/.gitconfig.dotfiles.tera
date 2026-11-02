@@ -1,0 +1,3 @@
+[includeIf "gitdir:{{ mise_config_dir | canonicalize }}/"]
+
+	path = ~/.gitcredentials.personal

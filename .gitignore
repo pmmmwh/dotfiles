@@ -38,7 +38,6 @@ Temporary Items
 .zed
 
 # Local configuration files
-git/.gitcredentials*
 zsh/.zshcustom/extras.zsh
 mise.local.toml
 config.local.toml
