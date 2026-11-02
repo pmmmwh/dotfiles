@@ -16,7 +16,6 @@ rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets
 
 "1password-cli" = { version = "latest", os = "macos" }
 "7zip" = "latest"
-agent-browser = "latest"
 atuin = "latest"
 bat = "latest"
 bottom = "latest"
@@ -48,6 +47,7 @@ uv = "latest"
 xh = "latest"
 yq = "latest"
 
+"npm:agent-browser" = "latest"
 "npm:node-gyp" = "latest"
 "npm:sharp" = "latest"
 "npm:sql-formatter" = "latest"
