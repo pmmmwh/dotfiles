@@ -7,6 +7,9 @@ setopt nocaseglob
 # Enable extended globing for qualifiers
 setopt extendedglob
 
+# Use emacs key bindings, as zsh picks vi ones when the inherited $EDITOR contains "vi"
+bindkey -e
+
 # Load universal library files, if in a non-login shell (i.e. .zprofile not sourced)
 if [[ ! -o login ]]; then
   for libraryFile ($ZSH_CUSTOM/*.zsh(N) $ZSH_CUSTOM/@$ZSH_PLATFORM/*.zsh(N)); do
