@@ -1937,12 +1937,6 @@ checksum_source = "mise-versions"
 url = "https://github.com/protocolbuffers/protobuf/releases/download/v36.2/protoc-36.2-win64.zip"
 url_api = "https://api.github.com/repos/protocolbuffers/protobuf/releases/assets/570742465"
 
-[[tools."pypi:mitmproxy"]]
-version = "12.3.1"
-backend = "pypi:mitmproxy"
-specifiers = ["latest"]
-uv = { path = "locks/pypi-mitmproxy/12.3.1", digest = "sha256:98169ef0196c35c592e9533e7640bff69ede8ca3e7d61129e13174b4e07c0453" }
-
 [[tools.python]]
 version = "3.12.16"
 backend = "core:python"
