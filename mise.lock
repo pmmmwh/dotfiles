@@ -231,50 +231,50 @@ url = "https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_
 url_api = "https://api.github.com/repos/sharkdp/bat/releases/assets/323549116"
 
 [[tools.bottom]]
-version = "0.14.9"
+version = "0.15.0"
 backend = "aqua:ClementTsang/bottom"
 specifiers = ["latest"]
 
 [tools.bottom."platforms.linux-arm64"]
-checksum = "sha256:a6a0a0dda426b31b2c72e15a26c7e97c2224aafdd66f60632e34ee464a64ec8f"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978123"
+checksum = "sha256:93221c07d549750e5cfac2a76f70e5d792c744958ecc466bbeb9d3bef34288b6"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808752"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-arm64-musl"]
-checksum = "sha256:7b6d532f6a6af356970f4e8d7d3a792590485aa4a53ebf038e10d20366125533"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_aarch64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978125"
+checksum = "sha256:78e03e96d02e946be1f94066cd78f1adc3bb8c0db5f53fdf24d70a3ab351e05c"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_aarch64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808755"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64"]
-checksum = "sha256:e0c325829e8bdcea25a8a7651da05dbb6f1fc109ac5d2f0187867d3d5d9c0df8"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_x86_64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978159"
+checksum = "sha256:051888e0e064aa037728efed3fcf77820714f8f4dc7bea2b0179d40c54400c26"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808858"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.linux-x64-musl"]
-checksum = "sha256:b4bee5b193e7d3f6e090ac14f0ca15acec2e7fe4ef64988e0bfc492e16c28c9a"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978168"
+checksum = "sha256:c66d6a0148102f107800919cd0ff6cce8767ae998f3c954b72e37a7f769e3ae2"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808860"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-arm64"]
-checksum = "sha256:28358e19a3d62b3778fc0d1778b0028a682059145c9ac38ac5076bf124d77714"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978112"
+checksum = "sha256:6d83c9eba811dd139392fa5b04baa75225c6aa120dad36a070e636660db023fd"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808719"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.macos-x64"]
-checksum = "sha256:d0b1d446963ee3c4dfbfe2efd9614cfdc77f39e8268bf8cc2e0b5b6cea982774"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978144"
+checksum = "sha256:6a7f5e32fc2c272256ad5c77aa8aaede02e1e86cf3ba4715acb894d3d6d5b361"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808837"
 provenance = "github-attestations"
 
 [tools.bottom."platforms.windows-x64"]
-checksum = "sha256:01660721b0fdc72b191f2b27b78dc9a3087aeb7b3fad4a890c53870089d6b500"
-url = "https://github.com/ClementTsang/bottom/releases/download/0.14.9/bottom_x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/531978148"
+checksum = "sha256:aeff72e355116516d2583f34348e31f60c5899e394a08eeda79a2bdb361e27bd"
+url = "https://github.com/ClementTsang/bottom/releases/download/0.15.0/bottom_x86_64-pc-windows-msvc.zip"
+url_api = "https://api.github.com/repos/ClementTsang/bottom/releases/assets/696808840"
 provenance = "github-attestations"
 
 [[tools.claude-code]]
@@ -531,49 +531,49 @@ url = "https://github.com/fastfetch-cli/fastfetch/releases/download/2.70.0/fastf
 url_api = "https://api.github.com/repos/fastfetch-cli/fastfetch/releases/assets/639770970"
 
 [[tools.fnox]]
-version = "1.45.0"
+version = "1.46.0"
 backend = "packslip:github.com/jdx/fnox"
 specifiers = ["latest"]
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:dd7c2ec8b7478b210b31000ec47073953ed5137716fe3d759f559de2ce3cb6e5"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:13c385eac2dafb0c73e80593aa2e7a4c6949d720313ac2a2d836e32836e4007d"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.linux-arm64-musl"]
-checksum = "sha256:fb246769d0e97a3ebab25ff2f4c8e0d709205625df8416191a9cb9b8dd68ec38"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-aarch64-unknown-linux-musl.tar.gz"
+checksum = "sha256:e165ff9278ca29765e1b5ba28889bcaef0f6eb5b72da9b4457bde79766b647d5"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-aarch64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:e57ec74dad34ef5413c839c0c48ad5be1ff01cc5a6d5312ddabf95927790a43e"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:08d2f8649f968191719938e475a8d6cdd868766a61f3fb397e8e0abbb50244dc"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.linux-x64-musl"]
-checksum = "sha256:35322430811eb15498df368e197ec2c572a6b63d65c58eeb77bff2104bda7ad7"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-x86_64-unknown-linux-musl.tar.gz"
+checksum = "sha256:a9ad5a04cb8b52cf424db871e136a42f1ac17aeb92e4c57df6234799b92db276"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-x86_64-unknown-linux-musl.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:e851212b2f7319ab88ab7784e008bfb091ccee91f2696a328684fc8ce80e4263"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:d9d0c44c7a597d1745f6f40b987d2567ac3269b4aad444543a24547d3659b105"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.macos-x64"]
-checksum = "sha256:3a77acef94f82a27f6d4a3f42c396b2efb1779f4b6b96c8b7b3465a86c69f2b1"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-x86_64-apple-darwin.tar.gz"
+checksum = "sha256:1441b5f5ea0bf714291302df845df3740b3569274fc4d63003feef7141581028"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-x86_64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.windows-x64"]
-checksum = "sha256:4f8d09da1e1ecb0180d61a4f5d38b1aa6f5a42019b2b085db3931b3a248d50c9"
-url = "https://github.com/jdx/fnox/releases/download/v1.45.0/fnox-x86_64-pc-windows-msvc.zip"
+checksum = "sha256:1cdeb238348e1ceded8522296950ad4b5dba04221b462d64bf80662fae341960"
+url = "https://github.com/jdx/fnox/releases/download/v1.46.0/fnox-x86_64-pc-windows-msvc.zip"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
@@ -958,8 +958,8 @@ checksum = "sha256:dcc60d59a0746999f99064a01c020445d54d84228c691cdbf25b49ac3b591
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-win-x64.zip"
 
 [[tools."npm:agent-browser"]]
-version = "0.41.0"
-aube = { path = "locks/npm-agent-browser/0.41.0", digest = "sha256:a638ea117f197d70986e7c7e301831bf19e6068c4bc69918b6c2a59c1a55b549" }
+version = "0.41.1"
+aube = { path = "locks/npm-agent-browser/0.41.1", digest = "sha256:18952d290cc581b3c96e02300ad420ffa4282cd47484c13df616bdddfa987ff0" }
 backend = "npm:agent-browser"
 specifiers = ["latest"]
 
@@ -988,50 +988,50 @@ backend = "npm:svgo"
 specifiers = ["latest"]
 
 [[tools.oh-my-pi]]
-version = "18.14.2"
+version = "18.16.0"
 backend = "github:can1357/oh-my-pi"
 specifiers = ["latest"]
 
 [tools.oh-my-pi."platforms.linux-arm64"]
-checksum = "sha256:afbdf04be3ddbe34a07e91c913ddb6d335a3a0210f520ac5a197a245888ad63e"
+checksum = "sha256:c2be1ea85ce17c4270854b57efff2a7ea1d5a03c7557fd08721f2b9bb32698de"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073839"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-linux-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972280"
 
 [tools.oh-my-pi."platforms.linux-arm64-musl"]
-checksum = "sha256:a743f0b3e10dda03c3eb317ea377e76263772887c83e54aff45cc508aa62df24"
+checksum = "sha256:5e47342bf25fe18e88660b8fe3a692173ac8941e1c769ba19e154a2ca67de405"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-musl-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073844"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-linux-musl-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972273"
 
 [tools.oh-my-pi."platforms.linux-x64"]
-checksum = "sha256:cde0bc4ac8ec333c4880039a5242ff33dbfc6544747d67aeb99bb077874aeec1"
+checksum = "sha256:6498ed785bab00d2926e0387e0ec02362d6d45f1c3d0d1b57c1618b7f95c9264"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073838"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-linux-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972275"
 
 [tools.oh-my-pi."platforms.linux-x64-musl"]
-checksum = "sha256:e66e537d86189bc47b059f94d512915c2ed5dfc8541729c5c5e000557c65391b"
+checksum = "sha256:5e549f632abd7e22da9551a673b3f3ef7915e9ce9fff92d225236a09b60a3c59"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-linux-musl-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073834"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-linux-musl-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972271"
 
 [tools.oh-my-pi."platforms.macos-arm64"]
-checksum = "sha256:9b7bda0bd8ec8d1fd8f8deda076180deef2d4921ee60e7d2f39044ee7d9437ee"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-darwin-arm64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073843"
+checksum = "sha256:d4a10d97488d6054d2b18198bd24f461079952c7e0fb75ba66336ca0df0cb99e"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-darwin-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972282"
 
 [tools.oh-my-pi."platforms.macos-x64"]
-checksum = "sha256:62835e51acc0f07d19493da736b7215d3224fd5099754b7e42c3b0fdc2eb7f45"
+checksum = "sha256:abd62d315b66314f0f635d537407037e7b0d06782513d8035669db5ef744242d"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-darwin-x64"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073842"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-darwin-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972279"
 
 [tools.oh-my-pi."platforms.windows-x64"]
-checksum = "sha256:aa04e4ff3b2d97d604839edf1bcf5a0085818389d9fc8c1a18875ee7b5e3b0f8"
+checksum = "sha256:c249a9ed0a57c748fb1247d8ee9e2d0fe1b13229266ce74d8810a76a591e21fc"
 checksum_source = "mise-versions"
-url = "https://github.com/can1357/oh-my-pi/releases/download/v18.14.2/omp-windows-x64.exe"
-url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/696073835"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v18.16.0/omp-windows-x64.exe"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/702972270"
 
 [[tools.onefetch]]
 version = "3.2.0"
