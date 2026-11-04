@@ -1,6 +1,7 @@
 [tools]
 "aqua:auth0/auth0-cli" = "latest"
 "aqua:temporalio/cli" = "latest"
+buf = "latest"
 flyway = "latest"
 gcloud = { version = "latest", components = ["cloud-sql-proxy", "docker-credential-gcr"] }
 
