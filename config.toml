@@ -45,6 +45,7 @@ terraform = "latest"
 tokei = "latest"
 uv = "latest"
 xh = "latest"
+yarn = "latest"
 yq = "latest"
 
 "npm:agent-browser" = "latest"
