@@ -45,6 +45,21 @@ When defaults are written, sometimes a relaunch is required for them to take eff
 For those managed by mise, it will print a reminder when this is needed.
 For those handled by the task, this is handled automatically on completion (restarts Dock, Finder and SystemUIServer).
 
+**Commit Signing**
+
+On macOS, commits are signed with keys that live in the Secure Enclave, so they never leave the machine.
+Bootstrap creates one key per git identity before the git credentials are rendered, and loads them into `ssh-agent` at every login.
+The public keys are printed when they are created; register them on GitHub as signing keys with the command shown.
+
+To print them again, run:
+
+```sh
+mise vars git_personal_signing_key
+mise vars git_work_signing_key
+```
+
+A lost or retired machine is handled by deleting its keys on GitHub.
+
 ## Operations
 
 ### Structure
