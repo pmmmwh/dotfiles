@@ -37,7 +37,6 @@ mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
 postgres = { version = "17", os = "macos" }
-protoc = "latest"
 shellcheck = "latest"
 shfmt = "latest"
 starship = "latest"
