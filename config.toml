@@ -64,6 +64,10 @@ yq = "latest"
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
 
+# Per-session Docker sandboxes, only on the Linux dev box
+"~/.local/bin/sbx" = { source = "sandbox/bin/sbx", variants = [{ os = "linux" }] }
+"~/.local/bin/sbx-firewall" = { source = "sandbox/bin/sbx-firewall", variants = [{ os = "linux" }] }
+
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
 "~/.gitconfig" = "git/.gitconfig"

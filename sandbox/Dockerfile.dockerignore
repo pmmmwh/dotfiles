@@ -1,0 +1,11 @@
+.git
+sandbox/Dockerfile
+sandbox/Dockerfile.dockerignore
+@macos
+README.md
+LICENSE
+miserc.local.toml
+mise.local.toml
+config.local.toml
+config.*.local.toml
+zshcustom/extras.zsh

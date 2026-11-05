@@ -110,6 +110,31 @@ mise bootstrap --update --upgrade --yes
 
 Note that tool versions updated this way will stay inside the ranges in `config.toml`.
 
+### Sandboxes
+
+On the Linux dev box, `sbx` gives each session its own clone and Docker container, with these dotfiles applied.
+
+```sh
+sbx build                      # build the image from this repository
+sbx shell <repo> -s <session>  # clone <repo> to ~/sandboxes and open a shell in its container
+sbx ls                         # list sandboxes
+sbx fetch <repo> <session>     # fetch the session's branches into <repo> as sbx/<session>/* remote refs
+sbx gc --yes                   # remove idle sandboxes that hold no unsaved work
+```
+
+Sandboxes run on their own Docker network, and `sbx shell` refuses to start without it.
+`sbx-firewall` creates the network and blocks sandbox traffic to the tailnet, private and link-local ranges (including cloud metadata) and the host itself;
+internet access is kept. Set it up once, then check it:
+
+```sh
+sudo "$(command -v sbx-firewall)" install
+sbx-firewall test
+```
+
+Repositories are looked up under `~/Developer` (`SBX_REPOS_DIR`).
+Credentials for the agents (e.g. `ANTHROPIC_API_KEY`, a scoped `GH_TOKEN`) go in `~/.config/sbx/env`, one `KEY=value` per line.
+Each clone lives in `~/sandboxes/<repo>/<session>`, so it can also be opened over SSH, e.g. `zed ssh://devbox/home/<user>/sandboxes/<repo>/<session>`.
+
 ### Customisation
 
 Any `.zsh` file inside [`.zshcustom`](./zshcustom) is sourced at startup.

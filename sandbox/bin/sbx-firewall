@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Egress policy for sbx sandboxes: internet only. No tailnet, LAN, link-local (cloud metadata) or host services.
+set -euo pipefail
+
+SELF=$(readlink -f "${BASH_SOURCE[0]}")
+IMAGE=${SBX_IMAGE:-sbx-base:latest}
+NETWORK=${SBX_NETWORK:-sbx}
+BRIDGE=sbx0
+SUBNET=172.30.0.0/24
+EGRESS_CHAIN=SBX-EGRESS
+INSTALLED=/usr/local/sbin/sbx-firewall
+UNIT=/etc/systemd/system/sbx-firewall.service
+
+# Tailscale (CGNAT), and every private or link-local range, including other Docker networks and other sandboxes
+BLOCKED=(100.64.0.0/10 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 169.254.0.0/16)
+
+die() {
+  echo "sbx-firewall: $*" >&2
+  exit 1
+}
+
+usage() {
+  cat <<'EOF'
+Usage: sbx-firewall <command>
+
+  apply     Create the sandbox network and load the firewall rules (needs root)
+  remove    Remove the firewall rules; the network is kept (needs root)
+  install   Copy this script to /usr/local/sbin and load the rules on every boot (needs root)
+  test      Check from a throwaway container that the rules hold
+
+Run it as: sudo "$(command -v sbx-firewall)" install
+EOF
+}
+
+require_root() {
+  [[ $EUID -eq 0 ]] || die "needs root"
+}
+
+ensure_network() {
+  if docker network inspect "$NETWORK" >/dev/null 2>&1; then return; fi
+  docker network create \
+    --driver bridge \
+    --subnet "$SUBNET" \
+    --opt "com.docker.network.bridge.name=$BRIDGE" \
+    --opt com.docker.network.bridge.enable_icc=false \
+    "$NETWORK" >/dev/null
+}
+
+cmd_apply() {
+  require_root
+  ensure_network
+
+  iptables -N "$EGRESS_CHAIN" 2>/dev/null || iptables -F "$EGRESS_CHAIN"
+  local cidr
+  for cidr in "${BLOCKED[@]}"; do
+    iptables -A "$EGRESS_CHAIN" -d "$cidr" -j REJECT --reject-with icmp-admin-prohibited
+  done
+  iptables -A "$EGRESS_CHAIN" -j RETURN
+
+  iptables -C DOCKER-USER -i "$BRIDGE" -j "$EGRESS_CHAIN" 2>/dev/null \
+    || iptables -I DOCKER-USER -i "$BRIDGE" -j "$EGRESS_CHAIN"
+  # Traffic to the host itself skips FORWARD and DOCKER-USER, so it is rejected on INPUT
+  iptables -C INPUT -i "$BRIDGE" -j REJECT 2>/dev/null \
+    || iptables -I INPUT 1 -i "$BRIDGE" -j REJECT
+}
+
+cmd_remove() {
+  require_root
+  while iptables -D DOCKER-USER -i "$BRIDGE" -j "$EGRESS_CHAIN" 2>/dev/null; do :; done
+  while iptables -D INPUT -i "$BRIDGE" -j REJECT 2>/dev/null; do :; done
+  iptables -F "$EGRESS_CHAIN" 2>/dev/null || true
+  iptables -X "$EGRESS_CHAIN" 2>/dev/null || true
+}
+
+cmd_install() {
+  require_root
+  # A root-owned copy, so the boot service never runs a script a user account can edit
+  install -m 0755 -o root -g root "$SELF" "$INSTALLED"
+  cat >"$UNIT" <<EOF
+[Unit]
+Description=Firewall rules for sbx sandboxes
+Requires=docker.service
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=$INSTALLED apply
+ExecStop=$INSTALLED remove
+
+[Install]
+WantedBy=multi-user.target
+EOF
+  systemctl daemon-reload
+  systemctl enable --now sbx-firewall.service
+}
+
+cmd_test() {
+  local failed=0 gateway
+  gateway=$(ip route | awk '/^default/ { print $3; exit }')
+  expect() {
+    local verdict=$1 label=$2 url=$3
+    local result
+    if docker run --rm --network "$NETWORK" --entrypoint curl "$IMAGE" -sS -o /dev/null -m 4 "$url" >/dev/null 2>&1; then
+      result=reachable
+    else
+      result=blocked
+    fi
+    if [[ $result == "$verdict" ]]; then
+      printf 'PASS  %-34s %s\n' "$label" "$result"
+    else
+      printf 'FAIL  %-34s %s (expected %s)\n' "$label" "$result" "$verdict"
+      failed=1
+    fi
+  }
+  expect reachable "internet (api.anthropic.com)" https://api.anthropic.com
+  expect blocked "tailnet (100.100.100.100)" http://100.100.100.100
+  expect blocked "metadata (169.254.169.254)" http://169.254.169.254
+  expect blocked "host over bridge (172.30.0.1)" http://172.30.0.1
+  expect blocked "VM gateway ($gateway)" "http://$gateway"
+  return "$failed"
+}
+
+case ${1:-} in
+  apply) cmd_apply ;;
+  remove) cmd_remove ;;
+  install) cmd_install ;;
+  test) cmd_test ;;
+  *) usage; exit 1 ;;
+esac
