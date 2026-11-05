@@ -15,5 +15,23 @@
   "agentPushNotifEnabled": true,
   "env": {
     "CLAUDE_CODE_SCROLL_SPEED": "3"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -c 'rex __internal session-start --agent claude 2>/dev/null || true'",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/bin/sh -c '\"$HOME/.local/bin/rex-agent-session\" claude 2>/dev/null || true'",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
   }
 }

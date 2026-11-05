@@ -1,0 +1,18 @@
+# Resume coding agents in Rex panes after a server restart.
+# The zsh hook that resumes them lives in zshcustom/interactive/rex-agent-resume.zsh.
+# Each agent's hook goes into the config directory of both profiles, as listed in agents/profiles.toml.
+[dotfiles]
+"~/.local/bin/rex-agent-session" = "../_bin/rex-agent-session"
+"~/.codex/hooks.json" = "../agents/codex/hooks.json"
+"~/.omp/agent/extensions/rex-session.ts" = "../agents/omp/rex-session.ts"
+"~/.pi/agent/extensions/rex-session.ts" = "../agents/pi/rex-session.ts"
+"~/.config/opencode/rex-session" = "../agents/opencode/rex-session"
+"~/.config/opencode/cli.json/rex" = { source = "../agents/opencode/cli.json", merge = true }
+"~/.gemini/config/hooks.json/rex" = { source = "../agents/antigravity/hooks.json", merge = true }
+
+# Personal profiles
+"~/.codex-personal/hooks.json" = "../agents/codex/hooks.json"
+"~/.omp/profiles/personal/agent/extensions/rex-session.ts" = "../agents/omp/rex-session.ts"
+"~/.pi-personal/agent/extensions/rex-session.ts" = "../agents/pi/rex-session.ts"
+"~/.config/opencode-personal/rex-session" = "../agents/opencode/rex-session"
+"~/.config/opencode-personal/cli.json/rex" = { source = "../agents/opencode/cli.json", merge = true }

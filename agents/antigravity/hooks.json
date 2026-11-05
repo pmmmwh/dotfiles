@@ -1,0 +1,11 @@
+{
+  "rex": {
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "/bin/sh -c '\"$HOME/.local/bin/rex-agent-session\" agy >/dev/null 2>&1; echo \"{}\"'",
+        "timeout": 10
+      }
+    ]
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "plugins": ["./rex-session"]
+}

@@ -1,0 +1,206 @@
+#!/bin/sh
+# Records the agent conversation running in a Rex pane, so it can be resumed after a server restart.
+# Usage: rex-agent-session <claude|codex|omp|pi|opencode|agy>, with the agent's hook JSON on stdin.
+#        rex-agent-session scan, to record agents that were already running without a hook.
+# Writes nothing to stdout in hook mode, as agents add a SessionStart hook's output to the conversation.
+set -eu
+
+command -v jq >/dev/null 2>&1 || exit 0
+state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/rex-agents"
+
+record_file() {
+  printf '%s/%s.json' "$state_dir" "$(printf '%s' "$1" | tr -c 'A-Za-z0-9._-' _)"
+}
+
+# record <block> <agent> <session_id> <cwd> <profile> <env_json> [session_file]
+record() {
+  mkdir -p "$state_dir"
+  _file=$(record_file "$1")
+  _tmp=$(mktemp "$state_dir/.tmp.XXXXXX")
+  jq -n --arg agent "$2" --arg session_id "$3" --arg cwd "$4" --arg profile "$5" --argjson env "$6" --arg file "${7:-}" \
+    '{agent: $agent, session_id: $session_id, cwd: $cwd, profile: $profile, env: $env, session_file: $file}' >"$_tmp"
+  mv "$_tmp" "$_file"
+}
+
+# env_json_from_environment <name>... reads those variables from the environment of this process
+env_json_from_environment() {
+  _json="{}"
+  for _name in "$@"; do
+    _value=$(printenv "$_name" || true)
+    [ -z "$_value" ] || _json=$(printf '%s' "$_json" | jq --arg k "$_name" --arg v "$_value" '. + {($k): $v}')
+  done
+  printf '%s' "$_json"
+}
+
+if [ "${1:-}" = scan ]; then
+  # Another process's environment: /proc on Linux, ps on macOS
+  process_env() {
+    if [ -r "/proc/$1/environ" ]; then
+      tr '\0' '\n' <"/proc/$1/environ"
+    else
+      ps eww -o command= -p "$1" 2>/dev/null | tr ' ' '\n'
+    fi
+  }
+  process_var() {
+    process_env "$1" | sed -n "s/^$2=//p" | head -n1
+  }
+  # adopt <pid> <agent> <session_id> <cwd> <profile> <session_file> <env names...>: records a running agent unless its pane already has a record
+  adopt() {
+    _pid=$1 _agent=$2 _session=$3 _cwd=$4 _profile=$5 _session_file=$6
+    shift 6
+    _block=$(process_var "$_pid" REX_BLOCK)
+    [ -n "$_block" ] || return 0
+    [ ! -e "$(record_file "$_block")" ] || return 0
+    _json="{}"
+    for _name in "$@"; do
+      _value=$(process_var "$_pid" "$_name")
+      [ -z "$_value" ] || _json=$(printf '%s' "$_json" | jq --arg k "$_name" --arg v "$_value" '. + {($k): $v}')
+    done
+    record "$_block" "$_agent" "$_session" "$_cwd" "$_profile" "$_json" "$_session_file"
+    printf 'recorded %s %s for %s\n' "$_agent" "$_session" "$_block"
+  }
+  alive() { kill -0 "$1" 2>/dev/null; }
+  process_cwd() { lsof -a -p "$1" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p'; }
+  # Seconds since the process started, from ps's [[dd-]hh:]mm:ss
+  process_age() {
+    ps -o etime= -p "$1" | awk -F'[-:]' '{ s = $NF + 60 * $(NF - 1); if (NF > 2) s += 3600 * $(NF - 2); if (NF > 3) s += 86400 * $(NF - 3); print s }'
+  }
+  # Agents without a per-process file only reveal their session by activity, which is only unambiguous when no other copy shares the cwd
+  alone_in_cwd() {
+    ps -axo pid=,comm= | while read -r _pid _comm; do
+      [ "$(basename -- "$_comm")" = "$1" ] && [ "$(process_cwd "$_pid")" = "$2" ] && echo "$_pid"
+    done | wc -l | tr -d ' ' | grep -qx 1
+  }
+
+  # Claude writes <config dir>/sessions/<pid>.json for each running session; background workers are the agents daemon's
+  for dir in "$HOME"/.claude* "${CLAUDE_CONFIG_DIR:-}"; do
+    for f in "$dir"/sessions/*.json; do
+      [ -f "$f" ] || continue
+      [ "$(jq -r '.kind // empty' "$f")" = interactive ] || continue
+      pid=$(jq -r '.pid // empty' "$f")
+      [ -n "$pid" ] || continue
+      alive "$pid" || continue
+      adopt "$pid" claude "$(jq -r '.sessionId // empty' "$f")" "$(jq -r '.cwd // empty' "$f")" "" "" CLAUDE_CONFIG_DIR
+    done
+  done
+
+  # A Codex process that runs its own app server keeps its rollout open, which names the thread
+  ps -axo pid=,comm= | while read -r pid comm; do
+    [ "$(basename -- "$comm")" = codex ] || continue
+    case "$(ps -o command= -p "$pid")" in *app-server*) continue ;; esac
+    rollout=$(lsof -p "$pid" -Fn 2>/dev/null | sed -n 's/^n//p' | grep '/sessions/.*/rollout-.*\.jsonl$' | head -n1)
+    [ -n "$rollout" ] || continue
+    session=$(basename "$rollout" .jsonl | sed 's/.*-\([0-9a-f]\{8\}-[0-9a-f-]*\)$/\1/')
+    adopt "$pid" codex "$session" "$(head -n1 "$rollout" | jq -r '.payload.cwd // empty')" "" "$rollout" CODEX_HOME
+  done
+
+  # OMP keeps <agent dir>/terminal-sessions/<tty> pointing at the session file of the terminal
+  ps -axo pid=,tty=,comm= | while read -r pid tty comm; do
+    [ "$(basename -- "$comm")" = omp ] || continue
+    for dir in "$(process_var "$pid" PI_CODING_AGENT_DIR)" "$HOME/.omp/agent" "$HOME"/.omp/profiles/*/agent; do
+      crumb="$dir/terminal-sessions/$tty"
+      [ -f "$crumb" ] || continue
+      session_file=$(sed -n 2p "$crumb")
+      [ -f "$session_file" ] || continue
+      profile=""
+      case "$dir" in */profiles/*/agent) profile=$(basename "$(dirname "$dir")") ;; esac
+      session=$(basename "$session_file" .jsonl | sed 's/.*_//')
+      adopt "$pid" omp "$session" "$(sed -n 1p "$crumb")" "$profile" "$session_file" PI_CODING_AGENT_DIR PI_CODING_AGENT_SESSION_DIR PI_CONFIG_DIR
+      break
+    done
+  done
+
+  # pi opens no file for its session, so the link is the one session file in its cwd written since it started
+  ps -axo pid=,comm= | while read -r pid comm; do
+    [ "$(basename -- "$comm")" = pi ] || continue
+    cwd=$(process_cwd "$pid")
+    [ -n "$cwd" ] || continue
+    alone_in_cwd pi "$cwd" || continue
+    sessions_dir=$(process_var "$pid" PI_CODING_AGENT_SESSION_DIR)
+    agent_dir=$(process_var "$pid" PI_CODING_AGENT_DIR)
+    : "${sessions_dir:=${agent_dir:-$HOME/.pi/agent}/sessions}"
+    found=$(find "$sessions_dir" -name '*.jsonl' -mmin "-$(($(process_age "$pid") / 60 + 1))" 2>/dev/null | while read -r f; do
+      [ "$(head -n1 "$f" | jq -r '.cwd // empty')" = "$cwd" ] && printf '%s\n' "$f"
+    done)
+    [ "$(printf '%s\n' "$found" | grep -c .)" = 1 ] || continue
+    adopt "$pid" pi "$(head -n1 "$found" | jq -r '.id')" "$cwd" "" "$found" PI_CODING_AGENT_DIR PI_CODING_AGENT_SESSION_DIR
+  done
+
+  # OpenCode's TUI is a client of a background service, so the session is the one root session in its cwd updated since it started
+  if command -v sqlite3 >/dev/null 2>&1; then
+    ps -axo pid=,comm= | while read -r pid comm; do
+      [ "$(basename -- "$comm")" = opencode.exe ] || [ "$(basename -- "$comm")" = opencode ] || continue
+      case "$(ps -o command= -p "$pid")" in *" serve"*) continue ;; esac
+      cwd=$(process_cwd "$pid")
+      [ -n "$cwd" ] || continue
+      alone_in_cwd "$(basename -- "$comm")" "$cwd" || continue
+      db=$(process_var "$pid" OPENCODE_DB)
+      data_home=$(process_var "$pid" XDG_DATA_HOME)
+      : "${db:=${data_home:-$HOME/.local/share}/opencode/opencode.db}"
+      [ -f "$db" ] || continue
+      since=$((($(date +%s) - $(process_age "$pid")) * 1000))
+      sessions=$(sqlite3 -readonly "$db" "select id from session_v2 where parent_id is null and directory = '$(printf '%s' "$cwd" | sed "s/'/''/g")' and time_updated >= $since" 2>/dev/null)
+      [ "$(printf '%s\n' "$sessions" | grep -c .)" = 1 ] || continue
+      adopt "$pid" opencode "$sessions" "$cwd" "" "" OPENCODE_CONFIG_DIR OPENCODE_CONFIG OPENCODE_DB XDG_DATA_HOME
+    done
+  fi
+
+  # agy keeps the brain directory of its conversation open
+  ps -axo pid=,comm= | while read -r pid comm; do
+    [ "$(basename -- "$comm")" = agy ] || continue
+    brains=$(lsof -p "$pid" -Fn 2>/dev/null | sed -n 's/^n//p' | grep '/brain/[0-9a-f-]\{36\}$')
+    [ "$(printf '%s\n' "$brains" | grep -c .)" = 1 ] || continue
+    adopt "$pid" agy "$(basename "$brains")" "$(process_cwd "$pid")" "" ""
+  done
+  exit 0
+fi
+
+agent="${1:-}"
+[ -n "${REX_BLOCK:-}" ] || exit 0
+
+input=$(cat)
+# Antigravity names the fields conversationId and workspacePaths
+session_id=$(printf '%s' "$input" | jq -r '.session_id // .conversationId // empty')
+cwd=$(printf '%s' "$input" | jq -r '.cwd // .workspacePaths[0]? // empty')
+session_file=$(printf '%s' "$input" | jq -r '.session_file // empty')
+[ -n "$session_id" ] || exit 0
+[ -n "$cwd" ] || cwd="$PWD"
+
+profile=$(printf '%s' "$input" | jq -r '.profile // empty')
+
+# Where each agent keeps its sessions; resuming elsewhere would not find them
+case "$agent" in
+  claude)
+    # Subagents fire their own SessionStart and must not replace the pane's conversation
+    [ -z "$(printf '%s' "$input" | jq -r '.agent_id // empty')" ] || exit 0
+    # Background sessions belong to the agents daemon, which inherits REX_BLOCK from whichever pane started it
+    [ "${CLAUDE_CODE_SESSION_KIND:-}" != bg ] || exit 0
+    env_names="CLAUDE_CONFIG_DIR"
+    ;;
+  codex)
+    [ -z "${CODEX_THREAD_ID:-}" ] || [ "$CODEX_THREAD_ID" = "$session_id" ] || exit 0
+    # The shared daemon's hooks inherit REX_BLOCK from the pane that started it
+    pid=$$
+    for _ in 1 2 3 4; do
+      pid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' ') || break
+      [ -n "$pid" ] && [ "$pid" -gt 1 ] || break
+      case "$(ps -o command= -p "$pid" 2>/dev/null)" in *--managed-daemon*) exit 0 ;; esac
+    done
+    # Non-interactive runs such as codex exec are not the pane's conversation
+    transcript=$(printf '%s' "$input" | jq -r '.transcript_path // empty')
+    [ -z "$transcript" ] || [ "$(head -n1 "$transcript" 2>/dev/null | jq -r '.payload.originator // empty')" = codex-tui ] || exit 0
+    env_names="CODEX_HOME"
+    ;;
+  omp) env_names="PI_CODING_AGENT_DIR PI_CODING_AGENT_SESSION_DIR PI_CONFIG_DIR" ;;
+  pi) env_names="PI_CODING_AGENT_DIR PI_CODING_AGENT_SESSION_DIR" ;;
+  opencode) env_names="OPENCODE_CONFIG_DIR OPENCODE_CONFIG OPENCODE_DB XDG_DATA_HOME" ;;
+  agy)
+    # Subagents run their own conversation through the same hook, with no user input
+    [ "$(printf '%s' "$input" | jq -r 'has("lastUserInput") and .lastUserInput == ""')" != true ] || exit 0
+    env_names=""
+    ;;
+  *) exit 0 ;;
+esac
+
+# shellcheck disable=SC2086
+record "$REX_BLOCK" "$agent" "$session_id" "$cwd" "$profile" "$(env_json_from_environment $env_names)" "$session_file"
