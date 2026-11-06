@@ -1,0 +1,25 @@
+modelRoles:
+  default: openai-codex/gpt-6.1-sol:medium
+  plan: openai-codex/gpt-6-astra:high
+  tiny: anthropic/claude-sonnet-5-5:low
+  smol: anthropic/claude-sonnet-5-5:medium
+  advisor: anthropic/claude-fable-5-1:high
+  slow: anthropic/claude-opus-5-5:high
+symbolPreset: nerd
+composer:
+  shape: rule
+setupVersion: 2
+theme:
+  dark: dark
+extendedContext: false
+codexResets:
+  autoRedeem: "no"
+hideThinkingBlock: false
+omitThinking: false
+retry:
+  waitForUsageReset: true
+  usageAwareFallback: false
+dev:
+  autoqaConsent: granted
+compaction:
+  idleEnabled: true
