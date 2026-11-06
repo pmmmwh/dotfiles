@@ -73,6 +73,15 @@ yq = "latest"
 "~/.gitcredentials.work" = { source = "git/.gitcredentials.work.tera", mode = "template", permissions = "0600" }
 "~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }
 
+# Coding agent settings. Auth, history and caches stay out.
+# Only the keys in the source are managed in ~/.claude/settings.json, so the account-linked ones the CLI writes stay local.
+"~/.claude/settings.json/shared" = { source = "agents/claude/settings.json", merge = true }
+"~/.claude/CLAUDE.md" = "agents/claude/CLAUDE.md"
+"~/.claude/rules" = { source = "agents/claude/rules", mode = "symlink-each" }
+"~/.claude.personal/rules" = { source = "agents/claude-personal/rules", mode = "symlink-each" }
+"~/.claude.personal/settings.json" = "agents/claude-personal/settings.json"
+"~/.omp/agent/config.yml" = "agents/omp/config.yml"
+
 # Records the environment chosen on the first bootstrap, so later runs do not need to re-specify
 [dotfiles."mise-env"]
 source = "miserc.local.toml.tera"

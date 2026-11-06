@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_SCROLL_SPEED": "3"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(but *)",
+      "Bash(gh issue *)",
+      "Bash(gh pr *)",
+      "Bash(git blame *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git status *)",
+      "Edit",
+      "Glob",
+      "Grep",
+      "Read",
+      "Skill(code-review)",
+      "WebSearch",
+      "Write"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push * --force*)",
+      "Bash(rm -rf *)",
+      "Bash(rm -r *)",
+      "Bash(rmdir *)",
+      "Bash(*.env*)",
+      "Read(*.env*)",
+      "Bash(git branch -D*)",
+      "Bash(git branch -d*)"
+    ]
+  },
+  "worktree": {
+    "bgIsolation": "none"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "starship statusline claude-code"
+  },
+  "effortLevel": "high",
+  "tui": "fullscreen",
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "autoCompactEnabled": true,
+  "agentPushNotifEnabled": true
+}

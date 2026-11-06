@@ -1,0 +1,19 @@
+{
+  "model": "sonnet",
+  "statusLine": {
+    "type": "command",
+    "command": "starship statusline claude-code"
+  },
+  "enableWorkflows": true,
+  "enabledPlugins": {
+    "cloudflare@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {},
+  "tui": "fullscreen",
+  "theme": "dark",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "env": {
+    "CLAUDE_CODE_SCROLL_SPEED": "3"
+  }
+}
