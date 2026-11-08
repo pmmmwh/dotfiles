@@ -19,16 +19,18 @@ apps = [
     "/System/Applications/Calendar.app",
     "/Applications/Linear.app",
     "/Applications/Slack.app",
-    "/Applications/Ghostty.app",
+    "/Applications/Rex Beta.app",
     "/System/Applications/System Settings.app",
 ]
 
 [bootstrap.brew.taps]
 "dbt-labs/dbt-cli" = "https://github.com/dbt-labs/homebrew-dbt-cli.git"
+"temporalio/brew" = "https://github.com/temporalio/homebrew-brew.git"
 
 [bootstrap.packages]
 # Database related tools
 "brew:dbt-labs/dbt-cli/dbt" = { os = "macos" }
+"brew:temporalio/brew/temporal-cloud" = { os = "macos" }
 
 # Utilities
 "brew-cask:linear" = { os = "macos" }
