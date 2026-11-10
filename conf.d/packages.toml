@@ -55,6 +55,7 @@ homebrew_metadata = true
 "brew-cask:setapp" = { os = "macos" }
 "brew-cask:tablepro" = { os = "macos" }
 "brew-cask:tailscale" = { os = "macos" }
+"brew-cask:tldraw" = { "os" = "macos" }
 "brew-cask:the-unarchiver" = { os = "macos" }
 "brew-cask:yubico-authenticator" = { os = "macos" }
 
