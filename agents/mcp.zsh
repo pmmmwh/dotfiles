@@ -21,23 +21,26 @@
   done
 
   local manifest=$(yq -p toml -o json '.' $SCRIPT_DIR/mcp.toml)
+  local profiles=$(yq -p toml -o json '.' $SCRIPT_DIR/profiles.toml)
 
-  local target file next
-  for target in $(jq -r '.targets | keys[]' <<<$manifest); do
-    file=$(jq -r --arg t $target '.targets[$t].file' <<<$manifest)
+  local target file next harness profile
+  for target in $(jq -r 'to_entries[] | .key as $h | .value | to_entries[] | select(.value | type == "object" and has("mcp")) | "\($h):\(.key)"' <<<$profiles); do
+    harness=${target%%:*} profile=${target#*:}
+    file=$(jq -r --arg h $harness --arg p $profile '
+      .[$h][$p] as $entry | $entry.mcp
+      | if startswith("~") or startswith("/") then . else ($entry.config // $entry.dir) + "/" + . end' <<<$profiles)
     file=${file/#\~/$HOME}
 
-    next=$(jq --arg t $target --slurpfile current <(if [[ -s $file ]]; then cat $file; else print '{}'; fi) '
-      .targets[$t] as $target
-      | (.removed[$target.harness] // []) as $removed
-      | ((.base // {}) + (.[$target.profile] // {}))
-      | with_entries(select((.value.harnesses // [$target.harness]) | index($target.harness)))
+    next=$(jq --arg harness $harness --arg profile $profile --argjson profiles "$profiles" --slurpfile current <(if [[ -s $file ]]; then cat $file; else print '{}'; fi) '
+      (.removed[$harness] // []) as $removed
+      | ((.base // {}) + (.[$profile] // {}))
+      | with_entries(select((.value.harnesses // [$harness]) | index($harness)))
       | map_values(
           del(.harnesses)
           | if .url then {type: "http", url: .url} + (del(.url, .type) | with_entries(select(.key == "headers")))
             else {type: "stdio"} + .
             end
-          | if $target.typed == false then del(.type) else . end
+          | if $profiles[$harness].typed == false then del(.type) else . end
         ) as $servers
       | $current[0]
       | .mcpServers = ((.mcpServers // {}) | del(.[$removed[]]) | . + $servers)' <<<$manifest) || exit 1

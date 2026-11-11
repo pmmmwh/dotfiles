@@ -2,10 +2,6 @@
 
 # ALIASES
 
-# Run agents with personal config
-alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude.personal claude"
-alias omp-personal="omp --profile personal"
-
 # Show all ports that are currently listning by a process
 alias listeningports="sudo lsof -iTCP -sTCP:LISTEN -nP"
 

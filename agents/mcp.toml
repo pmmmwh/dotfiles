@@ -1,4 +1,5 @@
-# MCP servers for the coding agents. Each target gets [base] plus the section of its profile.
+# MCP servers for the coding agents. Each harness and profile in profiles.toml that has an mcp file gets
+# [base] plus the section of its profile.
 # Only the servers named here (and in [removed]) are changed in a target, so servers added by hand stay.
 # Values may use ${VAR}, which the agents expand themselves, so no credential belongs in this file.
 
@@ -20,27 +21,6 @@ args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-s
 # ~/.claude.personal
 [personal]
 
-[targets.claude-default]
-harness = "claude"
-profile = "default"
-file = "~/.claude.json"
-
-[targets.claude-personal]
-harness = "claude"
-profile = "personal"
-file = "~/.claude.personal/.claude.json"
-
-[targets.omp]
-harness = "omp"
-profile = "default"
-file = "~/.omp/agent/mcp.json"
-
-[targets.pi]
-harness = "pi"
-profile = "default"
-file = "~/.pi/agent/mcp.json"
-typed = false
-
-# Servers a target should no longer have, such as ones renamed here
+# Servers a harness should no longer have, such as ones renamed here
 [removed]
 omp = ["TablePro"]

@@ -95,6 +95,7 @@ yq = "latest"
 "~/.claude.personal/rules" = { source = "agents/claude-personal/rules", mode = "symlink-each" }
 "~/.claude.personal/settings.json" = "agents/claude-personal/settings.json"
 "~/.omp/agent/config.yml" = "agents/omp/config.yml"
+"~/.zshcustom/interactive/agent-profiles.zsh" = { source = "agents/profiles.zsh.tera", mode = "template" }
 
 [vars.computer_name]
 prompt = "Name for this computer, applied by `mise run macos-settings` (empty keeps the current one)"
