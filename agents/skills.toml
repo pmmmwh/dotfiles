@@ -1,0 +1,46 @@
+# Skills installed with the skills CLI into the shared ~/.agents/skills store, keyed by source repository.
+# Each Claude profile links [base] plus its own section. Skills that a binary ships itself are not listed here.
+
+[base]
+"anthropics/skills" = ["frontend-design"]
+"jakubkrehel/skills" = [
+  "better-accessibility",
+  "better-colors",
+  "better-interface",
+  "better-layout",
+  "better-typography",
+  "better-ui",
+  "better-writing",
+]
+"modem-dev/hunk" = ["hunk-review"]
+"multica-ai/andrej-karpathy-skills" = ["karpathy-guidelines"]
+"upstash/context7" = ["find-docs"]
+"vercel-labs/agent-browser" = ["agent-browser"]
+
+# ~/.claude
+[default]
+"mattpocock/skills" = [
+  "ask-matt",
+  "codebase-design",
+  "diagnosing-bugs",
+  "domain-modeling",
+  "grill-me",
+  "grill-with-docs",
+  "grilling",
+  "handoff",
+  "improve-codebase-architecture",
+  "prototype",
+  "setup-matt-pocock-skills",
+  "tdd",
+  "teach",
+  "to-issues",
+  "to-prd",
+  "triage",
+  "writing-great-skills",
+]
+"temporalio/skill-temporal-cloud" = ["temporal-cloud"]
+"temporalio/skill-temporal-developer" = ["temporal-developer"]
+
+# ~/.claude.personal
+[personal]
+"sveltejs/ai-tools" = ["svelte-core-bestpractices"]

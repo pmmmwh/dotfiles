@@ -158,6 +158,10 @@ run = [
 ]
 env = { COMPUTER_NAME = "{{ vars.computer_name }}", NEXTDNS_PROFILE = "{{ vars.nextdns_profile }}" }
 
+[tasks."agents:skills"]
+description = "Install the coding agent skills listed in agents/skills.toml (--dry-run, --prune)"
+run = "{{ mise_config_dir }}/agents/skills.zsh"
+
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys in ~/.ssh"
 run = "{{ mise_config_dir }}/@macos/signing-keys.zsh"
