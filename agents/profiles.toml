@@ -3,9 +3,11 @@
 # <command>-personal aliases do.
 #   dir     what `env` is set to
 #   config  where the agent keeps its instructions and MCP servers, when that is not dir
+#   flags   extra arguments for the personal alias
 #   mcp     the MCP servers file, relative to config unless absolute
 #   instructions  the instructions file, relative to config (a harness-level key)
 #   rules   a rules directory the harness loads itself, relative to config (a harness-level key)
+#   mcp_format  how MCP servers are written: mcpServers (default), opencode or codex (a harness-level key)
 #   typed   false when the harness's MCP entries carry no "type" field (a harness-level key)
 
 [claude]
@@ -34,21 +36,24 @@ personal = { dir = "~/.pi-personal/agent", mcp = "mcp.json" }
 [codex]
 command = "codex"
 instructions = "AGENTS.md"
+mcp_format = "codex"
 env = "CODEX_HOME"
-default = { dir = "~/.codex" }
-personal = { dir = "~/.codex-personal" }
+default = { dir = "~/.codex", mcp = "config.toml" }
+personal = { dir = "~/.codex-personal", mcp = "config.toml" }
 
 [opencode]
 command = "opencode"
 instructions = "AGENTS.md"
+mcp_format = "opencode"
 env = "OPENCODE_CONFIG_DIR"
-default = { dir = "~/.config/opencode" }
-personal = { dir = "~/.config/opencode-personal" }
+default = { dir = "~/.config/opencode", mcp = "opencode.json" }
+# OpenCode shares one background server that keeps the config of the profile that started it
+personal = { dir = "~/.config/opencode-personal", mcp = "opencode.json", flags = "--standalone" }
 
-# The variable is verified to exist, but not whether it moves the config dir or only the state dir
+# agy has no profile selector: it reads ~/.gemini only, with no documented variable to move it
+# (antigravity-cli issue 155), so it has the default profile alone and no <command>-personal alias
 [agy]
 command = "agy"
+typed = false
 instructions = "AGENTS.md"
-env = "ANTIGRAVITY_CLI_CONFIG_DIR"
 default = { dir = "~/.gemini/antigravity-cli", config = "~/.gemini/config", mcp = "mcp_config.json" }
-personal = { dir = "~/.gemini-personal/antigravity-cli", config = "~/.gemini-personal/config", mcp = "mcp_config.json" }
