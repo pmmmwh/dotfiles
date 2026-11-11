@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+# Generated from agents/profiles.toml: <command>-personal runs the agent against its personal profile.
+{{ exec(command="mise x yq -- yq -p toml -o json '.' '" ~ mise_config_dir ~ "/agents/profiles.toml' | jq -r 'to_entries[] | select(.value.personal) | \"alias \\(.value.command)-personal=\\\"\\(.value.env)=\\(.value.personal.dir) \\(.value.command)\\(.value.personal.flags // \"\" | if . == \"\" then \"\" else \" \" + . end)\\\"\"'") }}

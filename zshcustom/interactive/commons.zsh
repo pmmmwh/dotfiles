@@ -2,9 +2,6 @@
 
 # ALIASES
 
-# Run claude with personal config
-alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude.personal claude"
-
 # Show all ports that are currently listning by a process
 alias listeningports="sudo lsof -iTCP -sTCP:LISTEN -nP"
 

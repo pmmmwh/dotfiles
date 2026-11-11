@@ -1,0 +1,45 @@
+# Every coding agent runs against one config directory per profile. The default profile is what the
+# agent uses on its own, and the personal one is picked by setting `env` to its dir, which the
+# <command>-personal aliases do.
+#   dir     what `env` is set to
+#   config  where the agent keeps its instructions and MCP servers, when that is not dir
+#   mcp     the MCP servers file, relative to config unless absolute
+#   typed   false when the harness's MCP entries carry no "type" field (a harness-level key)
+
+[claude]
+command = "claude"
+env = "CLAUDE_CONFIG_DIR"
+default = { dir = "~/.claude", mcp = "~/.claude.json" }
+personal = { dir = "~/.claude.personal", mcp = "~/.claude.personal/.claude.json" }
+
+[omp]
+command = "omp"
+env = "PI_CODING_AGENT_DIR"
+default = { dir = "~/.omp/agent", mcp = "mcp.json" }
+personal = { dir = "~/.omp/profiles/personal/agent", mcp = "mcp.json" }
+
+[pi]
+command = "pi"
+typed = false
+env = "PI_CODING_AGENT_DIR"
+default = { dir = "~/.pi/agent", mcp = "mcp.json" }
+personal = { dir = "~/.pi-personal/agent", mcp = "mcp.json" }
+
+[codex]
+command = "codex"
+env = "CODEX_HOME"
+default = { dir = "~/.codex" }
+personal = { dir = "~/.codex-personal" }
+
+[opencode]
+command = "opencode"
+env = "OPENCODE_CONFIG_DIR"
+default = { dir = "~/.config/opencode" }
+personal = { dir = "~/.config/opencode-personal" }
+
+# The variable is verified to exist, but not whether it moves the config dir or only the state dir
+[agy]
+command = "agy"
+env = "ANTIGRAVITY_CLI_CONFIG_DIR"
+default = { dir = "~/.gemini/antigravity-cli", config = "~/.gemini/config", mcp = "mcp_config.json" }
+personal = { dir = "~/.gemini-personal/antigravity-cli", config = "~/.gemini-personal/config", mcp = "mcp_config.json" }
