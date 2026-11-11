@@ -76,9 +76,6 @@ yq = "latest"
 # Coding agent settings. Auth, history and caches stay out.
 # Only the keys in the source are managed in ~/.claude/settings.json, so the account-linked ones the CLI writes stay local.
 "~/.claude/settings.json/shared" = { source = "agents/claude/settings.json", merge = true }
-"~/.claude/CLAUDE.md" = "agents/claude/CLAUDE.md"
-"~/.claude/rules" = { source = "agents/claude/rules", mode = "symlink-each" }
-"~/.claude.personal/rules" = { source = "agents/claude-personal/rules", mode = "symlink-each" }
 "~/.claude.personal/settings.json" = "agents/claude-personal/settings.json"
 "~/.omp/agent/config.yml" = "agents/omp/config.yml"
 "~/.zshcustom/interactive/agent-profiles.zsh" = { source = "agents/profiles.zsh.tera", mode = "template" }
@@ -135,6 +132,10 @@ run = "{{ mise_config_dir }}/agents/skills.zsh"
 [tasks."agents:mcp"]
 description = "Write the MCP servers in agents/mcp.toml into each coding agent's config (--dry-run)"
 run = "{{ mise_config_dir }}/agents/mcp.zsh"
+
+[tasks."agents:instructions"]
+description = "Deploy the instructions and rules in agents/instructions to each coding agent (--dry-run)"
+run = "{{ mise_config_dir }}/agents/instructions.zsh"
 
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys as vars"
