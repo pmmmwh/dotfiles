@@ -131,6 +131,10 @@ run = "{{ mise_config_dir }}/@macos/settings.zsh"
 description = "Install the coding agent skills listed in agents/skills.toml (--dry-run, --prune)"
 run = "{{ mise_config_dir }}/agents/skills.zsh"
 
+[tasks."agents:mcp"]
+description = "Write the MCP servers in agents/mcp.toml into each coding agent's config (--dry-run)"
+run = "{{ mise_config_dir }}/agents/mcp.zsh"
+
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys as vars"
 run = "{{ mise_config_dir }}/@macos/signing-keys.zsh"
