@@ -1,5 +1,5 @@
 # Skills installed with the skills CLI into the shared ~/.agents/skills store, keyed by source repository.
-# Each Claude profile links [base] plus its own section. Skills that a binary ships itself are not listed here.
+# Each Claude profile links [base] plus its own section.
 
 [base]
 "anthropics/skills" = ["frontend-design"]
@@ -44,3 +44,8 @@
 # ~/.claude.personal
 [personal]
 "sveltejs/ai-tools" = ["svelte-core-bestpractices"]
+
+# Skills that a binary installs itself, so they follow its version. Each runs once per profile.
+[binary]
+gitbutler = "but skill install --path ~/.agents/skills/gitbutler"
+rex = "rex skill setup"
