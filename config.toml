@@ -127,6 +127,10 @@ pre-dotfiles = 'if [ "$(uname)" = Darwin ]; then mise run signing-keys; fi'
 description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
 run = "{{ mise_config_dir }}/@macos/settings.zsh"
 
+[tasks."agents:skills"]
+description = "Install the coding agent skills listed in agents/skills.toml (--dry-run, --prune)"
+run = "{{ mise_config_dir }}/agents/skills.zsh"
+
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys as vars"
 run = "{{ mise_config_dir }}/@macos/signing-keys.zsh"
