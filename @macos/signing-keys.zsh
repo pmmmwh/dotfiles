@@ -52,7 +52,7 @@
 
   load_keys
 
-  local fingerprint key
+  local fingerprint key pub
   for identity in $identities; do
     label=git-signing-$identity
     fingerprint=$(fingerprint_of $label)
@@ -64,8 +64,13 @@
       continue
     fi
 
-    if [[ $(mise vars git_${identity}_signing_key 2> /dev/null) != $key ]]; then
-      mise vars git_${identity}_signing_key=$key
+    # Saved as a file, not a mise var:
+    # templates read files again when the dotfiles are applied,
+    # after this runs as a pre-dotfiles hook, while vars are only read when mise starts
+    pub=$HOME/.ssh/$label.pub
+    if [[ ! -f $pub || $(< $pub) != $key ]]; then
+      mkdir -p -m 700 $HOME/.ssh
+      print -r -- $key > $pub
       logger "success" "$label: $key"
       logger "info" "Register it with: echo '$key' | gh ssh-key add - --type signing --title \"$(/usr/sbin/scutil --get ComputerName) ($identity)\""
     fi
