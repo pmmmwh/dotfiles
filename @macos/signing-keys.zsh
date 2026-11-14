@@ -64,7 +64,8 @@
       continue
     fi
 
-    # Saved as a file, not a mise var: templates read files again when the dotfiles are applied,
+    # Saved as a file, not a mise var:
+    # templates read files again when the dotfiles are applied,
     # after this runs as a pre-dotfiles hook, while vars are only read when mise starts
     pub=$HOME/.ssh/$label.pub
     if [[ ! -f $pub || $(< $pub) != $key ]]; then
