@@ -1,7 +1,6 @@
 [tools]
 java = { version = "zulu-17", os = "macos" }
 ruby = { version = "3.4", os = "macos" }
-rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 caddy = "latest"
 cloudflared = "latest"
