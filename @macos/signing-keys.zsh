@@ -68,7 +68,7 @@
     # after this runs as a pre-dotfiles hook, while vars are only read when mise starts
     pub=$HOME/.ssh/$label.pub
     if [[ ! -f $pub || $(< $pub) != $key ]]; then
-      /bin/mkdir -p -m 700 $HOME/.ssh
+      mkdir -p -m 700 $HOME/.ssh
       print -r -- $key > $pub
       logger "success" "$label: $key"
       logger "info" "Register it with: echo '$key' | gh ssh-key add - --type signing --title \"$(/usr/sbin/scutil --get ComputerName) ($identity)\""
