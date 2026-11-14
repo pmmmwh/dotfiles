@@ -104,8 +104,8 @@ default = ""
 login_shell = "/bin/zsh"
 
 [bootstrap.hooks.pre-dotfiles]
-# Templates leave the keys out until their ~/.ssh/git-signing-*.pub files exist, so bootstrap's
-# up-front template check passes; the files are read again when the dotfiles are applied.
+# Templates leave the keys out until their ~/.ssh/git-signing-*.pub files exist,
+# so bootstrap's up-front template check passes; the files are read again when the dotfiles are applied.
 description = "Create Secure Enclave keys for signing git commits"
 run = 'if [ "$(uname)" = Darwin ]; then /bin/zsh -f "{{ mise_config_dir }}/@macos/signing-keys.zsh"; fi'
 
