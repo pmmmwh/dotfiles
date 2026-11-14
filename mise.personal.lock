@@ -272,15 +272,6 @@ provenance = "github-attestations"
 checksum = "sha256:5e5d85ad93b0adcccbad47733680f4892bd0078e3342437f7babce01c1872479"
 url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.12.tar.gz"
 
-[[tools.rust]]
-version = "1.99.1"
-backend = "core:rust"
-specifiers = ["latest"]
-
-[tools.rust.options]
-components = "rust-analyzer,rust-src"
-targets = "wasm32-unknown-unknown"
-
 [[tools.swiftformat]]
 version = "0.64.5"
 backend = "github:nicklockwood/SwiftFormat"
