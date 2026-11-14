@@ -884,6 +884,23 @@ url = "https://github.com/jqlang/jq/releases/download/jq-1.8.2/jq-windows-amd64.
 url_api = "https://api.github.com/repos/jqlang/jq/releases/assets/453012788"
 provenance = "github-attestations"
 
+[[tools.mas]]
+version = "7.0.0"
+backend = "aqua:mas-cli/mas"
+specifiers = ["latest"]
+
+[tools.mas."platforms.macos-arm64"]
+checksum = "sha256:bc218a854c85d9e1c95496a96b26287bb66056b95688b90f91d04fa62ed21b75"
+checksum_source = "mise-versions"
+url = "https://github.com/mas-cli/mas/releases/download/v7.0.0/mas-7.0.0-arm64.pkg"
+url_api = "https://api.github.com/repos/mas-cli/mas/releases/assets/411752346"
+
+[tools.mas."platforms.macos-x64"]
+checksum = "sha256:9bca1de1fb6ea19c9e0b9d7b7c85249020c9ed65a9d434c2ef40896a2f3395f9"
+checksum_source = "mise-versions"
+url = "https://github.com/mas-cli/mas/releases/download/v7.0.0/mas-7.0.0-x86_64.pkg"
+url_api = "https://api.github.com/repos/mas-cli/mas/releases/assets/411752348"
+
 [[tools.mkcert]]
 version = "1.4.4"
 backend = "aqua:FiloSottile/mkcert"
