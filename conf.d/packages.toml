@@ -16,7 +16,6 @@ homebrew_metadata = true
 "brew:graphviz" = { os = "macos" }
 "brew:imagemagick" = { os = "macos" }
 "brew:less" = { os = "macos" }
-"brew:mas" = { os = "macos" }  # needs to be installed before `mas:` entries below
 "brew:mole" = { os = "macos" }
 "brew:nextdns" = { os = "macos" }
 "brew:pigz" = { os = "macos" }

@@ -33,6 +33,7 @@ gotestsum = "latest"
 hadolint = "latest"
 hyperfine = "latest"
 jq = "latest"
+mas = { version = "latest", os = "macos" }
 mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
@@ -108,6 +109,10 @@ login_shell = "/bin/zsh"
 # so bootstrap's up-front template check passes; the files are read again when the dotfiles are applied.
 description = "Create Secure Enclave keys for signing git commits"
 run = 'if [ "$(uname)" = Darwin ]; then /bin/zsh -f "{{ mise_config_dir }}/@macos/signing-keys.zsh"; fi'
+
+[bootstrap.hooks.pre-packages]
+description = "Install mas before the packages that need it"
+run = 'if [ "$(uname)" = Darwin ]; then "{{ mise_bin }}" install mas; fi'
 
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
