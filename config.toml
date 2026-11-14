@@ -111,8 +111,9 @@ description = "Create Secure Enclave keys for signing git commits"
 run = 'if [ "$(uname)" = Darwin ]; then /bin/zsh -f "{{ mise_config_dir }}/@macos/signing-keys.zsh"; fi'
 
 [bootstrap.hooks.pre-packages]
-description = "Install mas before the packages that need it"
-run = 'if [ "$(uname)" = Darwin ]; then "{{ mise_bin }}" install mas; fi'
+# `mise which` fails without installing anything when the locked version is missing
+description = "Install mas before the packages that need it, if missing"
+run = 'if [ "$(uname)" = Darwin ] && ! "{{ mise_bin }}" which mas >/dev/null 2>&1; then "{{ mise_bin }}" install mas; fi'
 
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }
