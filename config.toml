@@ -14,6 +14,7 @@ DISABLE_AUTOUPDATER = "1"
 go = "1.27"
 node = "26"
 python = ["3.12", "3.14"]
+rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = { version = "latest", os = "macos" }
 "7zip" = "latest"
@@ -37,7 +38,7 @@ mas = { version = "latest", os = "macos" }
 mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
-postgres = { version = "17", os = "macos" }
+postgres = { version = "18", os = "macos" }
 shellcheck = "latest"
 shfmt = "latest"
 starship = "latest"
