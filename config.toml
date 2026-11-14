@@ -89,7 +89,7 @@ prompt = "Email address for personal git commits"
 required = "Run `mise vars prompt git_personal_email`"
 
 [vars.git_personal_signing_key]
-prompt = "SSH public key for signing personal git commits"  # filled in by signing-keys task
+prompt = "SSH public key for signing personal git commits"  # filled in by `mise run signing-keys`
 default = ""
 
 [vars.git_work_email]
@@ -97,15 +97,11 @@ prompt = "Email address for work git commits"
 required = "Run `mise vars prompt git_work_email`"
 
 [vars.git_work_signing_key]
-prompt = "SSH public key for signing work git commits"  # filled in by signing-keys task
+prompt = "SSH public key for signing work git commits"  # filled in by `mise run signing-keys`
 default = ""
 
 [bootstrap.user]
 login_shell = "/bin/zsh"
-
-[bootstrap.hooks]
-# Signing keys must exist before the git credentials that reference them are rendered
-pre-dotfiles = 'if [ "$(uname)" = Darwin ]; then mise run signing-keys; fi'
 
 [bootstrap.repos]
 "~/.zshcustom/plugins/evalcache" = { url = "https://github.com/mroth/evalcache.git" }

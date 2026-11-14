@@ -48,8 +48,15 @@ For those handled by the task, this is handled automatically on completion (rest
 **Commit Signing**
 
 On macOS, commits are signed with keys that live in the Secure Enclave, so they never leave the machine.
-Bootstrap creates one key per git identity before the git credentials are rendered, and loads them into `ssh-agent` at every login.
+Each Mac needs its own keys, one per git identity, before the git credentials can be rendered.
+On a new Mac, the first `bootstrap` clones this repository and then stops, asking for them; create them and run the same `bootstrap` command again:
+
+```sh
+mise run signing-keys
+```
+
 The public keys are printed when they are created; register them on GitHub as signing keys with the command shown.
+Bootstrap loads the keys into `ssh-agent` at every login.
 
 To print them again, run:
 
