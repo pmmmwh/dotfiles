@@ -1,5 +1,16 @@
-{%- if not vars.git_personal_signing_key %}{{ throw(message="git_personal_signing_key is empty: run `mise run signing-keys` on macOS and bootstrap again; elsewhere, `mise vars prompt git_personal_signing_key`") }}{% endif -%}
-{%- if not vars.git_work_signing_key %}{{ throw(message="git_work_signing_key is empty: run `mise run signing-keys` on macOS and bootstrap again; elsewhere, `mise vars prompt git_work_signing_key`") }}{% endif -%}
 # Keys trusted to have signed commits, one principal per git identity
+{%- if os() == "macos" %}
+{%- set personal_key = env.HOME ~ "/.ssh/git-signing-personal.pub" %}
+{%- set work_key = env.HOME ~ "/.ssh/git-signing-work.pub" %}
+{%- if personal_key is file %}
+{{ vars.git_personal_email }} {{ read_file(path=personal_key) | trim }}
+{%- endif %}
+{%- if work_key is file %}
+{{ vars.git_work_email }} {{ read_file(path=work_key) | trim }}
+{%- endif %}
+{%- else %}
+{%- if not vars.git_personal_signing_key %}{{ throw(message="git_personal_signing_key is empty: run `mise vars prompt git_personal_signing_key`") }}{% endif %}
+{%- if not vars.git_work_signing_key %}{{ throw(message="git_work_signing_key is empty: run `mise vars prompt git_work_signing_key`") }}{% endif %}
 {{ vars.git_personal_email }} {{ vars.git_personal_signing_key }}
 {{ vars.git_work_email }} {{ vars.git_work_signing_key }}
+{%- endif %}
