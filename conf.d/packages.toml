@@ -3,7 +3,6 @@ homebrew_metadata = true
 
 [bootstrap.brew.taps]
 "esolitos/ipa" = "https://github.com/esolitos/homebrew-ipa.git"
-"xykong/tap" = "https://github.com/xykong/homebrew-tap.git"
 
 [bootstrap.packages]
 ### macOS ###
@@ -43,7 +42,6 @@ homebrew_metadata = true
 
 # Utilities
 "brew-cask:1password" = { os = "macos" }
-"brew-cask:xykong/tap/flux-markdown" = { os = "macos" }
 "brew-cask:ghostty" = { os = "macos" }
 "brew-cask:logi-options+" = { os = "macos" }
 "brew-cask:microsoft-auto-update" = { os = "macos" }
