@@ -41,6 +41,13 @@ There are some exceptions where sudo is required, and they are applied as a sepa
 mise run macos-settings
 ```
 
+It asks for the administrator password once.
+To also set the computer name, save it on the machine first (it is not committed):
+
+```sh
+mise vars prompt computer_name
+```
+
 When defaults are written, sometimes a relaunch is required for them to take effect.
 For those managed by mise, it will print a reminder when this is needed.
 For those handled by the task, this is handled automatically on completion (restarts Dock, Finder and SystemUIServer).
