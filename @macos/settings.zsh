@@ -25,7 +25,7 @@
 
   # System-wide settings run in one root process, so sudo only asks once
   logger "info" "Requesting administrator credentials for system settings ..."
-  sudo /bin/zsh -f "$SCRIPT_DIR/settings-system.zsh" "${COMPUTER_NAME:-}" || exit 1
+  sudo /bin/zsh -f "$SCRIPT_DIR/settings-system.zsh" "${COMPUTER_NAME:-}" "$HOME" || exit 1
 
   ###############################################################################
   # Finder                                                                      #
