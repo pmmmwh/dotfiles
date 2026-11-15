@@ -7,7 +7,6 @@ apps = [
     "/Applications/Linear.app",
     "/Applications/Slack.app",
     "/Applications/Rex Beta.app",
-    # Installed by the company's device management, not by bootstrap
     "/Applications/Privileges.app",
     "/System/Applications/System Settings.app",
 ]
