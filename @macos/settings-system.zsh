@@ -104,11 +104,22 @@
   # Applications                                                                #
   ###############################################################################
 
-  # Link Simulator into /Applications, only when Xcode provides it
+  # Link Xcode's device app into /Applications, only when Xcode provides it:
+  # Device Hub from Xcode 27 (which replaced Simulator), Simulator before that
   # Left here rather than declared: a [dotfiles] entry whose source is missing
   # aborts the whole dotfiles phase, and Xcode is not always installed
-  local simulator="/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-  if [[ -d $simulator ]]; then
-    ln -sfn $simulator "/Applications/${simulator:t}"
+  local deviceApp
+  for deviceApp (
+    "/Applications/Xcode.app/Contents/Applications/DeviceHub.app"
+    "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+  ); do
+    if [[ -d $deviceApp ]]; then
+      ln -sfn $deviceApp "/Applications/${deviceApp:t}"
+      break
+    fi
+  done
+  # A Simulator link left behind by an older Xcode now points nowhere
+  if [[ -L /Applications/Simulator.app && ! -e /Applications/Simulator.app ]]; then
+    rm /Applications/Simulator.app
   fi
 }
