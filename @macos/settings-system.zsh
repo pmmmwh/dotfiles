@@ -1,11 +1,12 @@
 #!/usr/bin/env -S zsh -f
 
 # System-wide settings, run once as root by settings.zsh so sudo asks only once.
-# Usage: sudo settings-system.zsh [computer-name]
+# Usage: sudo settings-system.zsh [computer-name] [user-home]
 
 () {
   local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
   local COMPUTER_NAME=${1:-}
+  local USER_HOME=${2:-}
 
   for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N)); do
     source $libraryFile
@@ -99,6 +100,30 @@
 
   # Enable HiDPI display modes (requires restart)
   defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool "true"
+
+  ###############################################################################
+  # Spotlight                                                                   #
+  ###############################################################################
+
+  # Keep repos out of Spotlight (as done via System Settings -> Spotlight -> Search Privacy)
+  # Raycast finds files by name with its own index, and only its Content Search needs Spotlight
+  local spotlightConfig=/System/Volumes/Data/.Spotlight-V100/VolumeConfiguration.plist
+  local spotlightExclusion=$USER_HOME/Developer
+  if [[ -n $USER_HOME && -d $spotlightExclusion && -f $spotlightConfig ]]; then
+    local plistBuddy=/usr/libexec/PlistBuddy index=0 excluded=false entry
+    if ! $plistBuddy -c "Print :Exclusions" $spotlightConfig &>/dev/null; then
+      $plistBuddy -c "Add :Exclusions array" $spotlightConfig
+    fi
+    while entry=$($plistBuddy -c "Print :Exclusions:$index" $spotlightConfig 2>/dev/null); do
+      [[ $entry == "$spotlightExclusion" ]] && excluded=true
+      (( index++ ))
+    done
+    if [[ $excluded == false ]]; then
+      $plistBuddy -c "Add :Exclusions:$index string $spotlightExclusion" $spotlightConfig
+      # Spotlight reads its configuration on start, and launchd restarts it
+      killall mds &>/dev/null
+    fi
+  fi
 
   ###############################################################################
   # Applications                                                                #
