@@ -79,23 +79,23 @@ homebrew_metadata = true
 
 ### Linux ###
 # The `wget` command
-"apt:wget" = "latest"
+"apt:wget" = { os = "linux" }
 
 # Other miscellaneous binaries
-"apt:ack" = "latest"
-"apt:build-essential" = "latest"
-"apt:graphviz" = "latest"
-"apt:pigz" = "latest"
-"apt:pkgconf" = "latest"
-"apt:sshpass" = "latest"
-"apt:tree" = "latest"
-"apt:unzip" = "latest"
-"apt:xz-utils" = "latest"
-"apt:zopfli" = "latest"
-"apt:zsh" = "latest"
+"apt:ack" = { os = "linux" }
+"apt:build-essential" = { os = "linux" }
+"apt:graphviz" = { os = "linux" }
+"apt:pigz" = { os = "linux" }
+"apt:pkgconf" = { os = "linux" }
+"apt:sshpass" = { os = "linux" }
+"apt:tree" = { os = "linux" }
+"apt:unzip" = { os = "linux" }
+"apt:xz-utils" = { os = "linux" }
+"apt:zopfli" = { os = "linux" }
+"apt:zsh" = { os = "linux" }
 
 # General development tools
-"apt:docker-buildx" = "latest"
-"apt:docker-compose-v2" = "latest"
-"apt:docker.io" = "latest"
-"apt:git" = "latest"
+"apt:docker-buildx" = { os = "linux" }
+"apt:docker-compose-v2" = { os = "linux" }
+"apt:docker.io" = { os = "linux" }
+"apt:git" = { os = "linux" }
