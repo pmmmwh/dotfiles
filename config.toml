@@ -82,6 +82,10 @@ mode = "template"
 remove_empty = true
 variants = [{ default = true, target = "{{ mise_config_dir }}/miserc.local.toml" }]
 
+[vars.computer_name]
+prompt = "Name for this computer, applied by `mise run macos-settings` (empty keeps the current one)"
+default = ""
+
 [vars.git_name]
 prompt = "Name on git commits"
 required = "Run `mise vars prompt git_name`"
@@ -126,6 +130,7 @@ run = 'if [ "$(uname)" = Darwin ] && ! "{{ mise_bin }}" which mas >/dev/null 2>&
 [tasks.macos-settings]
 description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
 run = "{{ mise_config_dir }}/@macos/settings.zsh"
+env = { COMPUTER_NAME = "{{ vars.computer_name }}" }
 
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys in ~/.ssh"
