@@ -65,6 +65,8 @@ yq = "latest"
 "~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
+# zsh-autocomplete saves recent directories here, but does not create the folder
+"~/.local/share/zsh/chpwd-recent-dirs" = { content = "", create_if_missing = true }
 
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
