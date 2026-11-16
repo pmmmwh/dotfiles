@@ -1,4 +1,4 @@
-[bootstrap.macos.dock]
+[bootstrap.settings.macos.dock]
 apps = [
     "/System/Applications/Music.app",
     "/Applications/Firefox.app",
