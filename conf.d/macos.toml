@@ -9,6 +9,41 @@ apps = [
     "/Applications/Rex Beta.app",
     "/System/Applications/System Settings.app",
 ]
+# Automatically hide and show the Dock
+autohide = true
+# Magnify the dock on hover, up to 48 pixels
+magnification = true
+largesize = 48
+# Don’t automatically rearrange Spaces based on most recent use
+mru_spaces = false
+# Move the dock on the left
+orientation = "left"
+# Don’t show recent applications in Dock
+show_recents = false
+# Set the icon size of Dock items to 32 pixels
+tilesize = 32
+
+[bootstrap.settings.macos.finder]
+# Show hidden files by default
+show_all_files = true
+# Use list view in all Finder windows by default
+preferred_view_style = "list"
+# Keep folders on top when sorting by name
+sort_folders_first = true
+show_pathbar = true
+show_status_bar = true
+# Save to disk (not to iCloud) by default, in every app
+save_new_documents_to_cloud = false
+
+[bootstrap.settings.macos.keyboard]
+# Disable automatic capitalization as it’s annoying when typing code
+automatic_capitalization = false
+# Enable press-and-hold - this is useful for typing "accents"
+press_and_hold = true
+
+[bootstrap.settings.macos.trackpad]
+# Enable tap to click, for built-in and Bluetooth trackpads
+tap_to_click = true
 
 [bootstrap.hooks.post-defaults]
 # ~/Library is hidden by a file flag rather than a preference
@@ -56,8 +91,6 @@ SortColumn = "CPUUsage"
 SortDirection = 0
 
 [bootstrap.settings.macos.defaults."com.apple.AppleMultitouchTrackpad"]
-# Enable tap to click for this user and for the login screen
-Clicking = true
 # Enable tap to right-click
 TrackpadRightClick = true
 # Disable the four-finger pinch gesture
@@ -88,44 +121,22 @@ DSDontWriteUSBStores = true
 DUDebugMenuEnabled = true
 
 [bootstrap.settings.macos.defaults."com.apple.dock"]
-# Automatically hide and show the Dock
-autohide = true
 # Enable spring loading for all Dock items
 "enable-spring-load-actions-on-all-items" = true
-# Set the magnified icon size of Dock items to 48 pixels
-largesize = 48
-# Magnify the dock on hover
-magnification = true
 # Change minimize/maximize window effect
 mineffect = "scale"
 # Minimize windows into their application’s icon
 "minimize-to-application" = true
-# Don’t automatically rearrange Spaces based on most recent use
-"mru-spaces" = false
-# Move the dock on the left
-orientation = "left"
 # Show indicator lights for open applications in the Dock
 "show-process-indicators" = true
-# Don’t show recent applications in Dock
-"show-recents" = false
-# Set the icon size of Dock items to 32 pixels
-tilesize = 32
 
 [bootstrap.settings.macos.defaults."com.apple.driver.AppleBluetoothMultitouch.trackpad"]
-Clicking = true
 TrackpadRightClick = true
 TrackpadFourFingerPinchGesture = 0
 
 [bootstrap.settings.macos.defaults."com.apple.finder"]
-# Finder: show hidden files by default
-AppleShowAllFiles = true
 # When performing a search, search the current folder by default
 FXDefaultSearchScope = "SCcf"
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `Icnv`, `Clmv`, `Glyv`
-FXPreferredViewStyle = "Nlsv"
-# Keep folders on top when sorting by name
-_FXSortFoldersFirst = true
 # Keep folders on top in Desktop
 _FXSortFoldersFirstOnDesktop = true
 # Set $HOME as the default location for new Finder windows
@@ -136,11 +147,7 @@ OpenWindowForNewRemovableDisk = true
 ShowExternalHardDrivesOnDesktop = false
 ShowHardDrivesOnDesktop = false
 ShowMountedServersOnDesktop = false
-# Finder: show path bar
-ShowPathbar = true
 ShowRemovableMediaOnDesktop = false
-# Finder: show status bar
-ShowStatusBar = true
 
 [bootstrap.settings.macos.defaults."com.apple.frameworks.diskimages"]
 # Automatically open a new Finder window when a volume is mounted
@@ -318,8 +325,6 @@ AppleLanguages = ["en-GB", "zh-Hant-HK", "sv-SE"]
 AppleLocale = "en_SE"
 AppleMeasurementUnits = "Centimeters"
 AppleMetricUnits = true
-# Enable press-and-hold - this is useful for typing "accents"
-ApplePressAndHoldEnabled = true
 # Finder: show all filename extensions
 AppleShowAllExtensions = true
 # Show scrollbars depending on the context
@@ -339,16 +344,12 @@ CGFontRenderingFontSmoothingDisabled = false
 "com.apple.trackpad.enableSecondaryClick" = true
 # Trackpad: enable force-click
 "com.apple.trackpad.forceClick" = true
-# Disable automatic capitalization as it’s annoying when typing code
-NSAutomaticCapitalizationEnabled = false
 # Disable smart dashes as they’re annoying when typing code
 NSAutomaticDashSubstitutionEnabled = false
 # Disable automatic period substitution as it’s annoying when typing code
 NSAutomaticPeriodSubstitutionEnabled = false
 # Disable smart quotes as they’re annoying when typing code
 NSAutomaticQuoteSubstitutionEnabled = false
-# Save to disk (not to iCloud) by default
-NSDocumentSaveNewDocumentsToCloud = false
 # Use expanded save panel by default
 NSNavPanelExpandedStateForSaveMode = true
 NSNavPanelExpandedStateForSaveMode2 = true
