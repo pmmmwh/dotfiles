@@ -1,9 +1,6 @@
 [bootstrap.brew]
 homebrew_metadata = true
 
-[bootstrap.brew.taps]
-"esolitos/ipa" = "https://github.com/esolitos/homebrew-ipa.git"
-
 [bootstrap.packages]
 ### macOS ###
 # The `wget` command
@@ -20,7 +17,7 @@ homebrew_metadata = true
 "brew:pigz" = { os = "macos" }
 "brew:pkgconf" = { os = "macos" }
 "brew:readline" = { os = "macos" }
-"brew:esolitos/ipa/sshpass" = { os = "macos" }
+"brew:sshpass" = { os = "macos" }
 "brew:sqlmap" = { os = "macos" }
 "brew:tree" = { os = "macos" }
 "brew:xz" = { os = "macos" }
