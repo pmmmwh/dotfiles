@@ -4,7 +4,6 @@ apps = [
     "/Applications/Firefox.app",
     "/Applications/Mimestream.app",
     "/System/Applications/Calendar.app",
-    "/Applications/Linear.app",
     "/Applications/Slack.app",
     "/Applications/Rex Beta.app",
     "/Applications/Privileges.app",
@@ -13,5 +12,5 @@ apps = [
 
 [bootstrap.packages]
 # Utilities
-"brew-cask:linear" = { os = "macos" }
+"brew-cask:aws-vpn-client" = { os = "macos" }
 "brew-cask:notion" = { os = "macos" }
