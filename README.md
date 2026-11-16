@@ -36,8 +36,8 @@ The chosen environment is recorded in `miserc.local.toml` (non-committed), so `-
 
 **Defaults and Settings**
 
-Most macOS defaults are managed in mise.
-There are some exceptions where sudo is required, and they are applied as a separate step:
+Per-user macOS defaults are managed in mise.
+System-wide settings need root (power, time zone, computer name, Spotlight exclusions), so they are applied as a separate step:
 
 ```sh
 mise run macos-settings
@@ -51,8 +51,7 @@ mise vars prompt computer_name
 ```
 
 When defaults are written, sometimes a relaunch is required for them to take effect.
-For those managed by mise, it will print a reminder when this is needed.
-For those handled by the task, this is handled automatically on completion (restarts Dock, Finder and SystemUIServer).
+mise prints a reminder when this is needed.
 
 **Key Remapping**
 
@@ -95,7 +94,7 @@ This repository is mise's global config directory, so files are laid out for how
 | `config.work.toml`       | Extras for work machines, `-E work`                          |
 | `miserc.local.toml.tera` | Template for the uncommitted flavour marker                  |
 | `mise.lock`              | Lockfile for tool versions with checksums                    |
-| `@macos/settings.zsh`    | Privileged, host-scoped and collection-valued macOS settings |
+| `@macos/settings.zsh`    | System-wide macOS settings that need root                    |
 
 > Anything in this repository with a `@` prefix is operating-system specific,
 > and anything with a `_` prefix is expected to be linked anywhere.

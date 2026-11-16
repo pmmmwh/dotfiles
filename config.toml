@@ -135,8 +135,12 @@ run = 'if [ "$(uname)" = Darwin ] && ! "{{ mise_bin }}" which mas >/dev/null 2>&
 "~/.zshcustom/plugins/zsh-defer" = { url = "https://github.com/romkatv/zsh-defer.git" }
 
 [tasks.macos-settings]
-description = "Apply macOS settings that fall outside [bootstrap.macos.defaults]"
-run = "{{ mise_config_dir }}/@macos/settings.zsh"
+description = "Apply system-wide macOS settings, which need root"
+# System Settings is quit as the user first, so it does not overwrite the changes
+run = [
+    "osascript -e 'tell application \"System Settings\" to quit'",
+    'sudo /bin/zsh -f "{{ mise_config_dir }}/@macos/settings.zsh" "$COMPUTER_NAME" "$HOME"',
+]
 env = { COMPUTER_NAME = "{{ vars.computer_name }}" }
 
 [tasks.signing-keys]
