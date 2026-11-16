@@ -12,14 +12,10 @@ apps = [
 
 [bootstrap.hooks.post-defaults]
 # ~/Library is hidden by a file flag rather than a preference
-# The Dock needs nothing here: a stock Dock holds only the Downloads stack, sorted by date added,
-# and recent apps are hidden by show-recents
 description = "Unhide ~/Library"
 run = '''
-if [ "$(uname)" = Darwin ]; then
-  xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
-  chflags nohidden ~/Library
-fi
+xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
+chflags nohidden ~/Library
 '''
 
 [bootstrap.macos.launchd.agents.keyboard-remap]
