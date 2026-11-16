@@ -1,6 +1,14 @@
 #!/usr/bin/env -S zsh -f
 
-readonly BUILT_IN_KEYBOARD='{"Built-In":1,"PrimaryUsagePage":1,"PrimaryUsage":6}'
+# Prints the UserKeyMapping for the built-in keyboard, as the --set argument to hidutil.
+# The keyboard-remap agent runs hidutil itself:
+# macOS only applies remaps from a process with Input Monitoring, which cannot be granted to a shell,
+# so this runs when bootstrap writes the agent instead of at login.
+
+if [[ $OSTYPE != darwin* ]]; then
+  print -r -- '{"UserKeyMapping":[]}'
+  exit
+fi
 
 readonly SPOTLIGHT=0xC00000221
 readonly F20=0x70000006F
@@ -31,4 +39,4 @@ if [[ $(built_in_layout) == 1 ]]; then
   mappings+=($(mapping $GRAVE_ACCENT $NON_US_BACKSLASH) $(mapping $NON_US_BACKSLASH $GRAVE_ACCENT))
 fi
 
-exec /usr/bin/hidutil property --matching $BUILT_IN_KEYBOARD --set "{\"UserKeyMapping\":[${(j:,:)mappings}]}" > /dev/null
+print -r -- "{\"UserKeyMapping\":[${(j:,:)mappings}]}"

@@ -52,6 +52,17 @@ When defaults are written, sometimes a relaunch is required for them to take eff
 For those managed by mise, it will print a reminder when this is needed.
 For those handled by the task, this is handled automatically on completion (restarts Dock, Finder and SystemUIServer).
 
+**Key Remapping**
+
+The built-in keyboard is remapped at every login (Spotlight key to F20, and on ISO keyboards `§` and `` ` `` swapped).
+macOS only applies these remaps from a process with Input Monitoring, so grant it once per machine:
+in System Settings → Privacy & Security → Input Monitoring, add `/usr/bin/hidutil` (press ⌘⇧G to enter the path).
+Then apply it without logging out:
+
+```sh
+launchctl kickstart -k gui/$(id -u)/dev.mise.keyboard-remap
+```
+
 **Commit Signing**
 
 On macOS, commits are signed with keys that live in the Secure Enclave, so they never leave the machine.
