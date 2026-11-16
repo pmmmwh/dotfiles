@@ -63,6 +63,12 @@ Then apply it without logging out:
 launchctl kickstart -k gui/$(id -u)/dev.mise.keyboard-remap
 ```
 
+The swap assumes an ISO built-in keyboard. On a Mac with an ANSI one, save that before bootstrapping, so only the Spotlight key is remapped:
+
+```sh
+mise vars keyboard_layout=ansi
+```
+
 **Commit Signing**
 
 On macOS, commits are signed with keys that live in the Secure Enclave, so they never leave the machine.

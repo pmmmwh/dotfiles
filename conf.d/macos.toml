@@ -11,15 +11,17 @@ apps = [
 ]
 
 [bootstrap.macos.launchd.agents.keyboard-remap]
-# Remaps keys for convenience using hidutil, which needs Input Monitoring to remap these keys;
-# it runs directly, as a shell cannot be granted it, with the mapping worked out when bootstrap writes the agent
+# Remaps keys on the built-in keyboard using hidutil, which needs Input Monitoring to remap these keys;
+# it runs directly, as a shell cannot be granted it, so the mapping is chosen by the keyboard_layout var
+# Spotlight key to F20, and on ISO keyboards the section sign and grave accent keys swapped,
+# as Apple's ISO keyboards report them the wrong way round relative to ANSI
 program = "/usr/bin/hidutil"
 args = [
     "property",
     "--matching",
     '{"Built-In":1,"PrimaryUsagePage":1,"PrimaryUsage":6}',
     "--set",
-    '{% if os() == "macos" %}{{ exec(command=mise_config_dir ~ "/@macos/keyboard-mapping.zsh") }}{% else %}{"UserKeyMapping":[]}{% endif %}',
+    '{% if vars.keyboard_layout == "ansi" %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F}]}{% else %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}{% endif %}',
 ]
 run_at_load = true
 stdout_path = "~/Library/Logs/mise-keyboard-remap.log"

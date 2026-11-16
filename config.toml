@@ -88,6 +88,10 @@ variants = [{ default = true, target = "{{ mise_config_dir }}/miserc.local.toml"
 prompt = "Name for this computer, applied by `mise run macos-settings` (empty keeps the current one)"
 default = ""
 
+[vars.keyboard_layout]
+prompt = "Layout of this Mac's built-in keyboard, iso or ansi (ISO swaps the § and ` keys)"
+default = "iso"
+
 [vars.git_name]
 prompt = "Name on git commits"
 required = "Run `mise vars prompt git_name`"
