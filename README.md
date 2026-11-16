@@ -16,21 +16,23 @@ curl https://mise.run | sh
 Then, run `bootstrap`, with `<checkout>` being wherever this repository should live:
 
 ```sh
-mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
+mise bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --prompt-vars --yes
 ```
 
-This will install system packages, clone Zsh plugins, link the dotfiles, write macOS defaults and install tool chains.
+This will ask for the machine's details (git identity, computer name, keyboard layout),
+then install system packages, clone Zsh plugins, link the dotfiles, write macOS defaults and install tool chains.
+The answers are saved on the machine, not in this repository; to change one later, use `mise vars prompt <name>`.
 
 **Environments**
 
 When `-E personal` or `-E work` is specified, the corresponding extras are applied:
 
 ```sh
-mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
-mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --yes
+mise -E personal bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --prompt-vars --save-env --yes
+mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir <checkout> --config-dir . --prompt-vars --save-env --yes
 ```
 
-The chosen environment is recorded in `miserc.local.toml` (non-committed), so `-E` is only needed on this first run.
+`--save-env` records the chosen environment in `miserc.local.toml` (non-committed), so `-E` is only needed on this first run.
 
 ### macOS
 
@@ -43,12 +45,8 @@ System-wide settings need root (power, time zone, computer name, Spotlight exclu
 mise run macos-settings
 ```
 
-It asks for the administrator password once.
-To also set the computer name, save it on the machine first (it is not committed):
-
-```sh
-mise vars prompt computer_name
-```
+It asks for the administrator password once,
+and sets the computer name given during bootstrap (or leaves the current one, when left empty).
 
 When defaults are written, sometimes a relaunch is required for them to take effect.
 mise prints a reminder when this is needed.
@@ -59,10 +57,11 @@ The built-in keyboard is set to remap at every login (Spotlight key to F20, and 
 macOS only applies these remaps from a process with Input Monitoring permissions,
 so `/usr/bin/hidutil` needs to be granted permissions in System Settings → Privacy & Security → Input Monitoring once per machine.
 
-To mark a machine as ISO, set the variable before bootstrapping:
+The layout is asked for during bootstrap; to change it later, run:
 
 ```sh
 mise vars keyboard_layout=iso
+mise bootstrap macos launchd apply
 ```
 
 **Commit Signing**
@@ -85,16 +84,15 @@ A lost or retired machine is handled by deleting its keys on GitHub.
 
 This repository is mise's global config directory, so files are laid out for how mise reads them:
 
-| Where                    | What                                                         |
-| ------------------------ | ------------------------------------------------------------ |
-| `config.toml`            | Tools, settings, dotfiles, vars, plugin repos, login shell   |
-| `conf.d/packages.toml`   | Homebrew taps and system packages                            |
-| `conf.d/macos.toml`      | Dock and macOS defaults                                      |
-| `config.personal.toml`   | Extras for personal machines, `-E personal`                  |
-| `config.work.toml`       | Extras for work machines, `-E work`                          |
-| `miserc.local.toml.tera` | Template for the uncommitted flavour marker                  |
-| `mise.lock`              | Lockfile for tool versions with checksums                    |
-| `@macos/settings.zsh`    | System-wide macOS settings that need root                    |
+| Where                  | What                                                       |
+| ---------------------- | ---------------------------------------------------------- |
+| `config.toml`          | Tools, settings, dotfiles, vars, plugin repos, login shell |
+| `conf.d/packages.toml` | Homebrew taps and system packages                          |
+| `conf.d/macos.toml`    | Dock and macOS defaults                                    |
+| `config.personal.toml` | Extras for personal machines, `-E personal`                |
+| `config.work.toml`     | Extras for work machines, `-E work`                        |
+| `mise.lock`            | Lockfile for tool versions with checksums                  |
+| `@macos/settings.zsh`  | System-wide macOS settings that need root                  |
 
 > Anything in this repository with a `@` prefix is operating-system specific,
 > and anything with a `_` prefix is expected to be linked anywhere.
@@ -123,9 +121,10 @@ To exit with non-zero when something is out of sync, add `--missing` to the comm
 ### Updating
 
 ```sh
-git -C <checkout> pull
 mise bootstrap --update --upgrade --yes
 ```
+
+`--update` also pulls this repository first.
 
 Note that tool versions updated this way will stay inside the ranges in `config.toml`.
 

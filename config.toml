@@ -78,13 +78,6 @@ yq = "latest"
 "~/.gitcredentials.work" = { source = "git/.gitcredentials.work.tera", mode = "template", permissions = "0600" }
 "~/.ssh/allowed_signers" = { source = "git/allowed-signers.tera", mode = "template" }
 
-# Records the environment chosen on the first bootstrap, so later runs do not need to re-specify
-[dotfiles."mise-env"]
-source = "miserc.local.toml.tera"
-mode = "template"
-remove_empty = true
-variants = [{ default = true, target = "{{ mise_config_dir }}/miserc.local.toml" }]
-
 [vars.computer_name]
 prompt = "Name for this computer, applied by `mise run macos-settings` (empty keeps the current one)"
 default = ""
