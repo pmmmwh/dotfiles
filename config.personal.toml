@@ -1,6 +1,5 @@
 [tools]
 java = { version = "zulu-17", os = "macos" }
-ruby = { version = "3.4", os = "macos" }
 
 caddy = "latest"
 cloudflared = "latest"
