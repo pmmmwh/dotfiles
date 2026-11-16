@@ -1,8 +1,9 @@
 #!/usr/bin/env -S zsh -f
 
 # Prints the UserKeyMapping for the built-in keyboard, as the --set argument to hidutil.
-# The keyboard-remap agent runs hidutil itself: macOS only applies remaps from a process with Input Monitoring,
-# which cannot be granted to a shell, so this runs when bootstrap writes the agent instead of at login.
+# The keyboard-remap agent runs hidutil itself:
+# macOS only applies remaps from a process with Input Monitoring, which cannot be granted to a shell,
+# so this runs when bootstrap writes the agent instead of at login.
 
 if [[ $OSTYPE != darwin* ]]; then
   print -r -- '{"UserKeyMapping":[]}'
