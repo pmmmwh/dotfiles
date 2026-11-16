@@ -133,6 +133,17 @@ ShowStatusBar = true
 # Set Help Viewer windows to non-floating mode
 DevMode = true
 
+[bootstrap.macos.defaults."com.apple.HIToolbox"]
+# Type with ABC (# on Shift+3, £ on Option+3) rather than British, alongside Cantonese Phonetic and Cangjie
+# Only the enabled list: the selected source changes every time the input method is switched
+AppleEnabledInputSources = [
+    { "Bundle ID" = "com.apple.inputmethod.TYIM", "Input Mode" = "com.apple.inputmethod.TYIM.Phonetic", InputSourceKind = "Input Mode" },
+    { "Bundle ID" = "com.apple.inputmethod.TCIM", "Input Mode" = "com.apple.inputmethod.TCIM.Cangjie", InputSourceKind = "Input Mode" },
+    { "Bundle ID" = "com.apple.inputmethod.TCIM", InputSourceKind = "Keyboard Input Method" },
+    { "Bundle ID" = "com.apple.CharacterPaletteIM", InputSourceKind = "Non Keyboard Input Method" },
+    { InputSourceKind = "Keyboard Layout", "KeyboardLayout ID" = 252, "KeyboardLayout Name" = "ABC" },
+]
+
 [bootstrap.macos.defaults."com.apple.mail"]
 # Disable inline attachments (just show the icons)
 DisableInlineAttachmentViewing = true
