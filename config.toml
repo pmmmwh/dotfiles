@@ -89,8 +89,8 @@ prompt = "Name for this computer, applied by `mise run macos-settings` (empty ke
 default = ""
 
 [vars.keyboard_layout]
-prompt = "Layout of this Mac's built-in keyboard, iso or ansi (ISO swaps the § and ` keys)"
-default = "iso"
+prompt = "Layout of this Mac's built-in keyboard, ansi or iso (ISO swaps the § and ` keys)"
+default = "ansi"
 
 [vars.git_name]
 prompt = "Name on git commits"

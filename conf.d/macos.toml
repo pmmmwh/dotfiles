@@ -21,7 +21,7 @@ args = [
     "--matching",
     '{"Built-In":1,"PrimaryUsagePage":1,"PrimaryUsage":6}',
     "--set",
-    '{% if vars.keyboard_layout == "ansi" %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F}]}{% else %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}{% endif %}',
+    '{% if vars.keyboard_layout == "iso" %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F},{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}{% else %}{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0xC00000221,"HIDKeyboardModifierMappingDst":0x70000006F}]}{% endif %}',
 ]
 run_at_load = true
 stdout_path = "~/Library/Logs/mise-keyboard-remap.log"
