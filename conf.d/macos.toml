@@ -11,10 +11,19 @@ apps = [
 ]
 
 [bootstrap.macos.launchd.agents.keyboard-remap]
-# Remaps keys for convenience using hidutil
-program = "/bin/zsh"
-args = ["-f", "{{ mise_config_dir }}/@macos/keyboard-remap.zsh"]
+# Remaps keys for convenience using hidutil, which needs Input Monitoring to remap these keys;
+# it runs directly, as a shell cannot be granted it, with the mapping worked out when bootstrap writes the agent
+program = "/usr/bin/hidutil"
+args = [
+    "property",
+    "--matching",
+    '{"Built-In":1,"PrimaryUsagePage":1,"PrimaryUsage":6}',
+    "--set",
+    '{% if os() == "macos" %}{{ exec(command=mise_config_dir ~ "/@macos/keyboard-mapping.zsh") }}{% else %}{"UserKeyMapping":[]}{% endif %}',
+]
 run_at_load = true
+stdout_path = "~/Library/Logs/mise-keyboard-remap.log"
+stderr_path = "~/Library/Logs/mise-keyboard-remap.log"
 
 [bootstrap.macos.launchd.agents.signing-keys]
 # Offers the Secure Enclave signing keys to ssh-agent after every login
