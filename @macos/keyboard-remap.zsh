@@ -31,4 +31,15 @@ if [[ $(built_in_layout) == 1 ]]; then
   mappings+=($(mapping $GRAVE_ACCENT $NON_US_BACKSLASH) $(mapping $NON_US_BACKSLASH $GRAVE_ACCENT))
 fi
 
-exec /usr/bin/hidutil property --matching $BUILT_IN_KEYBOARD --set "{\"UserKeyMapping\":[${(j:,:)mappings}]}" > /dev/null
+apply() {
+  /usr/bin/hidutil property --matching $BUILT_IN_KEYBOARD --set "{\"UserKeyMapping\":[${(j:,:)mappings}]}" > /dev/null &&
+    print -r -- "$(/bin/date '+%F %T') applied ${#mappings} mapping(s)"
+}
+
+# At login the mapping can be stored before keyboard input is ready, and then it has no effect;
+# applying the same mapping again once login has settled makes it take effect
+apply
+for delay (10 50); do
+  sleep $delay
+  apply
+done
