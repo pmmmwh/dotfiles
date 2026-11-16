@@ -5,6 +5,7 @@
 # Usage: sudo settings.zsh [computer-name] [user-home], as the macos-settings task runs it
 
 () {
+  # Get the current execution context
   local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
   local COMPUTER_NAME=${1:-}
   local USER_HOME=${2:-}
@@ -135,10 +136,8 @@
   # Applications                                                                #
   ###############################################################################
 
-  # Link Xcode's device app into /Applications, only when Xcode provides it:
-  # Device Hub from Xcode 27 (which replaced Simulator), Simulator before that
-  # Left here rather than declared: a [dotfiles] entry whose source is missing
-  # aborts the whole dotfiles phase, and Xcode is not always installed
+  # Link Xcode's device app into /Applications, only when provided:
+  # Device Hub from Xcode 27 (which replaced Simulator), or Simulator before that.
   local deviceApp
   for deviceApp (
     "/Applications/Xcode.app/Contents/Applications/DeviceHub.app"
