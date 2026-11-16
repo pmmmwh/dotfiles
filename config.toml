@@ -14,8 +14,7 @@ DISABLE_AUTOUPDATER = "1"
 go = "1.27"
 node = "26"
 python = ["3.12", "3.14"]
-# On every Mac, as mise also needs Ruby 3+ to read Homebrew taps that publish no metadata
-ruby = { version = "4.0", os = "macos" }
+ruby = { version = "4.0", os = "macos" } # used by mise to read Homebrew taps
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = { version = "latest", os = "macos" }
