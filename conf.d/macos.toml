@@ -11,19 +11,14 @@ apps = [
 ]
 
 [bootstrap.hooks.post-defaults]
-# The Dock's folder stacks need the home path, which macOS defaults cannot template, so the hook
-# keeps exactly one stack, Downloads sorted by date added, and only rewrites it when that differs
-# (recent apps are hidden by show-recents above)
-description = "Unhide ~/Library, and keep only the Downloads stack in the Dock"
+# ~/Library is hidden by a file flag rather than a preference
+# The Dock needs nothing here: a stock Dock holds only the Downloads stack, sorted by date added,
+# and recent apps are hidden by show-recents
+description = "Unhide ~/Library"
 run = '''
 if [ "$(uname)" = Darwin ]; then
   xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
   chflags nohidden ~/Library
-  others=$(defaults read com.apple.dock persistent-others 2>/dev/null || true)
-  if [ "$(printf '%s\n' "$others" | grep -c '"tile-type"')" != 1 ] || ! printf '%s\n' "$others" | grep -q "file://$HOME/Downloads"; then
-    defaults write com.apple.dock persistent-others -array "<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>0</integer><key>file-data</key><dict><key>_CFURLString</key><string>file://$HOME/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>0</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
-    killall Dock
-  fi
 fi
 '''
 
