@@ -32,7 +32,9 @@ mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir 
 
 The chosen environment is recorded in `miserc.local.toml` (non-committed), so `-E` is only needed on this first run.
 
-**macOS Settings**
+### macOS
+
+**Defaults and Settings**
 
 Most macOS defaults are managed in mise.
 There are some exceptions where sudo is required, and they are applied as a separate step:
@@ -54,17 +56,11 @@ For those handled by the task, this is handled automatically on completion (rest
 
 **Key Remapping**
 
-The built-in keyboard is remapped at every login (Spotlight key to F20, and on ISO keyboards `§` and `` ` `` swapped).
-macOS only applies these remaps from a process with Input Monitoring, so grant it once per machine:
-in System Settings → Privacy & Security → Input Monitoring, add `/usr/bin/hidutil` (press ⌘⇧G to enter the path).
-Then apply it without logging out:
+The built-in keyboard is set to remap at every login (Spotlight key to F20, and on ISO keyboards `§` and `` ` `` swapped).
+macOS only applies these remaps from a process with Input Monitoring permissions,
+so `/usr/bin/hidutil` needs to be granted permissions in System Settings → Privacy & Security → Input Monitoring once per machine.
 
-```sh
-launchctl kickstart -k gui/$(id -u)/dev.mise.keyboard-remap
-```
-
-The swap only applies to ISO built-in keyboards; others get just the Spotlight remap.
-On a Mac with an ISO one, save that before bootstrapping:
+To mark a machine as ISO, set the variable before bootstrapping:
 
 ```sh
 mise vars keyboard_layout=iso
