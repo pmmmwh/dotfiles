@@ -10,6 +10,21 @@ apps = [
     "/System/Applications/System Settings.app",
 ]
 
+[bootstrap.hooks.post-defaults]
+# The Dock's folder stacks need the home path, which macOS defaults cannot template,
+# so the Downloads stack (sorted by date added) is only added when it is missing
+description = "Unhide ~/Library, and add the Downloads stack to the Dock if missing"
+run = '''
+if [ "$(uname)" = Darwin ]; then
+  xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
+  chflags nohidden ~/Library
+  if ! defaults read com.apple.dock persistent-others 2>/dev/null | grep -q "file://$HOME/Downloads"; then
+    defaults write com.apple.dock persistent-others -array-add "<dict><key>tile-data</key><dict><key>arrangement</key><integer>2</integer><key>displayas</key><integer>0</integer><key>file-data</key><dict><key>_CFURLString</key><string>file://$HOME/Downloads/</string><key>_CFURLStringType</key><integer>15</integer></dict><key>file-type</key><integer>2</integer><key>showas</key><integer>0</integer></dict><key>tile-type</key><string>directory-tile</string></dict>"
+    killall Dock
+  fi
+fi
+'''
+
 [bootstrap.macos.launchd.agents.keyboard-remap]
 # Remaps keys on the built-in keyboard using hidutil, which needs Input Monitoring to remap these keys;
 # it runs directly, as a shell cannot be granted it, so the mapping is chosen by the keyboard_layout var
