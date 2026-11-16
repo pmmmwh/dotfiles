@@ -29,8 +29,8 @@ stderr_path = "~/Library/Logs/mise-keyboard-remap.log"
 
 [bootstrap.macos.launchd.agents.signing-keys]
 # Offers the Secure Enclave signing keys to ssh-agent after every login
-program = "/bin/zsh"
-args = ["-f", "{{ mise_config_dir }}/@macos/load-signing-keys.zsh"]
+# Runs the script directly, so it is listed by name rather than as "zsh" in background items
+program = "{{ mise_config_dir }}/@macos/load-signing-keys.zsh"
 run_at_load = true
 
 [bootstrap.macos.defaults."com.apple.ActivityMonitor"]
