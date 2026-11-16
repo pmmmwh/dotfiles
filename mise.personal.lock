@@ -252,26 +252,6 @@ checksum = "sha256:200eb602c126d82aa38b51e0f6b9ae837473ff99b51278d3f6f837574c494
 url = "https://github.com/rclone/rclone/releases/download/v1.75.1/rclone-v1.75.1-windows-amd64.zip"
 url_api = "https://api.github.com/repos/rclone/rclone/releases/assets/544647178"
 
-[[tools.ruby]]
-version = "3.4.12"
-backend = "core:ruby"
-specifiers = ["3.4"]
-
-[tools.ruby.options]
-compile = "false"
-precompiled_url = "jdx/ruby"
-ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
-ruby_install = "false"
-
-[tools.ruby."platforms.macos-arm64"]
-checksum = "sha256:865b429c511c40a96fe3c25466bbf9b300e5cae22c70c7dd68e0af003b849de4"
-url = "https://github.com/jdx/ruby/releases/download/3.4.12-1/ruby-3.4.12.macos.tar.gz"
-provenance = "github-attestations"
-
-[tools.ruby."platforms.macos-x64"]
-checksum = "sha256:5e5d85ad93b0adcccbad47733680f4892bd0078e3342437f7babce01c1872479"
-url = "https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.12.tar.gz"
-
 [[tools.swiftformat]]
 version = "0.64.5"
 backend = "github:nicklockwood/SwiftFormat"

@@ -1316,6 +1316,26 @@ checksum = "sha256:c1876a9795d3a94ee49a1499a69cd91e26ca3e2829593f93fa6e4db90d054
 url = "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.14.10+20261026-x86_64-pc-windows-msvc-install_only_stripped.tar.gz"
 provenance = "github-attestations"
 
+[[tools.ruby]]
+version = "4.0.9"
+backend = "core:ruby"
+specifiers = ["4.0"]
+
+[tools.ruby.options]
+compile = "false"
+precompiled_url = "jdx/ruby"
+ruby_build_repo = "https://github.com/rbenv/ruby-build.git"
+ruby_install = "false"
+
+[tools.ruby."platforms.macos-arm64"]
+checksum = "sha256:6eca5d2aaf6bb6c805daa31b4139a3c974526f41dae990ab0cef0ee3db8ea5d1"
+url = "https://github.com/jdx/ruby/releases/download/4.0.9-1/ruby-4.0.9.macos.tar.gz"
+provenance = "github-attestations"
+
+[tools.ruby."platforms.macos-x64"]
+checksum = "sha256:c35350682ff050b79702d57ade4516e7336063f510155d19fb2fb5b3f3909511"
+url = "https://cache.ruby-lang.org/pub/ruby/4.0/ruby-4.0.9.tar.gz"
+
 [[tools.rust]]
 version = "1.100.0"
 backend = "core:rust"
