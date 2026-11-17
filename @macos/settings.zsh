@@ -121,12 +121,12 @@
     if [[ -x $nextdns ]]; then
       $nextdns install \
         -profile $NEXTDNS_PROFILE \
-        -report-client-info \
         -auto-activate \
         -cache-size 10MB \
-        -max-ttl 5s
+        -max-ttl 5s \
+        -report-client-info
     else
-      logger "warning" "NextDNS is not installed, so DNS over HTTPS is not set up."
+      logger "warning" "NextDNS is not installed, DNS over HTTPS is not set up."
     fi
   fi
 
