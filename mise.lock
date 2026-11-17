@@ -712,6 +712,46 @@ url = "https://github.com/cli/cli/releases/download/v2.103.3/gh_2.103.3_windows_
 url_api = "https://api.github.com/repos/cli/cli/releases/assets/679195750"
 provenance = "github-attestations"
 
+[[tools."github:alltuner/mise-completions-sync"]]
+version = "0.5.20"
+backend = "github:alltuner/mise-completions-sync"
+specifiers = ["latest"]
+
+[tools."github:alltuner/mise-completions-sync"."platforms.linux-arm64"]
+checksum = "sha256:6158f6230c303d3a2e74c7c2cf33e142946e5eb2e2adbaa1d40db551f3e47550"
+checksum_source = "mise-versions"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677788322"
+
+[tools."github:alltuner/mise-completions-sync"."platforms.linux-arm64-musl"]
+checksum = "sha256:6158f6230c303d3a2e74c7c2cf33e142946e5eb2e2adbaa1d40db551f3e47550"
+checksum_source = "mise-versions"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-aarch64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677788322"
+
+[tools."github:alltuner/mise-completions-sync"."platforms.linux-x64"]
+checksum = "sha256:95872a973a84ace033f534a72606f56a56074093ba9f45fda689651742b317de"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-x86_64-unknown-linux-gnu.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677787388"
+
+[tools."github:alltuner/mise-completions-sync"."platforms.linux-x64-musl"]
+checksum = "sha256:9463e7f7c3f6fbac587eda982bc91bdc0cbeb224f5f465b32f6416e69f05144f"
+checksum_source = "mise-versions"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-x86_64-unknown-linux-musl.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677787873"
+
+[tools."github:alltuner/mise-completions-sync"."platforms.macos-arm64"]
+checksum = "sha256:46a59629813b9355e1c672bdea86b5ba74a381b829430d690e573dd3a47f437e"
+checksum_source = "mise-versions"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-aarch64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677787018"
+
+[tools."github:alltuner/mise-completions-sync"."platforms.macos-x64"]
+checksum = "sha256:f244615a6b82b95f43fdbcbe143e65457e109b185408e502e14ed364d73cb6b0"
+checksum_source = "mise-versions"
+url = "https://github.com/alltuner/mise-completions-sync/releases/download/v0.5.20/mise-completions-sync-x86_64-apple-darwin.tar.gz"
+url_api = "https://api.github.com/repos/alltuner/mise-completions-sync/releases/assets/677788044"
+
 [[tools.go]]
 version = "1.27.3"
 backend = "core:go"

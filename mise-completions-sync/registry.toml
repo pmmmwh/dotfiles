@@ -1,0 +1,14 @@
+# Completions for tools that the built-in mise-completions-sync registry does not cover yet,
+# keyed by mise tool name; see https://github.com/alltuner/mise-completions-sync#custom-registry
+schema_version = 1
+
+[tools]
+"1password-cli" = { completion_name = "op", zsh = "op completion zsh" }
+bottom = { bundled = true, completion_name = "btm", zsh = "_btm" }
+caddy = { zsh = "caddy completion zsh" }
+codex = { zsh = "codex completion zsh" }
+eza = { zsh = '''sh -c 'curl -fsSL "https://raw.githubusercontent.com/eza-community/eza/$(eza --version | grep -o "^v[0-9.]*")/completions/zsh/_eza"' ''' }
+fastfetch = { zsh = '''sh -c 'curl -fsSL "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/$(fastfetch --version | cut -d " " -f 2)/completions/fastfetch.zsh"' ''' }
+oh-my-pi = { completion_name = "omp", zsh = "omp completions zsh" }
+onefetch = { zsh = "onefetch --generate zsh" }
+tealdeer = { completion_name = "tldr", zsh = '''sh -c 'curl -fsSL "https://raw.githubusercontent.com/tealdeer-rs/tealdeer/v$(tldr --version | cut -d " " -f 2)/completion/zsh_tealdeer"' ''' }
