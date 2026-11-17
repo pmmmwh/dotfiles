@@ -9,6 +9,8 @@ bottom = { bundled = true, completion_name = "btm", zsh = "_btm" }
 caddy = { zsh = "caddy completion zsh" }
 codex = { zsh = "codex completion zsh" }
 # Downloaded from the repository at the installed version, as releases do not ship it
+eza = { zsh = '''sh -c 'curl -fsSL "https://raw.githubusercontent.com/eza-community/eza/$(eza --version | grep -o "^v[0-9.]*")/completions/zsh/_eza"' ''' }
+# Downloaded from the repository at the installed version, as releases do not ship it
 fastfetch = { zsh = '''sh -c 'curl -fsSL "https://raw.githubusercontent.com/fastfetch-cli/fastfetch/$(fastfetch --version | cut -d " " -f 2)/completions/fastfetch.zsh"' ''' }
 oh-my-pi = { completion_name = "omp", zsh = "omp completions zsh" }
 onefetch = { zsh = "onefetch --generate zsh" }
