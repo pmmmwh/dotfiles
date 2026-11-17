@@ -12,8 +12,6 @@ DISABLE_AUTOUPDATER = "1"
 
 [hooks.postinstall]
 # Generate zsh completions for tools that were just installed or upgraded
-# Hooks only see the tools they installed on PATH, so misecompsync is found through mise,
-# and skipped until it is installed (as bootstrap may install mas first); it runs commands through mise
 run = '''
 if bin=$("{{ mise_bin }}" which misecompsync 2>/dev/null); then
   PATH="$(dirname "{{ mise_bin }}"):$PATH" "$bin" --shell zsh --new-only
@@ -24,7 +22,7 @@ fi
 go = "1.27"
 node = "26"
 python = ["3.12", "3.14"]
-ruby = { version = "4.0", os = "macos" } # used by mise to read Homebrew taps
+ruby = { version = "4.0", os = "macos" }  # used by mise to read Homebrew taps
 rust = { version = "latest", components = ["rust-analyzer", "rust-src"], targets = ["wasm32-unknown-unknown"] }
 
 "1password-cli" = { version = "latest", os = "macos" }
@@ -46,7 +44,7 @@ hadolint = "latest"
 hyperfine = "latest"
 jq = "latest"
 mas = { version = "latest", os = "macos" }
-"github:alltuner/mise-completions-sync" = "latest" # the misecompsync command, for completions
+"github:alltuner/mise-completions-sync" = "latest"  # the misecompsync command, for completions
 mkcert = "latest"
 oh-my-pi = "latest"
 onefetch = "latest"
@@ -71,15 +69,14 @@ yq = "latest"
 [dotfiles]
 "~" = { source = "home", mode = "symlink-each" }
 "~/.atuin/config.toml" = "atuin/config.toml"
-"~/.local/share/mise-completions-sync/registry.toml" = "mise-completions-sync/registry.toml"
 "~/.config" = { source = "config", mode = "symlink-each", exclude = ["ghostty", "zed"] }
 # Apps that are only installed on macOS
 "~/.config/ghostty" = { source = "config/ghostty", mode = "symlink-each", variants = [{ os = "macos" }] }
 "~/.config/zed" = { source = "config/zed", mode = "symlink-each", variants = [{ os = "macos" }] }
+"~/.local/share/mise-completions-sync/registry.toml" = "mise-completions-sync/registry.toml"
+"~/.local/share/zsh/chpwd-recent-dirs" = { content = "", create_if_missing = true }  # for zsh-autocomplete
 "~/.zshcustom" = { source = "zshcustom", mode = "symlink-each", exclude = ["plugins", "extras.zsh"] }
 "~/.zshcustom/extras.zsh" = { content = "#!/usr/bin/env zsh\n", create_if_missing = true }
-# zsh-autocomplete saves recent directories here, but does not create the folder
-"~/.local/share/zsh/chpwd-recent-dirs" = { content = "", create_if_missing = true }
 
 # Only .gitconfig - git does not follow symlinked config files since 2.32,
 # so .gitattributes and .gitignore are wired through GIT_CONFIG_* instead.
