@@ -116,12 +116,9 @@
   # Resolve DNS over HTTPS with NextDNS for the whole system, if a profile is provided
   # Installing again replaces the service, keeping any other options in /etc/nextdns.conf
   if [[ -n $NEXTDNS_PROFILE ]]; then
-    local nextdns
-    for nextdns (/opt/homebrew/bin/nextdns /usr/local/bin/nextdns); do
-      [[ -x $nextdns ]] && break
-      nextdns=
-    done
-    if [[ -n $nextdns ]]; then
+    # sudo does not keep Homebrew on PATH
+    local nextdns=/opt/homebrew/bin/nextdns
+    if [[ -x $nextdns ]]; then
       $nextdns install \
         -profile $NEXTDNS_PROFILE \
         -report-client-info \
