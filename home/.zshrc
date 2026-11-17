@@ -22,6 +22,8 @@ typeset -U FPATH fpath
 if [[ -n $HOMEBREW_PREFIX ]]; then
   fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 fi
+# Generated for mise tools by misecompsync, after every install or upgrade
+fpath=(${XDG_DATA_HOME:-$HOME/.local/share}/mise-completions/zsh $fpath)
 fpath=($ZSH_CUSTOM/completions $fpath)
 
 # Load plugins -

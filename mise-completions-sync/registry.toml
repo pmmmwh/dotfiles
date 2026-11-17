@@ -1,0 +1,9 @@
+# Completions for tools that the built-in mise-completions-sync registry does not cover yet,
+# keyed by mise tool name; see https://github.com/alltuner/mise-completions-sync#custom-registry
+schema_version = 1
+
+[tools]
+"1password-cli" = { completion_name = "op", zsh = "op completion zsh" }
+caddy = { zsh = "caddy completion zsh" }
+codex = { zsh = "codex completion zsh" }
+onefetch = { zsh = "onefetch --generate zsh" }
