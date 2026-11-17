@@ -39,7 +39,7 @@ mise -E work bootstrap --from https://github.com/pmmmwh/dotfiles.git --from-dir 
 **Defaults and Settings**
 
 Per-user macOS defaults are managed in mise.
-System-wide settings need root (power, time zone, computer name, Spotlight exclusions), so they are applied as a separate step:
+System-wide settings need root (power, time zone, computer name, DNS, Spotlight exclusions), so they are applied as a separate step:
 
 ```sh
 mise run macos-settings
@@ -47,6 +47,7 @@ mise run macos-settings
 
 It asks for the administrator password once,
 and sets the computer name given during bootstrap (or leaves the current one, when left empty).
+When a NextDNS profile ID was given too, it also sets up DNS over HTTPS for the whole system with the `nextdns` service.
 
 When defaults are written, sometimes a relaunch is required for them to take effect.
 mise prints a reminder when this is needed.

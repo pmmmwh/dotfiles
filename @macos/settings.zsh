@@ -2,13 +2,14 @@
 
 # System-wide macOS settings, which need root; per-user preferences live in conf.d/macos.toml.
 # Adopted from Mathias Bynens' dotfiles - originally licensed under MIT (https://mths.be/macos)
-# Usage: sudo settings.zsh [computer-name] [user-home], as the macos-settings task runs it
+# Usage: sudo settings.zsh [computer-name] [user-home] [nextdns-profile], as the macos-settings task runs it
 
 () {
   # Get the current execution context
   local SCRIPT_DIR=$(cd $(dirname "${(%):-%x}") && pwd)
   local COMPUTER_NAME=${1:-}
   local USER_HOME=${2:-}
+  local NEXTDNS_PROFILE=${3:-}
 
   for libraryFile ($SCRIPT_DIR/../_lib/*.zsh(N)); do
     source $libraryFile
@@ -107,6 +108,27 @@
 
   # Enable HiDPI display modes (requires restart)
   defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool "true"
+
+  ###############################################################################
+  # Network                                                                     #
+  ###############################################################################
+
+  # Resolve DNS over HTTPS with NextDNS for the whole system, if a profile is provided
+  # Installing again replaces the service, keeping any other options in /etc/nextdns.conf
+  if [[ -n $NEXTDNS_PROFILE ]]; then
+    # sudo does not keep Homebrew on PATH
+    local nextdns=/opt/homebrew/bin/nextdns
+    if [[ -x $nextdns ]]; then
+      $nextdns install \
+        -profile $NEXTDNS_PROFILE \
+        -auto-activate \
+        -cache-size 10MB \
+        -max-ttl 5s \
+        -report-client-info
+    else
+      logger "warning" "NextDNS is not installed, DNS over HTTPS is not set up."
+    fi
+  fi
 
   ###############################################################################
   # Spotlight                                                                   #

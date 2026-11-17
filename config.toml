@@ -86,6 +86,10 @@ default = ""
 prompt = "Layout of this Mac's built-in keyboard, ansi or iso (ISO swaps the § and ` keys)"
 default = "ansi"
 
+[vars.nextdns_profile]
+prompt = "NextDNS profile ID for system-wide DNS over HTTPS, applied by `mise run macos-settings` (empty skips it)"
+default = ""
+
 [vars.git_name]
 prompt = "Name on git commits"
 required = "Run `mise vars prompt git_name`"
@@ -132,9 +136,9 @@ description = "Apply system-wide macOS settings, which need root"
 # System Settings is quit as the user first, so it does not overwrite the changes
 run = [
     "osascript -e 'tell application \"System Settings\" to quit'",
-    'sudo /bin/zsh -f "{{ mise_config_dir }}/@macos/settings.zsh" "$COMPUTER_NAME" "$HOME"',
+    'sudo /bin/zsh -f "{{ mise_config_dir }}/@macos/settings.zsh" "$COMPUTER_NAME" "$HOME" "$NEXTDNS_PROFILE"',
 ]
-env = { COMPUTER_NAME = "{{ vars.computer_name }}" }
+env = { COMPUTER_NAME = "{{ vars.computer_name }}", NEXTDNS_PROFILE = "{{ vars.nextdns_profile }}" }
 
 [tasks.signing-keys]
 description = "Create Secure Enclave keys for signing git commits and save their public keys in ~/.ssh"
