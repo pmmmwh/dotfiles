@@ -37,7 +37,8 @@ zsh-defer source $ZSH_CUSTOM/plugins/fast-syntax-highlighting/fast-syntax-highli
 typeset -ga _zshrc_compdef_queue=()
 compdef() { _zshrc_compdef_queue+=("${(j: :)${(@q+)@}}") }
 
-# Enable mise environment
+# Enable mise environment -
+# not cached with evalcache, as the output embeds the current PATH
 (( $+commands[mise] )) && eval "$(mise activate zsh)"
 
 # Enable the Starship theme
